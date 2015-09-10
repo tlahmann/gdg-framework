@@ -10,6 +10,10 @@
 //    $('.scroll-pane').jScrollPane();
 //});
 
+//$(function () {
+//    $('#navi').simplebar({ autoHide: false });
+//});
+
 // array variables to save the images (x) and descriptions (y)
 var x, y;
 // count variables to navigate through images (i) and descriptions (j)
