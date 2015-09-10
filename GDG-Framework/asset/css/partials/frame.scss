@@ -1,0 +1,338 @@
+﻿
+
+// TODO add quick navigation
+
+/*#region VARIABLES */
+@import "reset.scss";
+@import "typography.scss";
+@import "variables.scss";
+@import "colors.scss";
+@import "mixins.scss";
+/*#endregion */
+
+/*#region BASICS */
+
+body {
+    margin: 0;
+    font: $gdgFont;
+    /*background-color: azure;*/
+}
+
+// SASS calculation of the headings
+.fontBasic {
+    font-weight: normal;
+    //-
+    color: $darkFontColor;
+}
+
+@for $i from 1 through 6 {
+    h#{$i} {
+        @extend .fontBasic;
+        font-size: 2em - (0.25 * $i);
+        /*letter-spacing: 0.4em - (0.05 * $i);*/
+    }
+}
+
+/*#endregion */
+
+/*#region FRAMEWORK */
+
+// the frame holds the total content of the display
+// it has automatic margins left and right to be centered in the total display width
+// the width and height calculated according to the desired aspect ratio
+// minimal width and height is fixed to 80px * aspect ratio
+//              e.g. ratio of 4:3 :: 340px X 240px
+.frame {
+    position: relative;
+    //-
+    width: $desDimensions * 1vw;
+    max-width: nth($aspRatio, 1)/nth($aspRatio, 2) * $maxDimensions * 1vh;
+    min-width: nth($aspRatio, 1) * 80px;
+    //-
+    height: nth($aspRatio, 2)/nth($aspRatio, 1) * $desDimensions * 1vw;
+    max-height: $maxDimensions * 1vh;
+    min-height: nth($aspRatio, 2) * 80px;
+    //-
+    margin: 0 auto;
+    //-
+    background-color: #fff;
+    color: $darkFontColor;
+    border: 1px solid $darkFontColor;
+    overflow: hidden;
+}
+
+// the pane holds the different regions of the display (header, nav, section, aside and footer)
+// it has an absolute position to ensure the proper display of the regions (position: relative)
+// the margins on 10px is set to ensure a better view expirience
+.pane {
+    position: absolute;
+    overflow: hidden;
+    //-
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    left: 40px;
+    //-
+    /*background-color: #ff007b;*/
+}
+
+// basic class to entend all regions (header, nav, section, aside and footer)
+.basic {
+    position: absolute;
+    overflow: hidden;
+    //-
+    width: 100%;
+}
+
+
+// nested area in all regions to ensure proper paddings
+.glass {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 5px;
+}
+
+// the header region hold the title of the current picture/animation
+header {
+    @extend .basic;
+    /*@extend .glass;*/
+    height: 15%;
+    //-
+    .glass {
+        padding: 2vw 0;
+    }
+    /*background-color: #ff0000;*/
+}
+
+/*#region navigation */
+
+nav {
+    @extend .basic;
+    width: 20%;
+    height: 70%;
+    z-index: 150;
+    // -
+    top: 15%;
+    left: -18%;
+    /*left: 0;*/
+    font-size: 0.8em;
+    // -
+    @include translate(.3s);
+    -webkit-transition-delay: 1.5s;
+    -moz-transition-delay: 1.5s;
+    -ms-transition-delay: 1.5s;
+    -o-transition-delay: 1.5s;
+    transition-delay: 1.5s;
+    // -
+    > .navigation {
+        position: relative;
+        float: left;
+        width: 90%;
+        height: 100%;
+        background-color: fade_out($darkColor, 0.1);
+        /*.scroll-pane {*/
+        .glass {
+            overflow-x: hidden;
+            overflow-y: scroll;
+
+            a {
+                text-decoration: none;
+                color: $lightColor;
+                display: block;
+                width: 100%;
+                /*height: 120%;*/
+            }
+        }
+    }
+
+    .navSlideBtn {
+        width: 8%;
+        height: 15%;
+        float: left;
+
+        > div {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: $lightColor;
+            -webkit-transform-origin: 0 0;
+            -moz-transform-origin: 0 0;
+            -ms-transform-origin: 0 0;
+            -o-transform-origin: 0 0;
+            transform-origin: 0 0;
+
+            span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+                -moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+                -ms-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+                -o-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+                transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+            }
+        }
+
+        background-color: fade_out($darkColor, 0.1);
+    }
+
+    .glass {
+        float: left;
+    }
+}
+
+nav:hover {
+    left: 0;
+    @include translate(.5s);
+}
+
+/*#endregion */
+
+// the section is the centered area of the display
+// it holds the pictures and animation
+// main area
+section {
+    @extend .basic;
+    @include imageRatio(nth($aspRatio, 1), nth($aspRatio, 2));
+    //-
+    top: 15%;
+    right: 25%;
+    left: 0;
+    //-
+    /*border: 1px solid $darkFontColor;*/
+    .glass {
+        padding: 0;
+
+        #contentImg, #contentAnim {
+            display: block;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        #contentAnim {
+            @import "../vendor/animation.scss";
+        }
+    }
+    /*background-color: #ffd800;*/
+}
+
+// the aside region is used to hold the description of the current pisture/animation
+aside {
+    @extend .basic;
+    width: 25%;
+    height: 73%;
+    //-
+    top: 15%;
+    right: 0;
+    left: 75%;
+    //-
+    .glass {
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 0 2vw;
+
+        h4 {
+            margin: 0;
+        }
+    }
+    /*background-color: #b6ff00;*/
+}
+
+#descNav {
+    @extend .basic;
+    width: 21%;
+    height: 5%;
+    //-
+    top: 88%;
+    right: 0;
+    left: 75%;
+    // -
+    /*padding: 20%;*/
+    position: absolute;
+    margin: 0 2%;
+    padding: 5px;
+    border-top: 1px solid $darkFontColor;
+    color: $darkFontColor;
+    // -
+    /*background-color: #b200ff;*/
+}
+
+// the footer holds the quick navigation
+footer {
+    @extend .basic;
+    height: 5%;
+    //-
+    top: 95%;
+    //-
+    .glass {
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 0;
+
+        input[type="text"] {
+            float: left;
+            width: 5%;
+            text-align: center;
+            border: none;
+        }
+    }
+    /*background-color: #4cff00;*/
+}
+
+/*#endregion */
+
+input[type="button"] {
+    background-color: transparent;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border: 0 solid transparent;
+    display: inline-block;
+    cursor: pointer;
+    color: $darkFontColor;
+}
+
+/*#region RESPONSIVENESS */
+
+// at 1000px maximal width the display is fixed to 100% width
+// fill screen width
+@media (max-width: 1000px) {
+    .frame {
+        width: 100vw;
+        height: nth($aspRatio, 2)/nth($aspRatio, 1) * 100 * 1vw;
+    }
+
+    /*.glass {
+        padding: 2px;
+    }*/
+}
+
+// over a calculated size the font-size is fixed to prevent changes and disorder
+@media (min-width: $maxDimensions * 1vh) {
+    body {
+        font-size: 0.9em;
+    }
+}
+
+
+@media (max-width: nth($aspRatio, 1) * 80px) {
+    body {
+        font-size: 0.4 * nth($aspRatio, 1) * 10px;
+    }
+}
+/*#endregion */
+

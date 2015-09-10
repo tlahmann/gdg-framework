@@ -1,0 +1,15 @@
+﻿// SASS document
+// Mixins
+// --------------------------------------------------
+
+@mixin imageRatio($widthR, $heightR) {
+    width: 75%;
+    height: 73%; // / $widthR * $heightR;
+}
+
+@mixin translate($seconds) {
+    -webkit-transition: left $seconds cubic-bezier(.5,.85,.60,1);
+    -moz-transition: left $seconds cubic-bezier(.5,.85,.60,1);
+    -o-transition: left $seconds cubic-bezier(.5,.85,.60,1);
+    transition: left $seconds cubic-bezier(.5,.85,.60,1);
+}

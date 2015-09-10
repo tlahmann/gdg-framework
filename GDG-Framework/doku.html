@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <!-- Stylesheets -->
+    <link type="text/css" href="asset/css/frame.min.css" rel="stylesheet" />
+    <!--<link type="text/css" href="asset/css/jquery.jscrollpane.min.css" rel="stylesheet" media="all" />-->
+    <!-- Scripts -->
+    <script type="text/javascript" src="/asset/lib/jquery-2.1.4.min.js"></script>
+    <!--<script type="text/javascript" src="/asset/lib/jquery.jscrollpane.min.js"></script>-->
+    <!--<script type="text/javascript" src="/asset/lib/jquery.mousewheel.min.js"></script>-->
+    <script type="text/javascript" src="asset/lib/default.js"></script>
+
+</head>
+<body>
+    <div class="frame">
+        <nav>
+            <div class="navigation">
+                <!--<div class="glass scroll-pane">-->
+                <div class="glass" id="navi">
+                </div>
+            </div>
+            <div class="navSlideBtn">
+                <div>
+                    <span>
+                        Navigation&nbsp;&nbsp;&nbsp;&#9660;
+                    </span>
+                </div>
+            </div>
+        </nav>
+        <div class="pane">
+            <header>
+                <div class="glass">
+                    <h3 id="title">title</h3>
+                </div>
+            </header>
+            <section>
+                <div class="glass">
+                    <!--<img id="contentImg" />-->
+                    <div id="contentAnim">
+                        <div id="buttons">
+                            <div id="button1">pause</div>
+                            <div id="button2">play</div>
+                            <div id="button3">faster</div>
+                            <div id="button4">slower</div>
+                            <div id="button5">changeAnim</div>
+                            <div id="button6">changeObj</div>
+                        </div>
+                        <div id="permutation"><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div></div>
+                    </div>
+                </div>
+            </section>
+            <aside>
+                <div class="glass">
+                    <h4 id="descTitle">desctitle</h4>
+                    <p id="desc">desc</p>
+                </div>
+            </aside>
+            <div id="descNav">
+                <input type="button" onclick="prevDesc()" value="&#9668" style="float: left;" />
+                <p id="descNum" style="float: left; margin: 0;">foo</p>
+                <input type="button" onclick="nextDesc()" value="&#9658" style="float: left;" />
+            </div>
+            <footer>
+                <div class="glass">
+                    <!--<p id="quickNav">quicknav</p>-->
+                    <input type="button" onclick="prevImg()" value="&#9668" style="float: left;" />
+                    <input type="text" id="imgNum" onfocus="planeNumber()" onkeydown="pictureInput()" />
+                    <input type="button" onclick="nextImg()" value="&#9658" style="float: left;" />
+                    <input id="blur" type="text" style="position: absolute; opacity: 0;">
+                    <!--TODO add quick navigation-->
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
