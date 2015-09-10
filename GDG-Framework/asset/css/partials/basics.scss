@@ -1,0 +1,105 @@
+﻿@import "../modules/colors";
+@import "../modules/mixins";
+@import "../modules/variables";
+
+body {
+    margin: 0;
+    font: $gdgFont;
+    /*background-color: azure;*/
+}
+
+// SASS calculation of the headings
+
+@for $i from 1 through 6 {
+    h#{$i} {
+        @include fontBasic;
+        font-size: 2em - (0.25 * $i);
+    }
+}
+
+// the frame holds the total content of the display
+// it has automatic margins left and right to be centered in the total display width
+// the width and height calculated according to the desired aspect ratio
+// minimal width and height is fixed to 80px * aspect ratio
+//              e.g. ratio of 4:3 :: 340px X 240px
+.frame {
+    position: relative;
+    //-
+    width: $desDimensions * 1vw;
+    max-width: nth($aspRatio, 1)/nth($aspRatio, 2) * $maxDimensions * 1vh;
+    min-width: nth($aspRatio, 1) * 80px;
+    //-
+    height: nth($aspRatio, 2)/nth($aspRatio, 1) * $desDimensions * 1vw;
+    max-height: $maxDimensions * 1vh;
+    min-height: nth($aspRatio, 2) * 80px;
+    //-
+    margin: 0 auto;
+    //-
+    background-color: #fff;
+    color: $darkFontColor;
+    border: 1px solid $darkFontColor;
+    overflow: hidden;
+}
+
+// the pane holds the different regions of the display (header, nav, section, aside and footer)
+// it has an absolute position to ensure the proper display of the regions (position: relative)
+// the margins on 10px is set to ensure a better view expirience
+.pane {
+    position: absolute;
+    overflow: hidden;
+    //-
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    left: 40px;
+    //-
+    /*background-color: #ff007b;*/
+}
+
+// nested area in all regions to ensure proper paddings
+.glass {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 5px;
+}
+
+input[type="button"] {
+    background-color: transparent;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border: 0 solid transparent;
+    display: inline-block;
+    cursor: pointer;
+    color: $darkFontColor;
+}
+
+// at 1000px maximal width the display is fixed to 100% width
+// fill screen width
+@media (max-width: 1000px) {
+    .frame {
+        width: 100vw;
+        height: nth($aspRatio, 2)/nth($aspRatio, 1) * 100 * 1vw;
+    }
+
+    /*.glass {
+        padding: 2px;
+    }*/
+}
+
+// over a calculated size the font-size is fixed to prevent changes and disorder
+@media (min-width: $maxDimensions * 1vh) {
+    body {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: nth($aspRatio, 1) * 80px) {
+    body {
+        font-size: 0.4 * nth($aspRatio, 1) * 10px;
+    }
+}

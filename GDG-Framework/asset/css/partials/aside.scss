@@ -1,0 +1,26 @@
+﻿@import "../modules/mixins";
+
+// the aside region is used to hold the description of the current pisture/animation
+aside {
+    @include basic;
+    width: 25%;
+    height: 73%;
+    //-
+    top: 15%;
+    right: 0;
+    left: 75%;
+    //-
+    .glass {
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 0 2vw;
+
+        h4 {
+            margin: 0;
+        }
+    }
+}

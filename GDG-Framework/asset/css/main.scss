@@ -12,17 +12,15 @@
 */
 
 @import "partials/reset";
+@import "modules/typography";
 
-/*#region STYLES */
+/*#region FRAME */
 
-@import "partials/typography";
-@import "partials/variables";
-@import "partials/mixins";
-
-/*#endregion */
-
-/*#region SPACE */
-
-@import "partials/frame";
+@import "partials/aside";
+@import "partials/basics";
+@import "partials/footer";
+@import "partials/header";
+@import "partials/nav";
+@import "partials/section";
 
 /*#endregion */

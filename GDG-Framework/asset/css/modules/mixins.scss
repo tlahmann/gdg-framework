@@ -1,6 +1,7 @@
 ﻿// SASS document
 // Mixins
 // --------------------------------------------------
+@import "colors";
 
 @mixin imageRatio($widthR, $heightR) {
     width: 75%;
@@ -12,4 +13,25 @@
     -moz-transition: left $seconds cubic-bezier(.5,.85,.60,1);
     -o-transition: left $seconds cubic-bezier(.5,.85,.60,1);
     transition: left $seconds cubic-bezier(.5,.85,.60,1);
+}
+
+@mixin delay($seconds) {
+    -webkit-transition-delay: $seconds;
+    -moz-transition-delay: $seconds;
+    -ms-transition-delay: $seconds;
+    -o-transition-delay: $seconds;
+    transition-delay: $seconds;
+}
+
+@mixin fontBasic {
+    font-weight: normal;
+    //-
+    color: $darkFontColor;
+}
+
+// basic class to entend all regions (header, nav, section, aside and footer)
+@mixin basic {
+    position: absolute;
+    overflow: hidden;
+    //-
 }

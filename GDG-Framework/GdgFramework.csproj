@@ -60,17 +60,53 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="asset\css\partials\colors.css">
+    <Content Include="asset\css\main.css">
+      <DependentUpon>main.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\main.min.css">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\aside.css">
+      <DependentUpon>aside.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\aside.min.css">
+      <DependentUpon>aside.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\modules\colors.css">
       <DependentUpon>colors.scss</DependentUpon>
     </Content>
-    <Content Include="asset\css\partials\colors.min.css">
+    <Content Include="asset\css\modules\colors.min.css">
       <DependentUpon>colors.css</DependentUpon>
     </Content>
-    <Content Include="asset\css\partials\mixins.css">
+    <Content Include="asset\css\modules\mixins.css">
       <DependentUpon>mixins.scss</DependentUpon>
     </Content>
-    <Content Include="asset\css\partials\mixins.min.css">
+    <Content Include="asset\css\modules\mixins.min.css">
       <DependentUpon>mixins.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\basics.css">
+      <DependentUpon>basics.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\basics.min.css">
+      <DependentUpon>basics.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\footer.css">
+      <DependentUpon>footer.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\footer.min.css">
+      <DependentUpon>footer.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\header.css">
+      <DependentUpon>header.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\header.min.css">
+      <DependentUpon>header.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\nav.css">
+      <DependentUpon>nav.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\nav.min.css">
+      <DependentUpon>nav.css</DependentUpon>
     </Content>
     <Content Include="asset\css\partials\reset.css">
       <DependentUpon>reset.scss</DependentUpon>
@@ -78,16 +114,22 @@
     <Content Include="asset\css\partials\reset.min.css">
       <DependentUpon>reset.css</DependentUpon>
     </Content>
-    <Content Include="asset\css\partials\typography.css">
+    <Content Include="asset\css\partials\section.css">
+      <DependentUpon>section.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\section.min.css">
+      <DependentUpon>section.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\modules\typography.css">
       <DependentUpon>typography.scss</DependentUpon>
     </Content>
-    <Content Include="asset\css\partials\typography.min.css">
+    <Content Include="asset\css\modules\typography.min.css">
       <DependentUpon>typography.css</DependentUpon>
     </Content>
-    <Content Include="asset\css\partials\variables.css">
+    <Content Include="asset\css\modules\variables.css">
       <DependentUpon>variables.scss</DependentUpon>
     </Content>
-    <Content Include="asset\css\partials\variables.min.css">
+    <Content Include="asset\css\modules\variables.min.css">
       <DependentUpon>variables.css</DependentUpon>
     </Content>
     <Content Include="asset\css\vendor\animation.css">
@@ -96,20 +138,10 @@
     <Content Include="asset\css\vendor\animation.min.css">
       <DependentUpon>animation.css</DependentUpon>
     </Content>
-    <Content Include="asset\css\partials\frame.css">
-      <DependentUpon>frame.scss</DependentUpon>
-    </Content>
-    <Content Include="asset\css\partials\frame.min.css">
-      <DependentUpon>frame.css</DependentUpon>
-    </Content>
-    <Content Include="asset\css\partials\frame.scss" />
     <Content Include="asset\css\vendor\animation.scss" />
     <Content Include="asset\css\jquery.jscrollpane.css" />
     <Content Include="asset\css\jquery.jscrollpane.min.css">
       <DependentUpon>jquery.jscrollpane.css</DependentUpon>
-    </Content>
-    <Content Include="asset\css\partials\frame.css.map">
-      <DependentUpon>frame.css</DependentUpon>
     </Content>
     <Content Include="asset\font\MyriadPro-Bold.otf" />
     <Content Include="asset\font\MyriadPro-BoldCond.otf" />
@@ -145,26 +177,52 @@
       <DependentUpon>animation.css</DependentUpon>
     </Content>
     <Content Include="asset\css\partials\reset.scss" />
-    <Content Include="asset\css\partials\typography.scss" />
-    <Content Include="asset\css\partials\buttons.scss" />
-    <Content Include="asset\css\partials\colors.scss" />
-    <Content Include="asset\css\partials\variables.scss" />
-    <Content Include="asset\css\partials\variables.css.map">
+    <Content Include="asset\css\modules\typography.scss" />
+    <Content Include="asset\css\modules\colors.scss" />
+    <Content Include="asset\css\modules\variables.scss" />
+    <Content Include="asset\css\modules\variables.css.map">
       <DependentUpon>variables.css</DependentUpon>
     </Content>
-    <Content Include="asset\css\partials\mixins.scss" />
-    <Content Include="asset\css\partials\mixins.css.map">
+    <Content Include="asset\css\modules\mixins.scss" />
+    <Content Include="asset\css\modules\mixins.css.map">
       <DependentUpon>mixins.css</DependentUpon>
     </Content>
-    <Content Include="asset\css\partials\typography.css.map">
+    <Content Include="asset\css\modules\typography.css.map">
       <DependentUpon>typography.css</DependentUpon>
     </Content>
-    <Content Include="asset\css\partials\colors.css.map">
+    <Content Include="asset\css\modules\colors.css.map">
       <DependentUpon>colors.css</DependentUpon>
     </Content>
     <Content Include="asset\css\main.scss" />
     <Content Include="asset\css\partials\reset.css.map">
       <DependentUpon>reset.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\basics.scss" />
+    <Content Include="asset\css\partials\aside.scss" />
+    <Content Include="asset\css\partials\header.scss" />
+    <Content Include="asset\css\partials\footer.scss" />
+    <Content Include="asset\css\partials\section.scss" />
+    <Content Include="asset\css\partials\nav.scss" />
+    <Content Include="asset\css\partials\header.css.map">
+      <DependentUpon>header.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\section.css.map">
+      <DependentUpon>section.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\aside.css.map">
+      <DependentUpon>aside.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\nav.css.map">
+      <DependentUpon>nav.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\footer.css.map">
+      <DependentUpon>footer.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\basics.css.map">
+      <DependentUpon>basics.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\main.css.map">
+      <DependentUpon>main.css</DependentUpon>
     </Content>
     <None Include="asset\lib\default.js" />
     <Content Include="asset\lib\jquery.jscrollpane.min.js.map">

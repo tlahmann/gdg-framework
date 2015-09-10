@@ -1,0 +1,28 @@
+﻿@import "../modules/mixins";
+@import "../modules/variables";
+
+// the section is the centered area of the display
+// it holds the pictures and animation
+// main area
+section {
+    @include basic;
+    @include imageRatio(nth($aspRatio, 1), nth($aspRatio, 2));
+    //-
+    top: 15%;
+    right: 25%;
+    left: 0;
+    //-
+    .glass {
+        padding: 0;
+
+        #contentImg, #contentAnim {
+            display: block;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        #contentAnim {
+            @import "../vendor/animation.scss";
+        }
+    }
+}

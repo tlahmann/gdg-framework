@@ -1,0 +1,12 @@
+﻿@import "../modules/mixins";
+
+// the header region holds the title of the current picture/animation
+header {
+    @include basic;
+    width: 100%;
+    height: 15%;
+
+    .glass {
+        padding: 2vw 0;
+    }
+}
