@@ -1,315 +1,160 @@
 ﻿/*------------------------------------------------------------------
-[Action Script 3 File]
+[JavaScript File]
 
 Project:		Grundlagen der Gestaltung 1 
-				- Wintersemester 2014/2015, Uni Ulm
-Version:		1.5
-Last change:	23/02/'15 [Fixed frameRate at startup]
-Assigned to:	Tobias Lahmann
-Primary use:	A15 - currAnim
 -------------------------------------------------------------------*/
 
-/*
-Um eine weitere Animation hinzuzufügen, muss diese nur einem speziellen 
-Namensschema entsprechen. Das Ändern des Programms selbst ist nicht nötig. 
-Folgendes Namensschema ist einzuhalten: AnimationX mit (X = 1, .... , n)
-Die Benennung muss bei 1 Starten und fortlaufend sein, da sonst nur die 
-ersten x fortlaufend nummerierten currAnim gefunden werden.
-*/
+// Permutationen
+var permutationen =
+[
+    [ // Permutation 1
+        [1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1]
+    ],
+    [ // Permutation 2
+        [7, 7, 7, 7, 7, 7, 7],
+        [6, 6, 6, 6, 6, 6, 6],
+        [5, 5, 5, 5, 5, 5, 5],
+        [4, 4, 4, 4, 4, 4, 4],
+        [3, 3, 3, 3, 3, 3, 3],
+        [2, 2, 2, 2, 2, 2, 2],
+        [1, 1, 1, 1, 1, 1, 1]
+    ]//, ...
+    // hier weitetere Permutationen einfuegen
+];
 
-/*
-Modulorechnung fuer hin und rueckschalten funktioniert nur maessig. Daher 2 
-Case unterscheidungen(SwitchObject / SwitchPermutation) um die benötigte 
-Durchschaltung zu erreichen.
+var currentPerm = 1; // Speichert die aktuelle Permutation
+var currentObject = 1; // Speichert das akutelle Objekt
 
-WICHTIG! Sollten später noch mehr Permutationen und noch mehr Animationen 
-hinzukommen oder entfernt werden müssen die Werte angepasst werden!
-*/
-
-// ======== !!!!! ALLE PERMUTATIONEN MUESSEN DIMENSION 8 X 8 HABEN !!!!! ========
-// Tipp: Es sollte auf Kombinationen von 8 und 1 in der ersten Spalte und 
-// ersten Zeile verzichtet werden. (Kollidiert mit 7 Frames!)
-// Tipp: Es sollte auf Kombinationen von 8 und 1, 7 und 2 in der ersten Spalte und 
-// ersten Zeile verzichtet werden. (Kollidiert mit 6 Frames!)
-// Tipp: Es sollte auf Kombinationen von 8 und 1, 7 und 2 und 6 und 3 in der 
-// ersten Spalte und ersten Zeile verzichtet werden. (Kollidiert mit 5 Frames!)
-
-// Permutationsmatrix
-var perm1 = [
-[1, 1, 1, 1, 1, 1, 1, 1],
-[1, 1, 1, 1, 1, 1, 1, 1],
-[1, 1, 1, 1, 1, 1, 1, 1],
-[1, 1, 1, 1, 1, 1, 1, 1],
-[1, 1, 1, 1, 1, 1, 1, 1],
-[1, 1, 1, 1, 1, 1, 1, 1],
-[1, 1, 1, 1, 1, 1, 1, 1],
-[1, 1, 1, 1, 1, 1, 1, 1]];
-
-// hier weitetere Permutationen einfuegen
-
-// speichern der aktuellen symbole
-var currAnim = new Array(perm1.length); // speichert die aktuelle animation
-var Animat;
-
-var currPermNumber = 1;
-var currPerm = perm1; // Speichert die aktuelle Permutation
-
-var currObjectNumber = 1; // Speichert das akutelle Objekt
-var frameCount; // Speichert die aktuelle anzahl der frames pro Animation
-
-var buttonCount = 9;//Anzahl der Buttons (wichtig für die removeAnimations() funktion)
-var objectCount;//Anzahl der Objekte
 var running = Boolean(true);// spielt ab
-var animationPositioX = 145;// x Koordinate des Animationsbereichs
-var animationPositioY = 20;// y Koordinate des Animationsbereichs
-
-var typeSwitch = false; // Reinzeichnung <=> Skizze
-
-var btnWidth = 40; // Buttonbreite
-var btnHeight = 40; // Buttonhöhe
-
-// initialisierung
-initialize();
-
-//alle children bis auf die buttons entfernen
-function removeAnimations() {
-    var x = this.numChildren;
-    for (var y = x - 1; y > buttonCount - 1; y--) {
-        this.removeChildAt(y);
-    }
-};
+var animationrate = 60; // Änderungen pro minute
 
 //funktion: entsprechende Animationsobjekte initialisieren und auf die stage bringen
 function initialize() {
-    removeAnimations();
-
-    // Bei der Umschaltung von Objekten oder der umschaltung von permutationen wird die initialize()-Methode
-    // aufgerufen. In diesem Fall wird der running-Boolean ebenfalls umgeschaltet um die Funktion des
-    // Play/Pause-Buttons wieder zu berichtigen.
-    if (!running) {
-        running = !running;
-    }
-
-    // typeSwitch entscheidet, ob die animation gerade auf reinzeichnungen oder auf Skizzen läuft
-    // Dementsprechend wird die korrekte Animation gesucht.
-    //
-    // Kann entfernt werden, falls kein typeSwitch gewünscht ist
-    Animat = getDefinitionByName("Animation" + (currObjectNumber));
-    if (typeSwitch) {
-        Animat = getDefinitionByName("Animation" + (currObjectNumber) + "_2");
-    }
-
-    frameCount = new Animat().totalFrames;
-    // Skaliert die einzelnen currAnim um bei unterschiedlicher Frame-Anzahl immer die gleiche 
-    // Größe des Animationsbereichs beizubehalten
-    var scale = 50;
-    if (frameCount == 5) {
-        scale = 84;
-    } else if (frameCount == 6) {
-        scale = 70;
-    } else if (frameCount == 7) {
-        scale = 60;
-    } else if (frameCount == 8) {
-        scale = 52, 5;
-    }
-
     // Zeichnet die aktuelle permutation mit dem aktuellen Objekt
-    for (var zeile = 0; zeile < frameCount; zeile++) {
-        var currZeilenArray = new Array(frameCount);
-        for (var spalte = 0; spalte < frameCount; spalte++) {
-            // Anpassungen falls weniger frames als permutationseinträge vorhanden sind.
-            // Bsp.: Animation mit 6 Frames: 	8 => 1
-            //									7 => 2
-            if (currPerm[zeile][spalte] > frameCount) {
-                currPerm[zeile][spalte] %= frameCount;
-            }
+    for (var i = 1; i < 50; i++) {
+        document.getElementById("pix" + i).src = "inhalte/anim/group1/" + currentObject + ".png";
 
-            var a = new Animat();
-            a.x = (spalte * scale) + animationPositioX;	// Anpassung der Position abhängig von FrameCount
-            a.width = scale + 1;						// Anpassung der Breite um 5, 6, 7, 8 Frames immer mit 
-            // gleicher Breite anzuzeigen (Animationsbereich)
-            a.y = (zeile * scale) + animationPositioY; 	// Anpassung der Position abhängig von FrameCount
-            a.height = scale + 1;						// Anpassung der Höhe um 5, 6, 7, 8 Frames immer mit 
-            // gleicher Höhe anzuzeigen (Animationsbereich)
-            addChild(a);
-            a.gotoAndPlay(currPerm[zeile][spalte]);
-            currZeilenArray[spalte] = a;
-        }
-        currAnim[zeile] = currZeilenArray;
+        //var a = new Animat();
+        //a.x = (spalte * scale) + animationPositioX;	// Anpassung der Position abhängig von FrameCount
+        //a.width = scale + 1;						// Anpassung der Breite um 5, 6, 7, 8 Frames immer mit 
+        //// gleicher Breite anzuzeigen (Animationsbereich)
+        //a.y = (zeile * scale) + animationPositioY; 	// Anpassung der Position abhängig von FrameCount
+        //a.height = scale + 1;						// Anpassung der Höhe um 5, 6, 7, 8 Frames immer mit 
+        //// gleicher Höhe anzuzeigen (Animationsbereich)
+        //addChild(a);
+        //a.gotoAndPlay(currentPerm[zeile][spalte]);
+        //currZeilenArray[spalte] = a;
+        //currentAnimation[zeile] = currZeilenArray;
     }
 }
 
-// funktion: fallauswahl: wenn der Player nicht abspielt wird die Animation gestartet, ansonsten pausiert;
-function playPauseAnimation(e) {
-    if (!running) {
-        playAnimation();
-    }
-    else {
-        pauseAnimation();
-    }
-}
-
-// funktion: pausieren/stoppen der currAnim
+// funktion: pausieren/stoppen der currentAnimation
 function pauseAnimation() {
+    console.log("pauseAnimation");
     for (var zeile = 0; zeile < frameCount; zeile++) {
         for (var spalte = 0; spalte < frameCount; spalte++) {
-            currAnim[zeile][spalte].stop();
+            //currentAnimation[zeile][spalte].stop();
         }
     }
-    running = !running;
+    running = false;
 }
 
-// funktion: (wieder-)abspielen der currAnim;
+var w;
+
+// funktion: (wieder-)abspielen der currentAnimation;
 function playAnimation() {
-    for (var zeile = 0; zeile < frameCount; zeile++) {
-        for (var spalte = 0; spalte < frameCount; spalte++) {
-            currAnim[zeile][spalte].play();
+    console.log("playAnimation");
+    //for (var zeile = 0; zeile < frameCount; zeile++) {
+    //    for (var spalte = 0; spalte < frameCount; spalte++) {
+    //        //currentAnimation[zeile][spalte].play();
+    //    }
+    //}
+    if (typeof (Worker) !== "undefined") {
+        console.log("foobar");
+        if (typeof (w) == "undefined") {
+            console.log("foofoo");
+            w = new Worker("webworker.js");
         }
+        w.onmessage = function (event) {
+            console.log(event.data);
+            document.getElementById("pix" + i).src = "inhalte/anim/group1/" + event.data + ".png";
+        };
+    } else {
+        //document.getElementById("result").innerHTML = "Sorry! No Web Worker support.";
     }
-    running = !running;
+    running = true;
 }
 
-// funktion: framerate erhoehen;
-function higherFrameRate(e) {
+// funktion: geschwindigkeit erhoehen;
+function faster() {
+    console.log("faster");
     // Framerate limitiert auf 40 fps maximal
     if (stage.frameRate < 40) {
         this.stage.frameRate += 2;
     }
 }
 
-// funktion: framerate verringern
-function lowerFrameRate(e) {
+// funktion: geschwindigkeit verringern
+function slower() {
+    console.log("slower");
     // Framerate limitiert auf 5 fps minimal
     if (stage.frameRate >= 5) {
         this.stage.frameRate -= 2;
     }
 }
 
-// funktion: permutationen umschalten
-function changePermutationFwrd(e) {
-    switch (currPermNumber) {
+function changePermutation() {
+    console.log("changePermutation");
+    switch (currentPermutationNumber) {
         case 1:
-            currPerm = perm2;
-            currPermNumber = 2;
+            currentPerm = 2;
             break;
         case 2:
-            currPerm = perm3;
-            currPermNumber = 3;
+            currentPerm = 3;
             break;
         case 3:
-            currPerm = perm4;
-            currPermNumber = 4;
+            currentPerm = 4;
             break;
         case 4:
-            currPerm = perm5;
-            currPermNumber = 5;
+            currentPerm = 5;
             break;
         case 5:
-            currPerm = perm6;
-            currPermNumber = 6;
+            currentPerm = 6;
             break;
         case 6:
-            currPerm = perm7;
-            currPermNumber = 7;
+            currentPerm = 7;
             break;
         default:
-            currPerm = perm1;
-            currPermNumber = 1;
+            currentPerm = 1;
     }
 
     initialize();
 }
 
-// funktion: permutationen umschalten;
-function changePermutationBack(e) {
-    switch (currPermNumber) {
+function changeObject() {
+    console.log("changeObject");
+    switch (currentObject) {
         case 1:
-            currPerm = perm7;
-            currPermNumber = 7;
+            currentObject = 2;
             break;
         case 2:
-            currPerm = perm1;
-            currPermNumber = 1;
+            currentObject = 3;
             break;
         case 3:
-            currPerm = perm2;
-            currPermNumber = 2;
+            currentObject = 4;
             break;
         case 4:
-            currPerm = perm3;
-            currPermNumber = 3;
-            break;
-        case 5:
-            currPerm = perm4;
-            currPermNumber = 4;
-            break;
-        case 6:
-            currPerm = perm5;
-            currPermNumber = 5;
+            currentObject = 5;
             break;
         default:
-            currPerm = perm6;
-            currPermNumber = 6;
+            currentObject = 1;
     }
 
-    initialize();
-}
-
-//objekt ++;
-function changeObjectFwrd(e) {
-    switch (currObjectNumber) {
-        case 1:
-            currObjectNumber = 2;
-            break;
-        case 2:
-            currObjectNumber = 3;
-            break;
-        case 3:
-            currObjectNumber = 4;
-            break;
-        case 4:
-            currObjectNumber = 5;
-            break;
-        default:
-            currObjectNumber = 1;
-    }
-
-    initialize();
-}
-
-//objekt --
-function changeObjectBack(e) {
-    switch (currObjectNumber) {
-        case 1:
-            currObjectNumber = 5;
-            break;
-        case 2:
-            currObjectNumber = 1;
-            break;
-        case 3:
-            currObjectNumber = 2;
-            break;
-        case 4:
-            currObjectNumber = 3;
-            break;
-        case 5:
-            currObjectNumber = 4;
-            break;
-        default:
-            currObjectNumber = 5;
-    }
-
-    initialize();
-}
-
-function changeTypeOfObj(e) {
-    if (!typeSwitch) {
-        changeType.x = -300;
-        changeTypeAlt.x = 30;
-    } else {
-        changeType.x = 30;
-        changeTypeAlt.x = -300;
-    }
-    typeSwitch = !typeSwitch;
     initialize();
 }
