@@ -139,10 +139,6 @@
       <DependentUpon>animation.css</DependentUpon>
     </Content>
     <Content Include="asset\css\vendor\animation.scss" />
-    <Content Include="asset\css\jquery.jscrollpane.css" />
-    <Content Include="asset\css\jquery.jscrollpane.min.css">
-      <DependentUpon>jquery.jscrollpane.css</DependentUpon>
-    </Content>
     <Content Include="asset\font\MyriadPro-Bold.otf" />
     <Content Include="asset\font\MyriadPro-BoldCond.otf" />
     <Content Include="asset\font\MyriadPro-BoldCondIt.otf" />
@@ -159,14 +155,6 @@
     </Content>
     <Content Include="asset\lib\jquery-2.1.4.min.js">
       <DependentUpon>jquery-2.1.4.js</DependentUpon>
-    </Content>
-    <Content Include="asset\lib\jquery.jscrollpane.js" />
-    <Content Include="asset\lib\jquery.jscrollpane.min.js">
-      <DependentUpon>jquery.jscrollpane.js</DependentUpon>
-    </Content>
-    <Content Include="asset\lib\jquery.mousewheel.js" />
-    <Content Include="asset\lib\jquery.mousewheel.min.js">
-      <DependentUpon>jquery.mousewheel.js</DependentUpon>
     </Content>
     <Content Include="inhalte\A1a_1.png" />
     <Content Include="notes\grids.txt" />
@@ -225,12 +213,6 @@
       <DependentUpon>main.css</DependentUpon>
     </Content>
     <None Include="asset\lib\default.js" />
-    <Content Include="asset\lib\jquery.jscrollpane.min.js.map">
-      <DependentUpon>jquery.jscrollpane.min.js</DependentUpon>
-    </Content>
-    <Content Include="asset\lib\jquery.mousewheel.min.js.map">
-      <DependentUpon>jquery.mousewheel.min.js</DependentUpon>
-    </Content>
     <Content Include="asset\lib\jquery-2.1.4.min.js.map">
       <DependentUpon>jquery-2.1.4.min.js</DependentUpon>
     </Content>
