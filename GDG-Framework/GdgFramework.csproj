@@ -140,6 +140,9 @@
     </Content>
     <Content Include="asset\css\vendor\animation.scss" />
     <Content Include="asset\css\vendor\simplebar.css" />
+    <Content Include="asset\css\vendor\simplebar.min.css">
+      <DependentUpon>simplebar.css</DependentUpon>
+    </Content>
     <Content Include="asset\font\MyriadPro-Bold.otf" />
     <Content Include="asset\font\MyriadPro-BoldCond.otf" />
     <Content Include="asset\font\MyriadPro-BoldCondIt.otf" />
