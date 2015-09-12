@@ -3,9 +3,11 @@
 // --------------------------------------------------
 @import "colors";
 
-@mixin imageRatio($widthR, $heightR) {
-    width: 75%;
-    height: 73%; // / $widthR * $heightR;
+/*@mixin*/@function imageRatio() {
+    /*$list: 75, 73;*/
+    /*width: 75%;
+    height: 73%;*/
+    @return 75, 73;
 }
 
 @mixin translate($seconds) {

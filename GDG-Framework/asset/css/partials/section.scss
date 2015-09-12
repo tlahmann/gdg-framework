@@ -6,7 +6,10 @@
 // main area
 section {
     @include basic;
-    @include imageRatio(nth($aspRatio, 1), nth($aspRatio, 2));
+    /*@include imageRatio(nth($aspRatio, 1), nth($aspRatio, 2));*/
+    $rat: imageRatio();
+    width: nth($rat, 1) * 1%;
+    height: nth($rat, 2) * 1%;
     //-
     top: 15%;
     right: 25%;
