@@ -156,6 +156,7 @@
     <Content Include="asset\lib\jquery-2.1.4.min.js">
       <DependentUpon>jquery-2.1.4.js</DependentUpon>
     </Content>
+    <Content Include="asset\lib\webworker.js" />
     <Content Include="inhalte\A1a_1.png" />
     <Content Include="notes\grids.txt" />
     <Content Include="notes\grids2.txt" />

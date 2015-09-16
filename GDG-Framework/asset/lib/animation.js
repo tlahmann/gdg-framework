@@ -76,14 +76,13 @@ function playAnimation() {
     //    }
     //}
     if (typeof (Worker) !== "undefined") {
-        console.log("foobar");
         if (typeof (w) == "undefined") {
-            console.log("foofoo");
             w = new Worker("webworker.js");
         }
         w.onmessage = function (event) {
             console.log(event.data);
             document.getElementById("pix" + i).src = "inhalte/anim/group1/" + event.data + ".png";
+            // FUNKTIONIERT NUR, WENN SEITE GEHOSTET WIRD!...
         };
     } else {
         //document.getElementById("result").innerHTML = "Sorry! No Web Worker support.";

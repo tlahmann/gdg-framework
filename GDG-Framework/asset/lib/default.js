@@ -92,12 +92,12 @@ function displayDescription() {
 
     // if the desription is more than one page long the navigation for the description is shown
     if (y.length > 1) {
-        document.getElementById("descNav").style.display = 'block';
+        document.getElementById("descriptionNavigation").style.display = 'block';
         // update the description counter
         descNum.innerHTML = j + 1 + "/" + y.length;
     }// if the description is just one page long the navigation for the description is hidden
     else {
-        document.getElementById("descNav").style.display = 'none';
+        document.getElementById("descriptionNavigation").style.display = 'none';
     }
 };
 
