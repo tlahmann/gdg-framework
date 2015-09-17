@@ -15,6 +15,7 @@ var x, y;
 // count variables to navigate through images (i) and descriptions (j)
 var i = 0, j = 0;
 
+var lock = false;
 
 // Anonymous function to load the xml data to show
 $(function () {
@@ -33,6 +34,9 @@ $(function () {
             // save all 'inhalte' nodes in x array
             x = (xmlhttp.responseXML).getElementsByTagName('inhalt');
             displayPicture();
+
+            updateCounter();
+
             displayDescription();
         };
     };
@@ -43,15 +47,16 @@ $(function () {
 
 // listener function to navigate via arrow keys
 $(document).keydown(function (e) {
-    if ((e.keyCode || e.which) == 37 || (e.keyCode || e.which) == 38) { // left
-        prevImg();
-    }
-    else if ((e.keyCode || e.which) == 39 || (e.keyCode || e.which) == 40) { // right
-        nextImg();
+    if (!lock) {
+        if ((e.keyCode || e.which) == 37 || (e.keyCode || e.which) == 38) { // left
+            prevImg();
+        }
+        else if ((e.keyCode || e.which) == 39 || (e.keyCode || e.which) == 40) { // right
+            nextImg();
+        }
     }
     if ((e.keyCode || e.which) == 13) {
         document.getElementById("blur").focus();
-        displayPicture();
     }
 });
 
@@ -63,20 +68,23 @@ function displayPicture() {
     // set the title to the title (very top of the pane) of the image
     document.getElementById("title").innerHTML = x[i].parentElement.getAttribute("titel");
 
-    // update counter
-    imgNum.value = i + 1 + "/" + x.length;
-
     // local storage saves the image number that hast last being viewed to reload on refresh
     //localStorage.setItem('imgstore', JSON.stringify(i));
 };
 
-function pictureInput(e) {
-    i = imgNum.value;
-    //console.log(i);
+function pictureInput() {
+    if (imgNum.value != '') {
+        i = imgNum.value - 1;
+    }
 };
 
-function planeNumber() {
+function plainNumber() {
     imgNum.value = i + 1;
+};
+
+function updateCounter() {
+    var c = parseInt(i) + 1;
+    imgNum.value = (c) + "/" + x.length;
 };
 
 // function to change the description
@@ -92,12 +100,12 @@ function displayDescription() {
 
     // if the desription is more than one page long the navigation for the description is shown
     if (y.length > 1) {
-        document.getElementById("descNav").style.display = 'block';
+        document.getElementById("descriptionNavigation").style.display = 'block';
         // update the description counter
         descNum.innerHTML = j + 1 + "/" + y.length;
     }// if the description is just one page long the navigation for the description is hidden
     else {
-        document.getElementById("descNav").style.display = 'none';
+        document.getElementById("descriptionNavigation").style.display = 'none';
     }
 };
 
@@ -107,6 +115,7 @@ function nextImg() {
         i++;
         j = 0;
         displayPicture();
+        updateCounter();
         displayDescription();
     }
 };
@@ -117,6 +126,7 @@ function prevImg() {
         i--;
         j = 0;
         displayPicture();
+        updateCounter();
         displayDescription();
     }
 };
@@ -135,4 +145,19 @@ function prevDesc() {
         j--;
         displayDescription();
     }
+};
+
+document.getElementById("imgNum").onfocus = function () {
+    plainNumber();
+    lock = true;
+};
+
+document.getElementById("imgNum").onblur = function () {
+    updateCounter();
+    lock = false;
+};
+
+document.getElementById("imgNum").onkeyup = function () {
+    pictureInput();
+    displayPicture()
 };

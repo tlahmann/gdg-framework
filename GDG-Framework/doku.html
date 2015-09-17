@@ -8,7 +8,6 @@
 
     <!-- Scripts -->
     <script type="text/javascript" src="/asset/lib/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="asset/lib/default.js"></script>
 
 </head>
 <body>
@@ -34,18 +33,7 @@
             </header>
             <section>
                 <div class="glass">
-                    <!--<img id="contentImg" />-->
-                    <div id="contentAnim">
-                        <div id="buttons">
-                            <div id="button1">pause</div>
-                            <div id="button2">play</div>
-                            <div id="button3">faster</div>
-                            <div id="button4">slower</div>
-                            <div id="button5">changeAnim</div>
-                            <div id="button6">changeObj</div>
-                        </div>
-                        <div id="permutation"><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div></div>
-                    </div>
+                    <img id="contentImg" />
                 </div>
             </section>
             <aside>
@@ -62,7 +50,7 @@
             <footer>
                 <div class="glass">
                     <input type="button" onclick="prevImg()" value="&#9668" style="float: left;" />
-                    <input type="text" id="imgNum" onfocus="planeNumber()" onkeydown="pictureInput()" />
+                    <input type="text" id="imgNum"  />
                     <input type="button" onclick="nextImg()" value="&#9658" style="float: left;" />
                     <input id="blur" type="text" style="position: absolute; opacity: 0;">
                     <!--TODO add quick navigation-->
@@ -70,5 +58,7 @@
             </footer>
         </div>
     </div>
+
+    <script type="text/javascript" src="asset/lib/default.js"></script>
 </body>
 </html>
