@@ -23,8 +23,11 @@ nav {
         background-color: fade_out($darkColor, 0.1);
         /*.scroll-pane {*/
         .glass {
-            overflow-x: hidden;
-            overflow-y: scroll;
+            /*overflow-x: hidden;
+            overflow-y: scroll;*/
+            #navscroll {
+                height: 100%;
+            }
 
             a {
                 text-decoration: none;
