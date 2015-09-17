@@ -139,13 +139,10 @@
       <DependentUpon>animation.css</DependentUpon>
     </Content>
     <Content Include="asset\css\vendor\animation.scss" />
-<<<<<<< HEAD
-=======
     <Content Include="asset\css\vendor\simplebar.css" />
     <Content Include="asset\css\vendor\simplebar.min.css">
       <DependentUpon>simplebar.css</DependentUpon>
     </Content>
->>>>>>> scrollpane
     <Content Include="asset\font\MyriadPro-Bold.otf" />
     <Content Include="asset\font\MyriadPro-BoldCond.otf" />
     <Content Include="asset\font\MyriadPro-BoldCondIt.otf" />
@@ -160,7 +157,6 @@
     <Content Include="asset\lib\default.min.js">
       <DependentUpon>default.js</DependentUpon>
     </Content>
-<<<<<<< HEAD
     <Content Include="asset\lib\jquery-2.1.4.min.js">
       <DependentUpon>jquery-2.1.4.js</DependentUpon>
     </Content>
@@ -168,10 +164,8 @@
     <Content Include="notes\grids.txt" />
     <Content Include="notes\grids2.txt" />
     <Content Include="notes\saved.txt" />
-=======
     <Content Include="asset\lib\jquery-2.1.4.js" />
     <Content Include="asset\lib\simplebar.js" />
->>>>>>> scrollpane
     <Content Include="packages.config" />
     <Content Include="asset\css\vendor\animation.css.map">
       <DependentUpon>animation.css</DependentUpon>
@@ -225,12 +219,9 @@
       <DependentUpon>main.css</DependentUpon>
     </Content>
     <None Include="asset\lib\default.js" />
-<<<<<<< HEAD
     <Content Include="asset\lib\jquery-2.1.4.min.js.map">
       <DependentUpon>jquery-2.1.4.min.js</DependentUpon>
     </Content>
-=======
->>>>>>> scrollpane
     <Content Include="asset\lib\default.min.js.map">
       <DependentUpon>default.min.js</DependentUpon>
     </Content>
