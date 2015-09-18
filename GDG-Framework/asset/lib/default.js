@@ -14,12 +14,14 @@
 //    $('#navi').simplebar({ autoHide: false });
 //});
 
-// array variables to save the images (x) and descriptions (y)
-var x, y;
+// array variables to save the images (sections) and descriptions (description)
+var sections, content, description;
 // count variables to navigate through images (i) and descriptions (j)
 var i = 0, j = 0;
 
 var lock = false;
+
+var foo, barbar;
 
 // Anonymous function to load the xml data to show
 $(function () {
@@ -35,8 +37,31 @@ $(function () {
     // read the loaded xml-data when it has fully loaded (ansynchronous loading)
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4) {
-            // save all 'inhalte' nodes in x array
-            x = (xmlhttp.responseXML).getElementsByTagName('inhalt');
+            //// save all 'inhalte' nodes in sections array
+            //sections = (xmlhttp.responseXML).getElementsByTagName('abschnitt');
+
+            //for (index = 0; index < sections.length; ++index) {
+            //    //console.log(sections[index]);
+            //    console.log(sections[index].getElementsByTagName('inhalt'));
+            //    sections[index] = sections[index].getElementsByTagName('inhalt');
+            //}
+
+            foo = xmlToJson(xmlhttp.responseXML);
+
+            //var url = 'data:text/json;charset=utf8,' + encodeURIComponent(JSON.stringify(foo, null, 2));
+            //window.open(url, '_blank');
+            //window.focus();
+
+            //for (var i = 0; i < foo.length; i++) {
+            //    var obj = foo[i];
+
+            //    console.log(obj.id);
+            //}
+
+            //barbar = foo.doku.abschnitt[1].inhalt[4].details['#text'];
+
+            fillNavigation();
+
             displayPicture();
 
             updateCounter();
@@ -67,10 +92,10 @@ $(document).keydown(function (e) {
 // function to change the picture being shown
 function displayPicture() {
     // set the image
-    document.getElementById("contentImg").src = x[i].getAttribute("quelle");
+    document.getElementById("descriptionImg").src = sections[i].getAttribute("titel");
 
     // set the title to the title (very top of the pane) of the image
-    document.getElementById("title").innerHTML = x[i].parentElement.getAttribute("titel");
+    //document.getElementById("title").innerHTML = sections[i].parentElement.getAttribute("titel");
 
     // local storage saves the image number that hast last being viewed to reload on refresh
     //localStorage.setItem('imgstore', JSON.stringify(i));
@@ -88,34 +113,37 @@ function plainNumber() {
 
 function updateCounter() {
     var c = parseInt(i) + 1;
-    imgNum.value = (c) + "/" + x.length;
+    imgNum.value = (c) + "/" + sections.length;
 };
 
 // function to change the description
 function displayDescription() {
     // details get loaded when the image ist loaded
-    y = x[i].getElementsByTagName("details");
+    description = sections[i].getElementsByTagName("details");
 
     // set the title of the image description (top of aside) to the title of the description
-    document.getElementById("descTitle").innerHTML = x[i].getAttribute("titel");
+    document.getElementById("descTitle").innerHTML = sections[i].getAttribute("titel");
 
-    // set the description of the image (main area of the aside) to the content of the details node
+    // set the description of the image (main area of the aside) to the description of the details node
     document.getElementById("desc").innerHTML = y[j].childNodes[0].nodeValue;
 
     // if the desription is more than one page long the navigation for the description is shown
     if (y.length > 1) {
         document.getElementById("descriptionNavigation").style.display = 'block';
         // update the description counter
-        descNum.innerHTML = j + 1 + "/" + y.length;
+        descNum.innerHTML = j + 1 + "/" + description.length;
     }// if the description is just one page long the navigation for the description is hidden
     else {
         document.getElementById("descriptionNavigation").style.display = 'none';
     }
 };
 
+function fillNavigation() {
+};
+
 // next image function
 function nextImg() {
-    if (i < x.length - 1) {
+    if (i < sections.length - 1) {
         i++;
         j = 0;
         displayPicture();
@@ -137,7 +165,7 @@ function prevImg() {
 
 // next description function
 function nextDesc() {
-    if (j < y.length - 1) {
+    if (j < description.length - 1) {
         j++;
         displayDescription();
     }
@@ -164,4 +192,43 @@ document.getElementById("imgNum").onblur = function () {
 document.getElementById("imgNum").onkeyup = function () {
     pictureInput();
     displayPicture()
+};
+
+// Changes XML to JSON
+function xmlToJson(xml) {
+
+    // Create the return object
+    var obj = {};
+
+    if (xml.nodeType == 1) { // element
+        // do attributes
+        if (xml.attributes.length > 0) {
+            obj["@attributes"] = {};
+            for (var j = 0; j < xml.attributes.length; j++) {
+                var attribute = xml.attributes.item(j);
+                obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+            }
+        }
+    } else if (xml.nodeType == 3) { // text
+        obj = xml.nodeValue;
+    }
+
+    // do children
+    if (xml.hasChildNodes()) {
+        for (var i = 0; i < xml.childNodes.length; i++) {
+            var item = xml.childNodes.item(i);
+            var nodeName = item.nodeName;
+            if (typeof (obj[nodeName]) == "undefined") {
+                obj[nodeName] = xmlToJson(item);
+            } else {
+                if (typeof (obj[nodeName].push) == "undefined") {
+                    var old = obj[nodeName];
+                    obj[nodeName] = [];
+                    obj[nodeName].push(old);
+                }
+                obj[nodeName].push(xmlToJson(item));
+            }
+        }
+    }
+    return obj;
 };
