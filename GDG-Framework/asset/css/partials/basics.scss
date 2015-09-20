@@ -27,7 +27,10 @@ body {
     //-
     position: absolute;
     z-index: 200;
-    left: (100vw - $desDimensions * 1vw)/2;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #doku {
