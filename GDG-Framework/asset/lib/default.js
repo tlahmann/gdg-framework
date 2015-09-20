@@ -5,23 +5,17 @@
     Institut für Medienforschung und -entwicklung
 */
 
-// function to change the scrollbar
-//$(function () {
-//    $('.scroll-pane').jScrollPane();
-//});
+var json;
 
-//$(function () {
-//    $('#navi').simplebar({ autoHide: false });
-//});
-
-// array variables to save the images (x) and descriptions (y)
-var x, y;
-// count variables to navigate through images (i) and descriptions (j)
-var i = 0, j = 0;
+var section = 0,
+    content = 0,
+    description = 0,
+    sectionsCount = 0,
+    sectionsPointer = 0;
 
 var lock = false;
 
-// Anonymous function to load the xml data to show
+// load XML Data into the program
 $(function () {
     if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
@@ -32,22 +26,62 @@ $(function () {
     xmlhttp.open("GET", "inhalte.xml", true);
     xmlhttp.send();
 
-    // read the loaded xml-data when it has fully loaded (ansynchronous loading)
+    // read the loaded XML-data when it has fully loaded (ansynchronous loading)
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4) {
-            // save all 'inhalte' nodes in x array
-            x = (xmlhttp.responseXML).getElementsByTagName('inhalt');
+            json = xmlToJson(xmlhttp.responseXML);
+
+            for (var i = 0; i < json.doku.abschnitt.length; ++i) {
+                sectionsCount += json.doku.abschnitt[i].inhalt.length;
+            }
+
             displayPicture();
-
-            updateCounter();
-
             displayDescription();
+            updateCounter();
+            fillNavigation();
+            $('#navscroll').simplebar();
         };
     };
-
-    // local storage saves the image number that hast last being viewed to reload on refresh
-    //i = localStorage.getItem('imgstore') != null ? parseInt(localStorage.getItem('imgstore')) : 0;
 });
+
+// Changes XML to JSON
+function xmlToJson(xml) {
+
+    // Create the return object
+    var obj = {};
+
+    if (xml.nodeType == 1) { // element
+        // do attributes
+        if (xml.attributes.length > 0) {
+            obj["@attributes"] = {};
+            for (var j = 0; j < xml.attributes.length; j++) {
+                var attribute = xml.attributes.item(j);
+                obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+            }
+        }
+    } else if (xml.nodeType == 3) { // text
+        obj = xml.nodeValue;
+    }
+
+    // do children
+    if (xml.hasChildNodes()) {
+        for (var i = 0; i < xml.childNodes.length; i++) {
+            var item = xml.childNodes.item(i);
+            var nodeName = item.nodeName;
+            if (typeof (obj[nodeName]) == "undefined") {
+                obj[nodeName] = xmlToJson(item);
+            } else {
+                if (typeof (obj[nodeName].push) == "undefined") {
+                    var old = obj[nodeName];
+                    obj[nodeName] = [];
+                    obj[nodeName].push(old);
+                }
+                obj[nodeName].push(xmlToJson(item));
+            }
+        }
+    }
+    return obj;
+};
 
 // listener function to navigate via arrow keys
 $(document).keydown(function (e) {
@@ -64,93 +98,7 @@ $(document).keydown(function (e) {
     }
 });
 
-// function to change the picture being shown
-function displayPicture() {
-    // set the image
-    document.getElementById("contentImg").src = x[i].getAttribute("quelle");
-
-    // set the title to the title (very top of the pane) of the image
-    document.getElementById("title").innerHTML = x[i].parentElement.getAttribute("titel");
-
-    // local storage saves the image number that hast last being viewed to reload on refresh
-    //localStorage.setItem('imgstore', JSON.stringify(i));
-};
-
-function pictureInput() {
-    if (imgNum.value != '') {
-        i = imgNum.value - 1;
-    }
-};
-
-function plainNumber() {
-    imgNum.value = i + 1;
-};
-
-function updateCounter() {
-    var c = parseInt(i) + 1;
-    imgNum.value = (c) + "/" + x.length;
-};
-
-// function to change the description
-function displayDescription() {
-    // details get loaded when the image ist loaded
-    y = x[i].getElementsByTagName("details");
-
-    // set the title of the image description (top of aside) to the title of the description
-    document.getElementById("descTitle").innerHTML = x[i].getAttribute("titel");
-
-    // set the description of the image (main area of the aside) to the content of the details node
-    document.getElementById("desc").innerHTML = y[j].childNodes[0].nodeValue;
-
-    // if the desription is more than one page long the navigation for the description is shown
-    if (y.length > 1) {
-        document.getElementById("descriptionNavigation").style.display = 'block';
-        // update the description counter
-        descNum.innerHTML = j + 1 + "/" + y.length;
-    }// if the description is just one page long the navigation for the description is hidden
-    else {
-        document.getElementById("descriptionNavigation").style.display = 'none';
-    }
-};
-
-// next image function
-function nextImg() {
-    if (i < x.length - 1) {
-        i++;
-        j = 0;
-        displayPicture();
-        updateCounter();
-        displayDescription();
-    }
-};
-
-// previous image function
-function prevImg() {
-    if (i > 0) {
-        i--;
-        j = 0;
-        displayPicture();
-        updateCounter();
-        displayDescription();
-    }
-};
-
-// next description function
-function nextDesc() {
-    if (j < y.length - 1) {
-        j++;
-        displayDescription();
-    }
-};
-
-// previous description function
-function prevDesc() {
-    if (j > 0) {
-        j--;
-        displayDescription();
-    }
-};
-
+// listener to input numbers directly into the pane
 document.getElementById("imgNum").onfocus = function () {
     plainNumber();
     lock = true;
@@ -163,5 +111,144 @@ document.getElementById("imgNum").onblur = function () {
 
 document.getElementById("imgNum").onkeyup = function () {
     pictureInput();
-    displayPicture()
+    displayPicture();
+};
+
+// function to change the picture being shown
+function displayPicture() {
+    // set the image
+    document.getElementById("contentImg").src = json.doku.abschnitt[section].inhalt[content]['@attributes']['quelle'];
+
+    // set the title to the title (very top of the pane) of the image
+    document.getElementById("title").innerHTML = json.doku.abschnitt[section]['@attributes']['titel'];
+};
+
+// function to change the description
+function displayDescription() {
+    // set the title of the image description (top of aside) to the title of the description
+    document.getElementById("descTitle").innerHTML = json.doku.abschnitt[section].inhalt[content]['@attributes']['titel'];
+
+    // if the desription is more than one page long the navigation for the description is shown
+    if (json.doku.abschnitt[section].inhalt[content].details.length > 1) {
+        // set the description of the image (main area of the aside) to the description of the details node
+        document.getElementById("desc").innerHTML = json.doku.abschnitt[section].inhalt[content].details[description]['#text'];
+
+        //display the description counter
+        document.getElementById("descriptionNavigation").style.display = 'block';
+
+        // update the description counter
+        descNum.innerHTML = description + 1 + "/" + json.doku.abschnitt[section].inhalt[content].details.length;
+
+    }// if the description is just one page long the navigation for the description is hidden
+    else {
+        // set the description of the image (main area of the aside) to the description of the details node
+        document.getElementById("desc").innerHTML = json.doku.abschnitt[section].inhalt[content].details['#text'];
+
+        //hide the description counter
+        document.getElementById("descriptionNavigation").style.display = 'none';
+    }
+};
+
+// next image function
+function nextImg() {
+    if (sectionsPointer < sectionsCount - 1) {
+        sectionsPointer++;
+
+        if (content < json.doku.abschnitt[section].inhalt.length - 1) {
+            content++;
+        }
+        else {
+            section++;
+            content = 0;
+        }
+
+        description = 0;
+
+        displayPicture();
+        updateCounter();
+        displayDescription();
+    }
+};
+
+// previous image function
+function prevImg() {
+    if (sectionsPointer > 0) {
+        sectionsPointer--;
+
+        if (content > 0) {
+            content--;
+        }
+        else {
+            section--;
+            content = json.doku.abschnitt[section].inhalt.length - 1;
+        }
+
+        description = 0;
+
+        displayPicture();
+        updateCounter();
+        displayDescription();
+    }
+};
+
+// next description function
+function nextDesc() {
+    if (description < json.doku.abschnitt[section].inhalt[content].details.length - 1) {
+        description++;
+        displayDescription();
+    }
+};
+
+// previous description function
+function prevDesc() {
+    if (description > 0) {
+        description--;
+        displayDescription();
+    }
+};
+
+/*  region HELPER */
+function plainNumber() {
+    imgNum.value = imgNum.value.substring(0, imgNum.value.lastIndexOf('/'));
+};
+
+function updateCounter() {
+    imgNum.value = (parseInt(sectionsPointer) + 1) + "/" + sectionsCount;
+};
+
+function pictureInput() {
+    if (imgNum.value == '' || isNaN(imgNum.value)) {
+        return 0;
+    }
+
+    sectionsPointer = imgNum.value - 1;
+
+    var c = 0;
+    for (var i = 0; i < json.doku.abschnitt.length && c != imgNum.value; i++) {
+        for (var j = 0; j < json.doku.abschnitt[i].inhalt.length && c != imgNum.value; j++) {
+            if (c != imgNum.value) {
+                c++;
+                section = i;
+                content = j;
+            }
+        }
+    }
+};
+
+function fillNavigation() {
+    var string = '<ul>';
+
+    for (var i = 0; i < json.doku.abschnitt.length; i++) {
+        string += '<li><details><summary>';
+        string += json.doku.abschnitt[i]['@attributes']['titel']
+        string += '</summary><ul>';
+        for (var j = 0; j < json.doku.abschnitt[i].inhalt.length; j++) {
+            string += '<li>';
+            string += json.doku.abschnitt[i].inhalt[j]['@attributes']['titel'];
+            string += '</li>';
+        }
+        string += '</ul></details>';
+    }
+    string += '</ul>';
+    document.getElementById("navscroll").innerHTML = string;
 };

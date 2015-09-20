@@ -9,7 +9,6 @@ nav {
     // -
     top: 15%;
     left: -18%;
-    /*left: 0;*/
     font-size: 0.8em;
     // -
     @include translate(.3s);
@@ -21,21 +20,23 @@ nav {
         width: 90%;
         height: 100%;
         background-color: fade_out($darkColor, 0.1);
-        /*.scroll-pane {*/
+
         .glass {
-            /*overflow-x: hidden;
-            overflow-y: scroll;*/
             #navscroll {
                 width: 100%;
                 height: 100%;
-            }
-
-            a {
                 text-decoration: none;
                 color: $lightColor;
-                display: block;
                 width: 100%;
-                /*height: 120%;*/
+
+                ul li {
+                    cursor: pointer;
+                    padding-top: 1%;
+
+                    > details li {
+                        padding-left: 8%;
+                    }
+                }
             }
         }
     }
