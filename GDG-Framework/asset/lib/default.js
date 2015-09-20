@@ -15,6 +15,12 @@ var section = 0,
 
 var lock = false;
 
+function start() {
+    document.getElementById("intro").style.opacity = 0;
+    document.getElementById("intro").style.zIndex = 0;
+    document.getElementById("doku").style.opacity = 1;
+};
+
 // load XML Data into the program
 $(function () {
     if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
