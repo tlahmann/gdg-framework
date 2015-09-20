@@ -118,6 +118,7 @@ document.getElementById("imgNum").onblur = function () {
 document.getElementById("imgNum").onkeyup = function () {
     pictureInput();
     displayPicture();
+    displayDescription();
 };
 
 // function to change the picture being shown
