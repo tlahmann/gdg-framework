@@ -38,6 +38,8 @@ $(function () {
             displayPicture();
             displayDescription();
             updateCounter();
+            fillNavigation();
+            $('#navscroll').simplebar();
         };
     };
 });
@@ -231,4 +233,22 @@ function pictureInput() {
             }
         }
     }
+};
+
+function fillNavigation() {
+    var string = '<ul>';
+
+    for (var i = 0; i < json.doku.abschnitt.length; i++) {
+        string += '<li><details><summary>';
+        string += json.doku.abschnitt[i]['@attributes']['titel']
+        string += '</summary><ul>';
+        for (var j = 0; j < json.doku.abschnitt[i].inhalt.length; j++) {
+            string += '<li>';
+            string += json.doku.abschnitt[i].inhalt[j]['@attributes']['titel'];
+            string += '</li>';
+        }
+        string += '</ul></details>';
+    }
+    string += '</ul>';
+    document.getElementById("navscroll").innerHTML = string;
 };
