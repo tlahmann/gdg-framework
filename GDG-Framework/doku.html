@@ -12,7 +12,25 @@
 
 </head>
 <body>
-    <div class="frame">
+    <div id="intro" class="frame">
+        <div class="pane">
+            <aside class="intro">
+                <div class="glass">
+                    <h4>Universität Ulm</h4>
+                    <h4>Medieninformatik</h4>
+                    <p>Grundlagen der Gestaltung I</p>
+                    <p>Wintersemester 2015/16</p>
+                    <br />
+                    <p>Dokumentation</p>
+                    <p>Tobias Lahmann</p>
+                    <br />
+                    <input type="button" onclick="start()" value="&#9658&nbsp;Start" style="float: left;" />
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <div id="doku" class="frame">
         <nav>
             <div class="navigation">
                 <div class="glass" id="navi">
@@ -62,5 +80,14 @@
     </div>
 
     <script type="text/javascript" src="asset/lib/default.js"></script>
+    <script>
+        function start() {
+            document.getElementById("intro").style.opacity = 0;
+            document.getElementById("intro").style.zIndex = 0;
+            //document.getElementById("intro").style.display = 'none';
+            document.getElementById("doku").style.opacity = 1;
+            //document.getElementById("doku").style.display = 'block';
+        };
+    </script>
 </body>
 </html>
