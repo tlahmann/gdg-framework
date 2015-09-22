@@ -136,10 +136,6 @@ function displayDescription() {
     document.getElementById("descTitle").innerHTML = json.doku.abschnitt[section].inhalt[content]['@attributes']['titel'];
 
     // if the desription is more than one page long the navigation for the description is shown
-<<<<<<< HEAD
-    if (y.length > 1) {
-        document.getElementById("descriptionNavigation").style.display = 'block';
-=======
     if (json.doku.abschnitt[section].inhalt[content].details.length > 1) {
         // set the description of the image (main area of the aside) to the description of the details node
         document.getElementById("desc").innerHTML = json.doku.abschnitt[section].inhalt[content].details[description]['#text'];
@@ -147,19 +143,15 @@ function displayDescription() {
         //display the description counter
         document.getElementById("descriptionNavigation").style.display = 'block';
 
->>>>>>> master
         // update the description counter
         descNum.innerHTML = description + 1 + "/" + json.doku.abschnitt[section].inhalt[content].details.length;
 
     }// if the description is just one page long the navigation for the description is hidden
     else {
-<<<<<<< HEAD
-=======
         // set the description of the image (main area of the aside) to the description of the details node
         document.getElementById("desc").innerHTML = json.doku.abschnitt[section].inhalt[content].details['#text'];
 
         //hide the description counter
->>>>>>> master
         document.getElementById("descriptionNavigation").style.display = 'none';
     }
 };
