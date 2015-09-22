@@ -32,61 +32,58 @@ var currentPerm = 1; // Speichert die aktuelle Permutation
 var currentObject = 1; // Speichert das akutelle Objekt
 
 var running = Boolean(true);// spielt ab
-var animationrate = 60; // Änderungen pro minute
+var animationrate = 100; // ms
 
-//funktion: entsprechende Animationsobjekte initialisieren und auf die stage bringen
+var animationPositioX = 200;// x Koordinate des Animationsbereichs
+var animationPositioY = 50;// y Koordinate des Animationsbereichs
+
+var animat = [];
+
+//funktion: entsprechende Animationsobjekte initialisieren
 function initialize() {
-    // Zeichnet die aktuelle permutation mit dem aktuellen Objekt
-    for (var i = 1; i < 50; i++) {
-        document.getElementById("pix" + i).src = "inhalte/anim/group1/" + currentObject + ".png";
-
-        //var a = new Animat();
-        //a.x = (spalte * scale) + animationPositioX;	// Anpassung der Position abhängig von FrameCount
-        //a.width = scale + 1;						// Anpassung der Breite um 5, 6, 7, 8 Frames immer mit 
-        //// gleicher Breite anzuzeigen (Animationsbereich)
-        //a.y = (zeile * scale) + animationPositioY; 	// Anpassung der Position abhängig von FrameCount
-        //a.height = scale + 1;						// Anpassung der Höhe um 5, 6, 7, 8 Frames immer mit 
-        //// gleicher Höhe anzuzeigen (Animationsbereich)
-        //addChild(a);
-        //a.gotoAndPlay(currentPerm[zeile][spalte]);
-        //currZeilenArray[spalte] = a;
-        //currentAnimation[zeile] = currZeilenArray;
+    for (i = 0; i < 7; i++) {
+        var img = new Image();
+        img.src = "inhalte/anim/group1/" + (i + 1) + ".png";
+        animat[i] = img;
     }
+    //window.requestAnimationFrame(draw);
 }
+
+
+
+var context = document.getElementById('canvas').getContext('2d');
+
+initialize();
+setInterval(draw, animationrate);
+
+function draw() {
+    if (running) {
+        // clear canvas
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (i = 0; i < 7; i++) {
+            for (j = 0; j < 7; j++) {
+                var foo = ((permutationen[currentPerm][i][j] += 1) % 7);
+                context.drawImage(animat[foo],
+                                (i * animat[foo].width) + animationPositioX,
+                                (j * animat[foo].height) + animationPositioY,
+                                animat[foo].width,
+                                animat[foo].height);
+            }
+            //console.log(foo);
+        }
+    }
+};
 
 // funktion: pausieren/stoppen der currentAnimation
 function pauseAnimation() {
     console.log("pauseAnimation");
-    for (var zeile = 0; zeile < frameCount; zeile++) {
-        for (var spalte = 0; spalte < frameCount; spalte++) {
-            //currentAnimation[zeile][spalte].stop();
-        }
-    }
     running = false;
 }
-
-var w;
 
 // funktion: (wieder-)abspielen der currentAnimation;
 function playAnimation() {
     console.log("playAnimation");
-    //for (var zeile = 0; zeile < frameCount; zeile++) {
-    //    for (var spalte = 0; spalte < frameCount; spalte++) {
-    //        //currentAnimation[zeile][spalte].play();
-    //    }
-    //}
-    if (typeof (Worker) !== "undefined") {
-        if (typeof (w) == "undefined") {
-            w = new Worker("webworker.js");
-        }
-        w.onmessage = function (event) {
-            console.log(event.data);
-            document.getElementById("pix" + i).src = "inhalte/anim/group1/" + event.data + ".png";
-            // FUNKTIONIERT NUR, WENN SEITE GEHOSTET WIRD!...
-        };
-    } else {
-        //document.getElementById("result").innerHTML = "Sorry! No Web Worker support.";
-    }
     running = true;
 }
 
@@ -133,7 +130,7 @@ function changePermutation() {
             currentPerm = 1;
     }
 
-    initialize();
+    //initialize();
 }
 
 function changeObject() {
@@ -155,5 +152,8 @@ function changeObject() {
             currentObject = 1;
     }
 
-    initialize();
+    //initialize();
 }
+
+
+
