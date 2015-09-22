@@ -1,11 +1,12 @@
 Grundlagen der Gestaltung Framework
 =======
-Universität Ulm
+UniversitÃ¤t Ulm
 -------
-Institut für Medienforschung und -entwicklung
+Institut fÃ¼r Medienforschung und -entwicklung
 -------
 
 Author: Tobias Lahmann
-Date: Sep.2015
-Mit freundlicher unterstützung von: Kaffee
 
+Date: Sep.2015
+
+Mit freundlicher unterstÃ¼tzung von: Kaffee

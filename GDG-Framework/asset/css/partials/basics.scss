@@ -17,6 +17,31 @@ body {
     }
 }
 
+#intro {
+    /*display: block;*/
+    opacity: 1;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+    //-
+    position: absolute;
+    z-index: 200;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#doku {
+    /*display: none;*/
+    opacity: 0;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+}
+
 // the frame holds the total content of the display
 // it has automatic margins left and right to be centered in the total display width
 // the width and height calculated according to the desired aspect ratio

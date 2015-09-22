@@ -139,6 +139,13 @@
       <DependentUpon>animation.css</DependentUpon>
     </Content>
     <Content Include="asset\css\vendor\animation.scss" />
+<<<<<<< HEAD
+=======
+    <Content Include="asset\css\vendor\simplebar.css" />
+    <Content Include="asset\css\vendor\simplebar.min.css">
+      <DependentUpon>simplebar.css</DependentUpon>
+    </Content>
+>>>>>>> master
     <Content Include="asset\font\MyriadPro-Bold.otf" />
     <Content Include="asset\font\MyriadPro-BoldCond.otf" />
     <Content Include="asset\font\MyriadPro-BoldCondIt.otf" />
@@ -156,11 +163,16 @@
     <Content Include="asset\lib\jquery-2.1.4.min.js">
       <DependentUpon>jquery-2.1.4.js</DependentUpon>
     </Content>
+<<<<<<< HEAD
     <Content Include="asset\lib\webworker.js" />
+=======
+>>>>>>> master
     <Content Include="inhalte\A1a_1.png" />
     <Content Include="notes\grids.txt" />
     <Content Include="notes\grids2.txt" />
     <Content Include="notes\saved.txt" />
+    <Content Include="asset\lib\jquery-2.1.4.js" />
+    <Content Include="asset\lib\simplebar.js" />
     <Content Include="packages.config" />
     <Content Include="asset\css\vendor\animation.css.map">
       <DependentUpon>animation.css</DependentUpon>
@@ -221,7 +233,6 @@
       <DependentUpon>default.min.js</DependentUpon>
     </Content>
     <None Include="doku.html" />
-    <Content Include="asset\lib\jquery-2.1.4.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

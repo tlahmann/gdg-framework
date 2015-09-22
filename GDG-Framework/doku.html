@@ -5,17 +5,36 @@
 
     <!-- Stylesheets -->
     <link type="text/css" href="asset/css/main.min.css" rel="stylesheet" />
-
+    <link type="text/css" href="asset/css/vendor/simplebar.min.css" rel="stylesheet" />
     <!-- Scripts -->
-    <script type="text/javascript" src="/asset/lib/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="asset/lib/default.js"></script>
+    <script type="text/javascript" src="/asset/lib/jquery-2.1.4.js"></script>
 
 </head>
 <body>
-    <div class="frame">
+    <div id="intro" class="frame">
+        <div class="pane">
+            <aside class="intro">
+                <div class="glass">
+                    <h4>Universität Ulm</h4>
+                    <h4>Medieninformatik</h4>
+                    <p>Grundlagen der Gestaltung I</p>
+                    <p>Wintersemester 2015/16</p>
+                    <br />
+                    <p>Dokumentation</p>
+                    <p>Tobias Lahmann</p>
+                    <br />
+                    <input type="button" onclick="start()" value="&#9658&nbsp;Start" style="float: left;" />
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <div id="doku" class="frame">
         <nav>
             <div class="navigation">
                 <div class="glass" id="navi">
+                    <div id="navscroll" class=" simplebar">
+                    </div>
                 </div>
             </div>
             <div class="navSlideBtn">
@@ -35,6 +54,7 @@
             <section>
                 <div class="glass">
                     <img id="contentImg" />
+<<<<<<< HEAD
                     <!--<div id="contentAnim">
                         <script type="text/javascript" src="asset/lib/animation.js"></script>
                         <div id="buttons">
@@ -63,6 +83,8 @@
 
                         </div>
                     </div>-->
+=======
+>>>>>>> master
                 </div>
             </section>
             <aside>
@@ -73,13 +95,13 @@
             </aside>
             <div id="descriptionNavigation">
                 <input type="button" onclick="prevDesc()" value="&#9668" style="float: left;" />
-                <p id="descNum" style="float: left; margin: 0;">foo</p>
+                <p id="descNum" style="float: left; margin: 0;"></p>
                 <input type="button" onclick="nextDesc()" value="&#9658" style="float: left;" />
             </div>
             <footer>
                 <div class="glass">
                     <input type="button" onclick="prevImg()" value="&#9668" style="float: left;" />
-                    <input type="text" id="imgNum" onfocus="planeNumber()" onkeydown="pictureInput()" />
+                    <input type="text" id="imgNum" />
                     <input type="button" onclick="nextImg()" value="&#9658" style="float: left;" />
                     <input id="blur" type="text" style="position: absolute; opacity: 0;">
                     <!--TODO add quick navigation-->
@@ -87,5 +109,8 @@
             </footer>
         </div>
     </div>
+
+    <script type="text/javascript" src="asset/lib/default.js"></script>
+    <script type="text/javascript" src="asset/lib/simplebar.js"></script>
 </body>
 </html>
