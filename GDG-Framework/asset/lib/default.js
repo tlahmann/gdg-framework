@@ -13,12 +13,13 @@ var section = 0,
     sectionsCount = 0,
     sectionsPointer = 0;
 
-var lock = false;
+var lock = true;
 
 function start() {
     document.getElementById("intro").style.opacity = 0;
     document.getElementById("intro").style.zIndex = 0;
     document.getElementById("doku").style.opacity = 1;
+    lock = false;
 };
 
 // load XML Data into the program
@@ -128,6 +129,13 @@ function displayPicture() {
 
     // set the title to the title (very top of the pane) of the image
     document.getElementById("title").innerHTML = json.doku.abschnitt[section]['@attributes']['titel'];
+
+    if (json.doku.abschnitt[section].inhalt[content]['@attributes']['rahmen'] == "ein") {
+        document.getElementById("content").style.border = "1px solid #666"
+    }
+    else {
+        document.getElementById("content").style.border = "none";
+    }
 };
 
 // function to change the description
