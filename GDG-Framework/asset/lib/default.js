@@ -128,8 +128,19 @@ function redraw() {
 
 // function to change the picture being shown
 function displayPicture() {
-    // set the image
-    document.getElementById("contentImg").src = json.doku.abschnitt[section].inhalt[content]['@attributes']['quelle'];
+    if (json.doku.abschnitt[section].inhalt[content]['@attributes']['interaktiv'] == "aus") {
+        document.getElementById("contentImg").style.display = "block";
+        //document.getElementById("canvas").style.display = "none";
+        //document.getElementById("contentAnim").style.display = "none";
+
+        // set the image
+        document.getElementById("contentImg").src = json.doku.abschnitt[section].inhalt[content]['@attributes']['quelle'];
+    }
+    else {
+        document.getElementById("contentImg").style.display = "none";
+        //document.getElementById("canvas").style.display = "block";
+        //document.getElementById("contentAnim").style.display = "block";
+    }
 
     // set the title to the title (very top of the pane) of the image
     document.getElementById("title").innerHTML = json.doku.abschnitt[section]['@attributes']['titel'];
@@ -260,7 +271,7 @@ function fillNavigation() {
         string += '</summary><ul>';
         for (var j = 0; j < json.doku.abschnitt[i].inhalt.length; j++) {
             string += '<li data-link=\"';
-            string += c + ':' +i + ',' + j + '\"';
+            string += c + ':' + i + ',' + j + '\"';
             string += 'onclick=\"jumpTo(this)\">';
             string += json.doku.abschnitt[i].inhalt[j]['@attributes']['titel'];
             string += '</li>';
