@@ -42,9 +42,7 @@ $(function () {
                 sectionsCount += json.doku.abschnitt[i].inhalt.length;
             }
 
-            displayPicture();
-            displayDescription();
-            updateCounter();
+            redraw();
             fillNavigation();
             $('#navscroll').simplebar();
         };
@@ -122,6 +120,12 @@ document.getElementById("imgNum").onkeyup = function () {
     displayDescription();
 };
 
+function redraw() {
+    displayPicture();
+    displayDescription();
+    updateCounter();
+};
+
 // function to change the picture being shown
 function displayPicture() {
     // set the image
@@ -179,9 +183,7 @@ function nextImg() {
 
         description = 0;
 
-        displayPicture();
-        updateCounter();
-        displayDescription();
+        redraw();
     }
 };
 
@@ -200,9 +202,7 @@ function prevImg() {
 
         description = 0;
 
-        displayPicture();
-        updateCounter();
-        displayDescription();
+        redraw();
     }
 };
 
@@ -252,18 +252,33 @@ function pictureInput() {
 
 function fillNavigation() {
     var string = '<ul>';
+    var c = 0;
 
     for (var i = 0; i < json.doku.abschnitt.length; i++) {
         string += '<li><details><summary>';
         string += json.doku.abschnitt[i]['@attributes']['titel']
         string += '</summary><ul>';
         for (var j = 0; j < json.doku.abschnitt[i].inhalt.length; j++) {
-            string += '<li>';
+            string += '<li data-link=\"';
+            string += c + ':' +i + ',' + j + '\"';
+            string += 'onclick=\"jumpTo(this)\">';
             string += json.doku.abschnitt[i].inhalt[j]['@attributes']['titel'];
             string += '</li>';
+            c++;
         }
         string += '</ul></details>';
     }
     string += '</ul>';
     document.getElementById("navscroll").innerHTML = string;
+};
+
+function jumpTo(id) {
+    var data = (id.dataset.link).split(":");
+    var jump = data[1].split(",");
+    section = jump[0];
+    content = jump[1];
+
+    sectionsPointer = data[0];
+
+    redraw();
 };
