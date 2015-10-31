@@ -50,13 +50,21 @@ body {
 .frame {
     position: relative;
     //-
-    width: $desDimensions * 1vw;
+    /*width: $desDimensions * 1vw;
     max-width: nth($aspRatio, 1)/nth($aspRatio, 2) * $maxDimensions * 1vh;
     min-width: nth($aspRatio, 1) * 80px;
     //-
-    height: nth($aspRatio, 2)/nth($aspRatio, 1) * $desDimensions * 1vw;
+    /*height: nth($aspRatio, 2)/nth($aspRatio, 1) * $desDimensions * 1vw;
     max-height: $maxDimensions * 1vh;
-    min-height: nth($aspRatio, 2) * 80px;
+    min-height: nth($aspRatio, 2) * 80px;*/
+    //-
+    width: $desDimensions * 1px;
+    max-width: $desDimensions * 1px;
+    min-width: $desDimensions * 1px;
+    //-
+    height: nth($aspRatio, 2)/nth($aspRatio, 1) * $desDimensions * 1px;
+    max-height: nth($aspRatio, 2)/nth($aspRatio, 1) * $desDimensions * 1px;
+    min-height: nth($aspRatio, 2)/nth($aspRatio, 1) * $desDimensions * 1px;
     //-
     margin: 0 auto;
     //-
