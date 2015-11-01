@@ -12,5 +12,16 @@
 31.08.2015 -- 22:00 - 23:00 Uhr -- 1h -- Eingabe der Bildnummer zum schnellen navigieren; weiteres Einlesen in das Ersetzen von Bild -> Animation
 02.09.2015 -- 14:00 - 16:30 Uhr -- 2,5h -- Quellcode kommentieren und aufräumen
 08.09.2015 -- 03:00 - 04:00 Uhr -- 1h -- Animation einbauen. Buttons und Animationsbereich in als css-Regeln definieren
+10.09.2015 -- 10:00 - 14:00 Uhr -- 4h -- Git repository einrichten, SASS umstrukturieren, JScrollPane durch Simplebar ersetzen
+12.09.2015 -- 10:00 - 12:00 Uhr -- 2h -- Simplebar zum laufen bringen, Projekt aufräumen
+16.09.2015 -- 13:45 - 17:00 Uhr -- 3,25h -- Webworker einlesen und versuchen zum laufen zu bringen
+17.09.2015 -- 11:00 - 13:00 Uhr -- 2h -- Merge Scrollpane & Number input in die Oberfläche
+18.09.2015 -- 14:15 - 16:30 Uhr -- 2,25h -- Scrollpane anpassen, XML to Json, Darstellung des Navigationsmenüs anpassen
+20.09.2015 -- 15:30 - 21:00 Uhr -- 5,5h -- SASS anpassen, Struktur und Darstellung anppassen, Navigationsbaum aufbauen und anzeigen (incl. Merge)
+22.09.2015 -- 10:00 - 14:15 Uhr -- 4,25h -- Readme.md anpassen, Animations-Frame funktioniert
+23.09.2015 -- 20:00 - 21:30 Uhr -- 1,5h -- Navigation verlinken, XML/Json löst Rahmendarstllung aus, Ändern der Anzeige: Bild <-> Animation
+17.10.2015 -- 14:30 - 15:00 Uhr -- 0,5h -- Zeiten eintragen
+31.10.2015 -- 22:30 - 00:30 Uhr -- 2,0h -- XML mit nur einem Element wird korrekt geladen, Feste Größe für frame (1280x980)
+
 ---------------------------------------------------------------------------------
-10.08 - [...] - 				   33,25h
+10.08.2015 - 31.10.2015 - 			64h

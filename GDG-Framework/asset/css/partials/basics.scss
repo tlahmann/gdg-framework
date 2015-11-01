@@ -13,8 +13,33 @@ body {
 @for $i from 1 through 6 {
     h#{$i} {
         @include fontBasic;
-        font-size: 2em - (0.25 * $i);
+        font-size: 2em - (0.2 * $i);
     }
+}
+
+#intro {
+    display: none;
+    opacity: 1;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+    //-
+    position: absolute;
+    z-index: 200;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#doku {
+    /*display: none;*/
+    opacity: 1;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
 }
 
 // the frame holds the total content of the display
@@ -25,13 +50,21 @@ body {
 .frame {
     position: relative;
     //-
-    width: $desDimensions * 1vw;
+    /*width: $desDimensions * 1vw;
     max-width: nth($aspRatio, 1)/nth($aspRatio, 2) * $maxDimensions * 1vh;
     min-width: nth($aspRatio, 1) * 80px;
     //-
-    height: nth($aspRatio, 2)/nth($aspRatio, 1) * $desDimensions * 1vw;
+    /*height: nth($aspRatio, 2)/nth($aspRatio, 1) * $desDimensions * 1vw;
     max-height: $maxDimensions * 1vh;
-    min-height: nth($aspRatio, 2) * 80px;
+    min-height: nth($aspRatio, 2) * 80px;*/
+    //-
+    width: $desDimensions * 1px;
+    max-width: $desDimensions * 1px;
+    min-width: $desDimensions * 1px;
+    //-
+    height: nth($aspRatio, 2)/nth($aspRatio, 1) * $desDimensions * 1px;
+    max-height: nth($aspRatio, 2)/nth($aspRatio, 1) * $desDimensions * 1px;
+    min-height: nth($aspRatio, 2)/nth($aspRatio, 1) * $desDimensions * 1px;
     //-
     margin: 0 auto;
     //-
@@ -64,7 +97,7 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 5px;
+    padding: 0 10px;
 }
 
 input[type="button"] {
