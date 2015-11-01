@@ -21,6 +21,7 @@
 22.09.2015 -- 10:00 - 14:15 Uhr -- 4,25h -- Readme.md anpassen, Animations-Frame funktioniert
 23.09.2015 -- 20:00 - 21:30 Uhr -- 1,5h -- Navigation verlinken, XML/Json löst Rahmendarstllung aus, Ändern der Anzeige: Bild <-> Animation
 17.10.2015 -- 14:30 - 15:00 Uhr -- 0,5h -- Zeiten eintragen
+31.10.2015 -- 22:30 - 00:30 Uhr -- 2,0h -- XML mit nur einem Element wird korrekt geladen, Feste Größe für frame (1280x980)
 
 ---------------------------------------------------------------------------------
-10.08.2015 - 17.10.2015 - 				 59,5h
+10.08.2015 - 31.10.2015 - 			64h
