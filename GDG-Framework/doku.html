@@ -51,7 +51,9 @@
             </header>
             <section>
                 <div class="glass">
-                    <!--<img id="contentImg" />-->
+                    <!-- IMAGE -->
+                    <img id="contentImg" />
+                    <!-- ANIMATION -->
                     <canvas id="canvas" width="720" height="540"></canvas>
                     <script type="text/javascript" src="/asset/lib/animation.js"></script>
                     <div id="contentAnim">
@@ -64,6 +66,8 @@
                             <div id="button6" onclick="changeObject()">changeObj</div>
                         </div>
                     </div>
+                    <!-- FLASH -->
+                    <embed id="flashCanvas" width="720" height="540" type="application/x-shockwave-flash" src="." />
                 </div>
             </section>
             <aside>
@@ -95,7 +99,7 @@
 <xml id="data" name="John Doe" style="display:none;" src="./inhalte.xml">
     <doku>
         <abschnitt titel="Kreis, Quadrat, Dreieck: Kompositions- und Strukturübungen">
-            <inhalt titel="[1] Anordnung von Punkten auf einer Fläche" quelle="inhalte/png/A1a_1.png" interaktiv="aus" rahmen="ein">
+            <inhalt titel="[1] Anordnung von Punkten auf einer Fläche" quelle="inhalte/png/A1a_1.png" typ="bild" rahmen="ein">
                 <details>
                     Ein einzelner Punkt hat wenig Aussagekraft, wenn er für sich genommen im leeren Raum steht. Werden hier aber Interpretationen vorgenommen können diesem Punkt Eigenschaften und Geschichten zugeordnet werden.
                 </details>
@@ -106,7 +110,7 @@
                     Für mich wirkt dieser Punkt wie eine einzelne Markierung im Raum. Er kann sowohl den Startpunkt einer Reise angeben wie auch einen Punkt im Mathematischen Vektorraum aufzeigen. Durch das Verhältnis von umgebender Fläche zu Größe des Punktes interpretiere ich ein kleines Objekt in diesen Punkt.
                 </details>
             </inhalt>
-            <!--<inhalt titel="[1] Anordnung von Punkten auf einer Fläche" quelle="inhalte/png/A1a_2.png" interaktiv="aus" rahmen="ein">
+            <inhalt titel="[1] Anordnung von Punkten auf einer Fläche" quelle="inhalte/png/A1a_2.png" typ="bild" rahmen="ein">
                 <details>
                     Ein geringfügig größerer Punkt hat hingegen eine bereits vom Beginn an andere Wirkung auf den Betrachter.
                     Der hier dargestellte Punkt wirkt auf Grund der Größe und der Position im Raum etwas präsenter. Er stellt weniger einen einzelnen Punkt dar als viel mehr ein bereits komplexeres Objekt.
@@ -114,15 +118,25 @@
                 <details>
                     Auf mich wirkt dieser Punkt wie ein stummes Auge, was den Betrachter aus der Szene heraus anstarrt.
                 </details>
-            </inhalt>-->
+            </inhalt>
         </abschnitt>
         <abschnitt titel="Permutation und Animation">
-            <inhalt titel="[15] Animation" quelle="inhalte/swf/A15_1.swf" interaktiv="ein" rahmen="aus">
+            <inhalt titel="[15] Animation" quelle="inhalte/anim" typ="animation" rahmen="aus">
                 <details>
                     -interaktiv-Die Permutationen und die Objekte in dieser Animation können vorwärts sowie rückwärts durchgeschaltet werden. Ich habe die bereits in Aufgabe 14 erstellten Permutationsreihen als Einstieg gewählt, da ich den Zyklus dieser sehr gerne mag.
                 </details>
             </inhalt>
-            <inhalt titel="[15] Animation" quelle="inhalte/swf/A15_1.swf" interaktiv="ein" rahmen="aus">
+            <inhalt titel="[15] Animation" quelle="inhalte/swf/A15_1.swf" typ="flash" rahmen="aus">
+                <details>
+                    -interaktiv-Die Permutationen und die Objekte in dieser Animation können vorwärts sowie rückwärts durchgeschaltet werden. Ich habe die bereits in Aufgabe 14 erstellten Permutationsreihen als Einstieg gewählt, da ich den Zyklus dieser sehr gerne mag.
+                </details>
+            </inhalt>
+            <inhalt titel="[15] Animation" quelle="inhalte/swf/A18_1.swf" typ="flash" rahmen="aus">
+                <details>
+                    -interaktiv-Die Permutationen und die Objekte in dieser Animation können vorwärts sowie rückwärts durchgeschaltet werden. Ich habe die bereits in Aufgabe 14 erstellten Permutationsreihen als Einstieg gewählt, da ich den Zyklus dieser sehr gerne mag.
+                </details>
+            </inhalt>
+            <inhalt titel="[15] Animation" quelle="inhalte/swf/A18_2.swf" typ="flash" rahmen="aus">
                 <details>
                     -interaktiv-Die Permutationen und die Objekte in dieser Animation können vorwärts sowie rückwärts durchgeschaltet werden. Ich habe die bereits in Aufgabe 14 erstellten Permutationsreihen als Einstieg gewählt, da ich den Zyklus dieser sehr gerne mag.
                 </details>

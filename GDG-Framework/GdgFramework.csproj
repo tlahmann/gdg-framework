@@ -55,6 +55,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />-->
+    <Folder Include="inhalte\" />
+    <Folder Include="notes\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -160,11 +162,6 @@
     <Content Include="asset\lib\jquery-2.1.4.min.js">
       <DependentUpon>jquery-2.1.4.js</DependentUpon>
     </Content>
-    <Content Include="asset\lib\sun.js" />
-    <Content Include="inhalte\A1a_1.png" />
-    <Content Include="notes\grids.txt" />
-    <Content Include="notes\grids2.txt" />
-    <Content Include="notes\saved.txt" />
     <Content Include="asset\lib\jquery-2.1.4.js" />
     <Content Include="asset\lib\simplebar.js" />
     <Content Include="packages.config" />

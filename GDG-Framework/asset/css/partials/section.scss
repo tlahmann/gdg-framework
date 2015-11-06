@@ -26,10 +26,14 @@ section {
         }
 
         #canvas {
+            display: none;
             width: 100%;
             height: 100%;
         }
 
+        #contentAnim {
+            display: none;
             @import "../vendor/animation.scss";
+        }
     }
 }
