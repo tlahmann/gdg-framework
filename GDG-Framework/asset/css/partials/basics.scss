@@ -18,7 +18,7 @@ body {
 }
 
 #intro {
-    display: none;
+    /*display: none;*/
     opacity: 1;
     -webkit-transition: opacity .5s ease-in-out;
     -moz-transition: opacity .5s ease-in-out;
@@ -35,7 +35,7 @@ body {
 
 #doku {
     /*display: none;*/
-    opacity: 1;
+    opacity: 0;
     -webkit-transition: opacity .5s ease-in-out;
     -moz-transition: opacity .5s ease-in-out;
     -o-transition: opacity .5s ease-in-out;
