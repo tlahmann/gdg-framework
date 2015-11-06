@@ -7,6 +7,10 @@
     @return 75, 73;
 }
 
+@function calculateHeight($ratio, $width) {
+    @return nth($ratio, 2)/nth($ratio, 1) * $width * 1px;
+}
+
 @mixin translate($seconds) {
     -webkit-transition: left $seconds cubic-bezier(.5,.85,.60,1);
     -moz-transition: left $seconds cubic-bezier(.5,.85,.60,1);

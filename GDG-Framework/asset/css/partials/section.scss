@@ -21,6 +21,7 @@ section {
         #contentImg {
             display: block;
             height: 100%;
+            max-height: calculateHeight($aspRatio, 720);
             margin: 0 auto;
         }
 
