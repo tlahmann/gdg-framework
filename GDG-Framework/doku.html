@@ -9,6 +9,7 @@
     <!-- Scripts -->
     <script type="text/javascript" src="asset/lib/jquery-2.1.4.js"></script>
 
+
 </head>
 <body>
     <div id="intro" class="frame">
@@ -49,8 +50,20 @@
                 </div>
             </header>
             <section>
-                <div id="content" class="glass">
-                    <img id="contentImg" />
+                <div class="glass">
+                    <!--<img id="contentImg" />-->
+                    <canvas id="canvas" width="720" height="540"></canvas>
+                    <script type="text/javascript" src="/asset/lib/animation.js"></script>
+                    <div id="contentAnim">
+                        <div id="buttons">
+                            <div id="button1" onclick="pauseAnimation()">pause</div>
+                            <div id="button2" onclick="playAnimation()">play</div>
+                            <div id="button3" onclick="faster()">faster</div>
+                            <div id="button4" onclick="slower()">slower</div>
+                            <div id="button5" onclick="changePermutation()">changeAnim</div>
+                            <div id="button6" onclick="changeObject()">changeObj</div>
+                        </div>
+                    </div>
                 </div>
             </section>
             <aside>

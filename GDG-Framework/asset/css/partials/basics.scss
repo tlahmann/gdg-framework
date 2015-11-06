@@ -35,7 +35,8 @@ body {
 
 #doku {
     /*display: none;*/
-    opacity: 0;
+    /*opacity: 0;*/
+    opacity: 1;
     -webkit-transition: opacity .5s ease-in-out;
     -moz-transition: opacity .5s ease-in-out;
     -o-transition: opacity .5s ease-in-out;
