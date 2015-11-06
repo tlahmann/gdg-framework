@@ -3,11 +3,12 @@
 // --------------------------------------------------
 @import "colors";
 
-/*@mixin*/@function imageRatio() {
-    /*$list: 75, 73;*/
-    /*width: 75%;
-    height: 73%;*/
+@function imageRatio() {
     @return 75, 73;
+}
+
+@function calculateHeight($ratio, $width) {
+    @return nth($ratio, 2)/nth($ratio, 1) * $width * 1px;
 }
 
 @mixin translate($seconds) {

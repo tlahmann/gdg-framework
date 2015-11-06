@@ -123,40 +123,103 @@ function redraw() {
 // function to change the picture being shown
 function displayPicture() {
     if (json.DOKU.ABSCHNITT[section].INHALT.length > 1) {
-        if (json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['interaktiv'] == "aus") {
+        if (json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['typ'] == "bild") {
+            // display picture
             document.getElementById("contentImg").style.display = "block";
             // set the image
             document.getElementById("contentImg").src = json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['quelle'];
+
+            // hide other sections
+            document.getElementById("contentAnim").style.display = "none";
+            document.getElementById("canvas").style.display = "none";
+            document.getElementById("flashCanvas").style.display = "none";
+
         }
-        else {
+        else if (json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['typ'] == "animation") {
+            // display the animation
+            document.getElementById("contentAnim").style.display = "block";
+            document.getElementById("canvas").style.display = "block";
+
+            // hide other sections
             document.getElementById("contentImg").style.display = "none";
+            document.getElementById("flashCanvas").style.display = "none";
+
         }
+        else if (json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['typ'] == "flash") {
+            console.log(json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['quelle']);
+            // display the flash element (<embed>)
+
+            var source = json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['quelle'];
+            var game = document.getElementById("flashCanvas");
+            var clone = game.cloneNode(true);
+            clone.setAttribute('src', source);
+            game.parentNode.replaceChild(clone, game)
+            document.getElementById("flashCanvas").style.display = "block";
+
+            // hide other sections
+            document.getElementById("contentImg").style.display = "none";
+            document.getElementById("contentAnim").style.display = "none";
+            document.getElementById("canvas").style.display = "none";
+        }
+
         // set the title to the title (very top of the pane) of the image
         document.getElementById("title").innerHTML = json.DOKU.ABSCHNITT[section]['@attributes']['titel'];
 
+        // change border display
         if (json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['rahmen'] == "ein") {
-            document.getElementById("content").style.border = "1px solid #666"
+            document.getElementById("contentImg").style.border = "1px solid #666"
         }
         else {
-            document.getElementById("content").style.border = "none";
+            document.getElementById("contentImg").style.border = "none";
         }
+
     } else {
-        if (json.DOKU.ABSCHNITT[section].INHALT['@attributes']['interaktiv'] == "aus") {
+        if (json.DOKU.ABSCHNITT[section].INHALT['@attributes']['typ'] == "bild") {
+            // display picture
             document.getElementById("contentImg").style.display = "block";
             // set the image
             document.getElementById("contentImg").src = json.DOKU.ABSCHNITT[section].INHALT['@attributes']['quelle'];
+
+            // hide other sections
+            document.getElementById("contentAnim").style.display = "none";
+            document.getElementById("canvas").style.display = "none";
+            document.getElementById("flashCanvas").style.display = "none";
+
         }
-        else {
+        else if (json.DOKU.ABSCHNITT[section].INHALT['@attributes']['typ'] == "animation") {
+            // display the animation
+            document.getElementById("contentAnim").style.display = "block";
+            document.getElementById("canvas").style.display = "block";
+
+            // hide other sections
             document.getElementById("contentImg").style.display = "none";
+            document.getElementById("flashCanvas").style.display = "none";
+
+        }
+        else if (json.DOKU.ABSCHNITT[section].INHALT['@attributes']['typ'] == "flash") {
+            // display the flash element (<embed>)
+
+            var source = json.DOKU.ABSCHNITT[section].INHALT['@attributes']['quelle'];
+            var game = document.getElementById("flashCanvas");
+            var clone = game.cloneNode(true);
+            clone.setAttribute('src', source);
+            game.parentNode.replaceChild(clone, game)
+            document.getElementById("flashCanvas").style.display = "block";
+
+            // hide other sections
+            document.getElementById("contentImg").style.display = "none";
+            document.getElementById("contentAnim").style.display = "none";
+            document.getElementById("canvas").style.display = "none";
         }
         // set the title to the title (very top of the pane) of the image
         document.getElementById("title").innerHTML = json.DOKU.ABSCHNITT[section]['@attributes']['titel'];
 
+        // change border display
         if (json.DOKU.ABSCHNITT[section].INHALT['@attributes']['rahmen'] == "ein") {
-            document.getElementById("content").style.border = "1px solid #666"
+            document.getElementById("contentImg").style.border = "1px solid #666"
         }
         else {
-            document.getElementById("content").style.border = "none";
+            document.getElementById("contentImg").style.border = "none";
         }
     }
 };
