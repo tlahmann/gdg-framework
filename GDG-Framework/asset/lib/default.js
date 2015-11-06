@@ -316,6 +316,21 @@ function fillNavigation() {
     document.getElementById("navscroll").innerHTML = string;
 };
 
+// listener to open the navigation
+$("input[name='nav-trigger']").change(function () {
+
+    if ($(this).is(':checked')) {
+        $("#navigation").css("left", 0);
+        $("#navTriggerText").toggleClass('triggered');
+    }
+    else {
+
+        $("#navigation").css("left", "-18%");
+        $("#navTriggerText").toggleClass('triggered');
+    }
+
+});
+
 function jumpTo(id) {
     var data = (id.dataset.link).split(":");
     var jump = data[1].split(",");
