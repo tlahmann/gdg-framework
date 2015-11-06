@@ -12,7 +12,6 @@ nav {
     font-size: .95em;
     // -
     @include translate(.3s);
-    /*@include delay(1.5s);*/
     // -
     > .navigation {
         position: relative;

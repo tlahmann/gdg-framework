@@ -112,17 +112,13 @@ input[type="button"] {
     color: $darkFontColor;
 }
 
-// at 1000px maximal width the display is fixed to 100% width
+/*// at 1000px maximal width the display is fixed to 100% width
 // fill screen width
 @media (max-width: 1000px) {
     .frame {
         width: 100vw;
         height: nth($aspRatio, 2)/nth($aspRatio, 1) * 100 * 1vw;
     }
-
-    /*.glass {
-        padding: 2px;
-    }*/
 }
 
 // over a calculated size the font-size is fixed to prevent changes and disorder
@@ -136,4 +132,4 @@ input[type="button"] {
     body {
         font-size: 0.4 * nth($aspRatio, 1) * 10px;
     }
-}
+}*/
