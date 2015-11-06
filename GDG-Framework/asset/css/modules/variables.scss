@@ -6,9 +6,12 @@
 $aspRatio: 4, 3;
 
 // desired dimensions, the desired maximal width and height (percentage)
-$desDimensions: 90;
+/*$desDimensions: 70;*/
 
-// fixed maximal width and height, don not change
+// desired dimensions (pixel)
+$desDimensions: 1280;
+
+// fixed maximal width and height, do not change
 $maxDimensions: 99; // 100% overshoots display height because of the border
 
 // the used font for the entire document
