@@ -28,6 +28,7 @@ nav {
                 color: $lightColor;
 
                 ul li {
+                    font-size: 0.8em;
                     cursor: pointer;
                     padding-top: 1%;
 
@@ -52,26 +53,27 @@ nav {
             float: left;
             cursor: pointer;
             text-decoration: none;
+            font-size: 0.8em;
             color: $lightColor;
 
             &:before {
                 display: inline-block;
                 content: " \25b6";
-                -webkit-transform: translateX(50%) translateY(10%);
-                -moz-transform: translateX(50%) translateY(10%);
-                -ms-transform: translateX(50%) translateY(10%);
-                -o-transform: translateX(50%) translateY(10%);
-                transform: translateX(50%) translateY(10%);
+                -webkit-transform: translateX(40%) translateY(10%);
+                -moz-transform: translateX(40%) translateY(10%);
+                -ms-transform: translateX(40%) translateY(10%);
+                -o-transform: translateX(40%) translateY(10%);
+                transform: translateX(40%) translateY(10%);
             }
 
             &:after {
                 display: inline-block;
                 content: "Navigation ";
-                -webkit-transform: translateX(-50%) translateY(-100%) rotate(-90deg);
-                -moz-transform: translateX(-50%) translateY(-100%) rotate(-90deg);
-                -ms-transform: translateX(-50%) translateY(-100%) rotate(-90deg);
-                -o-transform: translateX(-50%) translateY(-100%) rotate(-90deg);
-                transform: translateX(-50%) translateY(-100%) rotate(-90deg);
+                -webkit-transform: translateX(-59%) translateY(-200%) rotate(-90deg);
+                -moz-transform: translateX(-59%) translateY(-200%) rotate(-90deg);
+                -ms-transform: translateX(-59%) translateY(-200%) rotate(-90deg);
+                -o-transform: translateX(-59%) translateY(-200%) rotate(-90deg);
+                transform: translateX(-59%) translateY(-200%) rotate(-90deg);
                 -webkit-transform-origin: 60px 26px;
                 -moz-transform-origin: 60px 26px;
                 -ms-transform-origin: 60px 26px;
