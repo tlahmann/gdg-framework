@@ -4,7 +4,7 @@
 nav {
     @include basic;
     width: 20%;
-    height: 71.5%;
+    height: 70.7%;
     z-index: 150;
     // -
     top: 15.7%;
@@ -28,7 +28,7 @@ nav {
                 color: $lightColor;
 
                 ul li {
-                    font-size: 0.8em;
+                    font-size: 0.95em;
                     cursor: pointer;
                     padding-top: 1%;
 
@@ -42,7 +42,7 @@ nav {
 
     .navSlideBtn {
         width: 8%;
-        height: 15%;
+        height: 20%;
         float: left;
 
 
@@ -53,27 +53,27 @@ nav {
             float: left;
             cursor: pointer;
             text-decoration: none;
-            font-size: 0.8em;
+            font-size: 0.95em;
             color: $lightColor;
 
             &:before {
                 display: inline-block;
                 content: " \25b6";
-                -webkit-transform: translateX(40%) translateY(10%);
-                -moz-transform: translateX(40%) translateY(10%);
-                -ms-transform: translateX(40%) translateY(10%);
-                -o-transform: translateX(40%) translateY(10%);
-                transform: translateX(40%) translateY(10%);
+                -webkit-transform: translateX(40%) translateY(45%);
+                -moz-transform: translateX(40%) translateY(45%);
+                -ms-transform: translateX(40%) translateY(45%);
+                -o-transform: translateX(40%) translateY(45%);
+                transform: translateX(40%) translateY(45%);
             }
 
             &:after {
                 display: inline-block;
                 content: "Navigation ";
-                -webkit-transform: translateX(-59%) translateY(-200%) rotate(-90deg);
-                -moz-transform: translateX(-59%) translateY(-200%) rotate(-90deg);
-                -ms-transform: translateX(-59%) translateY(-200%) rotate(-90deg);
-                -o-transform: translateX(-59%) translateY(-200%) rotate(-90deg);
-                transform: translateX(-59%) translateY(-200%) rotate(-90deg);
+                -webkit-transform: translateX(-59%) translateY(-125%) rotate(-90deg);
+                -moz-transform: translateX(-59%) translateY(-125%) rotate(-90deg);
+                -ms-transform: translateX(-59%) translateY(-125%) rotate(-90deg);
+                -o-transform: translateX(-59%) translateY(-125%) rotate(-90deg);
+                transform: translateX(-59%) translateY(-125%) rotate(-90deg);
                 -webkit-transform-origin: 60px 26px;
                 -moz-transform-origin: 60px 26px;
                 -ms-transform-origin: 60px 26px;

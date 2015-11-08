@@ -146,7 +146,6 @@ function displayPicture() {
 
         }
         else if (json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['typ'] == "flash") {
-            console.log(json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['quelle']);
             // display the flash element (<embed>)
 
             var source = json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['quelle'];
@@ -168,9 +167,11 @@ function displayPicture() {
         // change border display
         if (json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['rahmen'] == "ein") {
             document.getElementById("contentImg").style.border = "1px solid #666"
+            document.getElementById("borderListener").checked = true;
         }
         else {
-            document.getElementById("contentImg").style.border = "none";
+            document.getElementById("contentImg").style.border = "1px solid #FFF"
+            document.getElementById("borderListener").checked = false;
         }
 
     } else {
@@ -217,9 +218,11 @@ function displayPicture() {
         // change border display
         if (json.DOKU.ABSCHNITT[section].INHALT['@attributes']['rahmen'] == "ein") {
             document.getElementById("contentImg").style.border = "1px solid #666"
+            document.getElementById("borderListener").checked = true;
         }
         else {
-            document.getElementById("contentImg").style.border = "none";
+            document.getElementById("contentImg").style.border = "1px solid #FFF"
+            document.getElementById("borderListener").checked = false;
         }
     }
 };
@@ -403,4 +406,15 @@ function jumpTo(id) {
     sectionsPointer = data[0];
 
     redraw();
+};
+
+function triggerBorder() {
+    if (document.getElementById("borderListener").checked) {
+        document.getElementById("borderListener").checked = true;
+        document.getElementById("contentImg").style.border = "1px solid #666";
+    }
+    else {
+        document.getElementById("borderListener").checked = false;
+        document.getElementById("contentImg").style.border = "1px solid #FFF";
+    }
 };

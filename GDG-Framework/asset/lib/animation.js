@@ -83,7 +83,6 @@ function draw() {
                                     animat[foo].width,
                                     animat[foo].height);
                 }
-                //console.log(foo);
             }
         }
     }
@@ -91,21 +90,18 @@ function draw() {
 
 // funktion: pausieren/stoppen der currentAnimation
 function pauseAnimation() {
-    //console.log("pauseAnimation");
     running = false;
     draw();
 }
 
 // funktion: (wieder-)abspielen der currentAnimation;
 function playAnimation() {
-    //console.log("playAnimation");
     running = true;
     draw();
 }
 
 // funktion: geschwindigkeit erhoehen;
 function faster() {
-    //console.log("faster");
     if (fps < 30) {
         fps += 2;
         interval = 1000 / fps;
@@ -115,7 +111,6 @@ function faster() {
 
 // funktion: geschwindigkeit verringern
 function slower() {
-    //console.log("slower");
     if (fps >= 5) {
         fps -= 2;
         interval = 1000 / fps;
@@ -123,7 +118,6 @@ function slower() {
 }
 
 function changePermutation() {
-    console.log("changePermutation");
     currentPerm += 1;
     currentPerm %= permutationen.length;
     initialize();
@@ -147,5 +141,3 @@ function countFolders() {
     var myFolder = xmlhttp.GetFolder("./inhalte/anim/");
     var myFolderCollection = myFolder.SubFolders;
 };
-
-//console.log(countFolders());

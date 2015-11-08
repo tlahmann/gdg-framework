@@ -22,6 +22,7 @@
 23.09.2015 -- 20:00 - 21:30 Uhr -- 1,5h -- Navigation verlinken, XML/Json löst Rahmendarstllung aus, Ändern der Anzeige: Bild <-> Animation
 17.10.2015 -- 14:30 - 15:00 Uhr -- 0,5h -- Zeiten eintragen
 31.10.2015 -- 22:30 - 00:30 Uhr -- 2,0h -- XML mit nur einem Element wird korrekt geladen, Feste Größe für frame (1280x980)
+06.11.2015 -- 14:00 - 17:00 Uhr -- 3h -- Verbesserungn (nachtgragen aus git)
 
 ---------------------------------------------------------------------------------
 10.08.2015 - 31.10.2015 - 			64h
