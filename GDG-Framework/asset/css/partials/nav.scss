@@ -69,11 +69,11 @@ nav {
             &:after {
                 display: inline-block;
                 content: "Navigation ";
-                -webkit-transform: translateX(-59%) translateY(-125%) rotate(-90deg);
-                -moz-transform: translateX(-59%) translateY(-125%) rotate(-90deg);
-                -ms-transform: translateX(-59%) translateY(-125%) rotate(-90deg);
-                -o-transform: translateX(-59%) translateY(-125%) rotate(-90deg);
-                transform: translateX(-59%) translateY(-125%) rotate(-90deg);
+                -webkit-transform: translateX(-62%) translateY(-125%) rotate(-90deg);
+                -moz-transform: translateX(-62%) translateY(-125%) rotate(-90deg);
+                -ms-transform: translateX(-62%) translateY(-125%) rotate(-90deg);
+                -o-transform: translateX(-62%) translateY(-125%) rotate(-90deg);
+                transform: translateX(-62%) translateY(-125%) rotate(-90deg);
                 -webkit-transform-origin: 60px 26px;
                 -moz-transform-origin: 60px 26px;
                 -ms-transform-origin: 60px 26px;
@@ -87,31 +87,7 @@ nav {
                 content: " \25c0";
             }
         }
-        /*http://www.sitepoint.com/pure-css-off-screen-navigation-menu/*/
-        /*> div {
-            position: absolute;
-            display: inline-block;
-            width: 100%;
-            height: 100%;
-            text-decoration: none;
-            color: $lightColor;
-            -webkit-transform-origin: 0 0;
-            -moz-transform-origin: 0 0;
-            -ms-transform-origin: 0 0;
-            -o-transform-origin: 0 0;
-            transform-origin: 0 0;
 
-            span {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
-                -moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
-                -ms-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
-                -o-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
-                transform: translateX(-50%) translateY(-50%) rotate(-90deg);
-            }
-        }*/
         background-color: fade_out($darkColor, 0.1);
     }
 
@@ -126,36 +102,12 @@ nav {
     clip: rect(0, 0, 0, 0);
 }
 
-/*.nav-trigger:checked ~ nav {
-    @include translate(.5s);
-
-    .navTriggerText {
-        left: 18%;
-        background-color: $brand-danger;
-
-        &:before {
-            display: inline-block;
-            content: " \25c0";
-            -webkit-transform: translateX(50%) translateY(10%);
-            -moz-transform: translateX(50%) translateY(10%);
-            -ms-transform: translateX(50%) translateY(10%);
-            -o-transform: translateX(50%) translateY(10%);
-            transform: translateX(50%) translateY(10%);
-        }
-    }
-}*/
-
-/*nav:hover {
-    left: 0;
-    @include translate(.5s);
-}*/
-
 #descriptionNavigation {
     @include basic;
     width: 21%;
     height: 5%;
     //-
-    top: 87.9%;
+    top: 87.3%;
     right: 0;
     left: 75%;
     // -
