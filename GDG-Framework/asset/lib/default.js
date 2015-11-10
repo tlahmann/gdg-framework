@@ -166,12 +166,12 @@ function displayPicture() {
 
         // change border display
         if (json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['rahmen'] == "ein") {
-            document.getElementById("contentImg").style.border = "1px solid #666"
             document.getElementById("borderListener").checked = true;
+            triggerBorder();
         }
         else {
-            document.getElementById("contentImg").style.border = "1px solid #FFF"
             document.getElementById("borderListener").checked = false;
+            triggerBorder();
         }
 
     } else {
@@ -217,12 +217,12 @@ function displayPicture() {
 
         // change border display
         if (json.DOKU.ABSCHNITT[section].INHALT['@attributes']['rahmen'] == "ein") {
-            document.getElementById("contentImg").style.border = "1px solid #666"
             document.getElementById("borderListener").checked = true;
+            triggerBorder();
         }
         else {
-            document.getElementById("contentImg").style.border = "1px solid #FFF"
             document.getElementById("borderListener").checked = false;
+            triggerBorder();
         }
     }
 };
@@ -411,10 +411,17 @@ function jumpTo(id) {
 function triggerBorder() {
     if (document.getElementById("borderListener").checked) {
         document.getElementById("borderListener").checked = true;
+
         document.getElementById("contentImg").style.border = "1px solid #666";
+        document.getElementById("canvas").style.border = "1px solid #666";
+        document.getElementById("flashCanvas").style.border = "1px solid #666";
+
     }
     else {
         document.getElementById("borderListener").checked = false;
+
         document.getElementById("contentImg").style.border = "1px solid #FFF";
+        document.getElementById("canvas").style.border = "1px solid #FFF";
+        document.getElementById("flashCanvas").style.border = "1px solid #FFF";
     }
 };
