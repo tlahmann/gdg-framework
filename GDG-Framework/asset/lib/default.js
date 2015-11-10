@@ -18,6 +18,10 @@ var lock = true;
 var xml;
 
 function start() {
+    //document.getElementById("studentName").innerText = json["@attributes"].name;
+    //document.getElementById("studentName").innerHTML = json["@attributes"].name;
+    //document.getElementById("studentName").innerText = document.getElementById("data").getAttribute("name");
+    //document.getElementById("studentName").innerText = document.getElementById("data").getAttribute("name");
     document.getElementById("intro").style.opacity = 0;
     document.getElementById("intro").style.zIndex = 0;
     document.getElementById("doku").style.opacity = 1;
@@ -40,7 +44,7 @@ $(function () {
     redraw();
     fillNavigation();
     $('#navscroll').simplebar();
-    //xml = document.getElementById("dokum");
+    document.getElementById("studentName").innerText = json["@attributes"].name;
 });
 
 // Changes XML to JSON
