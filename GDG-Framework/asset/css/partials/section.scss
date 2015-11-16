@@ -23,7 +23,6 @@ section {
             height: 100%;
             max-width: $paneWidth * 1px;
             max-height: calculateHeight($aspRatio, $paneWidth);
-            /*margin: 0 auto;*/
         }
 
         #canvas {

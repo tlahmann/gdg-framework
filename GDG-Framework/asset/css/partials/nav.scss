@@ -16,14 +16,17 @@ nav {
     > .navigation {
         position: relative;
         float: left;
+        // -
         width: 90%;
         height: 100%;
+        // -
         background-color: fade_out($darkColor, 0.1);
 
         .glass {
             #navscroll {
                 width: 100%;
                 height: 100%;
+                // -
                 text-decoration: none;
                 color: $lightColor;
 
@@ -41,24 +44,27 @@ nav {
     }
 
     .navSlideBtn {
+        float: left;
+        // -
         width: 8%;
         height: 20%;
-        float: left;
-
-
 
         label[for="nav-trigger"] {
+            float: left;
+            // -
             width: 100%;
             height: 100%;
-            float: left;
+            // -
             cursor: pointer;
             text-decoration: none;
             font-size: 0.95em;
+            // -
             color: $lightColor;
 
             &:before {
                 display: inline-block;
                 content: " \25b6";
+                // -
                 -webkit-transform: translateX(40%) translateY(45%);
                 -moz-transform: translateX(40%) translateY(45%);
                 -ms-transform: translateX(40%) translateY(45%);
@@ -69,6 +75,7 @@ nav {
             &:after {
                 display: inline-block;
                 content: "Navigation ";
+                // -
                 -webkit-transform: translateX(-62%) translateY(-125%) rotate(-90deg);
                 -moz-transform: translateX(-62%) translateY(-125%) rotate(-90deg);
                 -ms-transform: translateX(-62%) translateY(-125%) rotate(-90deg);
@@ -103,6 +110,8 @@ nav {
 }
 
 #descriptionNavigation {
+    position: absolute;
+    // -
     @include basic;
     width: 21%;
     height: 5%;
@@ -111,8 +120,6 @@ nav {
     right: 0;
     left: 75%;
     // -
-    /*padding: 20%;*/
-    position: absolute;
     margin: 0 10px;
     padding: 10px 0;
     border-top: 1px solid $darkFontColor;
