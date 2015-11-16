@@ -228,3 +228,4 @@ GDG-Framework/notes/*
 # Everything minified
 *.min.*
 *.xlsx
+*.zip
