@@ -85,7 +85,7 @@ body {
     top: 10px;
     right: 10px;
     bottom: 10px;
-    left: 40px;
+    left: 30px;
     //-
     /*background-color: #ff007b;*/
 }
@@ -98,7 +98,7 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 0 25px;
+    padding: 0 10px;
 }
 
 input[type="button"] {
@@ -110,6 +110,8 @@ input[type="button"] {
     display: inline-block;
     cursor: pointer;
     color: $darkFontColor;
+    font-size: 9px;
+    padding: 2px 6px;
 }
 
 /*// at 1000px maximal width the display is fixed to 100% width
