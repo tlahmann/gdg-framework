@@ -4,6 +4,11 @@
 
 // own font face definition
 @font-face {
-    font-family: "gdg";
-    src: url("../font/MyriadPro-Regular.otf") format("opentype");
+    font-family: "GdG-Regular";
+    src: url("../font/Roboto-Regular.ttf") format("truetype");
 }
+
+/*@font-face {
+    font-family: "GdG-Bold";
+    src: url("../font/Roboto-Bold.ttf") format("truetype");
+}*/

@@ -65,11 +65,11 @@ nav {
                 display: inline-block;
                 content: " \25b6";
                 // -
-                -webkit-transform: translateX(40%) translateY(45%);
-                -moz-transform: translateX(40%) translateY(45%);
-                -ms-transform: translateX(40%) translateY(45%);
-                -o-transform: translateX(40%) translateY(45%);
-                transform: translateX(40%) translateY(45%);
+                -webkit-transform: translateX(40%) translateY(45%) scale(0.5, 1.0);
+                -moz-transform: translateX(40%) translateY(45%) scale(0.5, 1.0);
+                -ms-transform: translateX(40%) translateY(45%) scale(0.5, 1.0);
+                -o-transform: translateX(40%) translateY(45%) scale(0.5, 1.0);
+                transform: translateX(40%) translateY(45%) scale(0.5, 1.0);
             }
 
             &:after {

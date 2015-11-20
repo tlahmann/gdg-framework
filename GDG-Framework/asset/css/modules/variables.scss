@@ -5,9 +5,6 @@
 // aspect ratio width X height
 $aspRatio: 4, 3;
 
-// desired dimensions, the desired maximal width and height (percentage)
-/*$desDimensions: 70;*/
-
 // desired dimensions (pixel)
 $desDimensions: 1024;
 
@@ -18,4 +15,5 @@ $paneWidth: 720;
 $maxDimensions: 99; // 100% overshoots display height because of the border
 
 // the used font for the entire document
-$gdgFont: 200 0.80em gdg, "sans-serif";
+$gdgFontRegular: GdG-Regular, "sans-serif";
+/*$gdgFontBold: GdG-Bold, "sans-serif";*/

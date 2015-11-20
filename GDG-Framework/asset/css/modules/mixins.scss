@@ -2,6 +2,8 @@
 // Mixins
 // --------------------------------------------------
 @import "colors";
+/*@import "typography";*/
+@import "variables";
 
 @function imageRatio() {
     @return 75, 73;
@@ -21,14 +23,14 @@
 @mixin delay($seconds) {
     -webkit-transition-delay: $seconds;
     -moz-transition-delay: $seconds;
-    -ms-transition-delay: $seconds;
     -o-transition-delay: $seconds;
     transition-delay: $seconds;
 }
 
 @mixin fontBasic {
-    font-weight: 500;
-    //-
+    font-family: $gdgFontRegular;
+    line-height: 10pt;
+    letter-spacing: 1pt;
     color: $darkFontColor;
 }
 
@@ -36,5 +38,4 @@
 @mixin basic {
     position: absolute;
     overflow: hidden;
-    //-
 }
