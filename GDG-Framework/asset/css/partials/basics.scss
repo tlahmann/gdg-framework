@@ -13,7 +13,7 @@ body {
 @for $i from 1 through 6 {
     h#{$i} {
         /*@include fontBasic;*/
-        font-size: 2em - (0.2 * $i);
+        font-size: 23 - (2 * $i) * 1px;
     }
 }
 
@@ -88,7 +88,7 @@ body {
 }
 
 // button display (arrow keys)
-input[type="button"] {
+/*input[type="button"] {
     background-color: transparent;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -97,6 +97,26 @@ input[type="button"] {
     display: inline-block;
     cursor: pointer;
     color: $darkFontColor;
-    /*font-size: 9px;*/
     padding: 2px 6px;
+}*/
+
+#start {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    top: 77px;
+    left: -12px;
+    font-size: 13px;
+    letter-spacing: 0;
+
+    &:before {
+        display: inline-block;
+        content: " \25b6 \00a0 ";
+        // -
+        -webkit-transform: scale(0.6, 1.0);
+        -moz-transform: scale(0.6, 1.0);
+        -ms-transform: scale(0.6, 1.0);
+        -o-transform: scale(0.6, 1.0);
+        transform: scale(0.6, 1.0);
+    }
 }

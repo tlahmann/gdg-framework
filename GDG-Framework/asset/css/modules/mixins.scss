@@ -29,8 +29,9 @@
 
 @mixin fontBasic {
     font-family: $gdgFontRegular;
-    line-height: 10pt;
-    letter-spacing: 1pt;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.5px;
     color: $darkFontColor;
 }
 
