@@ -7,7 +7,7 @@
     <link type="text/css" href="asset/css/main.min.css" rel="stylesheet" />
     <link type="text/css" href="asset/css/vendor/simplebar.min.css" rel="stylesheet" />
     <!-- Scripts -->
-    <script type="text/javascript" src="asset/lib/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="asset/lib/jquery-2.1.4.min.js"></script>
 
 
 </head>
@@ -15,17 +15,15 @@
     <div id="intro" class="frame">
         <div class="pane">
             <aside class="intro">
-                <div class="glass">
-                    <h4>Universität Ulm</h4>
-                    <h4>Medieninformatik</h4>
-                    <p>Grundlagen der Gestaltung I</p>
-                    <p>Wintersemester 2015/16</p>
-                    <br />
-                    <p>Dokumentation</p>
-                    <p>Tobias Lahmann</p>
-                    <br />
-                    <input type="button" onclick="start()" value="&#9658&nbsp;Start" style="float: left;" />
-                </div>
+                <h4>Universität Ulm</h4>
+                <h4>Medieninformatik</h4>
+                <p>Grundlagen der Gestaltung I</p>
+                <p>Wintersemester 2015/16</p>
+                <br />
+                <p>Dokumentation</p>
+                <p id="studentName"></p>
+                <br />
+                <label id="start" onclick="start()">Start</label>
             </aside>
         </div>
     </div>
@@ -33,62 +31,51 @@
     <div id="doku" class="frame">
         <nav id="navigation">
             <div class="navigation">
-                <div class="glass" id="navi">
-                    <div id="navscroll" class=" simplebar">
-                    </div>
-                </div>
+                <div id="navscroll" class=" simplebar"></div>
             </div>
             <div class="navSlideBtn">
-                <label for="nav-trigger" id="navTriggerText"></label>
+                <label for="navTrigger" id="navTriggerText"></label>
             </div>
         </nav>
-        <input type="checkbox" id="nav-trigger" name="nav-trigger" class="nav-trigger" />
+        <input type="checkbox" id="navTrigger" name="navTrigger" class="navTrigger" />
         <div class="pane">
             <header>
-                <div class="glass">
-                    <h3 id="title">title</h3>
-                </div>
+                <label id="title"></label>
             </header>
             <section>
-                <div class="glass">
-                    <!-- IMAGE -->
-                    <img id="contentImg" />
-                    <!-- ANIMATION -->
-                    <canvas id="canvas" width="720" height="540"></canvas>
-                    <script type="text/javascript" src="/asset/lib/animation.js"></script>
-                    <div id="contentAnim">
-                        <div id="buttons">
-                            <div id="button1" onclick="pauseAnimation()">pause</div>
-                            <div id="button2" onclick="playAnimation()">play</div>
-                            <div id="button3" onclick="faster()">faster</div>
-                            <div id="button4" onclick="slower()">slower</div>
-                            <div id="button5" onclick="changePermutation()">changeAnim</div>
-                            <div id="button6" onclick="changeObject()">changeObj</div>
-                        </div>
+                <!-- IMAGE -->
+                <img id="contentImg" />
+                <!-- ANIMATION -->
+                <canvas id="canvas" width="720" height="540"></canvas>
+                <script type="text/javascript" src="asset/lib/animation.js"></script>
+                <div id="contentAnim">
+                    <div id="buttons">
+                        <div id="button1" onclick="pauseAnimation()">pause</div>
+                        <div id="button2" onclick="playAnimation()">play</div>
+                        <div id="button3" onclick="faster()">faster</div>
+                        <div id="button4" onclick="slower()">slower</div>
+                        <div id="button5" onclick="changePermutation()">changeAnim</div>
+                        <div id="button6" onclick="changeObject()">changeObj</div>
                     </div>
-                    <!-- FLASH -->
-                    <embed id="flashCanvas" width="720" height="540" type="application/x-shockwave-flash" src="." />
                 </div>
+                <!-- FLASH -->
+                <embed id="flashCanvas" width="720" height="540" type="application/x-shockwave-flash" src="." />
             </section>
-            <aside>
-                <div class="glass">
-                    <h4 id="descTitle">desctitle</h4>
-                    <p id="desc">desc</p>
-                </div>
+            <aside id="description">
+                <h4 id="descTitle">desctitle</h4>
+                <p id="descText">desc</p>
             </aside>
-            <div id="descriptionNavigation">
-                <input type="button" onclick="prevDesc()" value="&#9668" style="float: left;" />
-                <p id="descNum" style="float: left; margin: 0;"></p>
-                <input type="button" onclick="nextDesc()" value="&#9658" style="float: left;" />
-            </div>
+            <aside id="descNav">
+                <input class="before" type="button" onclick="prevDesc()" value="&#9668" />
+                <label id="descNum"></label>
+                <input class="after" type="button" onclick="nextDesc()" value="&#9658" />
+            </aside>
             <footer>
-                <div class="glass">
-                    <input type="button" onclick="prevImg()" value="&#9668" style="float: left;" />
-                    <input type="text" id="imgNum" />
-                    <input type="button" onclick="nextImg()" value="&#9658" style="float: left;" />
-                    <input id="blur" type="text" style="position: absolute; opacity: 0;">
-                    <!--TODO add quick navigation-->
-                </div>
+                <input class="before" type="button" onclick="prevImg()" value="&#9668" />
+                <input type="text" id="imgNum" />
+                <input class="after" type="button" onclick="nextImg()" value="&#9658" />
+                <input id="blur" type="text" style="display: none; position: absolute; opacity: 0;">
+                <input id="borderListener" name="checkbox" type="checkbox" style="float: right" onclick="triggerBorder()">
             </footer>
         </div>
     </div>
@@ -96,7 +83,7 @@
     <script type="text/javascript" src="asset/lib/default.js"></script>
     <script type="text/javascript" src="asset/lib/simplebar.js"></script>
 </body>
-<xml id="data" name="John Doe" style="display:none;" src="./inhalte.xml">
+<xml id="data" name="John Doe" style="display:none;">
     <doku>
         <abschnitt titel="Kreis, Quadrat, Dreieck: Kompositions- und Strukturübungen">
             <inhalt titel="[1] Anordnung von Punkten auf einer Fläche" quelle="inhalte/png/A1a_1.png" typ="bild" rahmen="ein">
@@ -121,22 +108,22 @@
             </inhalt>
         </abschnitt>
         <abschnitt titel="Permutation und Animation">
-            <inhalt titel="[15] Animation" quelle="inhalte/anim" typ="animation" rahmen="aus">
+            <inhalt titel="[15] Animation" quelle="inhalte/anim" typ="animation" rahmen="ein">
                 <details>
                     -interaktiv-Die Permutationen und die Objekte in dieser Animation können vorwärts sowie rückwärts durchgeschaltet werden. Ich habe die bereits in Aufgabe 14 erstellten Permutationsreihen als Einstieg gewählt, da ich den Zyklus dieser sehr gerne mag.
                 </details>
             </inhalt>
-            <inhalt titel="[15] Animation" quelle="inhalte/swf/A15_1.swf" typ="flash" rahmen="aus">
+            <inhalt titel="[15] Animation" quelle="inhalte/swf/A15_1.swf" typ="flash" rahmen="ein">
                 <details>
                     -interaktiv-Die Permutationen und die Objekte in dieser Animation können vorwärts sowie rückwärts durchgeschaltet werden. Ich habe die bereits in Aufgabe 14 erstellten Permutationsreihen als Einstieg gewählt, da ich den Zyklus dieser sehr gerne mag.
                 </details>
             </inhalt>
-            <inhalt titel="[15] Animation" quelle="inhalte/swf/A18_1.swf" typ="flash" rahmen="aus">
+            <inhalt titel="[15] Animation" quelle="inhalte/swf/A18_1.swf" typ="flash" rahmen="ein">
                 <details>
                     -interaktiv-Die Permutationen und die Objekte in dieser Animation können vorwärts sowie rückwärts durchgeschaltet werden. Ich habe die bereits in Aufgabe 14 erstellten Permutationsreihen als Einstieg gewählt, da ich den Zyklus dieser sehr gerne mag.
                 </details>
             </inhalt>
-            <inhalt titel="[15] Animation" quelle="inhalte/swf/A18_2.swf" typ="flash" rahmen="aus">
+            <inhalt titel="[15] Animation" quelle="inhalte/swf/A18_2.swf" typ="flash" rahmen="ein">
                 <details>
                     -interaktiv-Die Permutationen und die Objekte in dieser Animation können vorwärts sowie rückwärts durchgeschaltet werden. Ich habe die bereits in Aufgabe 14 erstellten Permutationsreihen als Einstieg gewählt, da ich den Zyklus dieser sehr gerne mag.
                 </details>

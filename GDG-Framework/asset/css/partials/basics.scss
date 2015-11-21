@@ -1,30 +1,29 @@
-﻿@import "../modules/colors";
+﻿// SASS document
+// Basic
+// -------------------------------------------------
+
+@import "../modules/colors";
 @import "../modules/mixins";
 @import "../modules/variables";
 
 body {
+    // top margin to get unstuck from the upper edge of the browser
     margin: 50px 0;
-    font: $gdgFont;
-    /*background-color: azure;*/
+    @include fontBasic;
 }
 
 // SASS calculation of the headings
-
 @for $i from 1 through 6 {
     h#{$i} {
-        @include fontBasic;
-        font-size: 2em - (0.2 * $i);
+        /*@include fontBasic;*/
+        font-size: 23 - (2 * $i) * 1px;
     }
 }
 
+// intro to the documentation
 #intro {
-    /*display: none;*/
     opacity: 1;
-    -webkit-transition: opacity .5s ease-in-out;
-    -moz-transition: opacity .5s ease-in-out;
-    -o-transition: opacity .5s ease-in-out;
-    transition: opacity .5s ease-in-out;
-    //-
+    @include transition(opacity, .5s, ease-in-out);
     position: absolute;
     z-index: 200;
     left: 0;
@@ -33,45 +32,28 @@ body {
     margin-right: auto;
 }
 
+// the actual documentation
 #doku {
-    /*display: none;*/
-    /*opacity: 0;*/
     opacity: 1;
-    -webkit-transition: opacity .5s ease-in-out;
-    -moz-transition: opacity .5s ease-in-out;
-    -o-transition: opacity .5s ease-in-out;
-    transition: opacity .5s ease-in-out;
+    @include transition(opacity, .5s, ease-in-out);
+    font-size: 12px;
 }
 
 // the frame holds the total content of the display
 // it has automatic margins left and right to be centered in the total display width
 // the width and height calculated according to the desired aspect ratio
-// minimal width and height is fixed to 80px * aspect ratio
-//              e.g. ratio of 4:3 :: 340px X 240px
 .frame {
     position: relative;
-    //-
-    /*width: $desDimensions * 1vw;
-    max-width: nth($aspRatio, 1)/nth($aspRatio, 2) * $maxDimensions * 1vh;
-    min-width: nth($aspRatio, 1) * 80px;
-    //-
-    /*height: nth($aspRatio, 2)/nth($aspRatio, 1) * $desDimensions * 1vw;
-    max-height: $maxDimensions * 1vh;
-    min-height: nth($aspRatio, 2) * 80px;*/
-    //-
     width: $desDimensions * 1px;
     max-width: $desDimensions * 1px;
     min-width: $desDimensions * 1px;
-    //-
     height: calculateHeight($aspRatio, $desDimensions);
     max-height: calculateHeight($aspRatio, $desDimensions);
     min-height: calculateHeight($aspRatio, $desDimensions);
-    //-
     margin: 0 auto;
-    //-
     background-color: #fff;
-    color: $darkFontColor;
-    border: 1px solid $darkFontColor;
+    color: $darkColor;
+    border: 1px solid $darkColor;
     overflow: hidden;
 }
 
@@ -81,26 +63,13 @@ body {
 .pane {
     position: absolute;
     overflow: hidden;
-    //-
     top: 10px;
     right: 10px;
     bottom: 10px;
-    left: 40px;
-    //-
-    /*background-color: #ff007b;*/
+    left: 30px;
 }
 
-// nested area in all regions to ensure proper paddings
-.glass {
-    position: absolute;
-    overflow: hidden;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 0 25px;
-}
-
+// button display (arrow keys)
 input[type="button"] {
     background-color: transparent;
     -webkit-border-radius: 0;
@@ -109,27 +78,34 @@ input[type="button"] {
     border: 0 solid transparent;
     display: inline-block;
     cursor: pointer;
-    color: $darkFontColor;
+    color: $darkColor;
+    float: left;
+    padding: 3px 6px;
+    @include transform(0, 0, 0.5, 1.0, 0);
 }
 
-/*// at 1000px maximal width the display is fixed to 100% width
-// fill screen width
-@media (max-width: 1000px) {
-    .frame {
-        width: 100vw;
-        height: nth($aspRatio, 2)/nth($aspRatio, 1) * 100 * 1vw;
-    }
+.before {
+    margin-right: 5px;
+    font-size: inherit;
 }
 
-// over a calculated size the font-size is fixed to prevent changes and disorder
-@media (min-width: $maxDimensions * 1vh) {
-    body {
-        font-size: 0.9em;
-    }
+.after {
+    margin-left: 5px;
+    font-size: inherit;
 }
 
-@media (max-width: nth($aspRatio, 1) * 80px) {
-    body {
-        font-size: 0.4 * nth($aspRatio, 1) * 10px;
+#start {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    top: 77px;
+    left: -12px;
+    font-size: 13px;
+    letter-spacing: 0;
+
+    &:before {
+        display: inline-block;
+        content: " \25b6 \00a0 ";
+         @include transform(0, 0, 0.6, 1.0, 0);
     }
-}*/
+}

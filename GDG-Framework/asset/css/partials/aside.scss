@@ -1,38 +1,55 @@
-﻿@import "../modules/mixins";
+﻿// SASS document
+// Aside
+// -------------------------------------------------
+
+@import "../modules/mixins";
 
 // the aside region is used to hold the description of the current pisture/animation
 aside {
     @include basic;
-    width: 25%;
+    width: 220px;
     height: 73%;
-    //-
-    top: 15%;
+    top: 82px;
     right: 0;
     left: 75%;
-    //-
-    .glass {
-        position: absolute;
-        overflow: hidden;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        /*padding: 0 2vw;*/
+    margin: 0 10px;
 
-        h4 {
-            margin: 0;
-        }
+    #descText {
+        padding: 15px 0;
+        font-size: 12px;
+        line-height: 16px;
     }
 
     &.intro {
-        width: 40%;
+        width: 360px;
         height: 60%;
-        //-
-        top: 20%;
-        left: 60%;
+        top: 132px;
+        left: 612px;
 
         h4 {
             font-weight: bold;
         }
+    }
+
+    &#description {
+        border-bottom: 1px solid rgb(122,122,128);
+    }
+}
+
+#descNav {
+    @include basic;
+    width: 220px;
+    height: 5%;
+    top: 627px;
+    right: 0;
+    left: 730px;
+    margin: 0 8px;
+    padding: 10px 0;
+    color: $darkColor;
+    font-size: 11px;
+
+    > #descNum {
+        float: left;
+        margin: 0;
     }
 }

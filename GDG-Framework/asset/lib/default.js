@@ -18,6 +18,10 @@ var lock = true;
 var xml;
 
 function start() {
+    //document.getElementById("studentName").innerText = json["@attributes"].name;
+    //document.getElementById("studentName").innerHTML = json["@attributes"].name;
+    //document.getElementById("studentName").innerText = document.getElementById("data").getAttribute("name");
+    //document.getElementById("studentName").innerText = document.getElementById("data").getAttribute("name");
     document.getElementById("intro").style.opacity = 0;
     document.getElementById("intro").style.zIndex = 0;
     document.getElementById("doku").style.opacity = 1;
@@ -40,7 +44,7 @@ $(function () {
     redraw();
     fillNavigation();
     $('#navscroll').simplebar();
-    //xml = document.getElementById("dokum");
+    document.getElementById("studentName").innerText = json["@attributes"].name;
 });
 
 // Changes XML to JSON
@@ -146,7 +150,6 @@ function displayPicture() {
 
         }
         else if (json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['typ'] == "flash") {
-            console.log(json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['quelle']);
             // display the flash element (<embed>)
 
             var source = json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['quelle'];
@@ -167,10 +170,12 @@ function displayPicture() {
 
         // change border display
         if (json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['rahmen'] == "ein") {
-            document.getElementById("contentImg").style.border = "1px solid #666"
+            document.getElementById("borderListener").checked = true;
+            triggerBorder();
         }
         else {
-            document.getElementById("contentImg").style.border = "none";
+            document.getElementById("borderListener").checked = false;
+            triggerBorder();
         }
 
     } else {
@@ -216,10 +221,12 @@ function displayPicture() {
 
         // change border display
         if (json.DOKU.ABSCHNITT[section].INHALT['@attributes']['rahmen'] == "ein") {
-            document.getElementById("contentImg").style.border = "1px solid #666"
+            document.getElementById("borderListener").checked = true;
+            triggerBorder();
         }
         else {
-            document.getElementById("contentImg").style.border = "none";
+            document.getElementById("borderListener").checked = false;
+            triggerBorder();
         }
     }
 };
@@ -233,21 +240,21 @@ function displayDescription() {
         // if the desription is more than one page long the navigation for the description is shown
         if (json.DOKU.ABSCHNITT[section].INHALT[content].DETAILS.length > 1) {
             // set the description of the image (main area of the aside) to the description of the details node
-            document.getElementById("desc").innerHTML = json.DOKU.ABSCHNITT[section].INHALT[content].DETAILS[description]['#text'];
+            document.getElementById("descText").innerHTML = json.DOKU.ABSCHNITT[section].INHALT[content].DETAILS[description]['#text'];
 
             //display the description counter
-            document.getElementById("descriptionNavigation").style.display = 'block';
+            document.getElementById("descNav").style.display = 'block';
 
             // update the description counter
-            descNum.innerHTML = description + 1 + "/" + json.DOKU.ABSCHNITT[section].INHALT[content].DETAILS.length;
+            descNum.innerHTML = description + 1 + " / " + json.DOKU.ABSCHNITT[section].INHALT[content].DETAILS.length;
 
         }// if the description is just one page long the navigation for the description is hidden
         else {
             // set the description of the image (main area of the aside) to the description of the details node
-            document.getElementById("desc").innerHTML = json.DOKU.ABSCHNITT[section].INHALT[content].DETAILS['#text'];
+            document.getElementById("descText").innerHTML = json.DOKU.ABSCHNITT[section].INHALT[content].DETAILS['#text'];
 
             //hide the description counter
-            document.getElementById("descriptionNavigation").style.display = 'none';
+            document.getElementById("descNav").style.display = 'none';
         }
     } else {
         // set the title of the image description (top of aside) to the title of the description
@@ -256,21 +263,21 @@ function displayDescription() {
         // if the desription is more than one page long the navigation for the description is shown
         if (json.DOKU.ABSCHNITT[section].INHALT.DETAILS.length > 1) {
             // set the description of the image (main area of the aside) to the description of the details node
-            document.getElementById("desc").innerHTML = json.DOKU.ABSCHNITT[section].INHALT.DETAILS[description]['#text'];
+            document.getElementById("descText").innerHTML = json.DOKU.ABSCHNITT[section].INHALT.DETAILS[description]['#text'];
 
             //display the description counter
-            document.getElementById("descriptionNavigation").style.display = 'block';
+            document.getElementById("descNav").style.display = 'block';
 
             // update the description counter
-            descNum.innerHTML = description + 1 + "/" + json.DOKU.ABSCHNITT[section].INHALT.DETAILS.length;
+            descNum.innerHTML = description + 1 + " / " + json.DOKU.ABSCHNITT[section].INHALT.DETAILS.length;
 
         }// if the description is just one page long the navigation for the description is hidden
         else {
             // set the description of the image (main area of the aside) to the description of the details node
-            document.getElementById("desc").innerHTML = json.DOKU.ABSCHNITT[section].INHALT.DETAILS['#text'];
+            document.getElementById("descText").innerHTML = json.DOKU.ABSCHNITT[section].INHALT.DETAILS['#text'];
 
             //hide the description counter
-            document.getElementById("descriptionNavigation").style.display = 'none';
+            document.getElementById("descNav").style.display = 'none';
         }
     }
 };
@@ -335,7 +342,7 @@ function plainNumber() {
 };
 
 function updateCounter() {
-    imgNum.value = (parseInt(sectionsPointer) + 1) + "/" + sectionsCount;
+    imgNum.value = (parseInt(sectionsPointer) + 1) + " / " + sectionsCount;
 };
 
 function pictureInput() {
@@ -380,7 +387,7 @@ function fillNavigation() {
 };
 
 // listener to open the navigation
-$("input[name='nav-trigger']").change(function () {
+$("input[name='navTrigger']").change(function () {
 
     if ($(this).is(':checked')) {
         $("#navigation").css("left", 0);
@@ -388,7 +395,7 @@ $("input[name='nav-trigger']").change(function () {
     }
     else {
 
-        $("#navigation").css("left", "-18%");
+        $("#navigation").css("left", "-284px");
         $("#navTriggerText").toggleClass('triggered');
     }
 
@@ -403,4 +410,22 @@ function jumpTo(id) {
     sectionsPointer = data[0];
 
     redraw();
+};
+
+function triggerBorder() {
+    if (document.getElementById("borderListener").checked) {
+        document.getElementById("borderListener").checked = true;
+
+        document.getElementById("contentImg").style.border = "1px solid rgb(122,122,128)";
+        document.getElementById("canvas").style.border = "1px solid rgb(122,122,128)";
+        document.getElementById("flashCanvas").style.border = "1px solid rgb(122,122,128)";
+
+    }
+    else {
+        document.getElementById("borderListener").checked = false;
+
+        document.getElementById("contentImg").style.border = "1px solid #FFF";
+        document.getElementById("canvas").style.border = "1px solid #FFF";
+        document.getElementById("flashCanvas").style.border = "1px solid #FFF";
+    }
 };
