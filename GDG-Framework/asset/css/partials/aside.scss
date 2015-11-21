@@ -3,29 +3,18 @@
 // the aside region is used to hold the description of the current pisture/animation
 aside {
     @include basic;
-    width: 25%;
+    width: 220px;
     height: 73%;
-    //-
-    top: 96px;
+    // -
+    top: 82px;
     right: 0;
     left: 75%;
-    //-
-    .glass {
-        position: absolute;
-        overflow: hidden;
-        // -
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+    margin: 0 10px;
 
-        h4 {
-            margin: 0;
-        }
-
-        #desc {
-            padding: 15px 0;
-        }
+    #descText {
+        padding: 15px 0;
+        font-size: 12px;
+        line-height: 16px;
     }
 
     &.intro {
@@ -38,5 +27,9 @@ aside {
         h4 {
             font-weight: bold;
         }
+    }
+
+    &#description {
+        border-bottom: 1px solid rgb(122,122,128);
     }
 }

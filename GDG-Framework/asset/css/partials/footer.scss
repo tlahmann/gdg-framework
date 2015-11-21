@@ -3,29 +3,20 @@
 // the footer holds the quick navigation
 footer {
     @include basic;
-    width: nth(imageRatio(), 1) * 1%;
+    width: 736px;
+    left: -10px;
     height: 2%;
+    top: 729px;
+    font-size: 11px;
     //-
-    top: 98%;
-    //-
-    .glass {
-        position: absolute;
-        overflow: hidden;
+    input[type="text"] {
+        float: left;
         // -
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        // -
-        padding: 0;
-
-        input[type="text"] {
-            float: left;
-            // -
-            width: 5%;
-            text-align: center;
-            color: $darkFontColor;
-            border: none;
-        }
+        width: 43px;
+        text-align: center;
+        color: $darkColor;
+        font-size: inherit;
+        border: none;
+        margin: 2px 0;
     }
 }

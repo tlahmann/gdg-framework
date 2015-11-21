@@ -39,6 +39,7 @@ body {
     -moz-transition: opacity .5s ease-in-out;
     -o-transition: opacity .5s ease-in-out;
     transition: opacity .5s ease-in-out;
+    font-size: 12px;
 }
 
 // the frame holds the total content of the display
@@ -57,7 +58,7 @@ body {
     margin: 0 auto;
     //-
     background-color: #fff;
-    color: $darkFontColor;
+    color: $darkColor;
     border: 1px solid $darkColor;
     overflow: hidden;
 }
@@ -76,7 +77,7 @@ body {
 }
 
 // nested area in all regions to ensure proper paddings
-.glass {
+/*.glass {
     position: absolute;
     overflow: hidden;
     top: 0;
@@ -84,10 +85,10 @@ body {
     bottom: 0;
     left: 0;
     padding: 0 10px;
-}
+}*/
 
 // button display (arrow keys)
-/*input[type="button"] {
+input[type="button"] {
     background-color: transparent;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -95,9 +96,25 @@ body {
     border: 0 solid transparent;
     display: inline-block;
     cursor: pointer;
-    color: $darkFontColor;
-    padding: 2px 6px;
-}*/
+    color: $darkColor;
+    float: left;
+    padding: 3px 6px;
+    -webkit-transform: scale(0.5, 1.0);
+    -moz-transform: scale(0.5, 1.0);
+    -ms-transform: scale(0.5, 1.0);
+    -o-transform: scale(0.5, 1.0);
+    transform: scale(0.5, 1.0);
+}
+
+.before {
+    margin-right: 5px;
+    font-size: inherit;
+}
+
+.after {
+    margin-left: 5px;
+    font-size: inherit;
+}
 
 #start {
     display: block;

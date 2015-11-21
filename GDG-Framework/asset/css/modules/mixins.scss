@@ -32,11 +32,11 @@
     font-size: 15px;
     line-height: 20px;
     letter-spacing: 0.5px;
-    color: $darkFontColor;
+    color: $darkColor;
 }
 
 // basic class to entend all regions (header, nav, section, aside and footer)
 @mixin basic {
     position: absolute;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
