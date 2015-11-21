@@ -387,7 +387,7 @@ function fillNavigation() {
 };
 
 // listener to open the navigation
-$("input[name='nav-trigger']").change(function () {
+$("input[name='navTrigger']").change(function () {
 
     if ($(this).is(':checked')) {
         $("#navigation").css("left", 0);

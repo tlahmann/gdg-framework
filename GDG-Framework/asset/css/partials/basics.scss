@@ -9,7 +9,6 @@ body {
 }
 
 // SASS calculation of the headings
-
 @for $i from 1 through 6 {
     h#{$i} {
         /*@include fontBasic;*/
