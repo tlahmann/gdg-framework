@@ -1,4 +1,8 @@
-﻿@import "../modules/mixins";
+﻿// SASS document
+// Section
+// -------------------------------------------------
+
+@import "../modules/mixins";
 @import "../modules/variables";
 
 // the section is the centered area of the display
@@ -7,35 +11,27 @@
 section {
     @include basic;
 
-    $rat: imageRatio();
-    width: nth($rat, 1) * 1%;
-    height: nth($rat, 2) * 1%;
-    //-
     top: 86px;
     right: 25%;
     left: 0;
-    //-
-    .glass {
-        padding: 0;
 
-        #contentImg {
-            display: block;
-            height: 100%;
-            max-width: $paneWidth * 1px;
-            max-height: calculateHeight($aspRatio, $paneWidth);
-        }
+    #contentImg {
+        display: block;
+        height: 100%;
+        max-width: $paneWidth * 1px;
+        max-height: calculateHeight($aspRatio, $paneWidth);
+    }
 
-        #canvas {
-            display: none;
-            width: 100%;
-            height: 100%;
-            max-width: $paneWidth * 1px;
-            max-height: calculateHeight($aspRatio, $paneWidth);
-        }
+    #canvas {
+        display: none;
+        width: 100%;
+        height: 100%;
+        max-width: $paneWidth * 1px;
+        max-height: calculateHeight($aspRatio, $paneWidth);
+    }
 
-        #contentAnim {
-            display: none;
-            @import "../vendor/animation.scss";
-        }
+    #contentAnim {
+        display: none;
+        @import "../vendor/animation.scss";
     }
 }

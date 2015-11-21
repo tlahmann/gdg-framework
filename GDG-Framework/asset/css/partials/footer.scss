@@ -1,4 +1,8 @@
-﻿@import "../modules/mixins";
+﻿// SASS document
+// Footer
+// -------------------------------------------------
+
+@import "../modules/mixins";
 
 // the footer holds the quick navigation
 footer {
@@ -8,10 +12,9 @@ footer {
     height: 2%;
     top: 729px;
     font-size: 11px;
-    //-
+
     input[type="text"] {
         float: left;
-        // -
         width: 43px;
         text-align: center;
         color: $darkColor;

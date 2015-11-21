@@ -1,25 +1,31 @@
 ﻿// SASS document
 // Mixins
-// --------------------------------------------------
-@import "colors";
-/*@import "typography";*/
-@import "variables";
+// -------------------------------------------------
 
-@function imageRatio() {
-    @return 75, 73;
-}
+@import "colors";
+@import "variables";
 
 @function calculateHeight($ratio, $width) {
     @return nth($ratio, 2)/nth($ratio, 1) * $width * 1px;
 }
 
-@mixin translate($seconds) {
-    -webkit-transition: left $seconds cubic-bezier(.5,.85,.60,1);
-    -moz-transition: left $seconds cubic-bezier(.5,.85,.60,1);
-    -o-transition: left $seconds cubic-bezier(.5,.85,.60,1);
-    transition: left $seconds cubic-bezier(.5,.85,.60,1);
+// translate mixin
+@mixin transition($var1, $seconds, $var3) {
+    -webkit-transition: $var1 $seconds $var3;
+    -moz-transition: $var1 $seconds $var3;
+    -o-transition: $var1 $seconds $var3;
+    transition: $var1 $seconds $var3;
 }
 
+@mixin transform($translateX, $translateY, $scaleX, $scaleY, $rotate) {
+    -webkit-transform: translate($translateX, $translateY) scale($scaleX, $scaleY) rotate($rotate);
+    -moz-transform: translate($translateX, $translateY) scale($scaleX, $scaleY) rotate($rotate);
+    -ms-transform: translate($translateX, $translateY) scale($scaleX, $scaleY) rotate($rotate);
+    -o-transform: translate($translateX, $translateY) scale($scaleX, $scaleY) rotate($rotate);
+    transform: translate($translateX, $translateY) scale($scaleX, $scaleY) rotate($rotate);
+}
+
+// delay mixin
 @mixin delay($seconds) {
     -webkit-transition-delay: $seconds;
     -moz-transition-delay: $seconds;
@@ -27,6 +33,7 @@
     transition-delay: $seconds;
 }
 
+// define the basic font for the whole document
 @mixin fontBasic {
     font-family: $gdgFontRegular;
     font-size: 15px;
@@ -38,5 +45,4 @@
 // basic class to entend all regions (header, nav, section, aside and footer)
 @mixin basic {
     position: absolute;
-    /*overflow: hidden;*/
 }

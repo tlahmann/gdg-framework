@@ -1,4 +1,8 @@
-﻿@import "../modules/colors";
+﻿// SASS document
+// Basic
+// -------------------------------------------------
+
+@import "../modules/colors";
 @import "../modules/mixins";
 @import "../modules/variables";
 
@@ -19,11 +23,7 @@ body {
 // intro to the documentation
 #intro {
     opacity: 1;
-    -webkit-transition: opacity .5s ease-in-out;
-    -moz-transition: opacity .5s ease-in-out;
-    -o-transition: opacity .5s ease-in-out;
-    transition: opacity .5s ease-in-out;
-    //-
+    @include transition(opacity, .5s, ease-in-out);
     position: absolute;
     z-index: 200;
     left: 0;
@@ -35,10 +35,7 @@ body {
 // the actual documentation
 #doku {
     opacity: 1;
-    -webkit-transition: opacity .5s ease-in-out;
-    -moz-transition: opacity .5s ease-in-out;
-    -o-transition: opacity .5s ease-in-out;
-    transition: opacity .5s ease-in-out;
+    @include transition(opacity, .5s, ease-in-out);
     font-size: 12px;
 }
 
@@ -47,16 +44,13 @@ body {
 // the width and height calculated according to the desired aspect ratio
 .frame {
     position: relative;
-    //-
     width: $desDimensions * 1px;
     max-width: $desDimensions * 1px;
     min-width: $desDimensions * 1px;
     height: calculateHeight($aspRatio, $desDimensions);
     max-height: calculateHeight($aspRatio, $desDimensions);
     min-height: calculateHeight($aspRatio, $desDimensions);
-    //-
     margin: 0 auto;
-    //-
     background-color: #fff;
     color: $darkColor;
     border: 1px solid $darkColor;
@@ -69,23 +63,11 @@ body {
 .pane {
     position: absolute;
     overflow: hidden;
-    //-
     top: 10px;
     right: 10px;
     bottom: 10px;
     left: 30px;
 }
-
-// nested area in all regions to ensure proper paddings
-/*.glass {
-    position: absolute;
-    overflow: hidden;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 0 10px;
-}*/
 
 // button display (arrow keys)
 input[type="button"] {
@@ -99,11 +81,7 @@ input[type="button"] {
     color: $darkColor;
     float: left;
     padding: 3px 6px;
-    -webkit-transform: scale(0.5, 1.0);
-    -moz-transform: scale(0.5, 1.0);
-    -ms-transform: scale(0.5, 1.0);
-    -o-transform: scale(0.5, 1.0);
-    transform: scale(0.5, 1.0);
+    @include transform(0, 0, 0.5, 1.0, 0);
 }
 
 .before {
@@ -128,11 +106,6 @@ input[type="button"] {
     &:before {
         display: inline-block;
         content: " \25b6 \00a0 ";
-        // -
-        -webkit-transform: scale(0.6, 1.0);
-        -moz-transform: scale(0.6, 1.0);
-        -ms-transform: scale(0.6, 1.0);
-        -o-transform: scale(0.6, 1.0);
-        transform: scale(0.6, 1.0);
+         @include transform(0, 0, 0.6, 1.0, 0);
     }
 }

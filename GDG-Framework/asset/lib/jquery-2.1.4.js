@@ -272,9 +272,9 @@ jQuery.extend({
 
 	isPlainObject: function( obj ) {
 		// Not plain objects:
-		// - Any object or value whose internal [[Class]] property is not "[object Object]"
-		// - DOM nodes
-		// - window
+		 Any object or value whose internal [[Class]] property is not "[object Object]"
+		 DOM nodes
+		 window
 		if ( jQuery.type( obj ) !== "object" || obj.nodeType || jQuery.isWindow( obj ) ) {
 			return false;
 		}
