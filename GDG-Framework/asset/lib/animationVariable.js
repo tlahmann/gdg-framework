@@ -26,8 +26,6 @@ WICHTIG! Sollten später noch mehr Permutationen und noch mehr Animationen
 hinzukommen oder entfernt werden müssen die Werte angepasst werden!
 */
 
-import flash.events.MouseEvent;
-
 // ======== !!!!! ALLE PERMUTATIONEN MUESSEN DIMENSION 8 X 8 HABEN !!!!! ========
 // Tipp: Es sollte auf Kombinationen von 8 und 1 in der ersten Spalte und 
 // ersten Zeile verzichtet werden. (Kollidiert mit 7 Frames!)
@@ -36,457 +34,248 @@ import flash.events.MouseEvent;
 // Tipp: Es sollte auf Kombinationen von 8 und 1, 7 und 2 und 6 und 3 in der 
 // ersten Spalte und ersten Zeile verzichtet werden. (Kollidiert mit 5 Frames!)
 
-// Permutationsmatrix
-var perm1:Array = [
-[ 3, 2, 1, 8, 7, 6, 5, 8 ],
-[ 4, 5, 4, 3, 2, 1, 4, 7 ],
-[ 5, 6, 7, 6, 5, 8, 3, 6 ], 
-[ 6, 7, 8, 1, 4, 7, 2, 5 ], 
-[ 7, 8, 1, 2, 3, 6, 1, 4 ], 
-[ 8, 1, 2, 3, 4, 5, 8, 3 ],
-[ 1, 2, 3, 4, 5, 6, 7, 2 ],
-[ 2, 3, 4, 5, 6, 7, 8, 1 ] ];
+// Permutationen
+var permutationen =
+[{
+    "type": "cycle",
+    "perm": [
+        [5, 1],
+        [1, 5]
+    ]
+},
+{
+    "type": "blank",
+    "perm": [
+        [7],
+        [6],
+        [5],
+        [4],
+        [3],
+        [2],
+        [1]
+    ]
+},
+{
+    "type": "next",
+    "perm": [
+        [1]
+    ]
+}];
 
-// eine weitere Permutationsmatrix
-var perm2:Array = [
-[ 8, 7, 6, 5, 4, 3, 2, 1 ],
-[ 7, 8, 7, 6, 5, 4, 3, 2 ], 
-[ 6, 7, 8, 7, 6, 5, 4, 3 ],
-[ 5, 6, 7, 8, 7, 6, 5, 4 ],
-[ 4, 5, 6, 7, 8, 7, 6, 5 ], 
-[ 3, 4, 5, 6, 7, 8, 7, 6 ],
-[ 2, 3, 4, 5, 6, 7, 8, 7 ],
-[ 1, 2, 3, 4, 5, 6, 7, 8 ] ];
+var objekte =
+[{
+    "numberOfObjects": "7",
+    "desiredSize": "2",
+    "elements": [
+        { "name": "group1" },
+        { "name": "group1_2" },
+        { "name": "5" }
+    ]
+},
+{
+    "numberOfObjects": "7",
+    "desiredSize": "2",
+    "elements": [
+        { "name": "group2" }
+    ]
+},
+{
+    "numberOfObjects": "3",
+    "desiredSize": "6",
+    "elements": [
+        { "name": "2" },
+        { "name": "group3" }
+    ]
+}];
 
-// eine weitere Permutationsmatrix
-var perm3:Array = [
-[ 1, 2, 1, 2, 1, 2, 1, 2 ],
-[ 2, 3, 2, 3, 2, 3, 2, 3 ],
-[ 3, 4, 3, 4, 3, 4, 3, 4 ], 
-[ 4, 5, 4, 5, 4, 5, 4, 5 ], 
-[ 5, 6, 5, 6, 5, 6, 5, 6 ], 
-[ 6, 7, 6, 7, 6, 7, 6, 7 ],
-[ 7, 8, 7, 8, 7, 8, 7, 8 ],
-[ 8, 1, 8, 1, 8, 1, 8, 1 ] ];
+var currentPerm = 0; // Speichert die aktuelle Permutation
+var currentObject = 0; // Speichert das akutelle Objekt
 
-// eine weitere Permutationsmatrix
-var perm4:Array = [
-[ 8, 7, 6, 5, 4, 3, 2, 1 ],
-[ 7, 7, 6, 5, 4, 3, 2, 1 ],
-[ 6, 6, 6, 5, 4, 3, 2, 1 ], 
-[ 5, 5, 5, 5, 4, 3, 2, 1 ], 
-[ 4, 4, 4, 4, 4, 3, 2, 1 ], 
-[ 3, 3, 3, 3, 3, 3, 2, 1 ],
-[ 2, 2, 2, 2, 2, 2, 2, 1 ],
-[ 1, 1, 1, 1, 1, 1, 1, 1 ] ];
+var running = Boolean(true); // spielt ab
+var typeSwitch = Boolean(false); // Reinzeichnung <=> Skizze
+var animationrate = 100; // ms
 
-// eine weitere Permutationsmatrix
-var perm5:Array = [
-[ 1, 2, 3, 4, 5, 6, 7, 8 ],
-[ 1, 2, 3, 4, 5, 6, 7, 8 ],
-[ 1, 2, 3, 4, 5, 6, 7, 8 ], 
-[ 1, 2, 3, 4, 5, 6, 7, 8 ], 
-[ 1, 2, 3, 4, 5, 6, 7, 8 ], 
-[ 1, 2, 3, 4, 5, 6, 7, 8 ],
-[ 1, 2, 3, 4, 5, 6, 7, 8 ],
-[ 1, 2, 3, 4, 5, 6, 7, 8 ] ];
+var ANIMATIONPOSITIONX = 200; // x Koordinate des Animationsbereichs
+var ANIMATIONPOSITIONY = 50; // y Koordinate des Animationsbereichs
+var ANIMATIONSIZE = 350; // Größe (Höhe, Breite) des Animationsbereichs
 
-// und noch eine Permutationsmatrix
-var perm6:Array = [
-[1, 2, 3, 4, 4, 3, 2, 1 ],
-[1, 2, 3, 4, 4, 3, 2, 1 ],
-[8, 1, 2, 3, 3, 2, 1, 8 ],
-[8, 1, 2, 3, 3, 2, 1, 8 ],
-[7, 8, 1, 2, 2, 1, 8, 7 ],
-[7, 8, 1, 2, 2, 1, 8, 7 ],
-[6, 7, 8, 1, 1, 8, 7, 6 ],
-[6, 7, 8, 1, 1, 8, 7, 6 ] ];
+var animat = [];
 
-// die letzte Permutationsmatrix
-var perm7:Array = [
-[7, 6, 5, 4, 4, 5, 6, 7 ],
-[6, 5, 4, 3, 3, 4, 5, 6 ],
-[5, 4, 3, 2, 2, 3, 4, 5 ],
-[4, 3, 2, 1, 1, 2, 3, 4 ],
-[4, 3, 2, 1, 1, 2, 3, 4 ],
-[5, 4, 3, 2, 2, 3, 4, 5 ],
-[6, 5, 4, 3, 3, 4, 5, 6 ],
-[7, 6, 5, 4, 4, 5, 6, 7 ] ];
+var context = document.getElementById('canvas').getContext('2d');
 
-// speichern der aktuellen symbole
-var currAnim:Array = new Array(perm1.length); // speichert die aktuelle animation
-var Animat:Class; 
+//funktion: entsprechende Animationsobjekte initialisieren
+function initialize() {
+    // Bei der Umschaltung von Objekten oder der umschaltung von permutationen wird die initialize()-Methode aufgerufen. In diesem Fall wird der running-Boolean ebenfalls umgeschaltet um die Funktion des Play/Pause-Buttons wieder zu berichtigen.
+    //if (!running) {
+    //    running = !running;
+    //}
 
-var currPermNumber:int = 1;
-var currPerm:Array = perm1; // Speichert die aktuelle Permutation
-
-var currObjectNumber:int = 1; // Speichert das akutelle Objekt
-var frameCount:int; // Speichert die aktuelle anzahl der frames pro Animation
-
-var buttonCount:int = 9;//Anzahl der Buttons (wichtig für die removeAnimations() funktion)
-var objectCount:int;//Anzahl der Objekte
-var running:Boolean = Boolean(true);// spielt ab
-var animationPositioX:int = 145;// x Koordinate des Animationsbereichs
-var animationPositioY:int = 20;// y Koordinate des Animationsbereichs
-
-var typeSwitch:Boolean = false; // Reinzeichnung <=> Skizze
-
-var btnWidth:int = 40; // Buttonbreite
-var btnHeight:int = 40; // Buttonhöhe
-
-this.stage.frameRate = 12;
-
-// play-button
-var playPauseBtn:playPauseButton = new playPauseButton();
-playPauseBtn.x = 340;
-playPauseBtn.y = 480;
-playPauseBtn.width = btnWidth;
-playPauseBtn.height = btnHeight;
-playPauseBtn.addEventListener(MouseEvent.CLICK, playPauseAnimation);
-addChild(playPauseBtn);
-
-// framerate-button ++
-var changeFrameRateBtn:changeSpeedButton = new changeSpeedButton();
-changeFrameRateBtn.x = 385;
-changeFrameRateBtn.y = 480;
-changeFrameRateBtn.width = btnWidth;
-changeFrameRateBtn.height = btnHeight;
-changeFrameRateBtn.addEventListener(MouseEvent.CLICK, higherFrameRate);
-addChild(changeFrameRateBtn);
-
-// framerate-button --
-var changeFrameRateBtnAlt:changeSpeedButtonAlt = new changeSpeedButtonAlt();
-changeFrameRateBtnAlt.x = 295;
-changeFrameRateBtnAlt.y = 480;
-changeFrameRateBtnAlt.width = btnWidth;
-changeFrameRateBtnAlt.height = btnHeight;
-changeFrameRateBtnAlt.addEventListener(MouseEvent.CLICK, lowerFrameRate);
-addChild(changeFrameRateBtnAlt);
-
-// permutation ++
-var changePermutationBtn:changeAnimationButton = new changeAnimationButton();
-changePermutationBtn.x = 430;
-changePermutationBtn.y = 480;
-changePermutationBtn.width = btnWidth;
-changePermutationBtn.height = btnHeight;
-changePermutationBtn.addEventListener(MouseEvent.CLICK, changePermutationFwrd);
-addChild(changePermutationBtn);
-
-// permutation --
-var changePermutationBtnAlt:changeAnimationButtonAlt = new changeAnimationButtonAlt();
-changePermutationBtnAlt.x = 250;
-changePermutationBtnAlt.y = 480;
-changePermutationBtnAlt.width = btnWidth;
-changePermutationBtnAlt.height = btnHeight;
-changePermutationBtnAlt.addEventListener(MouseEvent.CLICK, changePermutationBack);
-addChild(changePermutationBtnAlt);
-
-// object ++
-var changeObjectBtn:changeObjectButton = new changeObjectButton();
-changeObjectBtn.x = 475;
-changeObjectBtn.y = 480;
-changeObjectBtn.width = btnWidth;
-changeObjectBtn.height = btnHeight;
-changeObjectBtn.addEventListener(MouseEvent.CLICK, changeObjectFwrd);
-addChild(changeObjectBtn);
-
-// object --
-var changeObjectBtnAlt:changeObjectButtonAlt = new changeObjectButtonAlt();
-changeObjectBtnAlt.x = 205;
-changeObjectBtnAlt.y = 480;
-changeObjectBtnAlt.width = btnWidth;
-changeObjectBtnAlt.height = btnHeight;
-changeObjectBtnAlt.addEventListener(MouseEvent.CLICK, changeObjectBack);
-addChild(changeObjectBtnAlt);
-
-// object type change
-var changeType:changeTypeButtonAlt = new changeTypeButtonAlt();
-changeType.x = 30;
-changeType.y = 500;
-changeType.width = 20;
-changeType.height = 10;
-changeType.addEventListener(MouseEvent.CLICK, changeTypeOfObj);
-addChild(changeType);
-
-// object type change
-var changeTypeAlt:changeTypeButton = new changeTypeButton();
-changeTypeAlt.x = -300;
-changeTypeAlt.y = 500;
-changeTypeAlt.width = 20;
-changeTypeAlt.height = 10;
-changeTypeAlt.addEventListener(MouseEvent.CLICK, changeTypeOfObj);
-addChild(changeTypeAlt);
+    animat = [];
+    for (i = 0; i < objekte[currentObject].numberOfObjects; i++) {
+        var img = new Image();
+        img.src = "inhalte/anim/"
+            + objekte[currentObject].elements[typeSwitch ? 1 : 0].name
+            + "/" + (i + 1) + ".png";
+        animat[i] = img;
+    }
+    console.log(animat);
+    draw();
+}
 
 // initialisierung
 initialize();
 
-//alle children bis auf die buttons entfernen
-function removeAnimations():void
-{
-    var x:int = this.numChildren;
-    for (var y:int = x-1; y > buttonCount-1; y--)
-    {
-		this.removeChildAt(y);
-    }
-}
+var fps = 2;
+var now;
+var then = Date.now();
+var interval = 1000 / fps;
+var delta;
 
 //funktion: entsprechende Animationsobjekte initialisieren und auf die stage bringen
-function initialize():void
-{
-    removeAnimations();
-	
-    // Bei der Umschaltung von Objekten oder der umschaltung von permutationen wird die initialize()-Methode
-    // aufgerufen. In diesem Fall wird der running-Boolean ebenfalls umgeschaltet um die Funktion des
-    // Play/Pause-Buttons wieder zu berichtigen.
-    if (! running)
-    {
-        running = ! running;
-    }	
+function draw() {
+    if (running) {
+        requestAnimationFrame(draw);
 
-    // typeSwitch entscheidet, ob die animation gerade auf reinzeichnungen oder auf Skizzen läuft
-    // Dementsprechend wird die korrekte Animation gesucht.
-    //
-    // Kann entfernt werden, falls kein typeSwitch gewünscht ist
-    Animat = getDefinitionByName("Animation"+(currObjectNumber)) as Class;
-    if(typeSwitch){
-        Animat = getDefinitionByName("Animation"+(currObjectNumber)+"_2") as Class;
-    }
+        now = Date.now();
+        delta = now - then;
 
-    frameCount = new Animat().totalFrames;
-    // Skaliert die einzelnen currAnim um bei unterschiedlicher Frame-Anzahl immer die gleiche 
-    // Größe des Animationsbereichs beizubehalten
-    var scale:int = 50;
-    if (frameCount == 5){
-        scale = 84;
-    } else if (frameCount == 6){
-        scale = 70;
-    } else if (frameCount == 7){
-        scale = 60;
-    } else if (frameCount == 8){
-        scale = 52,5;
-    }
+        if (delta > interval) {
+            then = now - (delta % interval);
 
-    // Zeichnet die aktuelle permutation mit dem aktuellen Objekt
-    for (var zeile:int = 0; zeile < frameCount; zeile++){
-		var currZeilenArray:Array = new Array(frameCount);
-		for (var spalte:int = 0; spalte < frameCount; spalte++){
-        // Anpassungen falls weniger frames als permutationseinträge vorhanden sind.
-        // Bsp.: Animation mit 6 Frames: 	8 => 1
-        //									7 => 2
-			if (currPerm[zeile][spalte] > frameCount){
-				currPerm[zeile][spalte] %= frameCount;
+            // clear canvas
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Skaliert die einzelnen currAnim um bei unterschiedlicher Frame-Anzahl immer die gleiche Größe des Animationsbereichs beizubehalten
+            var scale = ANIMATIONSIZE / objekte[currentObject].desiredSize;
+
+            var boobs = objekte[currentObject].numberOfObjects;
+            var cock = objekte[currentObject].desiredSize;
+            var matriceHeight = permutationen[currentPerm].perm.length;
+            var matriceWidth = permutationen[currentPerm].perm[0].length;
+
+
+            for (i = 0; i < cock; i++) {
+                for (j = 0; j < cock; j++) {
+                    var d = null;
+                    switch (permutationen[currentPerm].type) {
+                        case "cycle":
+                            permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth] += 1;
+                            permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth] %= boobs;
+                            d = permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth];
+                            break;
+                        case "blank":
+                            permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth] += 1;
+                            permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth] %= boobs;
+                            d = permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth];
+                            break;
+                        case "next":
+                            permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth] += 1;
+                            permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth] %= boobs;
+                            d = permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth];
+                            break;
+                        default: break;
+                    }
+                    console.log(animat[d]);
+                    context.drawImage(animat[d],
+                                            (i * scale) + ANIMATIONPOSITIONX,
+                                            (j * scale) + ANIMATIONPOSITIONY,
+                                            scale,
+                                            scale);
+                }
+            }
+        }
     }
-			
-var a = new Animat();
-a.x = (spalte * scale) + animationPositioX;	// Anpassung der Position abhängig von FrameCount
-a.width = scale + 1;						// Anpassung der Breite um 5, 6, 7, 8 Frames immer mit 
-// gleicher Breite anzuzeigen (Animationsbereich)
-a.y = (zeile * scale) + animationPositioY; 	// Anpassung der Position abhängig von FrameCount
-a.height = scale + 1;						// Anpassung der Höhe um 5, 6, 7, 8 Frames immer mit 
-// gleicher Höhe anzuzeigen (Animationsbereich)
-addChild(a);
-a.gotoAndPlay(currPerm[zeile][spalte]);
-currZeilenArray[spalte] = a;
-}
-currAnim[zeile] = currZeilenArray;
-}
 }
 
 // funktion: fallauswahl: wenn der Player nicht abspielt wird die Animation gestartet, ansonsten pausiert;
-function playPauseAnimation(e:MouseEvent):void
-{
-    if (! running)
-	{
-		playAnimation();
-}
-else
-{
-		pauseAnimation();
-}
+function playPauseAnimation() {
+    if (!running) {
+        playAnimation();
+    } else {
+        pauseAnimation();
+    }
 }
 
-// funktion: pausieren/stoppen der currAnim
-function pauseAnimation():void
-{
-    for (var zeile:int = 0; zeile < frameCount; zeile++)
-    {
-        for (var spalte:int = 0; spalte < frameCount; spalte++)
-        {
-			currAnim[zeile][spalte].stop();
-        }
-}
-running = ! running;
+// funktion: pausieren/stoppen der currentAnimation
+function pauseAnimation() {
+    running = false;
+    draw();
 }
 
-// funktion: (wieder-)abspielen der currAnim;
-function playAnimation():void
-{
-    for (var zeile:int = 0; zeile < frameCount; zeile++)
-    {
-        for (var spalte:int = 0; spalte < frameCount; spalte++)
-        {
-			currAnim[zeile][spalte].play();
-        }
-}
-running = ! running;
+// funktion: (wieder-)abspielen der currentAnimation;
+function playAnimation() {
+    running = true;
+    draw();
 }
 
-// funktion: framerate erhoehen;
-function higherFrameRate(e:MouseEvent):void
-{
-    // Framerate limitiert auf 40 fps maximal
-    if (stage.frameRate < 40)
-	{
-		this.stage.frameRate +=  2;
-}
+// funktion: geschwindigkeit erhoehen;
+function faster() {
+    if (fps < 30) {
+        fps += 2;
+        interval = 1000 / fps;
+    }
 }
 
-// funktion: framerate verringern
-function lowerFrameRate(e:MouseEvent):void
-{
-    // Framerate limitiert auf 5 fps minimal
-    if (stage.frameRate >= 5)
-	{
-		this.stage.frameRate -=  2;
-}
+// funktion: geschwindigkeit verringern
+function slower() {
+    if (fps >= 5) {
+        fps -= 2;
+        interval = 1000 / fps;
+    }
 }
 
-// funktion: permutationen umschalten
-function changePermutationFwrd(e:MouseEvent):void
-{
-    switch (currPermNumber)
-	{
-		case 1 :
-    currPerm = perm2;
-    currPermNumber = 2;
-    break;
-		case 2 :
-			currPerm = perm3;
-			currPermNumber = 3;
-			break;
-		case 3 :
-			currPerm = perm4;
-			currPermNumber = 4;
-			break;
-		case 4 :
-			currPerm = perm5;
-			currPermNumber = 5;
-			break;
-		case 5 :
-			currPerm = perm6;
-			currPermNumber = 6;
-			break;
-		case 6 :
-			currPerm = perm7;
-			currPermNumber = 7;
-			break;
-		default :
-			currPerm = perm1;
-			currPermNumber = 1;
+function changePermutation() {
+    currentPerm += 1;
+    currentPerm %= permutationen.length;
+    initialize();
 }
 
-	initialize();
+// funktion: permutationen weiter schalten
+//function changePermutationFwrd() {
+//    currentPerm += 1;
+//    currentPerm %= permutationen.length;
+//    initialize();
+//}
+
+// funktion: permutationen zurück schalten
+//function changePermutationBack() {
+//    currentPerm -= 1;
+//    currentPerm %= permutationen.length;
+//    initialize();
+//}
+
+function changeObject() {
+    currentObject += 1;
+    currentObject %= objekte.length;
+    initialize();
 }
 
-// funktion: permutationen umschalten;
-function changePermutationBack(e:MouseEvent):void
-{
-    switch (currPermNumber)
-	{
-		case 1 :
-    currPerm = perm7;
-    currPermNumber = 7;
-    break;
-		case 2 :
-			currPerm = perm1;
-			currPermNumber = 1;
-			break;
-		case 3 :
-			currPerm = perm2;
-			currPermNumber = 2;
-			break;
-		case 4 :
-			currPerm = perm3;
-			currPermNumber = 3;
-			break;
-		case 5 :
-			currPerm = perm4;
-			currPermNumber = 4;
-			break;
-		case 6 :
-			currPerm = perm5;
-			currPermNumber = 5;
-			break;
-		default :
-			currPerm = perm6;
-			currPermNumber = 6;
-}
-	
-	initialize();
+// objekt ++
+//function changeObjectFwrd() {
+//    currentObject += 1;
+//    currentObject %= permutationen.length;
+//    initialize();
+//}
+
+// objekt --
+//function changeObjectBack() {
+//    currentObject -= 1;
+//    currentObject %= permutationen.length;
+//    initialize();
+//}
+
+function changeTypeOfObj() {
+    typeSwitch = !typeSwitch;
+    initialize();
 }
 
-//objekt ++;
-function changeObjectFwrd(e:MouseEvent):void
-{
-    switch (currObjectNumber)
-	{
-		case 1 :
-    currObjectNumber = 2;
-    break;
-		case 2 :
-			currObjectNumber = 3;
-			break;
-		case 3 :
-			currObjectNumber = 4;
-			break;
-		case 4 :
-			currObjectNumber = 5;
-			break;
-		default :
-			currObjectNumber = 1;
-}
-
-	initialize();
-}
-
-//objekt --
-function changeObjectBack(e:MouseEvent):void
-{
-    switch (currObjectNumber)
-	{
-		case 1 :
-    currObjectNumber = 5;
-    break;
-		case 2 :
-			currObjectNumber = 1;
-			break;
-		case 3 :
-			currObjectNumber = 2;
-			break;
-		case 4 :
-			currObjectNumber = 3;
-			break;
-		case 5 :
-			currObjectNumber = 4;
-			break;
-		default :
-			currObjectNumber = 5;
-}
-
-	initialize();
-}
-
-function changeTypeOfObj(e:MouseEvent):void
-{
-    if (!typeSwitch){
-		changeType.x = -300;
-    changeTypeAlt.x = 30;
-} else {
-		changeType.x = 30;
-changeTypeAlt.x = -300;
-}
-typeSwitch = ! typeSwitch;
-initialize();
-}
-
-initialize();
+function countFolders() {
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    }
+    else {// code for IE6, IE5
+        xmlhttp = new ActiveXObject("Scripting.FileSystemObject");
+    }
+    var myFolder = xmlhttp.GetFolder("./inhalte/anim/");
+    var myFolderCollection = myFolder.SubFolders;
+};

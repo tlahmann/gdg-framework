@@ -92,13 +92,13 @@ function pauseAnimation() {
     draw();
 }
 
-// funktion: (wieder-)abspielen der currentAnimation;
+// funktion: (wieder-)abspielen der currentAnimation
 function playAnimation() {
     running = true;
     draw();
 }
 
-// funktion: geschwindigkeit erhoehen;
+// funktion: geschwindigkeit erhoehen
 function faster() {
     if (fps < 30) {
         fps += 2;
@@ -121,7 +121,6 @@ function changePermutation() {
 }
 
 function changeObject() {
-    console.log("changeObject");
     currentObject += 1;
     currentObject %= permutationen.length;
     initialize();
