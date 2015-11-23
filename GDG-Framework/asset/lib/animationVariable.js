@@ -215,7 +215,11 @@ function changePermutationFwrd() {
 // funktion: permutationen zurück schalten
 function changePermutationBack() {
     currentPerm -= 1;
-    currentPerm %= permutationen.length;
+    if (currentPerm < 0) {
+        currentPerm = permutationen.length - 1;
+    } else {
+        currentPerm %= permutationen.length;
+    }
     initialize();
 }
 
@@ -236,7 +240,11 @@ function changeObjectFwrd() {
 // objekt --
 function changeObjectBack() {
     currentObject -= 1;
-    currentObject %= objekte.length;
+    if (currentObject < 0) {
+        currentObject = objekte.length - 1;
+    } else {
+        currentObject %= objekte.length;
+    }
     typeSwitch = 0;
     initialize();
 }
