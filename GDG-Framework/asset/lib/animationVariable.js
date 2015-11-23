@@ -36,36 +36,25 @@ hinzukommen oder entfernt werden müssen die Werte angepasst werden!
 
 // Permutationen
 var permutationen =
-[{
-    "type": "cycle",
-    "perm": [
-        [5, 1],
-        [1, 5]
-    ]
-},
-{
-    "type": "blank",
-    "perm": [
-        [7],
-        [6],
-        [5],
-        [4],
-        [3],
-        [2],
-        [1]
-    ]
-},
-{
-    "type": "next",
-    "perm": [
-        [1]
-    ]
-}];
+[[
+    [5, 4],
+    [4, 5]
+], [
+    [7],
+    [6],
+    [5],
+    [4],
+    [3],
+    [2],
+    [1]
+], [
+    [1]
+]];
 
 var objekte =
 [{
     "numberOfObjects": "7",
-    "desiredSize": "2",
+    "desiredSize": "10",
     "elements": [
         { "name": "group1" },
         { "name": "group1_2" },
@@ -74,14 +63,14 @@ var objekte =
 },
 {
     "numberOfObjects": "7",
-    "desiredSize": "2",
+    "desiredSize": "10",
     "elements": [
         { "name": "group2" }
     ]
 },
 {
     "numberOfObjects": "3",
-    "desiredSize": "6",
+    "desiredSize": "10",
     "elements": [
         { "name": "2" },
         { "name": "group3" }
@@ -92,7 +81,7 @@ var currentPerm = 0; // Speichert die aktuelle Permutation
 var currentObject = 0; // Speichert das akutelle Objekt
 
 var running = Boolean(true); // spielt ab
-var typeSwitch = Boolean(false); // Reinzeichnung <=> Skizze
+var typeSwitch = 0; // Umschaltung zwischen typen
 var animationrate = 100; // ms
 
 var ANIMATIONPOSITIONX = 200; // x Koordinate des Animationsbereichs
@@ -106,26 +95,25 @@ var context = document.getElementById('canvas').getContext('2d');
 //funktion: entsprechende Animationsobjekte initialisieren
 function initialize() {
     // Bei der Umschaltung von Objekten oder der umschaltung von permutationen wird die initialize()-Methode aufgerufen. In diesem Fall wird der running-Boolean ebenfalls umgeschaltet um die Funktion des Play/Pause-Buttons wieder zu berichtigen.
-    //if (!running) {
-    //    running = !running;
-    //}
+    if (!running) {
+        running = !running;
+    }
 
     animat = [];
     for (i = 0; i < objekte[currentObject].numberOfObjects; i++) {
         var img = new Image();
         img.src = "inhalte/anim/"
-            + objekte[currentObject].elements[typeSwitch ? 1 : 0].name
+            + objekte[currentObject].elements[typeSwitch].name
             + "/" + (i + 1) + ".png";
         animat[i] = img;
     }
-    console.log(animat);
     draw();
 }
 
 // initialisierung
 initialize();
 
-var fps = 2;
+var fps = 12;
 var now;
 var then = Date.now();
 var interval = 1000 / fps;
@@ -150,32 +138,19 @@ function draw() {
 
             var boobs = objekte[currentObject].numberOfObjects;
             var cock = objekte[currentObject].desiredSize;
-            var matriceHeight = permutationen[currentPerm].perm.length;
-            var matriceWidth = permutationen[currentPerm].perm[0].length;
+            var matriceHeight = permutationen[currentPerm].length;
+            var matriceWidth = permutationen[currentPerm][0].length;
 
+            for (i = 0; i < matriceHeight; i++) {
+                for (j = 0; j < matriceWidth; j++) {
+                    permutationen[currentPerm][i][j] += 1;
+                }
+            }
 
             for (i = 0; i < cock; i++) {
                 for (j = 0; j < cock; j++) {
                     var d = null;
-                    switch (permutationen[currentPerm].type) {
-                        case "cycle":
-                            permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth] += 1;
-                            permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth] %= boobs;
-                            d = permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth];
-                            break;
-                        case "blank":
-                            permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth] += 1;
-                            permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth] %= boobs;
-                            d = permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth];
-                            break;
-                        case "next":
-                            permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth] += 1;
-                            permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth] %= boobs;
-                            d = permutationen[currentPerm].perm[i % matriceHeight][j % matriceWidth];
-                            break;
-                        default: break;
-                    }
-                    console.log(animat[d]);
+                    d = permutationen[currentPerm][i % matriceHeight][j % matriceWidth] % boobs;
                     context.drawImage(animat[d],
                                             (i * scale) + ANIMATIONPOSITIONX,
                                             (j * scale) + ANIMATIONPOSITIONY,
@@ -224,48 +199,51 @@ function slower() {
     }
 }
 
-function changePermutation() {
-    currentPerm += 1;
-    currentPerm %= permutationen.length;
-    initialize();
-}
-
-// funktion: permutationen weiter schalten
-//function changePermutationFwrd() {
+//function changePermutation() {
 //    currentPerm += 1;
 //    currentPerm %= permutationen.length;
 //    initialize();
 //}
 
-// funktion: permutationen zurück schalten
-//function changePermutationBack() {
-//    currentPerm -= 1;
-//    currentPerm %= permutationen.length;
-//    initialize();
-//}
-
-function changeObject() {
-    currentObject += 1;
-    currentObject %= objekte.length;
+// funktion: permutationen weiter schalten
+function changePermutationFwrd() {
+    currentPerm += 1;
+    currentPerm %= permutationen.length;
     initialize();
 }
 
-// objekt ++
-//function changeObjectFwrd() {
+// funktion: permutationen zurück schalten
+function changePermutationBack() {
+    currentPerm -= 1;
+    currentPerm %= permutationen.length;
+    initialize();
+}
+
+//function changeObject() {
 //    currentObject += 1;
-//    currentObject %= permutationen.length;
+//    currentObject %= objekte.length;
 //    initialize();
 //}
+
+// objekt ++
+function changeObjectFwrd() {
+    currentObject += 1;
+    currentObject %= objekte.length;
+    typeSwitch = 0;
+    initialize();
+}
 
 // objekt --
-//function changeObjectBack() {
-//    currentObject -= 1;
-//    currentObject %= permutationen.length;
-//    initialize();
-//}
+function changeObjectBack() {
+    currentObject -= 1;
+    currentObject %= objekte.length;
+    typeSwitch = 0;
+    initialize();
+}
 
 function changeTypeOfObj() {
-    typeSwitch = !typeSwitch;
+    typeSwitch += 1;
+    typeSwitch %= objekte[currentObject].elements.length;
     initialize();
 }
 

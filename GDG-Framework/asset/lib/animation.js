@@ -74,7 +74,7 @@ function draw() {
 
             for (i = 0; i < 7; i++) {
                 for (j = 0; j < 7; j++) {
-                    var foo = ((permutationen[currentPerm][i][j] += 1) % 7);
+                    var foo = ((permutationen[currentPerm][i][j] += 1) %= 7);
                     context.drawImage(animat[foo],
                                     (i * animat[foo].width) + animationPositioX,
                                     (j * animat[foo].height) + animationPositioY,
