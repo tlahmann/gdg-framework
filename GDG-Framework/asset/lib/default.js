@@ -18,13 +18,9 @@ var lock = true;
 var xml;
 
 function start() {
-    //document.getElementById("studentName").innerText = json["@attributes"].name;
-    //document.getElementById("studentName").innerHTML = json["@attributes"].name;
-    //document.getElementById("studentName").innerText = document.getElementById("data").getAttribute("name");
-    //document.getElementById("studentName").innerText = document.getElementById("data").getAttribute("name");
-    document.getElementById("intro").style.opacity = 0;
-    document.getElementById("intro").style.zIndex = 0;
-    document.getElementById("doku").style.opacity = 1;
+    $('#intro').css("opacity", 0);
+    $('#intro').css("zIndex", 0);
+    $('#doku').css("opacity", 1);
     lock = false;
 };
 
@@ -102,21 +98,28 @@ $(document).keydown(function (e) {
 });
 
 // listener to input numbers directly into the pane
-document.getElementById("imgNum").onfocus = function () {
+$('#imgNum').on('focus', function () {
     plainNumber();
     lock = true;
-};
-
-document.getElementById("imgNum").onblur = function () {
+}).on('blur', function () {
     updateCounter();
     lock = false;
-};
-
-document.getElementById("imgNum").onkeyup = function () {
+}).on('keyup', function () {
     pictureInput();
     displayPicture();
     displayDescription();
-};
+});
+
+$('#navigation').on('mouseenter', function () {
+    clearTimeout($.data(this, 'timer'));
+    $('#navigation').stop(true, true);
+}).on('mouseleave', function () {
+    $.data(this, 'timer', setTimeout(function () {
+        $('#navigation').stop(true, true).css("left", "-284px");
+        $("#navTriggerText").toggleClass('triggered');
+        $("input[name = 'navTrigger']").prop("checked", false);
+    }, 1000));
+});
 
 function redraw() {
     displayPicture();
@@ -126,159 +129,105 @@ function redraw() {
 
 // function to change the picture being shown
 function displayPicture() {
-    if (json.DOKU.ABSCHNITT[section].INHALT.length > 1) {
-        if (json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['typ'] == "bild") {
-            // display picture
-            document.getElementById("contentImg").style.display = "block";
-            // set the image
-            document.getElementById("contentImg").src = json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['quelle'];
-
-            // hide other sections
-            document.getElementById("contentAnim").style.display = "none";
-            document.getElementById("canvas").style.display = "none";
-            document.getElementById("flashCanvas").style.display = "none";
-
-        }
-        else if (json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['typ'] == "animation") {
-            // display the animation
-            document.getElementById("contentAnim").style.display = "block";
-            document.getElementById("canvas").style.display = "block";
-
-            // hide other sections
-            document.getElementById("contentImg").style.display = "none";
-            document.getElementById("flashCanvas").style.display = "none";
-
-        }
-        else if (json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['typ'] == "flash") {
-            // display the flash element (<embed>)
-
-            var source = json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['quelle'];
-            var game = document.getElementById("flashCanvas");
-            var clone = game.cloneNode(true);
-            clone.setAttribute('src', source);
-            game.parentNode.replaceChild(clone, game)
-            document.getElementById("flashCanvas").style.display = "block";
-
-            // hide other sections
-            document.getElementById("contentImg").style.display = "none";
-            document.getElementById("contentAnim").style.display = "none";
-            document.getElementById("canvas").style.display = "none";
-        }
-
-        // set the title to the title (very top of the pane) of the image
-        document.getElementById("title").innerHTML = json.DOKU.ABSCHNITT[section]['@attributes']['titel'];
-
-        // change border display
-        if (json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['rahmen'] == "ein") {
-            document.getElementById("borderListener").checked = true;
-            triggerBorder();
-        }
-        else {
-            document.getElementById("borderListener").checked = false;
-            triggerBorder();
-        }
-
+    var con = null;
+    if (json.DOKU.ABSCHNITT.length > 1) {
+        con = json.DOKU.ABSCHNITT[section];
     } else {
-        if (json.DOKU.ABSCHNITT[section].INHALT['@attributes']['typ'] == "bild") {
-            // display picture
-            document.getElementById("contentImg").style.display = "block";
-            // set the image
-            document.getElementById("contentImg").src = json.DOKU.ABSCHNITT[section].INHALT['@attributes']['quelle'];
+        con = json.DOKU.ABSCHNITT;
+    }
+    if (con.INHALT.length > 1) {
+        con = con.INHALT[content];
+    } else {
+        con = con.INHALT;
+    }
 
-            // hide other sections
-            document.getElementById("contentAnim").style.display = "none";
-            document.getElementById("canvas").style.display = "none";
-            document.getElementById("flashCanvas").style.display = "none";
+    if (con['@attributes']['typ'] == "bild") {
+        // display picture
+        $('#contentImg').css("display", "block");
+        // set the image
+        document.getElementById("contentImg").src = con['@attributes']['quelle'];
 
-        }
-        else if (json.DOKU.ABSCHNITT[section].INHALT['@attributes']['typ'] == "animation") {
-            // display the animation
-            document.getElementById("contentAnim").style.display = "block";
-            document.getElementById("canvas").style.display = "block";
+        // hide other sections
+        $('#contentAnim').css("display", "none");
+        $('#canvas').css("display", "none");
+        $('#flashCanvas').css("display", "none");
 
-            // hide other sections
-            document.getElementById("contentImg").style.display = "none";
-            document.getElementById("flashCanvas").style.display = "none";
+    }
+    else if (con['@attributes']['typ'] == "animation") {
+        // display the animation
+        $('#contentAnim').css("display", "block");
+        $('#canvas').css("display", "block");
 
-        }
-        else if (json.DOKU.ABSCHNITT[section].INHALT['@attributes']['typ'] == "flash") {
-            // display the flash element (<embed>)
+        // hide other sections
+        $('#contentImg').css("display", "none");
+        $('#flashCanvas').css("display", "none");
 
-            var source = json.DOKU.ABSCHNITT[section].INHALT['@attributes']['quelle'];
-            var game = document.getElementById("flashCanvas");
-            var clone = game.cloneNode(true);
-            clone.setAttribute('src', source);
-            game.parentNode.replaceChild(clone, game)
-            document.getElementById("flashCanvas").style.display = "block";
+    }
+    else if (con['@attributes']['typ'] == "flash") {
+        // display the flash element (<embed>)
 
-            // hide other sections
-            document.getElementById("contentImg").style.display = "none";
-            document.getElementById("contentAnim").style.display = "none";
-            document.getElementById("canvas").style.display = "none";
-        }
-        // set the title to the title (very top of the pane) of the image
-        document.getElementById("title").innerHTML = json.DOKU.ABSCHNITT[section]['@attributes']['titel'];
+        var source = con['@attributes']['quelle'];
+        var game = document.getElementById("flashCanvas");
+        var clone = game.cloneNode(true);
+        clone.setAttribute('src', source);
+        game.parentNode.replaceChild(clone, game)
+        $('#flashCanvas').css("display", "block");
 
-        // change border display
-        if (json.DOKU.ABSCHNITT[section].INHALT['@attributes']['rahmen'] == "ein") {
-            document.getElementById("borderListener").checked = true;
-            triggerBorder();
-        }
-        else {
-            document.getElementById("borderListener").checked = false;
-            triggerBorder();
-        }
+        // hide other sections
+        $('#contentImg').css("display", "none");
+        $('#contentAnim').css("display", "none");
+        $('#canvas').css("display", "none");
+    }
+
+    // set the title to the title (very top of the pane) of the image
+    document.getElementById("title").innerHTML = json.DOKU.ABSCHNITT[section]['@attributes']['titel'];
+
+    // change border display
+    if (con['@attributes']['rahmen'] == "ein") {
+        $("input[name = 'borderListener']").prop("checked", true);
+        triggerBorder();
+    }
+    else {
+        $("input[name = 'borderListener']").prop("checked", false);
+        triggerBorder();
     }
 };
 
 // function to change the description
 function displayDescription() {
-    if (json.DOKU.ABSCHNITT[section].INHALT.length > 1) {
-        // set the title of the image description (top of aside) to the title of the description
-        document.getElementById("descTitle").innerHTML = json.DOKU.ABSCHNITT[section].INHALT[content]['@attributes']['titel'];
-
-        // if the desription is more than one page long the navigation for the description is shown
-        if (json.DOKU.ABSCHNITT[section].INHALT[content].DETAILS.length > 1) {
-            // set the description of the image (main area of the aside) to the description of the details node
-            document.getElementById("descText").innerHTML = json.DOKU.ABSCHNITT[section].INHALT[content].DETAILS[description]['#text'];
-
-            //display the description counter
-            document.getElementById("descNav").style.display = 'block';
-
-            // update the description counter
-            descNum.innerHTML = description + 1 + " / " + json.DOKU.ABSCHNITT[section].INHALT[content].DETAILS.length;
-
-        }// if the description is just one page long the navigation for the description is hidden
-        else {
-            // set the description of the image (main area of the aside) to the description of the details node
-            document.getElementById("descText").innerHTML = json.DOKU.ABSCHNITT[section].INHALT[content].DETAILS['#text'];
-
-            //hide the description counter
-            document.getElementById("descNav").style.display = 'none';
-        }
+    var con = null;
+    if (json.DOKU.ABSCHNITT.length > 1) {
+        con = json.DOKU.ABSCHNITT[section];
     } else {
-        // set the title of the image description (top of aside) to the title of the description
-        document.getElementById("descTitle").innerHTML = json.DOKU.ABSCHNITT[section].INHALT['@attributes']['titel'];
+        con = json.DOKU.ABSCHNITT;
+    }
+    if (con.INHALT.length > 1) {
+        con = con.INHALT[content];
+    } else {
+        con = con.INHALT;
+    }
 
-        // if the desription is more than one page long the navigation for the description is shown
-        if (json.DOKU.ABSCHNITT[section].INHALT.DETAILS.length > 1) {
-            // set the description of the image (main area of the aside) to the description of the details node
-            document.getElementById("descText").innerHTML = json.DOKU.ABSCHNITT[section].INHALT.DETAILS[description]['#text'];
+    // set the title of the image description (top of aside) to the title of the description
+    document.getElementById("descTitle").innerHTML = con['@attributes']['titel'];
 
-            //display the description counter
-            document.getElementById("descNav").style.display = 'block';
+    // if the desription is more than one page long the navigation for the description is shown
+    if (con.DETAILS.length > 1) {
+        // set the description of the image (main area of the aside) to the description of the details node
+        document.getElementById("descText").innerHTML = con.DETAILS[description]['#text'];
 
-            // update the description counter
-            descNum.innerHTML = description + 1 + " / " + json.DOKU.ABSCHNITT[section].INHALT.DETAILS.length;
+        //display the description counter
+        $('#descNav').css("display", "block");
 
-        }// if the description is just one page long the navigation for the description is hidden
-        else {
-            // set the description of the image (main area of the aside) to the description of the details node
-            document.getElementById("descText").innerHTML = json.DOKU.ABSCHNITT[section].INHALT.DETAILS['#text'];
+        // update the description counter
+        descNum.innerHTML = description + 1 + " / " + con.DETAILS.length;
 
-            //hide the description counter
-            document.getElementById("descNav").style.display = 'none';
-        }
+    }// if the description is just one page long the navigation for the description is hidden
+    else {
+        // set the description of the image (main area of the aside) to the description of the details node
+        document.getElementById("descText").innerHTML = con.DETAILS['#text'];
+
+        //hide the description counter
+        $('#descNav').css("display", "none");
     }
 };
 
@@ -394,7 +343,6 @@ $("input[name='navTrigger']").change(function () {
         $("#navTriggerText").toggleClass('triggered');
     }
     else {
-
         $("#navigation").css("left", "-284px");
         $("#navTriggerText").toggleClass('triggered');
     }
@@ -413,19 +361,18 @@ function jumpTo(id) {
 };
 
 function triggerBorder() {
-    if (document.getElementById("borderListener").checked) {
-        document.getElementById("borderListener").checked = true;
+    if ($('#borderListener').is(':checked')) {
+        $("input[name = 'borderListener']").prop("checked", true);
 
-        document.getElementById("contentImg").style.border = "1px solid rgb(122,122,128)";
-        document.getElementById("canvas").style.border = "1px solid rgb(122,122,128)";
-        document.getElementById("flashCanvas").style.border = "1px solid rgb(122,122,128)";
-
+        $('#contentImg').css("border-color", "rgb(122,122,128)");
+        $('#canvas').css("border-color", "rgb(122,122,128)");
+        $('#flashCanvas').css("border-color", "rgb(122,122,128)");
     }
     else {
-        document.getElementById("borderListener").checked = false;
+        $("input[name = 'borderListener']").prop("checked", false);
 
-        document.getElementById("contentImg").style.border = "1px solid #FFF";
-        document.getElementById("canvas").style.border = "1px solid #FFF";
-        document.getElementById("flashCanvas").style.border = "1px solid #FFF";
+        $('#contentImg').css("border-color", "#FFF");
+        $('#canvas').css("border-color", "#FFF");
+        $('#flashCanvas').css("border-color", "#FFF");
     }
 };
