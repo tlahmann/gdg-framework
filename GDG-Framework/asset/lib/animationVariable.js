@@ -26,13 +26,9 @@ WICHTIG! Sollten später noch mehr Permutationen und noch mehr Animationen
 hinzukommen oder entfernt werden müssen die Werte angepasst werden!
 */
 
-// ======== !!!!! ALLE PERMUTATIONEN MUESSEN DIMENSION 8 X 8 HABEN !!!!! ========
-// Tipp: Es sollte auf Kombinationen von 8 und 1 in der ersten Spalte und 
-// ersten Zeile verzichtet werden. (Kollidiert mit 7 Frames!)
-// Tipp: Es sollte auf Kombinationen von 8 und 1, 7 und 2 in der ersten Spalte und 
-// ersten Zeile verzichtet werden. (Kollidiert mit 6 Frames!)
-// Tipp: Es sollte auf Kombinationen von 8 und 1, 7 und 2 und 6 und 3 in der 
-// ersten Spalte und ersten Zeile verzichtet werden. (Kollidiert mit 5 Frames!)
+// ======== !!!!! ALLE PERMUTATIONEN WERDEN ZYKLISCH KOPIERT !!!!! ========
+// Das bedeutet, dass die Permutation immer nur eine Vorlage für die 
+// Darstellung der Objekte ist. Die 
 
 // Permutationen
 var permutationen =
@@ -199,12 +195,6 @@ function slower() {
     }
 }
 
-//function changePermutation() {
-//    currentPerm += 1;
-//    currentPerm %= permutationen.length;
-//    initialize();
-//}
-
 // funktion: permutationen weiter schalten
 function changePermutationFwrd() {
     currentPerm += 1;
@@ -222,12 +212,6 @@ function changePermutationBack() {
     }
     initialize();
 }
-
-//function changeObject() {
-//    currentObject += 1;
-//    currentObject %= objekte.length;
-//    initialize();
-//}
 
 // objekt ++
 function changeObjectFwrd() {
@@ -254,14 +238,3 @@ function changeTypeOfObj() {
     typeSwitch %= objekte[currentObject].elements.length;
     initialize();
 }
-
-function countFolders() {
-    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp = new XMLHttpRequest();
-    }
-    else {// code for IE6, IE5
-        xmlhttp = new ActiveXObject("Scripting.FileSystemObject");
-    }
-    var myFolder = xmlhttp.GetFolder("./inhalte/anim/");
-    var myFolderCollection = myFolder.SubFolders;
-};
