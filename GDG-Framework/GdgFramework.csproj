@@ -154,7 +154,6 @@
     <Content Include="asset\font\MyriadPro-Regular.otf" />
     <Content Include="asset\font\MyriadPro-Semibold.otf" />
     <Content Include="asset\font\MyriadPro-SemiboldIt.otf" />
-    <Content Include="asset\lib\animationVariable.js" />
     <Content Include="asset\lib\animation.js" />
     <Content Include="asset\lib\default.min.js">
       <DependentUpon>default.js</DependentUpon>
