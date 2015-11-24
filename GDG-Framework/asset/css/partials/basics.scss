@@ -106,6 +106,144 @@ input[type="button"] {
     &:before {
         display: inline-block;
         content: " \25b6 \00a0 ";
-         @include transform(0, 0, 0.6, 1.0, 0);
+        @include transform(0, 0, 0.6, 1.0, 0);
     }
+}
+
+// mixin
+
+
+input[type="checkbox"] {
+    @include vh();
+
+    &:focus,
+    &:hover {
+        + label {
+            &:before {
+                border-color: $darkColor;
+            }
+        }
+    }
+
+    &:active {
+        + label {
+            &:before {
+                -webkit-transition-duration: 0;
+                -moz-transition-duration: 0;
+                -o-transition-duration: 0;
+                transition-duration: 0;
+                filter: brightness(0.2);
+            }
+        }
+    }
+
+    + label {
+        position: relative;
+        padding-left: 10px;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        float: right;
+
+        &:before {
+            content: '';
+            color: $darkColor;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: $inputWidth;
+            height: $inputHeight;
+            margin-top: -($inputHeight/2 + $inputBorderWidth);
+            border: $inputBorderWidth solid grey;
+            text-align: center;
+        }
+
+        &:after {
+            content: '';
+            background-color: $darkColor;
+            position: absolute;
+            top: 50%;
+            left: $inputBorderWidth + $inputActiveScale/2;
+            width: $inputWidth - $inputActiveScale;
+            height: $inputHeight -$inputActiveScale;
+            margin-top: -(($inputHeight - $inputActiveScale)/2);
+            @include transform(0,0,0,0,0);
+            -webkit-transform-origin: 50%;
+            -moz-transform-origin: 50%;
+            -ms-transform-origin: 50%;
+            -o-transform-origin: 50%;
+            transform-origin: 50%;
+            -webkit-transition: transform 200ms ease-out;
+            -moz-transition: transform 200ms ease-out;
+            -o-transition: transform 200ms ease-out;
+            transition: transform 200ms ease-out;
+        }
+    }
+}
+
+input[type="checkbox"] {
+    + label {
+        &:after {
+            background-color: transparent;
+            top: 12px;
+            left: 2px;
+            width: 1px;
+            height: 1px;
+            margin-top: -4px;
+            border-style: solid;
+            border-color: lighten($darkColor, 20%);
+            border-width: 2px;
+            -moz-border-image: none;
+            -o-border-image: none;
+            -webkit-border-image: none;
+            border-image: none;
+            @include transform(0,0,0,0,0);
+            -webkit-transition: none;
+            -moz-transition: none;
+            -o-transition: none;
+            transition: none;
+        }
+    }
+
+    &:checked {
+
+        + label {
+            &:after {
+                content: ''; //\2713';
+                @include transform(0,0,1,1,0);
+                -webkit-transition: transform 200ms ease-out;
+                -moz-transition: transform 200ms ease-out;
+                -o-transition: transform 200ms ease-out;
+                transition: transform 200ms ease-out;
+            }
+        }
+    }
+}
+
+input[type="checkbox"] {
+    &:checked {
+        + label {
+            &:before {
+                @include animate(borderscale, 200ms, ease-in);
+            }
+
+            &:after {
+                @include transform(0,0,1,1,0);
+            }
+        }
+    }
+}
+
+#borderText {
+    color: transparent;
+    position: relative;
+    float: right;
+    margin-right: 8px;
+    font-size: 9px;
+}
+
+#textTrigger:hover + #borderText {
+    color: $darkColor;
 }

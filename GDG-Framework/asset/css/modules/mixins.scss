@@ -26,11 +26,17 @@
 }
 
 // delay mixin
-@mixin delay($seconds) {
-    -webkit-transition-delay: $seconds;
-    -moz-transition-delay: $seconds;
-    -o-transition-delay: $seconds;
-    transition-delay: $seconds;
+@mixin animate($anim, $seconds, $style) {
+    -webkit-animation: $anim $seconds $style;
+    -moz-animation: $anim $seconds $style;
+    -o-animation: $anim $seconds $style;
+    animation: $anim $seconds $style;
+}
+
+@keyframes borderscale {
+    50% {
+        box-shadow: 0 0 0 1px lighten($darkColor, 30%);
+    }
 }
 
 // define the basic font for the whole document
@@ -45,4 +51,15 @@
 // basic class to entend all regions (header, nav, section, aside and footer)
 @mixin basic {
     position: absolute;
+}
+
+@mixin vh() {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
