@@ -47,13 +47,11 @@ function initialize() {
         animat[i] = img;
     }
     draw();
-    //window.requestAnimationFrame(draw);
 }
 
 var context = document.getElementById('canvas').getContext('2d');
 
 initialize();
-//var myVar = setInterval(draw, animationrate);
 
 var fps = 12;
 var now;
@@ -76,7 +74,7 @@ function draw() {
 
             for (i = 0; i < 7; i++) {
                 for (j = 0; j < 7; j++) {
-                    var foo = ((permutationen[currentPerm][i][j] += 1) % 7);
+                    var foo = ((permutationen[currentPerm][i][j] += 1) %= 7);
                     context.drawImage(animat[foo],
                                     (i * animat[foo].width) + animationPositioX,
                                     (j * animat[foo].height) + animationPositioY,
@@ -94,19 +92,18 @@ function pauseAnimation() {
     draw();
 }
 
-// funktion: (wieder-)abspielen der currentAnimation;
+// funktion: (wieder-)abspielen der currentAnimation
 function playAnimation() {
     running = true;
     draw();
 }
 
-// funktion: geschwindigkeit erhoehen;
+// funktion: geschwindigkeit erhoehen
 function faster() {
     if (fps < 30) {
         fps += 2;
         interval = 1000 / fps;
     }
-    //console.log(fps);
 }
 
 // funktion: geschwindigkeit verringern
@@ -124,7 +121,6 @@ function changePermutation() {
 }
 
 function changeObject() {
-    console.log("changeObject");
     currentObject += 1;
     currentObject %= permutationen.length;
     initialize();
@@ -137,7 +133,6 @@ function countFolders() {
     else {// code for IE6, IE5
         xmlhttp = new ActiveXObject("Scripting.FileSystemObject");
     }
-    //var myFileSysObj = new ActiveXObject("Scripting.FileSystemObject");
     var myFolder = xmlhttp.GetFolder("./inhalte/anim/");
     var myFolderCollection = myFolder.SubFolders;
 };

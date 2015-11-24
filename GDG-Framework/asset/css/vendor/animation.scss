@@ -18,7 +18,7 @@
     bottom: 0;
     left: 0;
 
-    @for $i from 1 through 6 {
+    @for $i from 1 through 8 {
         #button#{$i} {
             @include button;
             top: 5% + 10% * ($i - 1);
