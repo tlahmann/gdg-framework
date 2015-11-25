@@ -3,19 +3,77 @@
     Grundlagen der Gestaltung Framework
     Univerität Ulm
     Institut für Medienforschung und -entwicklung
+    Tobias Lahmann
 */
 
 /*
- * Die Permutationen werden automatisch erweitert
+ * Die Permutationen werden automatisch erweitert. Es muss darauf geachtet werden, dass
+ * die Permutationen Ein Zeilen- oder Spaltenvektor oder eine Matrix sind. 
+ * 
+ * ============================================================================================
+ * Die Perutationen können mit beliebigen Zahlen gefüllt werden, diese werden allerding auf 
+ * die Anzahl der Elemente einer Folge hinuntergerechnet. 
+ * Beispiel: 
+ *          Perm = [[22,44,66],
+ *                  [66,22,44],
+ *                  [44,66,22]]
+ *          Obj = { 1, 2, 3 }
+ * 
+ * Dann ist die Resultierende Verteilung der Objekte auf dem Array:
+ *                 [[3,2,1],
+ *                  [1,3,2],
+ *                  [2,1,3]]
+ * 
+ * Hier werden die Elemente dann zyklisch durchgeschaltet (alle Stellen +1)
+ * 
+ * ============================================================================================
+ * Sollte die Permutation größer als die anzahl der Elemente sein wird dieses ebenfalls 
+ * umgerechnet um die Elemente zu verteilen.
+ * Beispiel: 
+ *          Perm = [[22,44,66],
+ *                  [66,22,44],
+ *                  [44,66,22]]
+ *          Obj = { 1, 2 }
+ * 
+ * Dann ist die Resultierende Verteilung der Objekte auf dem Array:
+ *                 [[1,2,1],
+ *                  [1,1,2],
+ *                  [2,1,1]]
+ * 
+ * ============================================================================================
+ * Wenn die gewünschte Anzahl an Objekten ('desiredSize') die anzahl der Objekte der Folge  
+ * übersteigt werden diese ebenfalls zyklisch erweitert um die gewünschte Anzahl an Objekten 
+ * zu erreichen.
+ * Beispiel: 
+ *          Perm = [[22,44,66],
+ *                  [66,22,44],
+ *                  [44,66,22]]
+ *          Obj = { 1, 2, 3}, mit gewünschter Anzahl an Objekten = 5
+ * 
+ * Dann ist die Resultierende Verteilung der Objekte auf dem Array:
+ *                 [[3,2,1,3,2],
+ *                  [1,3,2,1,3],
+ *                  [2,1,3,2,1],
+ *                  [3,2,1,3,2],
+ *                  [3,2,1,3,2]]]
  */
 
 // Permutationen
 var permutationen =
 [[
-    [5, 4],
-    [4, 5]
+    [8, 7, 6, 5, 4, 3, 2, 1],
+    [7, 8, 7, 6, 5, 4, 3, 2],
+    [6, 7, 8, 7, 6, 5, 4, 3],
+    [5, 6, 7, 8, 7, 6, 5, 4],
+    [4, 5, 6, 7, 8, 7, 6, 5],
+    [3, 4, 5, 6, 7, 8, 7, 6],
+    [2, 3, 4, 5, 6, 7, 8, 7],
+    [1, 2, 3, 4, 5, 6, 7, 8]
 ], [
-    [5, 4, 3, 2, 1, 0],
+    [5, 1],
+    [1, 5]
+], [
+    [6, 5, 4, 3, 2, 1],
     [1, 2, 3, 4, 5, 6]
 ], [
     [7],
@@ -27,25 +85,38 @@ var permutationen =
     [1]
 ], [
     [1]
-], [
-[8, 7, 6, 5, 4, 3, 2, 1],
-[7, 8, 7, 6, 5, 4, 3, 2],
-[6, 7, 8, 7, 6, 5, 4, 3],
-[5, 6, 7, 8, 7, 6, 5, 4],
-[4, 5, 6, 7, 8, 7, 6, 5],
-[3, 4, 5, 6, 7, 8, 7, 6],
-[2, 3, 4, 5, 6, 7, 8, 7],
-[1, 2, 3, 4, 5, 6, 7, 8]
 ]];
 
+/* ============================================================================================
+ * Verwendete Objekte werden hier eingetragen, dabei ist darauf zu achten, dass das Bennenungs-
+ * schema und die Struktur erhalten bleibt.
+ * numberOfObjects: gibt an wie viele Elemente die Folge enthält. Es ist wichtig, dass 
+ *                  (mindestens!) die angegebene Anzahl an Bildern im ausgewiesenem Ordner ist.
+ * 
+ * desiredSize: sollte die Folge mit mehr objekten dargestellt werden, als im Ordner vorhanden
+ *              sind so kann dies hier angegeben werden
+ * 
+ * elements: listet die Ordner der objekte auf, die zu dieser Gruppe gehören.
+ * 
+ * Datenstruktur zum Backup:
+ * 
+ {
+    "numberOfObjects": "n",
+    "desiredSize": "m",
+    "elements": [
+        { "name": "folder1" },
+        { "name": "folder2" }
+    ]
+}
+ */
 var objekte =
 [{
-    "numberOfObjects": "6",
-    "desiredSize": "6",
+    "numberOfObjects": "7",
+    "desiredSize": "7",
     "elements": [
-        { "name": "group1" },
-        { "name": "group1_2" },
-        { "name": "5" }
+        { "name": "group1_v1" },
+        { "name": "group1_v2" },
+        { "name": "group1_v3" }
     ]
 },
 {
@@ -53,15 +124,15 @@ var objekte =
     "desiredSize": "5",
     "elements": [
         { "name": "group2" },
-        { "name": "Neuer Ordner" }
+        { "name": "2-2" }
     ]
 },
 {
     "numberOfObjects": "3",
-    "desiredSize": "10",
+    "desiredSize": "30",
     "elements": [
-        { "name": "2" },
-        { "name": "group3" }
+        { "name": "SUPERTOLLERORDNER" },
+        { "name": "Neuer Ordner" }
     ]
 }];
 
@@ -76,9 +147,11 @@ var ANIMATIONPOSITIONX = 200; // x Koordinate des Animationsbereichs
 var ANIMATIONPOSITIONY = 50; // y Koordinate des Animationsbereichs
 var ANIMATIONSIZE = 350; // Größe (Höhe, Breite) des Animationsbereichs, immer quadratisch
 
-var animat = [];
+var animat = []; // Array, welches die Bilder beihaltet
 
 var context = document.getElementById('canvas').getContext('2d');
+
+var obj, des, matriceHeight, matriceWidth, scale;
 
 //funktion: entsprechende Animationsobjekte initialisieren
 function initialize() {
@@ -88,6 +161,7 @@ function initialize() {
     }
 
     animat = [];
+    // liest die Quelle aller aktuell betrachteten Bilder ein und speichert sie als img() in Array animat
     for (i = 0; i < objekte[currentObject].numberOfObjects; i++) {
         var img = new Image();
         img.src = "inhalte/anim/"
@@ -95,12 +169,23 @@ function initialize() {
             + "/" + (i + 1) + ".png";
         animat[i] = img;
     }
+
+    // Skaliert die einzelnen currAnim um bei unterschiedlicher Frame-Anzahl immer die gleiche Größe des Animationsbereichs beizubehalten
+    scale = ANIMATIONSIZE / objekte[currentObject].desiredSize;
+
+    // berechne die aktuellen Array-Größen
+    obj = objekte[currentObject].numberOfObjects;
+    des = objekte[currentObject].desiredSize;
+    matriceHeight = permutationen[currentPerm].length;
+    matriceWidth = permutationen[currentPerm][0].length;
+
     draw();
 }
 
 // initialisierung
 initialize();
 
+// timer hilfsvariablen
 var fps = 12;
 var now;
 var then = Date.now();
@@ -121,20 +206,14 @@ function draw() {
             // clear canvas
             context.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Skaliert die einzelnen currAnim um bei unterschiedlicher Frame-Anzahl immer die gleiche Größe des Animationsbereichs beizubehalten
-            var scale = ANIMATIONSIZE / objekte[currentObject].desiredSize;
-
-            var obj = objekte[currentObject].numberOfObjects;
-            var des = objekte[currentObject].desiredSize;
-            var matriceHeight = permutationen[currentPerm].length;
-            var matriceWidth = permutationen[currentPerm][0].length;
-
+            // erhöhe alle stellen um 1
             for (i = 0; i < matriceHeight; i++) {
                 for (j = 0; j < matriceWidth; j++) {
                     permutationen[currentPerm][i][j] += 1;
                 }
             }
 
+            // zeichne an die berechneten Positionen die benötigten bilder
             for (i = 0; i < des; i++) {
                 for (j = 0; j < des; j++) {
                     var d = null;
@@ -242,14 +321,3 @@ function changeTypeOfObj() {
     typeSwitch %= objekte[currentObject].elements.length;
     initialize();
 }
-
-function countFolders() {
-    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp = new XMLHttpRequest();
-    }
-    else {// code for IE6, IE5
-        xmlhttp = new ActiveXObject("Scripting.FileSystemObject");
-    }
-    var myFolder = xmlhttp.GetFolder("./inhalte/anim/");
-    var myFolderCollection = myFolder.SubFolders;
-};

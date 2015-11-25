@@ -3,6 +3,7 @@
     Grundlagen der Gestaltung Framework
     Univerität Ulm
     Institut für Medienforschung und -entwicklung
+    Tobias Lahmann
 */
 
 var json;
@@ -110,6 +111,8 @@ $('#imgNum').on('focus', function () {
     displayDescription();
 });
 
+// prevent the navigation menu from closing when the mouse is over the area
+// close the navigation menu when the mouse leaves area (delay 1000ms)
 $('#navigation').on('mouseenter', function () {
     clearTimeout($.data(this, 'timer'));
     $('#navigation').stop(true, true);
@@ -217,6 +220,7 @@ function displayDescription() {
 
         //display the description counter
         $('#descNav').css("display", "block");
+        $('#description').css("border-color", "#7a7a80")
 
         // update the description counter
         descNum.innerHTML = description + 1 + " / " + con.DETAILS.length;
@@ -228,6 +232,7 @@ function displayDescription() {
 
         //hide the description counter
         $('#descNav').css("display", "none");
+        $('#description').css("border-color", "#FFF");
     }
 };
 
@@ -313,6 +318,8 @@ function pictureInput() {
     }
 };
 
+// helper to fill the navigation with info
+// string concat
 function fillNavigation() {
     var string = '<ul>';
     var c = 0;
@@ -349,6 +356,7 @@ $("input[name='navTrigger']").change(function () {
 
 });
 
+// jump to selected slide from navigation menu
 function jumpTo(id) {
     var data = (id.dataset.link).split(":");
     var jump = data[1].split(",");
@@ -360,6 +368,9 @@ function jumpTo(id) {
     redraw();
 };
 
+// function to change the border color of the displayed object (& others)
+// the border is always shown and just the color is changed (grey <-> white)
+// to prevent the rendering engine from moving the obj by 1px (borderwidth)
 function triggerBorder() {
     if ($('#borderListener').is(':checked')) {
         $("input[name = 'borderListener']").prop("checked", true);

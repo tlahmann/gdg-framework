@@ -3,12 +3,14 @@
 
 @mixin button {
     position: absolute;
-    width: 15%;
-    height: 5%;
+    width: 75px;
+    height: 30px;
     background-color: #bebebe;
+    color: white;
+    padding: 2px;
     cursor: pointer;
     
-    left: 5%;
+    left: 50px;
 }
 
 #buttons {
@@ -21,27 +23,11 @@
     @for $i from 1 through 8 {
         #button#{$i} {
             @include button;
-            top: 5% + 10% * ($i - 1);
+            top: 75px + 40px * ($i - 1);
 
             &:hover {
                 background-color: #d13b57;
             }
         }
-    }
-}
-
-#permutation {
-    position: absolute;
-    top: 5%;
-    left: 25%;
-    width: 60%;
-    height: 80%;
-
-    .pixel {
-        width: 100 / 7 * 1%;
-        height: 100 / 7 * 1%;
-        background-color: #0094ff;
-        float: left;
-        border: none;
     }
 }
