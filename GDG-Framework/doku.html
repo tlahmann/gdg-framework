@@ -1,4 +1,4 @@
-﻿<!-- JavaScript document -->
+﻿<!-- HTML document -->
 <!--
     Grundlagen der Gestaltung Framework
     Univerität Ulm
@@ -44,7 +44,8 @@
                 <p>Dokumentation</p>
                 <p id="studentName"></p>
                 <br />
-                <label id="start" onclick="start()">Start</label>
+                <label id="start" onclick="launchIntoFullscreen(document.documentElement);">Vollbild-Modus</label>
+                <label id="start" onclick="launchIntoWindowed()">Fenster-Modus</label>
             </aside>
         </div>
     </div>
@@ -73,7 +74,7 @@
                 <div id="contentAnim">
                     <div id="buttons">
                         <!-- Hier kann verändert werden, falls die Buttons nicht mittels css, sondern mittels
-                             Bildern/Animationen/Gedanken geschteuert werden.-->
+                             Bildern/Animationen/Gedanken gesteuert werden.-->
                         <div id="button1" onclick="playPauseAnimation()">play/pause</div>
                         <div id="button2" onclick="changeTypeOfObj()">type</div>
                         <div id="button3" onclick="faster()">faster</div>
@@ -108,7 +109,6 @@
         </div>
     </div>
     <script type="text/javascript" src="asset/lib/default.min.js"></script>
-    <script type="text/javascript" src="asset/lib/simplebar.min.js"></script>
 </body>
 
 <!------------------------------------------------->
