@@ -141,9 +141,9 @@
       <DependentUpon>animation.css</DependentUpon>
     </Content>
     <Content Include="asset\css\vendor\animation.scss" />
-    <Content Include="asset\css\vendor\simplebar.css" />
+    <None Include="asset\css\vendor\simplebar.scss" />
     <Content Include="asset\css\vendor\simplebar.min.css">
-      <DependentUpon>simplebar.css</DependentUpon>
+      <DependentUpon>simplebar.scss</DependentUpon>
     </Content>
     <Content Include="asset\lib\animation.js" />
     <Content Include="asset\lib\default.min.js">
