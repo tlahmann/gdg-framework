@@ -5,18 +5,16 @@
     Institut für Medienforschung und -entwicklung
     Tobias Lahmann
 -->
-
 <!--
     This is the html-framework for the couse 'Grundlagen der Gestaltung I'
     of the University of Ulm
 
-    The purpose ist for the students participating to show their work 
+    The purpose ist for the students participating to show their work
     done over the period of one semester.
 
     The purpose of this framework is to provide a clean and simple to use
     stage for the students to present their work.
 -->
-
 <!--
     Dieser Abschnitt sollte von niemandem verändert werden!
     Bitte weiterscrollen, hier gibt es nichts zu sehen.
@@ -27,6 +25,7 @@
     <title>Grundlagen der Gestaltung I, WiSe '15/16</title>
     <!-- Stylesheets -->
     <link type="text/css" href="asset/css/main.min.css" rel="stylesheet" />
+    <link type="text/css" href="asset/css/vendor/animation.css" rel="stylesheet" />
     <!-- Scripts -->
     <script type="text/javascript" src="asset/lib/jquery-2.1.4.min.js"></script>
 </head>
@@ -43,24 +42,27 @@
                 <p>Dokumentation</p>
                 <p id="studentName"></p>
                 <br />
-                <label id="start" onclick="launchIntoFullscreen(document.documentElement);">Vollbild-Modus</label>
-                <label id="start" onclick="launchIntoWindowed()">Fenster-Modus</label>
+                <label class="start" onclick="launchIntoFullscreen(document.documentElement);">Vollbild-Modus</label>
+                <label class="start" onclick="launchIntoWindowed()">Fenster-Modus</label>
             </aside>
         </div>
     </div>
     <!-- The actual documentation -->
     <div id="doku" class="frame">
-        <nav id="navigation"> <!-- navigation menu, left -->
+        <nav id="navigation">
+            <!-- navigation menu, left -->
             <div class="navigation">
                 <div id="navscroll" class=" simplebar"></div>
             </div>
-            <div class="navSlideBtn"> <!-- trigger button for the navigation menu, left -->
+            <div class="navSlideBtn">
+                <!-- trigger button for the navigation menu, left -->
                 <label for="navTrigger" id="navTriggerText"></label>
             </div>
         </nav>
         <input type="checkbox" id="navTrigger" name="navTrigger" class="navTrigger" />
         <div class="pane">
-            <header> <!-- title section -->
+            <header>
+                <!-- title section -->
                 <label id="title"></label>
             </header>
             <section>
@@ -73,30 +75,33 @@
                 <div id="contentAnim">
                     <div id="buttons">
                         <!-- Hier kann verändert werden, falls die Buttons nicht mittels css, sondern mittels
-                             Bildern/Animationen/Gedanken gesteuert werden.-->
-                        <div id="button1" onclick="playPauseAnimation()">play/pause</div>
-                        <div id="button2" onclick="changeTypeOfObj()">type</div>
-                        <div id="button3" onclick="faster()">faster</div>
-                        <div id="button4" onclick="slower()">slower</div>
-                        <div id="button5" onclick="changePermutationFwrd()">anim ++</div>
-                        <div id="button6" onclick="changePermutationBack()">anim --</div>
-                        <div id="button7" onclick="changeObjectFwrd()">obj ++</div>
-                        <div id="button8" onclick="changeObjectBack()">obj --</div>
+                        Bildern/Animationen/Gedanken gesteuert werden.-->
+                        <input id="button1" type="button" onclick="playPauseAnimation()" />
+                        <input id="button2" type="button" onclick="changeTypeOfObj()" />
+                        <input id="button3" type="button" onclick="faster()" />
+                        <input id="button4" type="button" onclick="slower()" />
+                        <input id="button5" type="button" onclick="changePermutationFwrd()" />
+                        <input id="button6" type="button" onclick="changePermutationBack()" />
+                        <input id="button7" type="button" onclick="changeObjectFwrd()" />
+                        <input id="button8" type="button" onclick="changeObjectBack()" />
                     </div>
                 </div>
                 <!-- FLASH -->
                 <embed id="flashCanvas" width="720" height="540" type="application/x-shockwave-flash" src="." />
             </section>
-            <aside id="description"> <!-- description section -->
+            <aside id="description">
+                <!-- description section -->
                 <h4 id="descTitle">desctitle</h4>
                 <p id="descText">desc</p>
             </aside>
-            <aside id="descNav"> <!-- description navigation section -->
+            <aside id="descNav">
+                <!-- description navigation section -->
                 <input class="before" type="button" onclick="prevDesc()" value="&#9668" />
                 <label id="descNum"></label>
                 <input class="after" type="button" onclick="nextDesc()" value="&#9658" />
             </aside>
-            <footer> <!-- quicknavigation and border-listener -->
+            <footer>
+                <!-- quicknavigation and border-listener -->
                 <input class="before" type="button" onclick="prevImg()" value="&#9668" />
                 <input type="text" id="imgNum" />
                 <input class="after" type="button" onclick="nextImg()" value="&#9658" />
@@ -107,7 +112,7 @@
             </footer>
         </div>
     </div>
-    <script type="text/javascript" src="asset/lib/default.min.js"></script>
+    <script type="text/javascript" src="asset/lib/default.js"></script>
 </body>
 
 <!------------------------------------------------->
@@ -126,7 +131,7 @@
 <xml id="data" name="Maximilian Mustermann" style="display:none;">
     <doku>
         <abschnitt titel="Punkt, Linie, Fläche">
-            <inhalt titel="[1] Anordnung einer Linie" quelle="inhalte/A1.swf" typ="flash" rahmen="aus">
+            <inhalt titel="[1] Anordnung einer Linie" quelle="inhalte/png/A1a_1.png" typ="bild" rahmen="aus">
                 <details>
                     Drei Mal patzte Jens Lehmann beim Spiel gegen Österreich schwer. Damit ist das Rennen um Deutschlands Tor-hüterposten wieder offen. Lehmanns Problem: Er hat nicht genügend viele Einsätze, sein Können zu beweisen. Im Gegensatz zur Konkurrenz. Er wollte dies Diskussion eigentlich gar nicht erst aufkommen lassen. Die Baustelle schließen, ein Machtwort sprechen.
                 </details>
@@ -137,32 +142,20 @@
                     DREI MAL patzte Jens Lehmann beim Spiel gegen Österreich schwer. Damit ist das Rennen um Deutschlands Tor-hüterposten wieder offen. Lehmanns Problem: Er hat nicht genügend viele Einsätze, sein Können zu beweisen. Im Gegensatz zur Konkurrenz. Er wollte dies Diskussion eigentlich gar nicht erst aufkommen lassen. Die Baustelle schließen, ein Machtwort sprechen.
                 </details>
             </inhalt>
-            <inhalt titel="[2] Eine Animation (simpel, ohne Interface)" quelle="inhalte/swf/MyMovie.swf" typ="flash" rahmen="aus">
-                <details>Auch der Bundestrainer wusste: »Es ist klar, dass bei Lehmann eine Diskussion aufkommt, wenn er Fehler macht«, sagte Löw. Mindestens drei schwere Lehmann-Patzer zählten die Chronisten im Spiel gegen Österreich, und nur das für Deutschland schmei-chelhafte Ergebnis (3:0) bewahrt den WM-Helden von 2006 vor dem Absturz zum nationalen Sündenbock.</details>
-                <details>Vier Monate bleiben Lehmann bis zur EM, die Erinnerung an den schwarzen Abend in Wien verblassen zu lassen. Eigentlich genug Zeit. Das Problem ist nur: Es sind zu wenig Spiele.</details>
+            <inhalt titel="[12] Transformationsreihen" quelle="inhalte/png/A10_2.png" typ="bild" rahmen="aus">
+                <details>Ein paar Wochen später haben sich neue Interpretationsmöglichkeiten ergeben. Wochen, in denen sich Timo Hildebrand mit guten Leistungen den Stammplatz im Tor erkämpft hat. Wochen, in denen Lehmann nur ein Spiel für Arsenal bestreiten durfte, weil sich der Spanier Manuel Almunia an der Hand verletzt hatte. Und dann kam noch der Abend in Wien, an dem sich der 38-jährige Lehmann so weit entfernt von einer EM-tauglichen Ver-fassung präsentierte, dass nicht nur TV-Experte Netzer der Meinung war: »Das ist ein großes Thema.«</details>
             </inhalt>
         </abschnitt>
         <abschnitt titel="Lineare Transformationen">
-            <inhalt titel="[12] Transformationsreihen" quelle="inhalte/swf/ball.swf" typ="flash" rahmen="ein">
-                <details>Ein paar Wochen später haben sich neue Interpretationsmöglichkeiten ergeben. Wochen, in denen sich Timo Hildebrand mit guten Leistungen den Stammplatz im Tor erkämpft hat. Wochen, in denen Lehmann nur ein Spiel für Arsenal bestreiten durfte, weil sich der Spanier Manuel Almunia an der Hand verletzt hatte. Und dann kam noch der Abend in Wien, an dem sich der 38-jährige Lehmann so weit entfernt von einer EM-tauglichen Ver-fassung präsentierte, dass nicht nur TV-Experte Netzer der Meinung war: »Das ist ein großes Thema.«</details>
-            </inhalt>
-            <inhalt titel="[32] Animation & Steuerung I" quelle="inhalte/swf/animation_v01_CS4.swf" typ="flash" rahmen="aus">
-                <details>KOPIE Auch der Bundestrainer wusste: »Es ist klar, dass bei Lehmann eine Diskussion aufkommt, wenn er Fehler macht«, sagte Löw. Mindestens drei schwere Lehmann-Patzer zählten die Chronisten im Spiel gegen Österreich, und nur das für Deutschland schmei-chelhafte Ergebnis (3:0) bewahrt den WM-Helden von 2006 vor dem Absturz zum nationalen Sündenbock.</details>
+            <inhalt titel="[98] MyAnimation" quelle="inhalte/swf/test_check_one.swf" typ="flash" rahmen="aus">
+                <details>Auch der Bundestrainer wusste: »Es ist klar, dass bei Lehmann eine Diskussion aufkommt, wenn er Fehler macht«, sagte Löw. Mindestens drei schwere Lehmann-Patzer zählten die Chronisten im Spiel gegen Österreich, und nur das für Deutschland schmei-chelhafte Ergebnis (3:0) bewahrt den WM-Helden von 2006 vor dem Absturz zum nationalen Sündenbock.</details>
                 <details>Vier Monate bleiben Lehmann bis zur EM, die Erinnerung an den schwarzen Abend in Wien verblassen zu lassen. Eigentlich genug Zeit. Das Problem ist nur: Es sind zu wenig Spiele.</details>
             </inhalt>
             <inhalt titel="[42] Animation" quelle="inhalte/anim" typ="animation" rahmen="ein">
                 <details>Auch der Bundestrainer wusste: »Es ist klar, dass bei Lehmann eine Diskussion aufkommt, wenn er Fehler macht«, sagte Löw. Mindestens drei schwere Lehmann-Patzer zählten die Chronisten im Spiel gegen Österreich, und nur das für Deutschland schmei-chelhafte Ergebnis (3:0) bewahrt den WM-Helden von 2006 vor dem Absturz zum nationalen Sündenbock.</details>
                 <details>Vier Monate bleiben Lehmann bis zur EM, die Erinnerung an den schwarzen Abend in Wien verblassen zu lassen. Eigentlich genug Zeit. Das Problem ist nur: Es sind zu wenig Spiele.</details>
             </inhalt>
-            <inhalt titel="[68] Basic Animation Test" quelle="inhalte/swf/gdg_test.swf" typ="flash" rahmen="aus">
-                <details>KOPIE Auch der Bundestrainer wusste: »Es ist klar, dass bei Lehmann eine Diskussion aufkommt, wenn er Fehler macht«, sagte Löw. Mindestens drei schwere Lehmann-Patzer zählten die Chronisten im Spiel gegen Österreich, und nur das für Deutschland schmei-chelhafte Ergebnis (3:0) bewahrt den WM-Helden von 2006 vor dem Absturz zum nationalen Sündenbock.</details>
-                <details>Vier Monate bleiben Lehmann bis zur EM, die Erinnerung an den schwarzen Abend in Wien verblassen zu lassen. Eigentlich genug Zeit. Das Problem ist nur: Es sind zu wenig Spiele.</details>
-            </inhalt>
-            <inhalt titel="[98] MyAnimation" quelle="inhalte/swf/test_check_one.swf" typ="flash" rahmen="aus">
-                <details>Auch der Bundestrainer wusste: »Es ist klar, dass bei Lehmann eine Diskussion aufkommt, wenn er Fehler macht«, sagte Löw. Mindestens drei schwere Lehmann-Patzer zählten die Chronisten im Spiel gegen Österreich, und nur das für Deutschland schmei-chelhafte Ergebnis (3:0) bewahrt den WM-Helden von 2006 vor dem Absturz zum nationalen Sündenbock.</details>
-                <details>Vier Monate bleiben Lehmann bis zur EM, die Erinnerung an den schwarzen Abend in Wien verblassen zu lassen. Eigentlich genug Zeit. Das Problem ist nur: Es sind zu wenig Spiele.</details>
-            </inhalt>
-            <inhalt titel="[99] 720 x 540 px Testbild" quelle="inhalte/720x540.png" typ="bild" rahmen="aus">
+            <inhalt titel="[99] 720 x 540 px Testbild" quelle="inhalte/fotos/foto.jpg" typ="bild" rahmen="aus">
                 <details>KOPIE Auch der Bundestrainer wusste: »Es ist klar, dass bei Lehmann eine Diskussion aufkommt, wenn er Fehler macht«, sagte Löw. Mindestens drei schwere Lehmann-Patzer zählten die Chronisten im Spiel gegen Österreich, und nur das für Deutschland schmei-chelhafte Ergebnis (3:0) bewahrt den WM-Helden von 2006 vor dem Absturz zum nationalen Sündenbock.</details>
                 <details>Vier Monate bleiben Lehmann bis zur EM, die Erinnerung an den schwarzen Abend in Wien verblassen zu lassen. Eigentlich genug Zeit. Das Problem ist nur: Es sind zu wenig Spiele.</details>
             </inhalt>

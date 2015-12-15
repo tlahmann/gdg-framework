@@ -81,27 +81,27 @@ input[type="button"] {
     color: $darkColor;
     float: left;
     padding: 3px 6px;
-    @include transform(0, 0, 0.5, 1.0, 0);
+    @include transform(0, .5px, .7, .7, 0);
 }
 
 .before {
-    margin-right: 5px;
+    margin: 0 2px 0 10px;
     font-size: inherit;
 }
 
 .after {
-    margin-left: 5px;
+    margin: 0 10px 0 2px;
     font-size: inherit;
 }
 
-#start {
+.start {
     display: block;
     position: relative;
     cursor: pointer;
     top: 77px;
     left: -12px;
     font-size: 13px;
-    letter-spacing: 0;
+    letter-spacing: 0.2px;
 
     &:before {
         display: inline-block;
@@ -219,6 +219,12 @@ input[type="checkbox"] {
                 transition: transform 200ms ease-out;
             }
         }
+    }
+}
+
+@-moz-document url-prefix() {
+    input[type="checkbox"] + label:after {
+        margin-top: -5px;
     }
 }
 

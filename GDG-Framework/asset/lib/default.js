@@ -40,20 +40,25 @@ function launchIntoFullscreen(element) {
 // load XML Data into the program
 $(function () {
     json = xmlToJson(document.getElementById("data"));
+    var con = json.DOKU.ABSCHNITT;
 
-    for (var i = 0; i < json.DOKU.ABSCHNITT.length; ++i) {
-        if (json.DOKU.ABSCHNITT[i].INHALT.length >= 1) {
-            sectionsCount += json.DOKU.ABSCHNITT[i].INHALT.length;
+    if (con.length > 1) {
+        for (var i = 0; i < con.length; ++i) {
+            if (con[i].INHALT.length >= 1) {
+                sectionsCount += json.DOKU.ABSCHNITT[i].INHALT.length;
+            }
+            else {
+                sectionsCount++;
+            }
         }
-        else {
-            sectionsCount++;
-        }
+    } else {
+        sectionsCount += json.DOKU.ABSCHNITT.INHALT.length;
     }
 
     redraw();
     fillNavigation();
     $('#navscroll').simplebar();
-    document.getElementById("studentName").innerText = json["@attributes"].name;
+    document.getElementById("studentName").textContent = json["@attributes"].name;
 });
 
 // Changes XML to JSON
@@ -68,7 +73,7 @@ function xmlToJson(xml) {
             obj["@attributes"] = {};
             for (var j = 0; j < xml.attributes.length; j++) {
                 var attribute = xml.attributes.item(j);
-                obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+                obj["@attributes"][attribute.nodeName] = attribute.value;
             }
         }
     } else if (xml.nodeType == 3) { // text
@@ -130,9 +135,11 @@ $('#navigation').on('mouseenter', function () {
     $('#navigation').stop(true, true);
 }).on('mouseleave', function () {
     $.data(this, 'timer', setTimeout(function () {
-        $('#navigation').stop(true, true).css("left", "-284px");
-        $("#navTriggerText").toggleClass('triggered');
-        $("input[name = 'navTrigger']").prop("checked", false);
+        if ($('#navTrigger').is(':checked')) {
+            $('#navigation').stop(true, true).css("left", "-284px");
+            $("#navTriggerText").toggleClass('triggered');
+            $("input[name = 'navTrigger']").prop("checked", false);
+        }
     }, 1000));
 });
 
@@ -195,7 +202,7 @@ function displayPicture() {
     }
 
     // set the title to the title (very top of the pane) of the image
-    document.getElementById("title").innerHTML = json.DOKU.ABSCHNITT[section]['@attributes']['titel'];
+    document.getElementById("title").innerHTML = con['@attributes']['titel'];
 
     // change border display
     if (con['@attributes']['rahmen'] == "ein") {
@@ -340,11 +347,20 @@ function fillNavigation() {
         string += '<li><details><summary>';
         string += json.DOKU.ABSCHNITT[i]['@attributes']['titel']
         string += '</summary><ul>';
-        for (var j = 0; j < json.DOKU.ABSCHNITT[i].INHALT.length; j++) {
+        if (json.DOKU.ABSCHNITT[i].INHALT.length > 0) {
+            for (var j = 0; j < json.DOKU.ABSCHNITT[i].INHALT.length; j++) {
+                string += '<li data-link=\"';
+                string += c + ':' + i + ',' + j + '\"';
+                string += 'onclick=\"jumpTo(this)\">';
+                string += json.DOKU.ABSCHNITT[i].INHALT[j]['@attributes']['titel'];
+                string += '</li>';
+                c++;
+            }
+        } else {
             string += '<li data-link=\"';
             string += c + ':' + i + ',' + j + '\"';
             string += 'onclick=\"jumpTo(this)\">';
-            string += json.DOKU.ABSCHNITT[i].INHALT[j]['@attributes']['titel'];
+            string += json.DOKU.ABSCHNITT[i].INHALT['@attributes']['titel'];
             string += '</li>';
             c++;
         }

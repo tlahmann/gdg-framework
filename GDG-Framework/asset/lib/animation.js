@@ -121,7 +121,7 @@ var objekte =
 },
 {
     "numberOfObjects": "7",
-    "desiredSize": "5",
+    "desiredSize": "6",
     "elements": [
         { "name": "group2" },
         { "name": "2-2" }
@@ -129,7 +129,7 @@ var objekte =
 },
 {
     "numberOfObjects": "3",
-    "desiredSize": "30",
+    "desiredSize": "15",
     "elements": [
         { "name": "SUPERTOLLERORDNER" },
         { "name": "Neuer Ordner" }
