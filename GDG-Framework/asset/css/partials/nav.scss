@@ -72,9 +72,9 @@ nav {
 
             &:before {
                 display: inline-block;
-                content: " \25b6";
+                content: url('../img/arrow_white.svg');
                 font-size: 13px;
-                @include transform(44%, 32%, 1.0, 1.0, 0);
+                @include transform(100%, 32%, 1.0, 1.0, 0);
             }
 
             &:after {
@@ -91,7 +91,7 @@ nav {
 
         label[for="navTrigger"].triggered {
             &:before {
-                content: " \25c0";
+                @include transform(100%, 32%, 1.0, 1.0, 180deg);
             }
         }
 

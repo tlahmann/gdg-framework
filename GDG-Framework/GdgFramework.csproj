@@ -62,6 +62,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="asset\img\arrow.svg" />
     <Content Include="asset\css\main.css">
       <DependentUpon>main.scss</DependentUpon>
     </Content>

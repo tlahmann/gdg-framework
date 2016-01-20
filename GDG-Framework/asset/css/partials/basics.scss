@@ -81,17 +81,21 @@ input[type="button"] {
     color: $darkColor;
     float: left;
     padding: 3px 6px;
-    @include transform(0, .5px, .7, .7, 0);
 }
 
 .before {
     margin: 0 2px 0 10px;
     font-size: inherit;
+    background: url('../img/arrow.svg') no-repeat;
+    background-position: center;
+    @include transform(0, 0, 1, 1, 180deg);
 }
 
 .after {
     margin: 0 10px 0 2px;
     font-size: inherit;
+    background: url('../img/arrow.svg') no-repeat;
+    background-position: center;
 }
 
 .start {
@@ -105,13 +109,10 @@ input[type="button"] {
 
     &:before {
         display: inline-block;
-        content: " \25b6 \00a0 ";
-        @include transform(0, 0, 0.6, 1.0, 0);
+        content: url('../img/arrow.svg');
+        margin-right: 4px;
     }
 }
-
-// mixin
-
 
 input[type="checkbox"] {
     @include vh();
@@ -162,7 +163,7 @@ input[type="checkbox"] {
 
         &:after {
             content: '';
-            background-color: $darkColor;
+            background-color: lighten($darkColor, 20%);
             position: absolute;
             top: 50%;
             left: $inputBorderWidth + $inputActiveScale/2;
@@ -180,51 +181,6 @@ input[type="checkbox"] {
             -o-transition: transform 200ms ease-out;
             transition: transform 200ms ease-out;
         }
-    }
-}
-
-input[type="checkbox"] {
-    + label {
-        &:after {
-            background-color: transparent;
-            top: 12px;
-            left: 2px;
-            width: 1px;
-            height: 1px;
-            margin-top: -4px;
-            border-style: solid;
-            border-color: lighten($darkColor, 20%);
-            border-width: 2px;
-            -moz-border-image: none;
-            -o-border-image: none;
-            -webkit-border-image: none;
-            border-image: none;
-            @include transform(0,0,0,0,0);
-            -webkit-transition: none;
-            -moz-transition: none;
-            -o-transition: none;
-            transition: none;
-        }
-    }
-
-    &:checked {
-
-        + label {
-            &:after {
-                content: ''; //\2713';
-                @include transform(0,0,1,1,0);
-                -webkit-transition: transform 200ms ease-out;
-                -moz-transition: transform 200ms ease-out;
-                -o-transition: transform 200ms ease-out;
-                transition: transform 200ms ease-out;
-            }
-        }
-    }
-}
-
-@-moz-document url-prefix() {
-    input[type="checkbox"] + label:after {
-        margin-top: -5px;
     }
 }
 
