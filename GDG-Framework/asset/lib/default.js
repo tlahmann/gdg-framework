@@ -335,6 +335,10 @@ function pictureInput() {
             }
         }
     }
+
+    if (imgNum.value - 1 > c) {
+        imgNum.value = c;
+    }
 };
 
 // helper to fill the navigation with info
