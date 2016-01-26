@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0E2D6591-A54D-49A3-99A2-C74593FB0DA4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TypograhieFramework</RootNamespace>
+    <AssemblyName>TypograhieFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="asset\css\main.css">
+      <DependentUpon>main.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\main.min.css">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\modules\colors.css">
+      <DependentUpon>colors.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\modules\colors.min.css">
+      <DependentUpon>colors.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\modules\mixins.css">
+      <DependentUpon>mixins.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\modules\mixins.min.css">
+      <DependentUpon>mixins.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\modules\typography.css">
+      <DependentUpon>typography.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\modules\typography.min.css">
+      <DependentUpon>typography.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\modules\variables.css">
+      <DependentUpon>variables.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\modules\variables.min.css">
+      <DependentUpon>variables.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\article.css">
+      <DependentUpon>article.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\article.min.css">
+      <DependentUpon>article.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\aside.css">
+      <DependentUpon>aside.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\aside.min.css">
+      <DependentUpon>aside.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\basics.css">
+      <DependentUpon>basics.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\basics.min.css">
+      <DependentUpon>basics.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\figure.css">
+      <DependentUpon>figure.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\figure.min.css">
+      <DependentUpon>figure.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\footer.css">
+      <DependentUpon>footer.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\footer.min.css">
+      <DependentUpon>footer.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\header.css">
+      <DependentUpon>header.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\header.min.css">
+      <DependentUpon>header.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\nav.css">
+      <DependentUpon>nav.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\nav.min.css">
+      <DependentUpon>nav.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\reset.css">
+      <DependentUpon>reset.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\reset.min.css">
+      <DependentUpon>reset.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\section.css">
+      <DependentUpon>section.scss</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\section.min.css">
+      <DependentUpon>section.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\vendor\video-js.css">
+      <DependentUpon>video-js.less</DependentUpon>
+    </Content>
+    <Content Include="asset\css\vendor\video-js.min.css">
+      <DependentUpon>video-js.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\vendor\video-js.swf" />
+    <Content Include="asset\lib\video.dev.js" />
+    <Content Include="asset\lib\video.js" />
+    <Content Include="asset\lib\video.novtt.dev.js" />
+    <Content Include="asset\lib\video.novtt.js" />
+    <Content Include="exercise\a6.html" />
+    <Content Include="exercise\a6\Grow.mp4" />
+    <Content Include="exercise\a6\Konzept1.png" />
+    <Content Include="exercise\a6\Konzept2.png" />
+    <Content Include="exercise\a6\Konzept3.png" />
+    <Content Include="exercise\a6\links.txt" />
+    <Content Include="exercise\a6\Wind.mp4" />
+    <Content Include="exercise\a7.html" />
+    <Content Include="exercise\a7\GoingThrough.mp4" />
+    <Content Include="exercise\a7\Konzept1.png" />
+    <Content Include="exercise\a7\Konzept2.png" />
+    <Content Include="exercise\a7\Konzept3.png" />
+    <Content Include="exercise\a7\Konzept4.png" />
+    <Content Include="exercise\a7\Konzept5.png" />
+    <Content Include="exercise\a7\Rokets.mp4" />
+    <Content Include="exercise\a7\Typo5.png" />
+    <Content Include="exercise\a7\Typo6.png" />
+    <Content Include="exercise\a7\Typo8.png" />
+    <Content Include="exercise\a7\Typo9.png" />
+    <Content Include="exercise\a8.html" />
+    <Content Include="exercise\a8\A81a.gif" />
+    <Content Include="exercise\a8\A81b.gif" />
+    <Content Include="exercise\a8\A81c.gif" />
+    <Content Include="exercise\a8\A81d.gif" />
+    <Content Include="exercise\a8\A81e.gif" />
+    <Content Include="exercise\a8\A81f.gif" />
+    <Content Include="exercise\a8\A82a.gif" />
+    <Content Include="exercise\a8\A82b.gif" />
+    <Content Include="exercise\a8\A82c.gif" />
+    <Content Include="exercise\a8\A82d.gif" />
+    <Content Include="exercise\a8\A82e.gif" />
+    <Content Include="exercise\a8\A82f.gif" />
+    <Content Include="exercise\a8\A83a.gif" />
+    <Content Include="exercise\a8\A83b.gif" />
+    <Content Include="exercise\a8\A83c.gif" />
+    <Content Include="exercise\a8\A83d.gif" />
+    <Content Include="exercise\a8\A83e.gif" />
+    <Content Include="exercise\a8\A83f.gif" />
+    <Content Include="exercise\a9.html" />
+    <Content Include="exercise\a9\Webpage.png" />
+    <Content Include="exercise\a9\Webpage_Cell1.png" />
+    <Content Include="exercise\a9\Webpage_Cell2.png" />
+    <Content Include="exercise\a9\Webpage_Cell3.png" />
+    <Content Include="exercise\a9\Webpage_Cell4.png" />
+    <Content Include="exercise\a9\Webpage_Cell5.png" />
+    <Content Include="exercise\a9\Webpage_Cell6.png" />
+    <Content Include="exercise\a9\Webpage_Cell7.png" />
+    <Content Include="exercise\a9\Webpage_Cell8.png" />
+    <Content Include="exercise\a9\Webpage_Cell9.png" />
+    <Content Include="exercise\a9\Webpage_Raster1.png" />
+    <Content Include="exercise\a9\Webpage_Raster2.png" />
+    <Content Include="exercise\a9\Webpage_Raster3.png" />
+    <Content Include="exercise\a9\Webpage_Raster4.png" />
+    <Content Include="exercise\a9\Webpage_Raster5.png" />
+    <Content Include="exercise\a9\Webpage_Raster6.png" />
+    <Content Include="exercise\a9\Webpage_Raster7.png" />
+    <Content Include="exercise\a9\Webpage_Raster8.png" />
+    <Content Include="exercise\a9\Webpage_Raster9.png" />
+    <Content Include="typo.html" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="asset\css\vendor\video-js.less" />
+    <Content Include="asset\css\main.scss" />
+    <Content Include="asset\css\modules\colors.scss" />
+    <Content Include="asset\css\modules\colors.css.map">
+      <DependentUpon>colors.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\modules\mixins.scss" />
+    <Content Include="asset\css\modules\mixins.css.map">
+      <DependentUpon>mixins.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\modules\typography.scss" />
+    <Content Include="asset\css\modules\typography.css.map">
+      <DependentUpon>typography.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\modules\variables.scss" />
+    <Content Include="asset\css\modules\variables.css.map">
+      <DependentUpon>variables.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\reset.scss" />
+    <Content Include="asset\css\partials\reset.css.map">
+      <DependentUpon>reset.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\aside.scss" />
+    <Content Include="asset\css\partials\aside.css.map">
+      <DependentUpon>aside.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\basics.scss" />
+    <Content Include="asset\css\partials\basics.css.map">
+      <DependentUpon>basics.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\footer.scss" />
+    <Content Include="asset\css\partials\footer.css.map">
+      <DependentUpon>footer.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\header.scss" />
+    <Content Include="asset\css\partials\header.css.map">
+      <DependentUpon>header.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\nav.scss" />
+    <Content Include="asset\css\partials\nav.css.map">
+      <DependentUpon>nav.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\section.scss" />
+    <Content Include="asset\css\partials\section.css.map">
+      <DependentUpon>section.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\article.scss" />
+    <Content Include="asset\css\partials\figure.scss" />
+    <Content Include="asset\css\partials\figure.css.map">
+      <DependentUpon>figure.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\partials\article.css.map">
+      <DependentUpon>article.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\main.css.map">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
+    <Content Include="asset\css\vendor\video-js.css.map">
+      <DependentUpon>video-js.css</DependentUpon>
+    </Content>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="asset\css\font\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3695</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3695/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

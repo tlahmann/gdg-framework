@@ -1,0 +1,21 @@
+﻿// SASS document
+// Footer
+// -------------------------------------------------
+
+@import "../modules/colors";
+
+// the footer holds the quick navigation
+footer {
+    border-top: 1px dotted $color-primary-4;
+    position: relative;
+    width: 90%;
+    height: auto;
+    background-color: $color-primary-1;
+
+    > .footer-area {
+        margin: 20px;
+        width: 20%;
+        display: inline-block;
+        float: left;
+    }
+}

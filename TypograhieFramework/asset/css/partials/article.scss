@@ -1,0 +1,10 @@
+﻿// SASS document
+// Article
+// -------------------------------------------------
+
+@import "../modules/colors";
+
+article {
+    width: 70%;
+    background-color: $color-primary-5;
+}

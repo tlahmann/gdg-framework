@@ -1,0 +1,24 @@
+﻿// SASS document
+// Variables
+// -------------------------------------------------
+
+// aspect ratio width X height
+$aspRatio: 4, 3;
+
+// desired dimensions (pixel)
+$desDimensions: 1024;
+
+// desired pane size (pixel)
+$paneWidth: 720;
+
+// fixed maximal width and height, do not change
+$maxDimensions: 99; // 100% overshoots display height because of the border
+
+// the used font for the entire document
+$gdgFontRegular: GdG-Regular, "sans-serif";
+
+// custom checkbox/radios
+$inputHeight: 7px;
+$inputWidth: 7px;
+$inputBorderWidth: 1px;
+$inputActiveScale: 2px; // optimized for even numbers

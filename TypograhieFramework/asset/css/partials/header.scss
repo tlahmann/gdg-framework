@@ -1,0 +1,12 @@
+﻿// SASS document
+// Header
+// -------------------------------------------------
+
+@import "../modules/colors";
+
+// the header region holds the title of the current picture/animation
+header {
+    height: 10%;
+    background-color: $color-primary-6;
+    color: $color-black;
+}

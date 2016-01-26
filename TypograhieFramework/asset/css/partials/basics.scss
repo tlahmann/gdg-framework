@@ -1,0 +1,40 @@
+﻿// SASS document
+// Basic
+// -------------------------------------------------
+
+@import "../modules/colors";
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+    padding: 5px;
+}
+
+body {
+    height: 100%;
+    width: 90%;
+    margin: 0 5%;
+}
+
+
+table {
+    text-align: left;
+    width: 100%;
+    border: 5px;
+    border: 1px ridge $color-black;
+
+    td, th {
+        display: table-cell;
+        border: 1px dotted $color-black;
+    }
+}

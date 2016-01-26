@@ -1,0 +1,65 @@
+﻿// SASS document
+// Mixins
+// -------------------------------------------------
+
+@import "colors";
+@import "variables";
+
+@function calculateHeight($ratio, $width) {
+    @return nth($ratio, 2)/nth($ratio, 1) * $width * 1px;
+}
+
+// translate mixin
+@mixin transition($var1, $seconds, $var3) {
+    -webkit-transition: $var1 $seconds $var3;
+    -moz-transition: $var1 $seconds $var3;
+    -o-transition: $var1 $seconds $var3;
+    transition: $var1 $seconds $var3;
+}
+
+@mixin transform($translateX, $translateY, $scaleX, $scaleY, $rotate) {
+    -webkit-transform: translate($translateX, $translateY) scale($scaleX, $scaleY) rotate($rotate);
+    -moz-transform: translate($translateX, $translateY) scale($scaleX, $scaleY) rotate($rotate);
+    -ms-transform: translate($translateX, $translateY) scale($scaleX, $scaleY) rotate($rotate);
+    -o-transform: translate($translateX, $translateY) scale($scaleX, $scaleY) rotate($rotate);
+    transform: translate($translateX, $translateY) scale($scaleX, $scaleY) rotate($rotate);
+}
+
+// delay mixin
+@mixin animate($anim, $seconds, $style) {
+    -webkit-animation: $anim $seconds $style;
+    -moz-animation: $anim $seconds $style;
+    -o-animation: $anim $seconds $style;
+    animation: $anim $seconds $style;
+}
+
+@keyframes borderscale {
+    50% {
+        box-shadow: 0 0 0 1px lighten($darkColor, 30%);
+    }
+}
+
+// define the basic font for the whole document
+@mixin fontBasic {
+    font-family: $gdgFontRegular;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    color: $darkColor;
+}
+
+// basic class to entend all regions (header, nav, section, aside and footer)
+@mixin basic {
+    position: absolute;
+}
+
+@mixin vh() {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}

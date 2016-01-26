@@ -1,0 +1,28 @@
+﻿// SASS document
+/* 
+    Grundlagen der Gestaltung Framework
+    Univerität Ulm
+    Institut für Medienforschung und -entwicklung
+*/
+
+/*
+    Author: Tobias Lahmann
+    Date: Sep.2015
+    Mit freundlicher unterstützung von: Kaffee
+*/
+
+@import "partials/reset";
+@import "modules/typography";
+
+/*#region FRAME */
+
+@import "partials/article";
+@import "partials/aside";
+@import "partials/basics";
+@import "partials/figure";
+@import "partials/footer";
+@import "partials/header";
+@import "partials/nav";
+@import "partials/section";
+
+/*#endregion */

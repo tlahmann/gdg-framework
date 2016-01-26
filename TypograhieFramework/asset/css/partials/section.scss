@@ -1,0 +1,13 @@
+﻿// SASS document
+// Section
+// -------------------------------------------------
+
+@import "../modules/colors";
+
+// the section is the centered area of the display
+// it holds the pictures and animation
+// main area
+section {
+    width: 70%;
+    background-color: $color-primary-5;
+}
