@@ -72,7 +72,7 @@ nav {
 
             &:before {
                 display: inline-block;
-                content: url('../img/arrow_white.svg');
+                content: url('data:image/svg+xml;base64,77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iSVNPLTg4NTktMSIgPz4NCjwhRE9DVFlQRSBzdmc6c3ZnIFBVQkxJQw0KICAgICItLy9XM0MvL0RURCBYSFRNTCAxLjEgcGx1cyBNYXRoTUwgMi4wIHBsdXMgU1ZHIDEuMS8vRU4iDQogICAgImh0dHA6Ly93d3cudzMub3JnLzIwMDIvMDQveGh0bWwtbWF0aC1zdmcveGh0bWwtbWF0aC1zdmcuZHRkIj4NCgkNCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayINCgl3aWR0aD0iNXB4IiBoZWlnaHQ9IjhweCIgPg0KDQo8IS0tIA0KCUF1dGhvcjogVG9iaWFzIExhaG1hbm4NCglDb3Vyc2U6IEdydW5kbGFnZW4gZGVyIEdlc3RhbHR1bmcNCglVbml2ZXJzaXR5IG9mIFVsbQ0KCUphbnVhcnkgMjAxNg0KLS0+DQoNCjx0aXRsZT5BcnJvdzwvdGl0bGU+DQoNCjxwb2x5Z29uIHBvaW50cz0iMCwwIDUsNCAwLDgiIHN0eWxlPSJmaWxsOiNlNmU1ZTU7IiAvPg0KDQo8L3N2Zz4=');
                 font-size: 13px;
                 @include transform(100%, 32%, 1.0, 1.0, 0);
             }
