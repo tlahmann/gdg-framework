@@ -150,10 +150,10 @@
     <Content Include="asset\lib\default.min.js">
       <DependentUpon>default.js</DependentUpon>
     </Content>
-    <Content Include="asset\lib\jquery-2.1.4.min.js">
-      <DependentUpon>jquery-2.1.4.js</DependentUpon>
+    <Content Include="asset\lib\jquery-2.2.0.js" />
+    <Content Include="asset\lib\jquery-2.2.0.min.js">
+      <DependentUpon>jquery-2.2.0.js</DependentUpon>
     </Content>
-    <Content Include="asset\lib\jquery-2.1.4.js" />
     <Content Include="asset\lib\simplebar.js" />
     <Content Include="asset\lib\simplebar.min.js">
       <DependentUpon>simplebar.js</DependentUpon>
@@ -211,14 +211,14 @@
       <DependentUpon>main.css</DependentUpon>
     </Content>
     <None Include="asset\lib\default.js" />
-    <Content Include="asset\lib\jquery-2.1.4.min.js.map">
-      <DependentUpon>jquery-2.1.4.min.js</DependentUpon>
-    </Content>
     <Content Include="asset\lib\default.min.js.map">
       <DependentUpon>default.min.js</DependentUpon>
     </Content>
     <Content Include="asset\lib\simplebar.min.js.map">
       <DependentUpon>simplebar.min.js</DependentUpon>
+    </Content>
+    <Content Include="asset\lib\jquery-2.2.0.min.js.map">
+      <DependentUpon>jquery-2.2.0.min.js</DependentUpon>
     </Content>
     <None Include="doku.html" />
   </ItemGroup>
