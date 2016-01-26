@@ -338,6 +338,7 @@ function pictureInput() {
 
     if (imgNum.value - 1 > c) {
         imgNum.value = c;
+        sectionsPointer = c - 1;
     }
 };
 
