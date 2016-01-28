@@ -3,6 +3,7 @@
 // -------------------------------------------------
 
 @import "../modules/colors";
+@import "../modules/variables";
 
 article,
 aside,
@@ -16,14 +17,16 @@ main,
 nav,
 section,
 summary {
-    display: block;
-    padding: 5px;
+    /*display: block;*/
+    padding: 1%;
+    /*width: 100%;*/
 }
 
 body {
     height: 100%;
     width: 90%;
     margin: 0 5%;
+    font-family: $gdgFontRegular;
 }
 
 
@@ -37,4 +40,49 @@ table {
         display: table-cell;
         border: 1px dotted $color-black;
     }
+}
+
+// SASS calculation of the headings
+@for $i from 1 through 6 {
+    h#{$i} {
+        /*@include fontBasic;*/
+        font-size: 23 - (2 * $i) * 1px;
+    }
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-position: inside;
+    border-bottom: 1px solid $border;
+}
+
+li:before {
+    content: "•"; /* Insert content that looks like bullets */
+    padding-right: 8px;
+    color: $bullets; /* Or a color you prefer */
+}
+
+/*li:last-child {
+    border: none;
+}*/
+
+li a {
+    text-decoration: none;
+    color: #000;
+    display: block;
+    /*width: 200px;*/
+    -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+    transition: font-size 0.3s ease, background-color 0.3s ease;
+}
+
+li a:hover {
+    background: #f6f6f6;
 }

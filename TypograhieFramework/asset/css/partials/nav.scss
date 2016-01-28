@@ -7,7 +7,8 @@
 .nav {
     background-color: $color-primary-2;
     position: relative;
-    display: inline-block;
+    /*display: inline-block;*/
+    height: 70px;
     font-size: 14px;
     font-weight: 900;
 }
@@ -23,12 +24,17 @@
     float: left;
     *display: inline;
     zoom: 1;
+    width: 24%;
 
     a {
         display: block;
         padding: 15px 20px;
         color: $color-white;
-        background: $color-primary-3;
+        background: $nav-c;
+    }
+
+    li:before{
+
     }
 
     :first-child a {
@@ -40,6 +46,6 @@
     }
 
     a:hover {
-        background: $color-primary-4;
+        background: $nav-c2;
     }
 }

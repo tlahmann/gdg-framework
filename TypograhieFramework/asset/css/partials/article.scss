@@ -5,6 +5,16 @@
 @import "../modules/colors";
 
 article {
-    width: 70%;
+    display: inline-block;
+    width: 46%;
     background-color: $color-primary-5;
+    vertical-align: top;
+    border: 5px solid $color-primary-4;
+}
+
+@media all and (max-width: 1000px) {
+    article {
+        width: auto;
+        display: block;
+    }
 }

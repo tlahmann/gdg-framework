@@ -285,7 +285,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="asset\css\font\" />
+    <Folder Include="asset\font\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
