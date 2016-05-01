@@ -251,6 +251,16 @@ function playAnimation() {
 }
 
 // funktion: geschwindigkeit erhoehen;
+function changeSpeed() {
+    if (fps < 35) {
+        fps += 7;
+    } else {
+        fps = 7;
+    }
+    interval = 1000 / fps;
+}
+
+// funktion: geschwindigkeit erhoehen;
 function faster() {
     if (fps < 30) {
         fps += 2;

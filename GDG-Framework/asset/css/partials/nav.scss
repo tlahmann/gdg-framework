@@ -80,7 +80,7 @@ nav {
             &:after {
                 display: inline-block;
                 content: "Navigation ";
-                @include transform(-67%, -100%, 1.0, 1.0, -90deg);
+                @include transform(-68%, -100%, 1.0, 1.0, -90deg);
                 -webkit-transform-origin: 60px 26px;
                 -moz-transform-origin: 60px 26px;
                 -ms-transform-origin: 60px 26px;

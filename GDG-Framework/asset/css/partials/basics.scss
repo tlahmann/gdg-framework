@@ -8,7 +8,7 @@
 
 body {
     // top margin to get unstuck from the upper edge of the browser
-    margin: 8vh 0 0 0;
+    margin: 4vh 0 0 0;
     @include fontBasic;
 }
 
@@ -81,6 +81,7 @@ input[type="button"] {
     color: $darkColor;
     float: left;
     padding: 3px 6px;
+    outline: none;
 }
 
 .before {
