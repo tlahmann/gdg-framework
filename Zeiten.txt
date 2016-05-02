@@ -4,7 +4,7 @@
 15.08.2015 -- 20:55 - 23:25 Uhr -- 2,50h -- Einlesen in reinen CSS Navigationsmenü, Quellcode kommentieren
 16.08.2015 -- 16:00 - 18:30 Uhr -- 2,50h -- CSS Navigation Menu funktioniert (slide). Ansätze für den button zum öffnen
 17.08.2015 -- 20:30 - 24:00 Uhr -- 3,50h -- Menü öffnet sich, schließt mit delay. Allgemeine redesigns (Abstände, Farben etc.)
-20.08.2015 -- 15:00 - 16:00	Uhr -- 1,00h -- Schriftart geändert, design des 'quicknav'
+20.08.2015 -- 15:00 - 16:00 Uhr -- 1,00h -- Schriftart geändert, design des 'quicknav'
 23.08.2015 -- 11:30 - 15:00 Uhr -- 3,50h -- Einlesen in JavaScript, Einlesen in Jquery
 25.08.2015 -- 14:45 - 18:15 Uhr -- 3,50h -- Weiteres Einlesen in Javascript und Jquery
 29.08.2015 -- 20:00 - 22:45 Uhr -- 2,75h -- Navigation der 'Folien' mittels JavaScript/JQuery, Navigation mit Pfeiltasten
@@ -17,21 +17,28 @@
 16.09.2015 -- 13:45 - 17:00 Uhr -- 3,25h -- Webworker einlesen und versuchen zum laufen zu bringen
 17.09.2015 -- 11:00 - 13:00 Uhr -- 2,00h -- Merge Scrollpane & Number input in die Oberfläche
 18.09.2015 -- 14:15 - 16:30 Uhr -- 2,25h -- Scrollpane anpassen, XML to Json, Darstellung des Navigationsmenüs anpassen
-20.09.2015 -- 15:30 - 21:00 Uhr -- 5,50h -- SASS anpassen, Struktur und Darstellung anppassen, Navigationsbaum aufbauen und anzeigen (incl. Merge)
+20.09.2015 -- 15:30 - 21:00 Uhr -- 5,50h -- SASS anpassen, Struktur und Darstellung anpassen, Navigationsbaum aufbauen und anzeigen (incl. Merge)
 22.09.2015 -- 10:00 - 14:15 Uhr -- 4,25h -- Readme.md anpassen, Animations-Frame funktioniert
 23.09.2015 -- 20:00 - 21:30 Uhr -- 1,50h -- Navigation verlinken, XML/Json löst Rahmendarstllung aus, Ändern der Anzeige: Bild <-> Animation
 17.10.2015 -- 14:30 - 15:00 Uhr -- 0,50h -- Zeiten eintragen
-31.10.2015 -- 22:30 - 00:30 Uhr -- 2,00h -- XML mit nur einem Element wird korrekt geladen, Feste Größe für frame (1280x980)
-06.11.2015 -- 14:00 - 17:00 Uhr -- 3,00h -- Verbesserungn (nachtgragen aus git)
-07.11.2015 -- 10:00 - 14:00 Uhr -- 4,00h -- 
-08.11.2015 -- 21:30 - 23:30 Uhr -- 2,00h -- 
+31.10.2015 -- 22:00 - 00:30 Uhr -- 2,50h -- XML mit nur einem Element wird korrekt geladen, Feste Größe für frame (1280x980)
+06.11.2015 -- 14:00 - 17:00 Uhr -- 3,00h -- Öffnen der Navigation, Wechsel zwischen Flash, Bild und Animation, Darstellung verbessern
+07.11.2015 -- 10:00 - 14:00 Uhr -- 4,00h -- XML extern Laden, webserver bereitstellen
+08.11.2015 -- 21:30 - 23:30 Uhr -- 2,00h -- Abstände angepasst, Fontgrößen angepasst
 10.11.2015 -- 16:30 - 17:30 Uhr -- 1,00h -- Darstellung anpassen, border listener funktioniert
 16.11.2015 -- 13:30 - 17:00 Uhr -- 3,50h -- Darstellung anpassen
-20.11.2015 -- 13:30 - 15:30 Uhr -- 2,00h -- 
-21.11.2015 -- 11:30 - 19:30 Uhr -- 8,00h -- 
-22.11.2015 -- 20.00 - 23:00 Uhr -- 3,00h --
+20.11.2015 -- 13:30 - 15:30 Uhr -- 2,00h -- Font änder, göße und abstände anpassen
+21.11.2015 -- 11:30 - 19:30 Uhr -- 8,00h -- splash-screen verbessern, font-farbe verbessern, reorganisation der sass-daten
+22.11.2015 -- 20.00 - 23:00 Uhr -- 3,00h -- animation anpassen, dass kleinere und größere matrizen korrekt dargestellt werden
 24.11.2015 -- 21:30 - 02:00 Uhr -- 4,50h -- Abgabefertig
-28.11.2015 -- 13:30 - 14:00 Uhr	-- 0,50h -- Vollbild-/Fenster-Modus auswahl
+28.11.2015 -- 13:30 - 14:00 Uhr -- 0,50h -- Vollbild-/Fenster-Modus auswahl
+15.12.2015 -- 18:00 - 20:00 Uhr -- 2,00h -- Darstellungsanpassungen und Kommentare hinzugefügt
+20.01.2016 -- 18:00 - 20:30 Uhr -- 2,50h -- SVG anstatt Glyphicons verwenden um Skalierung zu umgehen
+22.01.2016 -- 13:00 - 13:15 Uhr -- 0,25h -- Eingabe von zahlen sicherer gestaltet, fängt fehleingaben ab
+26.01.2016 -- 16:15 - 16:45 Uhr -- 0,50h -- SVG umwandeln in Base64. Darstellung der Zahlen in der Oberfläche korrigieren.
+28.01.2016 -- 14:00 - 15:00 Uhr -- 1,00h -- Verbesserung (sicherheit)
+12.02.2016 -- 13:30 - 16:00 Uhr -- 2,25h -- Workshop Studenten (Beratungstermin)
+06.03.2016 -- 16:00 - 18:00 Uhr -- 2:00h -- Hilfestellung für Studenten (Abgabe 07.03.2016)
 
 ---------------------------------------------------------------------------------
-10.08.2015 - 31.10.2015 - 		 		 95,5h (28.11.'15)
+10.08.2015 - 05.02.2016 -               106,00h (26.01.'16)
