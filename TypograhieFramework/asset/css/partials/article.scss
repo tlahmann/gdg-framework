@@ -3,18 +3,28 @@
 // -------------------------------------------------
 
 @import "../modules/colors";
+@import "../modules/variables";
 
 article {
     display: inline-block;
-    width: 46%;
-    background-color: $color-primary-5;
+    width: 40%;
+    max-width: 40%;
+    min-width: 40%;
+    margin: auto 3.9%;
+    /*background-color: $lightColor;*/
     vertical-align: top;
-    border: 5px solid $color-primary-4;
+    /*border: 1px solid $darkColor;*/
 }
 
-@media all and (max-width: 1000px) {
+.title{
+    width: auto;
+    height: 50px;
+    padding: 60px 50px;
+}
+
+/*@media all and (max-width: $desDimensions * 1px) {
     article {
         width: auto;
         display: block;
     }
-}
+}*/

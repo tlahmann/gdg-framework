@@ -27,18 +27,22 @@ body {
     width: 90%;
     margin: 0 5%;
     font-family: $gdgFontRegular;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: .1px;
+    color: #56565a;
 }
 
 
 table {
     text-align: left;
     width: 100%;
-    border: 5px;
-    border: 1px ridge $color-black;
+    /*border: 5px;*/
+    border: 1px ridge $darkColor;
 
     td, th {
         display: table-cell;
-        border: 1px dotted $color-black;
+        border: 1px dotted $darkColor;
     }
 }
 
@@ -47,6 +51,7 @@ table {
     h#{$i} {
         /*@include fontBasic;*/
         font-size: 23 - (2 * $i) * 1px;
+        /*margin: 100px 0 0 50px;*/
     }
 }
 
@@ -56,16 +61,16 @@ ul {
     padding: 0;
 }
 
-li {
+/*li {
     list-style-position: inside;
-    border-bottom: 1px solid $border;
-}
+    border-bottom: 1px solid $darkColor;
+}*/
 
-li:before {
-    content: "•"; /* Insert content that looks like bullets */
+/*li:before {
+    content: "•";
     padding-right: 8px;
-    color: $bullets; /* Or a color you prefer */
-}
+    color: $bullets;
+}*/
 
 /*li:last-child {
     border: none;
