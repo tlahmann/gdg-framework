@@ -3,14 +3,22 @@
 // -------------------------------------------------
 
 @import "../modules/colors";
+@import "../modules/variables";
+@import "../modules/mixins";
 
 // the footer holds the quick navigation
 footer {
-    border-top: 1px solid $color-primary-4;
+    border-top: 1px solid $darkColor;
     position: relative;
-    /*width: 90%;*/
-    height: auto;
-    background-color: $color-primary-1;
+    width: $desDimensions * 1px;
+    max-width: $desDimensions * 1px;
+    min-width: $desDimensions * 1px;
+    height: calculateHeight((25, 1), $desDimensions);
+    max-height: calculateHeight((25, 1), $desDimensions);
+    min-height: calculateHeight((25, 1), $desDimensions);
+    margin: 0 auto;
+    background-color: $lightColor;
+    padding: 0;
 
     > .footer-area {
         margin: 20px;

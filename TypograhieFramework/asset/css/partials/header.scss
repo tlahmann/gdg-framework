@@ -3,10 +3,21 @@
 // -------------------------------------------------
 
 @import "../modules/colors";
+@import "../modules/variables";
+@import "../modules/mixins";
 
 // the header region holds the title of the current picture/animation
 header {
-    height: 10%;
-    background-color: $color-primary-6;
-    color: $color-black;
+    width: $desDimensions * 1px;
+    max-width: $desDimensions * 1px;
+    min-width: $desDimensions * 1px;
+    height: auto;
+    margin: 10px auto;
+    background-color: $lightColor;
+    color: $darkColor;
+    padding: 30px 0;
+
+    h1{
+        margin: 0 30px;
+    }
 }
