@@ -5,6 +5,11 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GdgFramework", "GDG-Framework\GdgFramework.csproj", "{BC6D1812-9E2E-4EAE-AA9A-D9B48CC9E1E5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EE072F42-EF56-43CF-9BA3-F3C3B4DC0EFC}"
+	ProjectSection(SolutionItems) = preProject
+		WE-Palette.css = WE-Palette.css
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypograhieFramework", "TypograhieFramework\TypograhieFramework.csproj", "{0E2D6591-A54D-49A3-99A2-C74593FB0DA4}"
 EndProject
 Global

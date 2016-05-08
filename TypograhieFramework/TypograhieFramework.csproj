@@ -152,6 +152,7 @@
     <Content Include="asset\lib\video.js" />
     <Content Include="asset\lib\video.novtt.dev.js" />
     <Content Include="asset\lib\video.novtt.js" />
+    <Content Include="asset\img\grain.svg" />
     <Content Include="exercise\a6.html" />
     <Content Include="exercise\a6\Grow.mp4" />
     <Content Include="exercise\a6\Konzept1.png" />
