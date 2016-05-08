@@ -33,12 +33,6 @@
     animation: $anim $seconds $style;
 }
 
-@keyframes borderscale {
-    50% {
-        box-shadow: 0 0 0 1px lighten($darkColor, 30%);
-    }
-}
-
 // define the basic font for the whole document
 @mixin fontBasic {
     font-family: $gdgFontRegular;
@@ -49,11 +43,11 @@
 }
 
 // basic class to entend all regions (header, nav, section, aside and footer)
-@mixin basic {
+/*@mixin basic {
     position: absolute;
-}
+}*/
 
-@mixin vh() {
+/*@mixin vh() {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -62,4 +56,4 @@
     padding: 0;
     position: absolute;
     width: 1px;
-}
+}*/
