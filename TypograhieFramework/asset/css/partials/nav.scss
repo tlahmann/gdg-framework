@@ -3,49 +3,55 @@
 // -------------------------------------------------
 
 @import "../modules/colors";
+@import "../modules/variables";
+@import "../modules/mixins";
 
-.nav {
-    background-color: $color-primary-2;
-    position: relative;
-    /*display: inline-block;*/
-    height: 70px;
-    font-size: 14px;
-    font-weight: 900;
+nav {
+    width: $desDimensions * 1px;
+    max-width: $desDimensions * 1px;
+    min-width: $desDimensions * 1px;
+    height: auto;
+    margin: 10px auto;
+    color: $darkColor;
+    padding: 0;
+    background: #ff0;
 }
 
 .nav-list {
-    padding: 5px;
-    margin: 5px;
+    /*padding: 5px;
+    margin: 5px;*/
 }
 
 .nav-item {
     list-style: none;
-    margin: 2px;
-    float: left;
-    *display: inline;
-    zoom: 1;
+    margin: 0 0.37%;
+    /* float: right; */
+    display: inline-block;
     width: 24%;
+    background: $lightColor;
 
     a {
         display: block;
         padding: 15px 20px;
-        color: $color-white;
-        background: $nav-c;
+        /*color: $lightColor;*/
+        /*background-image: url(../../asset/img/grain.svg),*/
+        /*radial-gradient(ellipse farthest-corner at 1000px 10px, $darkColor, $lightColor);*/
+        /*background-color: $lightColor;*/
+        /*background-repeat: repeat;*/
     }
 
-    li:before{
-
+    li:before {
     }
 
     :first-child a {
-        border-radius: 5px 0 0 5px;
+        /*border-radius: 5px 0 0 5px;*/
     }
 
     :last-child a {
-        border-radius: 0 5px 5px 0;
+        /*border-radius: 0 5px 5px 0;*/
     }
 
     a:hover {
-        background: $nav-c2;
+        background: $lightColor;
     }
 }
