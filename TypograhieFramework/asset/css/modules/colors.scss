@@ -2,20 +2,6 @@
 // Colors
 // -------------------------------------------------
 
-$base-color: #2D882D;
-
 // used colors for the entire document
-$color-primary-0: $base-color; // obs
-$color-primary-1: darken($base-color, 10%); // footer
-$color-primary-2: darken($base-color, 10%); // nav
-$color-primary-3: lighten($base-color, 5%); // nav item a, aside
-$color-primary-4: lighten($base-color, 10%); // nav item a:hover, footer
-$color-primary-5: #E3E2CA; // section, article
-$color-primary-6: #8D8C94; // header
-$border: #E8D676;
-$bullets: #DBB143;
-$nav-c: #8F9C34;
-$nav-c2: #CCE35F;
-
-$color-black: #000;
-$color-white: #fff;
+$darkColor: rgb(86,86,90);
+$lightColor: hsl(0, 0.4%, 90%);
