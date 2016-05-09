@@ -29,7 +29,7 @@ Date: May.2016
 
 Nachdem die die Reinzeichnung der ersten Werke erstellt wurden können diese direkt in die doku eingefügt werden. Die Datei *"doku.html"* im Hauptverzeichnis des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden, in diesem Beispiel nutze ich Notepad++.
 
-Innerhalb der Datei befindet sich ab Zeile 130 (Stand Mai 2016) der Abschnitt **_<xml id="data" name="Maximilian Mustermann" style="display:none;">[...]_**. Es handelt sich hierbei um den Abschnitt der Daten auf welche das Framework zugreift. Es ist daher wichtig, dass *id="data"* und *style="display:none;"* nicht verändert werden. Der Name unter *name="Maximilian Mustermann"* sollte eurem eigenen Namen entsprechen.
+Innerhalb der Datei befindet sich ab Zeile 130 (Stand Mai 2016) der Abschnitt *\<xml id="data" name="Maximilian Mustermann" style="display:none;"\>[...]* Es handelt sich hierbei um den Abschnitt der Daten auf welche das Framework zugreift. Es ist daher wichtig, dass *id="data"* und *style="display:none;"* nicht verändert werden. Der Name unter *name="Maximilian Mustermann"* muss allerdings eurem eigenen Namen entsprechen.
 
 Die Struktur der Dokumentation im Abschnitt *data*:
 
@@ -42,6 +42,7 @@ Die Struktur der Dokumentation im Abschnitt *data*:
   </abschnitt>
 </doku>
 ```
+Es können beliebig viele Bereiche 'abschnitt' in der Dokumentation vorkommen. In jedem 'abschnitt' können beliebig viele 'inhalt' Bereiche zusammengefasst werden. Und in jedem dieser Bereiche können beliebig viele 'details' Bereiche eingeschlossen sein. Es bietet sich an hier etwas herum zu spielen und zu beobachten welche Änderungen in der Doku eintreten. 
 
 Eine alternative Darstellung mittels dtd
 
