@@ -39,6 +39,7 @@
 28.01.2016 -- 14:00 - 15:00 Uhr -- 1,00h -- Verbesserung (sicherheit)
 12.02.2016 -- 13:30 - 16:00 Uhr -- 2,25h -- Workshop Studenten (Beratungstermin)
 06.03.2016 -- 16:00 - 18:00 Uhr -- 2:00h -- Hilfestellung für Studenten (Abgabe 07.03.2016)
-
+01.04.2016 -- 18:00 - 20:00 Uhr -- 2:00h -- Vereinfachung mancher Darstellungen - Buttons ausblenden (Animation/Bewegungsanalyse)
+08.04.2016 -- 23:45 - 01:45 Uhr -- 2:00h -- Bearbeitung des Typografie-Frameworks: Design erstellen.
 ---------------------------------------------------------------------------------
 10.08.2015 - 05.02.2016 -               106,00h (26.01.'16)
