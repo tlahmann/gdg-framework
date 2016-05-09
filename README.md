@@ -29,7 +29,11 @@ Date: May.2016
 
 Nachdem die die Reinzeichnung der ersten Werke erstellt wurden können diese direkt in die doku eingefügt werden. Die Datei *"doku.html"* im Hauptverzeichnis des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden, in diesem Beispiel nutze ich Notepad++.
 
-Innerhalb der Datei befindet sich ab Zeile 130 (Stand Mai 2016) der Abschnitt *\<xml id="data" name="Maximilian Mustermann" style="display:none;"\>[...]* Es handelt sich hierbei um den Abschnitt der Daten auf welche das Framework zugreift. Es ist daher wichtig, dass *id="data"* und *style="display:none;"* nicht verändert werden. Der Name unter *name="Maximilian Mustermann"* muss allerdings eurem eigenen Namen entsprechen.
+Innerhalb der Datei befindet sich ab Zeile 130 (Stand Mai 2016) der Abschnitt 
+
+*\<xml id="data" name="Maximilian Mustermann" style="display:none;"\>[...]* 
+
+Es handelt sich hierbei um den Abschnitt der Daten auf welche das Framework zugreift. Es ist daher wichtig, dass *id="data"* und *style="display:none;"* nicht verändert werden. Der Name unter *name="Maximilian Mustermann"* muss allerdings eurem eigenen Namen entsprechen.
 
 Die Struktur der Dokumentation im Abschnitt *data*:
 
@@ -44,6 +48,12 @@ Die Struktur der Dokumentation im Abschnitt *data*:
 ```
 Es können beliebig viele Bereiche 'abschnitt' in der Dokumentation vorkommen. In jedem 'abschnitt' können beliebig viele 'inhalt' Bereiche zusammengefasst werden. Und in jedem dieser Bereiche können beliebig viele 'details' Bereiche eingeschlossen sein. Es bietet sich an hier etwas herum zu spielen und zu beobachten welche Änderungen in der Doku eintreten. 
 
+Die Attribute *abschnitt: titel* und *inhalt: titel* können beliebigen Text beinhalten. Beispielsweise den Titel der Aufgabe.
+
+Das Attribut *inhalt: typ* **muss** einem der folgenden Werte entsprechen: 'bild', 'flash' oder 'animation'.
+
+Das Attribut *inhalt: rahmen* **muss** einem der folgenden Werte entsprechen: 'ein' oder 'aus'.
+
 Eine alternative Darstellung mittels dtd
 
 ```xml
@@ -53,7 +63,7 @@ Eine alternative Darstellung mittels dtd
   titel    CDATA   #REQUIRED
 >
 <!ELEMENT inhalt (details)+>
-<!ATTLIST abschnitt
+<!ATTLIST inhalt
   titel    CDATA   #REQUIRED
   typ      CDATA   #REQUIRED
   rahmen   CDATA   #REQUIRED
