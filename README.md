@@ -23,3 +23,39 @@ Date: May.2016
 * [W3Schools - Javascript](http://www.w3schools.com/js/)
 * [W3Schools - CSS](http://www.w3schools.com/css/)
 
+### Anleitung
+#### Html
+> **Datei:** doku.html
+
+Nachdem die die Reinzeichnung der ersten Werke erstellt wurden können diese direkt in die doku eingefügt werden. Die Datei *"doku.html"* im Hauptverzeichnis des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden, in diesem Beispiel nutze ich Notepad++.
+
+Innerhalb der Datei befindet sich ab Zeile 130 (Stand Mai 2016) der Abschnitt **_<xml id="data" name="Maximilian Mustermann" style="display:none;">[...]_**. Es handelt sich hierbei um den Abschnitt der Daten auf welche das Framework zugreift. Es ist daher wichtig, dass *id="data"* und *style="display:none;"* nicht verändert werden. Der Name unter *name="Maximilian Mustermann"* sollte eurem eigenen Namen entsprechen.
+
+Die Struktur der Dokumentation im Abschnitt *data*:
+
+```xml
+<doku>
+  <abschnitt titel="Text">
+    <inhalt titel="Text" typ="bild" rahmen="aus">
+      <details>Text</details>
+    </inhalt>
+  </abschnitt>
+</doku>
+```
+
+Eine alternative Darstellung mittels dtd
+
+```xml
+<!ELEMENT doku (abschnitt)+>
+<!ELEMENT abschnitt (inhalt)+>
+<!ATTLIST abschnitt
+  titel    CDATA   #REQUIRED
+>
+<!ELEMENT inhalt (details)+>
+<!ATTLIST abschnitt
+  titel    CDATA   #REQUIRED
+  typ      CDATA   #REQUIRED
+  rahmen   CDATA   #REQUIRED
+>
+<!ELEMENT details (#PCDATA)>
+```
