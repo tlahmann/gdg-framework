@@ -6,11 +6,21 @@
 ---------------
 Author: Tobias Lahmann
 
-Date: May.2016
+Date: May 2016
+
+---------------
+> [Allgemeines](#allgemein)
+> [Anleitung](#anleitung)
+>> [HTML - hypertext markup language](#html)
+>>> [Typische Fehler](#typische-fehler)
+>> [JavaScript](#javascript)
+>> [CSS - cascading style sheet](#css)
+> [Fragen und Antworten](#fragen-und-antworten)
+> [Hilfreiche Links](#hilfreiche-links)
 
 ---------------
 ### Allgemeines
-#### Getestet wurde das Framework unter folgenden Browsern: 
+#### Test: 
 * Google Chrome 46+ 
 * Mozilla Firefox 42+ 
 * Opera 33+
@@ -18,13 +28,8 @@ Date: May.2016
 * Microsoft Edge 20+
 * InternetExplorer 11+
 
-#### Hilfreiche Links für einsteiger
-* [W3Schools - Html](http://www.w3schools.com/html/)
-* [W3Schools - Javascript](http://www.w3schools.com/js/)
-* [W3Schools - CSS](http://www.w3schools.com/css/)
-
 ### Anleitung
-#### Html
+#### HTML - hypertext markup language
 > **Datei:** doku.html
 
 Nachdem die die Reinzeichnung der ersten Werke erstellt wurden können diese direkt in die doku eingefügt werden. Die Datei *"doku.html"* im Hauptverzeichnis des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden, in diesem Beispiel nutze ich Notepad++.
@@ -40,21 +45,23 @@ Die Struktur der Dokumentation im Abschnitt *data*:
 ```xml
 <doku>
   <abschnitt titel="Text">
-    <inhalt titel="Text" typ="bild" rahmen="aus">
+    <inhalt titel="Text" quelle="pfad"  typ="bild" rahmen="aus">
       <details>Text</details>
+      ...
     </inhalt>
+    ...
   </abschnitt>
+  ...
 </doku>
 ```
 Es können beliebig viele Bereiche 'abschnitt' in der Dokumentation vorkommen. In jedem 'abschnitt' können beliebig viele 'inhalt' Bereiche zusammengefasst werden. Und in jedem dieser Bereiche können beliebig viele 'details' Bereiche eingeschlossen sein. Es bietet sich an hier etwas herum zu spielen und zu beobachten welche Änderungen in der Doku eintreten. 
 
-Die Attribute *abschnitt: titel* und *inhalt: titel* können beliebigen Text beinhalten. Beispielsweise den Titel der Aufgabe.
+* Die Attribute *abschnitt: titel* und *inhalt: titel* können beliebigen Text beinhalten. Beispielsweise den Titel der Aufgabe.
+* Das Attribut *inhalt: quelle* **muss** einer gültigen, realtiven URL zum gewünschten Bild, zur Flash-Animation oder zum Ordner der Animation entsprechen.
+* Das Attribut *inhalt: typ* **muss** einem der folgenden Werte entsprechen: 'bild', 'flash' oder 'animation'.
+* Das Attribut *inhalt: rahmen* **muss** einem der folgenden Werte entsprechen: 'ein' oder 'aus'.
 
-Das Attribut *inhalt: typ* **muss** einem der folgenden Werte entsprechen: 'bild', 'flash' oder 'animation'.
-
-Das Attribut *inhalt: rahmen* **muss** einem der folgenden Werte entsprechen: 'ein' oder 'aus'.
-
-Eine alternative Darstellung mittels dtd
+Eine alternative Darstellung mittels [https://de.wikipedia.org/wiki/Dokumenttypdefinition](dtd)
 
 ```xml
 <!ELEMENT doku (abschnitt)+>
@@ -65,8 +72,34 @@ Eine alternative Darstellung mittels dtd
 <!ELEMENT inhalt (details)+>
 <!ATTLIST inhalt
   titel    CDATA   #REQUIRED
+  quelle   CDATA   #REQUIRED
   typ      CDATA   #REQUIRED
   rahmen   CDATA   #REQUIRED
 >
 <!ELEMENT details (#PCDATA)>
 ```
+
+Zu beachten ist:
+- Die Struktur des Ordners 'inhalte' kann beliebig gewählt werden.
+- Der Typ des Inhalts muss angegeben werden, da sonst das Framework die falsche Behandlung des Inhalts durchführt.
+- Bildformate sind nicht auf .PNG beschränkt.
+
+##### Typische Fehler
+-	Falsche Schreibweise im Pfad, oder im Dateinamen sowie eine fehlende Dateiendung
+-	Unzulässige Zeichen im Pfad. (Hierzu gehören: < > : " \ / | * ?     Vermieden werden sollten: [ ] = % $ + , ; )
+-	Inhalt ist nicht im Format 720 px * 540 px
+
+#### JavaScript 
+##### Typische Fehler
+
+#### CSS - cascading style sheet
+##### Typische Fehler
+
+### Fragen und Antworten
+**F:** Darf ich die Farbe des Frameworks in der css verändern?
+**A:** Nein. Das Framework darf nicht verändert werden, nur die Inhalte.
+
+## Hilfreiche Links
+* [W3Schools - Html](http://www.w3schools.com/html/)
+* [W3Schools - JavaScript](http://www.w3schools.com/js/)
+* [W3Schools - CSS](http://www.w3schools.com/css/)
