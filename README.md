@@ -9,14 +9,17 @@ Author: Tobias Lahmann
 Date: May 2016
 
 ---------------
-> [Allgemeines](#allgemein)
-> [Anleitung](#anleitung)
->> [HTML - hypertext markup language](#html)
->>> [Typische Fehler](#typische-fehler)
->> [JavaScript](#javascript)
->> [CSS - cascading style sheet](#css)
-> [Fragen und Antworten](#fragen-und-antworten)
-> [Hilfreiche Links](#hilfreiche-links)
+### Inhalt
+* [Allgemeines](#allgemein)
+* [Anleitung](#anleitung)
+  * [HTML - hypertext markup language](#html)
+    * [Typische Fehler](#typische-fehler)
+  * [JavaScript](#javascript)
+    * [Typische Fehler](#typische-fehler-1)
+  * [CSS - cascading style sheet](#css)
+    * [Typische Fehler](#typische-fehler-2)
+* [Fragen und Antworten](#fragen-und-antworten)
+* [Hilfreiche Links](#hilfreiche-links)
 
 ---------------
 ### Allgemeines
