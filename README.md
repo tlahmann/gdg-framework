@@ -12,9 +12,9 @@ Date: May 2016
 ### Inhalt
 * [Allgemeines](#allgemein)
 * [Anleitung](#anleitung)
-  * [HTML - hypertext markup language](#html)
+  * [HTML - hypertext markup language](#html-hypertext-markup-language)
   * [JavaScript](#javascript)
-  * [CSS - cascading style sheet](#css)
+  * [CSS - cascading style sheet](#css-cascading-style-sheet)
 * [Fragen und Antworten](#fragen-und-antworten)
 * [Hilfreiche Links](#hilfreiche-links)
 
