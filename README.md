@@ -15,6 +15,10 @@ Date: May 2016
   * [HTML - hypertext markup language](#html-hypertext-markup-language)
   * [JavaScript](#javascript)
   * [CSS - cascading style sheet](#css-cascading-style-sheet)
+* [Beispiele](#beispiele)
+  * [Beispiel 1](beispiel-1)
+  * [Beispiel 2](beispiel-2)
+  * [Beispiel 3](beispiel-3)
 * [Fragen und Antworten](#fragen-und-antworten)
 * [Hilfreiche Links](#hilfreiche-links)
   * [Tutorials](#Tutorials)
@@ -154,20 +158,6 @@ Zu beachten ist:
 * Die gewünschte Anzahl an dargestellten Objekten muss angegeben werden, im Standardfall entspricht diese aber der Anzahl der Objekte
 * Die Bilder der Objekte können beliebig groß oder klein sein, sie werden immer auf die korrekte Größe skaliert. Für eine optimale Darstellung sollten die Bilder aber zumindest quadratisch sein.
 
-Zweites Beispiel: 
-Ich möchte gerne keine Vorwärts- und Rückwärtsumschaltung für Objekte und Permutationen haben. Mein Vorgehen ist dann das folgende:
-1. (HTML) Ich Lösche den „button6“ welcher für das Rückwärtsschalten der Permutationen zuständig ist.
-2. (HTML) Ich Lösche den „button8“ welcher für das Rückwärtsschalten der Objekte zuständig ist.
-3. (CSS) Ich passe den „button7“ an um wieder eine hübsche Darstellung zu erhalten.
-
-Letztes Beispiel: (kleine JavaScript „Manipulation“)
-Ich möchte gerne einen separaten Pause-Button haben:
-1. (HTML) Ich kopiere den „button1“ im HTML und benenne das id-Attribut um in bspw. „button9“
-2. (HTML/JS) Ich ändere das Verhalten des „button1“ beim clicken (oncklick-Methode) auf „playAnimation()“ (zu finden ist die Methode in der animation.js)
-3. (HTML/JS) Ich ändere das Verhalten des „button9“ beim clicken (oncklick-Methode) auf „pauseAnimation()“ 
-4. (CSS) Ich kopiere alle CSS-Regeln welche für den Button 1 bestimmt sind und benenne auch diese um in „button9“
-5. (CSS) Ich ändere die positionswerte für meinen neuen „button9“ (top, left)
-
 ##### Typische Fehler
 * Falsche Dimensionen der Permutation. Diese müssen (mathematisch) zulässige Matrizen sein.
 * Falsche Ordnernamen, oder Schreibfehler in den Ordnernamen.
@@ -203,10 +193,6 @@ Zu beachten ist:
 * Bildformate sind auch hier nicht auf .PNG beschränkt.
 
 Hier ist auch wichtig: Wenn man keine Buttons haben will die vorwärts und rückwärts durchschalten sondern zyklisch durch alle vorhandenen Objekte/Permutationen gehen sollte man die HTML-Elemente löschen. Das Löschen von CSS-Regeln ist nicht notwendig.
-Ein Beispiel: 
-Ich möchte gerne keine Typumschaltung haben. Mein Vorgehen ist dann das folgende:
-a. (HTML) Ich Lösche den „button2“ welcher für den Typeswitch zuständig ist aus der doku.html
-b. (HTML) Ich passe die Positionen der Buttons 3-8 an damit mein Menü wieder ordentlich ist.
 
 Ein weiteres Beispiel (für das auch das anpassen der animation.js notwendig ist) folgt weiter unten.
 
@@ -217,18 +203,36 @@ Ein weiteres Beispiel (für das auch das anpassen der animation.js notwendig ist
 * Bilder sind nicht in der gleichen Größe wie in den CSS-Regeln angegeben.
 * Einheiten  vergessen ([..]px)
 
+### Beispiele
+#### Beispiel 1
+Ich möchte gerne keine Typumschaltung haben. Mein Vorgehen ist dann das folgende:
+1. (HTML) Ich Lösche den „button2“ welcher für den Typeswitch zuständig ist aus der doku.html
+2. (HTML) Ich passe die Positionen der Buttons 3-8 an damit mein Menü wieder ordentlich ist.
+
+#### Beispiel 2
+Ich möchte gerne keine Vorwärts- und Rückwärtsumschaltung für Objekte und Permutationen haben. Mein Vorgehen ist dann das folgende:
+1. (HTML) Ich Lösche den „button6“ welcher für das Rückwärtsschalten der Permutationen zuständig ist.
+2. (HTML) Ich Lösche den „button8“ welcher für das Rückwärtsschalten der Objekte zuständig ist.
+3. (CSS) Ich passe den „button7“ an um wieder eine hübsche Darstellung zu erhalten.
+
+#### Beispiel 3
+Ich möchte gerne einen separaten Pause-Button haben:
+1. (HTML) Ich kopiere den „button1“ im HTML und benenne das id-Attribut um in bspw. „button9“
+2. (HTML/JS) Ich ändere das Verhalten des „button1“ beim clicken (oncklick-Methode) auf „playAnimation()“ (zu finden ist die Methode in der animation.js)
+3. (HTML/JS) Ich ändere das Verhalten des „button9“ beim clicken (oncklick-Methode) auf „pauseAnimation()“ 
+4. (CSS) Ich kopiere alle CSS-Regeln welche für den Button 1 bestimmt sind und benenne auch diese um in „button9“
+5. (CSS) Ich ändere die positionswerte für meinen neuen „button9“ (top, left)
+
 ### Fragen und Antworten
-**F:** Darf ich die Farbe des Frameworks in der css verändern?
+**F: Darf ich die Farbe des Frameworks in der css verändern?**
 
 **A:** Nein. Das Framework darf nicht verändert werden, nur die Inhalte.
 
-
-**F:** Darf ich Musik in meinem Framework verwenden?
+**F: Darf ich Musik in meinem Framework verwenden?**
 
 **A:** Nein. Es geht hier um visuelle Effekte und nicht um Musik. Mach dafür einfach GdG II mit.
 
-
-**F:** In meiner Animation möchte ich gerne 10 Buttons haben. Wie geht das?
+**F: In meiner Animation möchte ich gerne 10 Buttons haben. Wie geht das?**
 
 **A:** Buttons können in der doku.html hinzugefügt werden. Die animation.css muss angepasst werden, damit der Button eigene Positionen und das gleiche Aussehen wie die Anderen erhält. Die animation.js muss angepasst werden, damit der Button auch eine Funktion erhält.
 
