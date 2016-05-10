@@ -13,11 +13,8 @@ Date: May 2016
 * [Allgemeines](#allgemein)
 * [Anleitung](#anleitung)
   * [HTML - hypertext markup language](#html)
-    * [Typische Fehler](#typische-fehler)
   * [JavaScript](#javascript)
-    * [Typische Fehler](#typische-fehler-1)
   * [CSS - cascading style sheet](#css)
-    * [Typische Fehler](#typische-fehler-2)
 * [Fragen und Antworten](#fragen-und-antworten)
 * [Hilfreiche Links](#hilfreiche-links)
 
@@ -47,9 +44,9 @@ Die Struktur der Dokumentation im Abschnitt *data*:
 
 ```xml
 <doku>
-  <abschnitt titel="Text">
-    <inhalt titel="Text" quelle="pfad"  typ="bild" rahmen="aus">
-      <details>Text</details>
+  <abschnitt titel="text">
+    <inhalt titel="text" quelle="pfad"  typ="bild" rahmen="aus">
+      <details>text</details>
       ...
     </inhalt>
     ...
@@ -64,7 +61,7 @@ Es können beliebig viele Bereiche 'abschnitt' in der Dokumentation vorkommen. I
 * Das Attribut *inhalt: typ* **muss** einem der folgenden Werte entsprechen: 'bild', 'flash' oder 'animation'.
 * Das Attribut *inhalt: rahmen* **muss** einem der folgenden Werte entsprechen: 'ein' oder 'aus'.
 
-Eine alternative Darstellung mittels [https://de.wikipedia.org/wiki/Dokumenttypdefinition](dtd)
+Eine alternative Darstellung mittels [Dokumenttypdefinition](https://de.wikipedia.org/wiki/Dokumenttypdefinition)
 
 ```xml
 <!ELEMENT doku (abschnitt)+>
@@ -81,16 +78,17 @@ Eine alternative Darstellung mittels [https://de.wikipedia.org/wiki/Dokumenttypd
 >
 <!ELEMENT details (#PCDATA)>
 ```
+Die Struktur des Ordners 'inhalte' kann beliebig gewählt werden. Wichtig für die Anzeige der Inhalte ist die verlinkung im *quelle* Attribut des inhalte Tags. Ein Link muss [relativ](https://de.wikipedia.org/wiki/Uniform_Resource_Locator#Relative_URLs) sein. Beispiele für die korrekte Verlinkung können dem Framework entnommen werden.
 
-Zu beachten ist:
-- Die Struktur des Ordners 'inhalte' kann beliebig gewählt werden.
-- Der Typ des Inhalts muss angegeben werden, da sonst das Framework die falsche Behandlung des Inhalts durchführt.
-- Bildformate sind nicht auf .PNG beschränkt.
+Der Typ des Inhalts muss im *typ* Attribut angegeben werden. Wenn dies nicht, oder falsch geschehen ist weden die Inhalte vom Framework falsch behandelt und werden nicht angezeigt.
+
+Bildformate sind nicht auf PNGs beschränkt. Es können beliebige Bildformate gewählt und vom Framework angezeigt werden. Für Reinzeichnungen empfohlen ist .png. Für Fotos empfohlen ist .jpg.
 
 ##### Typische Fehler
--	Falsche Schreibweise im Pfad, oder im Dateinamen sowie eine fehlende Dateiendung
--	Unzulässige Zeichen im Pfad. (Hierzu gehören: < > : " \ / | * ?     Vermieden werden sollten: [ ] = % $ + , ; )
--	Inhalt ist nicht im Format 720 px * 540 px
+* Falsche Schreibweise im Pfad, oder im Dateinamen sowie eine fehlende Dateiendung.
+* Typ des Inhalts falsch angegeben.
+* Unzulässige Zeichen im Pfad.
+* Inhalt ist nicht im Format 720 px * 540 px
 
 #### JavaScript 
 ##### Typische Fehler
@@ -100,9 +98,10 @@ Zu beachten ist:
 
 ### Fragen und Antworten
 **F:** Darf ich die Farbe des Frameworks in der css verändern?
+
 **A:** Nein. Das Framework darf nicht verändert werden, nur die Inhalte.
 
-## Hilfreiche Links
+### Hilfreiche Links
 * [W3Schools - Html](http://www.w3schools.com/html/)
 * [W3Schools - JavaScript](http://www.w3schools.com/js/)
 * [W3Schools - CSS](http://www.w3schools.com/css/)
