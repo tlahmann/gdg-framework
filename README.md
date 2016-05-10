@@ -17,9 +17,15 @@ Date: May 2016
   * [CSS - cascading style sheet](#css-cascading-style-sheet)
 * [Fragen und Antworten](#fragen-und-antworten)
 * [Hilfreiche Links](#hilfreiche-links)
+  * [Tutorials](#Tutorials)
+  * [Downloads](#downloads)
 
 ---------------
 ### Allgemeines
+Alle Dateien können mit beliebigen Texteditoren geöffnet und manipuliert werden. Oft nutzen Entwickler Texteditoren die syntax highlighting anbieten. Für Microsoft Windows nutze ich meistens den Notepad++ Texteditor oder SublimeText. Unter Apple OSX ist der TextMate zu empfehlen. Und unter Unix bietet VIM bzw GVIM viele hilfreiche Funktionen. 
+
+Links zum Download sind weiter unten eingetragen. Auch wenn dort immer die Entwicklerseite angegeben ist besteht jedoch keine Garantie über die Sicherheit dieser Downloads.
+
 #### Test: 
 Framework getestet unter Browsern:
 * Google Chrome 46+ 
@@ -93,7 +99,10 @@ Bildformate sind nicht auf PNGs beschränkt. Es können beliebige Bildformate ge
 
 #### JavaScript 
 > **Datei:** asset/lib/animation.js
+
 Die Datei *"animation.js"* im Unterverzeichnis asset -> lib des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.
+
+Innerhalb der Datei befindet sich ab Zeile 60 (Stand Mai 2016) der Abschnitt 
 
 ```javascript
 // Permutationen
@@ -114,6 +123,7 @@ var permutationen =
 ...
 ```
 
+Ab Zeile 112 folgt:
 ```javascript
 var objekte =
 [{
@@ -137,36 +147,38 @@ var objekte =
 ```
 
 Zu beachten ist:
--	Die Permutationen können beliebig groß oder klein sein. Im Idealfall sollten sie aber mindestens 7-8 Zeilen und/oder Spalten beinhalten, da die Darstellung sonst leidet.
--	Die Objekte müssen zwingend im Ordner ./inhalte/anim/ sein!
--	Die Bilder müssen mit 1.png … n.png durchnummeriert sein!
--	Die Anzahl der Objekte muss angegeben werden.
--	Die gewünschte Anzahl an dargestellten Objekten muss angegeben werden, im Standardfall entspricht diese aber der Anzahl der Objekte
--	Die Bilder der Objekte können beliebig groß oder klein sein, sie werden immer auf die korrekte Größe skaliert. Für eine optimale Darstellung sollten die Bilder aber zumindest quadratisch sein.
-Fehler können sein:
--	Falsche Dimensionen der Permutation. Diese müssen (mathematisch) zulässige Matrizen sein.
--	Falsche Ordnernamen, oder Schreibfehler in den Ordnernamen.
--	Unzulässige Zeichen im Ordnernamen. (Hierzu gehören: < > : " \ / | * ?     Vermieden werden sollten: [ ] = % $ + , ; )
+* Die Permutationen können beliebig groß oder klein sein. Im Idealfall sollten sie aber mindestens 7-8 Zeilen und/oder Spalten beinhalten, da die Darstellung sonst leidet.
+* Die Objekte müssen zwingend im Ordner ./inhalte/anim/ sein!
+* Die Bilder müssen mit 1.png … n.png durchnummeriert sein!
+* Die Anzahl der Objekte muss angegeben werden.
+* Die gewünschte Anzahl an dargestellten Objekten muss angegeben werden, im Standardfall entspricht diese aber der Anzahl der Objekte
+* Die Bilder der Objekte können beliebig groß oder klein sein, sie werden immer auf die korrekte Größe skaliert. Für eine optimale Darstellung sollten die Bilder aber zumindest quadratisch sein.
 
 Zweites Beispiel: 
 Ich möchte gerne keine Vorwärts- und Rückwärtsumschaltung für Objekte und Permutationen haben. Mein Vorgehen ist dann das folgende:
-a.	(HTML) Ich Lösche den „button6“ welcher für das Rückwärtsschalten der Permutationen zuständig ist.
-b.	(HTML) Ich Lösche den „button8“ welcher für das Rückwärtsschalten der Objekte zuständig ist.
-c.	(CSS) Ich passe den „button7“ an um wieder eine hübsche Darstellung zu erhalten.
+1. (HTML) Ich Lösche den „button6“ welcher für das Rückwärtsschalten der Permutationen zuständig ist.
+2. (HTML) Ich Lösche den „button8“ welcher für das Rückwärtsschalten der Objekte zuständig ist.
+3. (CSS) Ich passe den „button7“ an um wieder eine hübsche Darstellung zu erhalten.
 
 Letztes Beispiel: (kleine JavaScript „Manipulation“)
 Ich möchte gerne einen separaten Pause-Button haben:
-a.	(HTML) Ich kopiere den „button1“ im HTML und benenne das id-Attribut um in bspw. „button9“
-b.	(HTML/JS) Ich ändere das Verhalten des „button1“ beim clicken (oncklick-Methode) auf „playAnimation()“ (zu finden ist die Methode in der animation.js)
-c.	(HTML/JS) Ich ändere das Verhalten des „button9“ beim clicken (oncklick-Methode) auf „pauseAnimation()“ 
-d.	(CSS) Ich kopiere alle CSS-Regeln welche für den Button 1 bestimmt sind und benenne auch diese um in „button9“
-e.	(CSS) Ich ändere die positionswerte für meinen neuen „button9“ (top, left)
+1. (HTML) Ich kopiere den „button1“ im HTML und benenne das id-Attribut um in bspw. „button9“
+2. (HTML/JS) Ich ändere das Verhalten des „button1“ beim clicken (oncklick-Methode) auf „playAnimation()“ (zu finden ist die Methode in der animation.js)
+3. (HTML/JS) Ich ändere das Verhalten des „button9“ beim clicken (oncklick-Methode) auf „pauseAnimation()“ 
+4. (CSS) Ich kopiere alle CSS-Regeln welche für den Button 1 bestimmt sind und benenne auch diese um in „button9“
+5. (CSS) Ich ändere die positionswerte für meinen neuen „button9“ (top, left)
 
 ##### Typische Fehler
+* Falsche Dimensionen der Permutation. Diese müssen (mathematisch) zulässige Matrizen sein.
+* Falsche Ordnernamen, oder Schreibfehler in den Ordnernamen.
+* Unzulässige Zeichen im Ordnernamen. (Hierzu gehören: < > : " \ / | * ?     Vermieden werden sollten: [ ] = % $ + , ; )
 
 #### CSS - cascading style sheet
 > **Datei:** asset/css/animation.css
+
 Die Datei *"animation.css"* im Unterverzeichnis asset -> css des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.
+
+Innerhalb der Datei befindet sich ab Zeile 40 (Stand Mai 2016) der Abschnitt 
 
 ```css
 #button1 {
@@ -186,33 +198,49 @@ Die Datei *"animation.css"* im Unterverzeichnis asset -> css des Frameworks kann
 }
 ```
 Zu beachten ist:
--	CSS regeln werden von Oben nach Unten gelesen, wobei spätere Regeln bereits vorhandene überschreiben.
--	Wenn die Buttons zum Beispiel keine Eigenschaften für „gedrückt“ haben sollen kann auch die CSS-Regel :active gelöscht werden
--	Bildformate sind auch hier nicht auf .PNG beschränkt.
-Fehler können sein:
--	Falsche Schreibweise im Pfad, oder im Dateinamen sowie eine fehlende Dateiendung.
--	Falsche Schreibweise der regeln. HTML-Element muss gleiche id haben wie der zugehörige CSS-Selektor
--	Unzulässige Zeichen im Pfad. (Hierzu gehören: < > : " \ / | * ?     Vermieden werden sollten: [ ] = % $ + , ; )
--	Bilder sind nicht in der gleichen Größe wie in den CSS-Regeln angegeben.
--	Einheiten  vergessen ([..]px)
+* CSS regeln werden von Oben nach Unten gelesen, wobei spätere Regeln bereits vorhandene überschreiben.
+* Wenn die Buttons zum Beispiel keine Eigenschaften für „gedrückt“ haben sollen kann auch die CSS-Regel :active gelöscht werden
+* Bildformate sind auch hier nicht auf .PNG beschränkt.
 
 Hier ist auch wichtig: Wenn man keine Buttons haben will die vorwärts und rückwärts durchschalten sondern zyklisch durch alle vorhandenen Objekte/Permutationen gehen sollte man die HTML-Elemente löschen. Das Löschen von CSS-Regeln ist nicht notwendig.
 Ein Beispiel: 
 Ich möchte gerne keine Typumschaltung haben. Mein Vorgehen ist dann das folgende:
-a.	(HTML) Ich Lösche den „button2“ welcher für den Typeswitch zuständig ist aus der doku.html
-b.	(HTML) Ich passe die Positionen der Buttons 3-8 an damit mein Menü wieder ordentlich ist.
+a. (HTML) Ich Lösche den „button2“ welcher für den Typeswitch zuständig ist aus der doku.html
+b. (HTML) Ich passe die Positionen der Buttons 3-8 an damit mein Menü wieder ordentlich ist.
 
 Ein weiteres Beispiel (für das auch das anpassen der animation.js notwendig ist) folgt weiter unten.
 
 ##### Typische Fehler
+* Falsche Schreibweise im Pfad, oder im Dateinamen sowie eine fehlende Dateiendung.
+* Falsche Schreibweise der regeln. HTML-Element muss gleiche id haben wie der zugehörige CSS-Selektor
+* Unzulässige Zeichen im Pfad. (Hierzu gehören: < > : " \ / | * ?     Vermieden werden sollten: [ ] = % $ + , ; )
+* Bilder sind nicht in der gleichen Größe wie in den CSS-Regeln angegeben.
+* Einheiten  vergessen ([..]px)
 
 ### Fragen und Antworten
 **F:** Darf ich die Farbe des Frameworks in der css verändern?
 
 **A:** Nein. Das Framework darf nicht verändert werden, nur die Inhalte.
 
+
+**F:** Darf ich Musik in meinem Framework verwenden?
+
+**A:** Nein. Es geht hier um visuelle Effekte und nicht um Musik. Mach dafür einfach GdG II mit.
+
+
+**F:** In meiner Animation möchte ich gerne 10 Buttons haben. Wie geht das?
+
+**A:** Buttons können in der doku.html hinzugefügt werden. Die animation.css muss angepasst werden, damit der Button eigene Positionen und das gleiche Aussehen wie die Anderen erhält. Die animation.js muss angepasst werden, damit der Button auch eine Funktion erhält.
+
 ### Hilfreiche Links
+#### Tutorials
 * [W3Schools - Html](http://www.w3schools.com/html/)
 * [W3Schools - JavaScript](http://www.w3schools.com/js/)
 * [W3Schools - CSS](http://www.w3schools.com/css/)
-+ [Notepad++](https://notepad-plus-plus.org/)
+
+---------------
+#### Downloads
+* [Notepad++](https://notepad-plus-plus.org/)
+* [SublimeText](https://www.sublimetext.com/)
+* [TextMate](http://macromates.com/)
+* [VIM](http://www.vim.org/)
