@@ -23,21 +23,15 @@ Date: May 2016
 * [Hilfreiche Links](#hilfreiche-links)
   * [Tutorials](#Tutorials)
   * [Downloads](#downloads)
+* [Zusätzliche Infos](#zusätzliche-infos)
+  * [Test](#test)
+* [Lizenz](#lizenz)
 
 ---------------
 ### Allgemeines
 Alle Dateien können mit beliebigen Texteditoren geöffnet und manipuliert werden. Oft nutzen Entwickler Texteditoren die syntax highlighting anbieten. Für Microsoft Windows nutze ich meistens den Notepad++ Texteditor oder SublimeText. Unter Apple OSX ist der TextMate zu empfehlen. Und unter Unix bietet VIM bzw GVIM viele hilfreiche Funktionen. 
 
 Links zum Download sind weiter unten eingetragen. Auch wenn dort immer die Entwicklerseite angegeben ist besteht jedoch keine Garantie über die Sicherheit dieser Downloads.
-
-#### Test: 
-Framework getestet unter Browsern:
-* Google Chrome 46+ 
-* Mozilla Firefox 42+ 
-* Opera 33+
-* Safari 5+
-* Microsoft Edge 20+
-* InternetExplorer 11+
 
 ### Anleitung
 #### HTML - hypertext markup language
@@ -159,9 +153,9 @@ Zu beachten ist:
 * Die Bilder der Objekte können beliebig groß oder klein sein, sie werden immer auf die korrekte Größe skaliert. Für eine optimale Darstellung sollten die Bilder aber zumindest quadratisch sein.
 
 ##### Typische Fehler
-* Falsche Dimensionen der Permutation. Diese müssen (mathematisch) zulässige Matrizen sein.
+* Falsche Dimensionen der Permutation. Diese müssen mathematisch zulässige Matrizen sein.
 * Falsche Ordnernamen, oder Schreibfehler in den Ordnernamen.
-* Unzulässige Zeichen im Ordnernamen. (Hierzu gehören: < > : " \ / | * ?     Vermieden werden sollten: [ ] = % $ + , ; )
+* Unzulässige Zeichen im Ordnernamen. 
 
 #### CSS - cascading style sheet
 > **Datei:** asset/css/animation.css
@@ -199,9 +193,9 @@ Ein weiteres Beispiel (für das auch das anpassen der animation.js notwendig ist
 ##### Typische Fehler
 * Falsche Schreibweise im Pfad, oder im Dateinamen sowie eine fehlende Dateiendung.
 * Falsche Schreibweise der regeln. HTML-Element muss gleiche id haben wie der zugehörige CSS-Selektor
-* Unzulässige Zeichen im Pfad. (Hierzu gehören: < > : " \ / | * ?     Vermieden werden sollten: [ ] = % $ + , ; )
+* Unzulässige Zeichen im Pfad. 
 * Bilder sind nicht in der gleichen Größe wie in den CSS-Regeln angegeben.
-* Einheiten  vergessen ([..]px)
+* Einheiten vergessen ([..]px)
 
 ### Beispiele
 #### Beispiel 1
@@ -248,3 +242,23 @@ Ich möchte gerne einen separaten Pause-Button haben:
 * [SublimeText](https://www.sublimetext.com/)
 * [TextMate](http://macromates.com/)
 * [VIM](http://www.vim.org/)
+
+### Zusätzliche Infos
+#### Test: 
+Framework getestet unter Browsern:
+* Google Chrome 46+ 
+* Mozilla Firefox 42+ 
+* Opera 33+
+* Safari 5+
+* Microsoft Edge 20+
+* InternetExplorer 11+
+
+---------------
+### Lizenz
+Grundlagen der Gestaltung 1 Framework (c) by Institut für Medienforschung und Medienentwicklung, Ulm
+
+Grundlagen der Gestaltung 1 Framework is licensed under a
+Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.
+
+You should have received a copy of the license along with this
+work.  If not, see <http://creativecommons.org/licenses/by-nc-nd/3.0/>.
