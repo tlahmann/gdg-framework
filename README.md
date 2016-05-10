@@ -34,6 +34,7 @@ Alle Dateien können mit beliebigen Texteditoren geöffnet und manipuliert werde
 Links zum Download sind weiter unten eingetragen. Auch wenn dort immer die Entwicklerseite angegeben ist besteht jedoch keine Garantie über die Sicherheit dieser Downloads.
 
 ### Anleitung
+
 #### HTML - hypertext markup language
 > **Datei:** doku.html
 
@@ -121,6 +122,32 @@ var permutationen =
 ...
 ```
 
+Die Permutationen können beliebig groß oder klein sein. Sie werden vom Framework auf die angegebene Größe erweitert. Hierbei kopiert das Framework die Zeilen und oder Spalten nach Bedarf um eine quadratische Matrix zu erhalten. Sollte die eingegebene Permutation also nur 2 Zeilen und 2 Spalten umfassen, aber eine benötigte Größe von 7x7 benötigt sein, werden die Zeilen und Spalten rotationsmäßig erweitert. 
+Aus dem zweiten Beispiel oben 
+
+```javascript
+... [
+    [5, 1],
+    [1, 5]
+], 
+...
+```
+wird dementsprechend intern die folgende Matrix abgeleitet:
+```javascript
+... [
+    [5, 1, 5, 1, 5, 1, 5],
+    [1, 5, 1, 5, 1, 5, 1],
+    [5, 1, 5, 1, 5, 1, 5],
+    [1, 5, 1, 5, 1, 5, 1],
+    [5, 1, 5, 1, 5, 1, 5],
+    [1, 5, 1, 5, 1, 5, 1]
+], 
+...
+```
+
+Im Idealfall sollten Permutationen mindestens 7-8 Zeilen und/oder Spalten beinhalten, da ansonsten die Darstellung darunter leidet. Es kann zu unschönen Sprüngen in der Anzeige kommen, da das Verfahren keine ästhetischen Gesichtspunkte berücksichtigt.
+
+Die Angabe der Objekte, welche angezeigt werden sollen, erfolgt ebenfalls in der animation.js. Hierbei ist wichtig, dass nur die Namen der Ordner in denen sich Objekte befinden angegeben wird. Unter dem *name* Attribut 
 Ab Zeile 112 folgt:
 ```javascript
 var objekte =
@@ -145,7 +172,6 @@ var objekte =
 ```
 
 Zu beachten ist:
-* Die Permutationen können beliebig groß oder klein sein. Im Idealfall sollten sie aber mindestens 7-8 Zeilen und/oder Spalten beinhalten, da die Darstellung sonst leidet.
 * Die Objekte müssen zwingend im Ordner ./inhalte/anim/ sein!
 * Die Bilder müssen mit 1.png … n.png durchnummeriert sein!
 * Die Anzahl der Objekte muss angegeben werden.
@@ -181,6 +207,7 @@ Innerhalb der Datei befindet sich ab Zeile 40 (Stand Mai 2016) der Abschnitt
   background-image: url("../../inhalte/buttons/play_3.png");
 }
 ```
+
 Zu beachten ist:
 * CSS regeln werden von Oben nach Unten gelesen, wobei spätere Regeln bereits vorhandene überschreiben.
 * Wenn die Buttons zum Beispiel keine Eigenschaften für „gedrückt“ haben sollen kann auch die CSS-Regel :active gelöscht werden
@@ -198,6 +225,7 @@ Ein weiteres Beispiel (für das auch das anpassen der animation.js notwendig ist
 * Einheiten vergessen ([..]px)
 
 ### Beispiele
+
 #### Beispiel 1
 Ich möchte gerne keine Typumschaltung haben. Mein Vorgehen ist dann das folgende:
 1. (HTML) Ich Lösche den „button2“ welcher für den Typeswitch zuständig ist aus der doku.html
@@ -231,6 +259,7 @@ Ich möchte gerne einen separaten Pause-Button haben:
 **A:** Buttons können in der doku.html hinzugefügt werden. Die animation.css muss angepasst werden, damit der Button eigene Positionen und das gleiche Aussehen wie die Anderen erhält. Die animation.js muss angepasst werden, damit der Button auch eine Funktion erhält.
 
 ### Hilfreiche Links
+
 #### Tutorials
 * [W3Schools - Html](http://www.w3schools.com/html/)
 * [W3Schools - JavaScript](http://www.w3schools.com/js/)
@@ -244,8 +273,9 @@ Ich möchte gerne einen separaten Pause-Button haben:
 * [VIM](http://www.vim.org/)
 
 ### Zusätzliche Infos
+
 #### Test: 
-Framework getestet unter Browsern:
+Framework wurde in folgenden Browsern getestet und die Funktionsweise bestätigt:
 * Google Chrome 46+ 
 * Mozilla Firefox 42+ 
 * Opera 33+
