@@ -164,7 +164,7 @@ function initialize() {
     // liest die Quelle aller aktuell betrachteten Bilder ein und speichert sie als img() in Array animat
     for (i = 0; i < objekte[currentObject].numberOfObjects; i++) {
         var img = new Image();
-        img.src = "inhalte/anim/"
+        img.src = "inhalte/animation/"
             + objekte[currentObject].elements[typeSwitch].name
             + "/" + (i + 1) + ".png";
         animat[i] = img;
