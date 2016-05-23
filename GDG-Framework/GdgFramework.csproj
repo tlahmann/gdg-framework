@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,12 +56,14 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />-->
+    <Folder Include="asset\font\" />
     <Folder Include="inhalte\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="asset\img\arrow.svg" />
     <Content Include="asset\css\main.css">
       <DependentUpon>main.scss</DependentUpon>
     </Content>
@@ -140,30 +143,28 @@
       <DependentUpon>animation.css</DependentUpon>
     </Content>
     <Content Include="asset\css\vendor\animation.scss" />
-    <Content Include="asset\css\vendor\simplebar.css" />
+    <None Include="asset\css\vendor\simplebar.scss" />
     <Content Include="asset\css\vendor\simplebar.min.css">
-      <DependentUpon>simplebar.css</DependentUpon>
+      <DependentUpon>simplebar.scss</DependentUpon>
     </Content>
-    <Content Include="asset\font\MyriadPro-Bold.otf" />
-    <Content Include="asset\font\MyriadPro-BoldCond.otf" />
-    <Content Include="asset\font\MyriadPro-BoldCondIt.otf" />
-    <Content Include="asset\font\MyriadPro-BoldIt.otf" />
-    <Content Include="asset\font\MyriadPro-Cond.otf" />
-    <Content Include="asset\font\MyriadPro-CondIt.otf" />
-    <Content Include="asset\font\MyriadPro-It.otf" />
-    <Content Include="asset\font\MyriadPro-Regular.otf" />
-    <Content Include="asset\font\MyriadPro-Semibold.otf" />
-    <Content Include="asset\font\MyriadPro-SemiboldIt.otf" />
-    <Content Include="asset\lib\animationVariable.js" />
     <Content Include="asset\lib\animation.js" />
+    <Content Include="asset\lib\default.es5.js">
+      <DependentUpon>default.js</DependentUpon>
+    </Content>
+    <Content Include="asset\lib\default.es5.min.js">
+      <DependentUpon>default.es5.js</DependentUpon>
+    </Content>
     <Content Include="asset\lib\default.min.js">
       <DependentUpon>default.js</DependentUpon>
     </Content>
-    <Content Include="asset\lib\jquery-2.1.4.min.js">
-      <DependentUpon>jquery-2.1.4.js</DependentUpon>
+    <Content Include="asset\lib\jquery-2.2.0.js" />
+    <Content Include="asset\lib\jquery-2.2.0.min.js">
+      <DependentUpon>jquery-2.2.0.js</DependentUpon>
     </Content>
-    <Content Include="asset\lib\jquery-2.1.4.js" />
     <Content Include="asset\lib\simplebar.js" />
+    <Content Include="asset\lib\simplebar.min.js">
+      <DependentUpon>simplebar.js</DependentUpon>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="asset\css\vendor\animation.css.map">
       <DependentUpon>animation.css</DependentUpon>
@@ -217,13 +218,25 @@
       <DependentUpon>main.css</DependentUpon>
     </Content>
     <None Include="asset\lib\default.js" />
-    <Content Include="asset\lib\jquery-2.1.4.min.js.map">
-      <DependentUpon>jquery-2.1.4.min.js</DependentUpon>
-    </Content>
     <Content Include="asset\lib\default.min.js.map">
       <DependentUpon>default.min.js</DependentUpon>
     </Content>
+    <Content Include="asset\lib\simplebar.min.js.map">
+      <DependentUpon>simplebar.min.js</DependentUpon>
+    </Content>
+    <Content Include="asset\lib\jquery-2.2.0.min.js.map">
+      <DependentUpon>jquery-2.2.0.min.js</DependentUpon>
+    </Content>
+    <None Include="bundleconfig.json" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="doku.html" />
+    <Content Include="tutorial.html">
+      <DependentUpon>tutorial.md</DependentUpon>
+    </Content>
+    <Content Include="tutorial.md" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,47 +1,72 @@
-﻿@import "../modules/mixins";
-@import "../modules/variables";
+﻿$buttons: "play", "type", "speed1", "speed2", "perm1", "perm2", "obj1", "obj2";
 
-@mixin button {
+@mixin buttonbasics {
+    background-size: contain;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
     position: absolute;
-    width: 15%;
-    height: 5%;
-    background-color: #bebebe;
     cursor: pointer;
-    
-    left: 5%;
+    outline: none;
 }
 
+@mixin button {
+    width: 75px;
+    height: 30px;
+    left: 50px;
+}
+
+/* Wichtig: Bitte darauf achten, dass die Bilder, welche die 
+    Buttons schmücken die gleiche Größe wie diese haben. */
+
 #buttons {
+    /* Diese Eigenschaften müssen nicht verändert werden */
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-
-    @for $i from 1 through 8 {
-        #button#{$i} {
-            @include button;
-            top: 5% + 10% * ($i - 1);
-
-            &:hover {
-                background-color: #d13b57;
-            }
-        }
-    }
 }
 
-#permutation {
-    position: absolute;
-    top: 5%;
-    left: 25%;
-    width: 60%;
-    height: 80%;
+/* Gruppierung */
+/* Regeln werden auf alle 
+    Button1 .. Button8 angewendet */
+#button1, #button2,
+#button3, #button4,
+#button5, #button6,
+#button7, #button8 {
+    /* Diese Eigenschaften müssen nicht verändert werden */
+    /* Alle Buttons haben die selben Grundeigenschaften */
+    @include buttonbasics;
+}
 
-    .pixel {
-        width: 100 / 7 * 1%;
-        height: 100 / 7 * 1%;
-        background-color: #0094ff;
-        float: left;
-        border: none;
+@for $i from 1 through 8 {
+    $btn: "../../../inhalte/buttons/"+nth($buttons, $i)+"_1.png";
+    $hvr: "../../../inhalte/buttons/"+nth($buttons, $i)+"_2.png";
+    $clk: "../../../inhalte/buttons/"+nth($buttons, $i)+"_3.png";
+    /*========================================================================*/
+    /*        BUTTON                                                          */
+    /* Bild welches für den button angezeigt wird: variabel (background-image)*/
+    /* Breite: 75px (width)                                                   */
+    /* Höhe: 30px (height)                                                    */
+    /* Abstand zur linken Kante/Rahmen: 50px (left)                           */
+    /* Abstand zur oberen Kante/Rahmen: variabel (top)                        */
+    /*========================================================================*/
+    #button#{$i} {
+        background-image: url($btn);
+        @include button;
+        top: 50px + 50px * ($i - 1);
+
+        &:hover {
+            /* Das Bild ändert sich, wenn die Maus über dem Button 'schwebt' */
+            background-image: url($hvr);
+        }
+
+        &:active {
+            /* Das Bild ändert sich, solange der button gedrückt (und gehalten) wird */
+            background-image: url($clk);
+        }
     }
 }

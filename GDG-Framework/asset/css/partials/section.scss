@@ -10,7 +10,6 @@
 // main area
 section {
     @include basic;
-
     top: 86px;
     right: 25%;
     left: 0;
@@ -20,6 +19,7 @@ section {
         height: 100%;
         max-width: $paneWidth * 1px;
         max-height: calculateHeight($aspRatio, $paneWidth);
+        border: 1px solid black;
     }
 
     #canvas {
@@ -28,10 +28,15 @@ section {
         height: 100%;
         max-width: $paneWidth * 1px;
         max-height: calculateHeight($aspRatio, $paneWidth);
+        border: 1px solid black;
     }
 
     #contentAnim {
         display: none;
-        @import "../vendor/animation.scss";
+        /*@import "../vendor/animation.scss";*/
+    }
+
+    #flashCanvas {
+        border: 1px solid black;
     }
 }
