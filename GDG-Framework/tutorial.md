@@ -92,9 +92,19 @@ Bildformate sind nicht auf PNGs beschränkt. Es können beliebige Bildformate ge
 
 ##### Typische Fehler
 * Falsche Schreibweise im Pfad, oder im Dateinamen sowie eine fehlende Dateiendung.
-* Typ des Inhalts falsch angegeben.
-* Unzulässige Zeichen im Pfad.
-* Inhalt ist nicht im Format 720 px * 540 px
+  -- *Pfad prüfen und richtig eintragen.*
+
+* Typ des Inhalts falsch angegeben. 
+  -- *"animation"/"flash" ändern in "bild" oder umgekehrt*
+
+* Unzulässige Zeichen im Pfad. 
+  -- *\< \> \: \" \\ \/ \| \* \? entfernen*
+
+* Inhalt ist nicht im Format 720 px * 540 px. 
+  -- *Bildgröße anpassen*
+
+* Bildformat wird nicht unterstützt.  
+  -- *[Wikipedia - Von Browsern unterstützte Bildformate](https://en.wikipedia.org/wiki/Comparison_of_web_browsers#Image_format_support)*
 
 #### JavaScript 
 > **Datei:** asset/lib/animation.js
@@ -122,7 +132,7 @@ var permutationen =
 ...
 ```
 
-Die Permutationen können beliebig groß oder klein sein. Sie werden vom Framework auf die angegebene Größe erweitert. Hierbei kopiert das Framework die Zeilen und oder Spalten nach Bedarf um eine quadratische Matrix zu erhalten. Sollte die eingegebene Permutation also nur 2 Zeilen und 2 Spalten umfassen, aber eine benötigte Größe von 7x7 benötigt sein, werden die Zeilen und Spalten rotationsmäßig erweitert. 
+Die Permutationen können beliebig groß oder klein sein. Sie werden vom Framework auf die weiter unten angegebene Größe erweitert. Hierbei kopiert das Framework die Zeilen und oder Spalten nach Bedarf um eine quadratische Matrix zu erhalten. Sollte die eingegebene Permutation also nur 2 Zeilen und 2 Spalten umfassen, aber eine benötigte Größe von 7x7 benötigt sein, werden die Zeilen und Spalten rotationsmäßig erweitert. 
 Aus dem zweiten Beispiel oben 
 
 ```javascript
@@ -145,9 +155,28 @@ wird dementsprechend intern die folgende Matrix abgeleitet:
 ...
 ```
 
-Im Idealfall sollten Permutationen mindestens 7-8 Zeilen und/oder Spalten beinhalten, da ansonsten die Darstellung darunter leidet. Es kann zu unschönen Sprüngen in der Anzeige kommen, da das Verfahren keine ästhetischen Gesichtspunkte berücksichtigt.
+Demnach sollten Permutationen mindestens 7-8 Zeilen und/oder Spalten beinhalten, da ansonsten die Darstellung darunter leiden kann. Es kann zu unschönen Sprüngen in der Anzeige kommen, da das Verfahren keine ästhetischen Gesichtspunkte berücksichtigt.
 
-Die Angabe der Objekte, welche angezeigt werden sollen, erfolgt ebenfalls in der animation.js. Hierbei ist wichtig, dass nur die Namen der Ordner in denen sich Objekte befinden angegeben wird. Unter dem *name* Attribut 
+Die Angabe der Objekte, welche angezeigt werden sollen, erfolgt ebenfalls in der Datei *"animation.js"*. Es handelt sich hier um eine verschachtelte JSON. 
+
+JSON Schema
+```javascript
+{
+    "numberOfObjects": "n",
+    "desiredSize": "m",
+    "elements": [
+        { "name": "folder1" },
+        ...
+    ]
+}, 
+...
+```
+Unter *numberOfObjects* wird angegeben wie viele Objekte aus einem Ordner gelesen werden. Diese Angabe ist wichtig, damit das Framework weiß wieviele Objekte sich im Ordner befinden. Hiermit kann außerdem die Darstellung feiner eingestellt werden. Sollte in der Entwicklung dieser Permutationsreihe beispielsweise 8 Objekte entstanden sein, die Darstellung aber mit 6 Objekten ästhetischer sein können die letzten 2 Objekte hiermit ausgeschlossen werden.
+
+Unter *desiredSize* wird angegeben wieviele Felder für die Darstellung verwendet werden. Im Normalfall handelt es sich um die Anzahl der Objekte. Hiermit kann aber auch die Permutationsreihe auf eine Vielzahl von Feldern erweitert werden. 
+
+Unter *elements* werden die Ordner der Permutationsreihen angegeben. Der Wunsch bestand, dass man unterschiedliche Versionen der Permutationsreihe darstellen kann. Insbesondere die Reinzeichnung im vergleich zur eingescannten Skizze. Hierbei ist wichtig, dass unter dem *name* Attribut nur die Namen der Ordner in denen sich Objekte befinden angegeben wird. 
+
 Ab Zeile 112 folgt:
 ```javascript
 var objekte =
@@ -155,33 +184,48 @@ var objekte =
     "numberOfObjects": "7",
     "desiredSize": "7",
     "elements": [
-        { "name": "group1_v1" },
-        { "name": "group1_v2" },
-        { "name": "group1_v3" }
+        { "name": "group1" }
     ]
 },
 {
-    "numberOfObjects": "7",
-    "desiredSize": "6",
+    "numberOfObjects": "6",
+    "desiredSize": "10",
     "elements": [
         { "name": "group2" },
-        { "name": "2-2" }
+        { "name": "group2_reinzeichnung" }
     ]
 }];
 ...
 ```
+Hier sehen wir ein Beispiel für Permutationsreihen. 
+
+Die erste Permutationsreihe besitzt 1 Version (angegeben in *elements*) mit dem Namen "group1". Diese Reihe ist 7 Elemente groß und soll auch so dargestellt werden. Also befinden sich 7 Bilder (1.png, 2.png, ..., 7.png) im Ordner ./inhalte/animation/group1 .
+
+Die zweite Permutationsreihe besitzt 2 Versionen (angegeben in *elements*) mit den Namen "group2" und "group2_reinzeichnung". Diese Reihe ist 6 Elemente groß und soll auf 10 Elemente "gestreckt" werden. Es befinden sich demnach 6 Bilder (1.png, ..., 6.png) im Ordner ./inhalte/animation/group2 und 6 Bilder (1.png, ..., 6.png) im Ordner ./inhalte/animation/group2_reinzeichnung .
 
 Zu beachten ist:
-* Die Objekte müssen zwingend im Ordner ./inhalte/anim/ sein!
+* Die Objekte müssen zwingend im Ordner ./inhalte/animation/ sein!
 * Die Bilder müssen mit 1.png … n.png durchnummeriert sein!
 * Die Anzahl der Objekte muss angegeben werden.
 * Die gewünschte Anzahl an dargestellten Objekten muss angegeben werden, im Standardfall entspricht diese aber der Anzahl der Objekte
-* Die Bilder der Objekte können beliebig groß oder klein sein, sie werden immer auf die korrekte Größe skaliert. Für eine optimale Darstellung sollten die Bilder aber zumindest quadratisch sein.
+* Die Bilder der Objekte müssen 50 px auf 50 px groß sein.
 
 ##### Typische Fehler
-* Falsche Dimensionen der Permutation. Diese müssen mathematisch zulässige Matrizen sein.
+* Angegebene Permutation ist nicht quadratisch.
+  -- *gleiche Anzahl der Spalten und Zeilen einhalten.*
+
 * Falsche Ordnernamen, oder Schreibfehler in den Ordnernamen.
-* Unzulässige Zeichen im Ordnernamen. 
+  -- *Prüfen, ob die Ordner existieren und auch so heißen, wie angegeben.*
+
+* Unzulässige Zeichen im Pfad. 
+  -- *\< \> \: \" \\ \/ \| \* \? entfernen*
+
+* Inhalt ist nicht im Format 50 px * 50 px. 
+  -- *Bildgröße anpassen*
+
+* Bildformat wird nicht unterstützt.  
+  -- *[Wikipedia - Von Browsern unterstützte Bildformate](https://en.wikipedia.org/wiki/Comparison_of_web_browsers#Image_format_support)*
+
 
 #### CSS - cascading style sheet
 > **Datei:** asset/css/animation.css
@@ -209,6 +253,7 @@ Innerhalb der Datei befindet sich ab Zeile 40 (Stand Mai 2016) der Abschnitt
 ```
 
 Zu beachten ist:
+
 * CSS regeln werden von Oben nach Unten gelesen, wobei spätere Regeln bereits vorhandene überschreiben.
 * Wenn die Buttons zum Beispiel keine Eigenschaften für „gedrückt“ haben sollen kann auch die CSS-Regel :active gelöscht werden
 * Bildformate sind auch hier nicht auf .PNG beschränkt.

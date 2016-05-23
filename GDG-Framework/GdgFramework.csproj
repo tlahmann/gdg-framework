@@ -233,6 +233,10 @@
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <None Include="doku.html" />
+    <Content Include="tutorial.html">
+      <DependentUpon>tutorial.md</DependentUpon>
+    </Content>
+    <Content Include="tutorial.md" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
