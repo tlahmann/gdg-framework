@@ -8,14 +8,16 @@
 <h3>Inhalt</h3>
 <ul>
 <li><a href="#allgemein">Allgemeines</a></li>
-<li><a href="#anleitung">Anleitung</a>
+<li>
+<a href="#anleitung">Anleitung</a>
 <ul>
 <li><a href="#html-hypertext-markup-language">HTML - hypertext markup language</a></li>
 <li><a href="#javascript">JavaScript</a></li>
 <li><a href="#css-cascading-style-sheet">CSS - cascading style sheet</a></li>
 </ul>
 </li>
-<li><a href="#beispiele">Beispiele</a>
+<li>
+<a href="#beispiele">Beispiele</a>
 <ul>
 <li><a href="#beispiel-1">Beispiel 1</a></li>
 <li><a href="#beispiel-2">Beispiel 2</a></li>
@@ -23,13 +25,15 @@
 </ul>
 </li>
 <li><a href="#fragen-und-antworten">Fragen und Antworten</a></li>
-<li><a href="#hilfreiche-links">Hilfreiche Links</a>
+<li>
+<a href="#hilfreiche-links">Hilfreiche Links</a>
 <ul>
 <li><a href="#Tutorials">Tutorials</a></li>
 <li><a href="#downloads">Downloads</a></li>
 </ul>
 </li>
-<li><a href="#zus%C3%A4tzliche-infos">Zusätzliche Infos</a>
+<li>
+<a href="#zusätzliche-infos">Zusätzliche Infos</a>
 <ul>
 <li><a href="#test">Test</a></li>
 </ul>
@@ -38,22 +42,23 @@
 </ul>
 <hr />
 <h3>Allgemeines</h3>
-<p>Alle Dateien können mit beliebigen Texteditoren geöffnet und manipuliert werden. Oft nutzen Entwickler Texteditoren die syntax highlighting anbieten. Für Microsoft Windows nutze ich meistens den Notepad++ Texteditor oder SublimeText. Unter Apple OSX ist der TextMate zu empfehlen. Und unter Unix bietet VIM bzw GVIM viele hilfreiche Funktionen.</p>
+<p>Alle Dateien können mit beliebigen Texteditoren geöffnet und manipuliert werden. Oft nutzen Entwickler Texteditoren die syntax highlighting anbieten. Für Microsoft Windows nutze ich meistens den Notepad++ Texteditor oder SublimeText. Unter Apple OSX ist der TextMate zu empfehlen. Und unter Unix bietet VIM bzw GVIM viele hilfreiche Funktionen. </p>
 <p>Links zum Download sind weiter unten eingetragen. Auch wenn dort immer die Entwicklerseite angegeben ist besteht jedoch keine Garantie über die Sicherheit dieser Downloads.</p>
 <h3>Anleitung</h3>
 <h4>HTML - hypertext markup language</h4>
 <blockquote>
-<p><strong>Datei:</strong> doku.html</p>
+<p><strong>Datei:</strong> doku.html  
+</p>
 </blockquote>
 <p>Nachdem die die Reinzeichnung der ersten Werke erstellt wurden können diese direkt in die doku eingefügt werden. Die Datei <em>&quot;doku.html&quot;</em> im Hauptverzeichnis des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.</p>
-<p>Innerhalb der Datei befindet sich ab Zeile 130 (Stand Mai 2016) der Abschnitt</p>
-<p><em>&lt;xml id=&quot;data&quot; name=&quot;Maximilian Mustermann&quot; style=&quot;display:none;&quot;&gt;[...]</em></p>
+<p>Innerhalb der Datei befindet sich ab Zeile 130 (Stand Mai 2016) der Abschnitt </p>
+<p><em>&lt;xml id=&quot;data&quot; name=&quot;Maximilian Mustermann&quot; style=&quot;display:none;&quot;&gt;[...]</em>   </p>
 <p>Es handelt sich hierbei um den Abschnitt der Daten auf welche das Framework zugreift. Es ist daher wichtig, dass <em>id=&quot;data&quot;</em> und <em>style=&quot;display:none;&quot;</em> nicht verändert werden. Der Name unter <em>name=&quot;Maximilian Mustermann&quot;</em> muss allerdings eurem eigenen Namen entsprechen.</p>
 <p>Die Struktur der Dokumentation im Abschnitt <em>data</em>:</p>
-<pre><code class="language-xml">&lt;doku&gt;
+<pre class="prettyprint lang-xml"><code>&lt;doku&gt;
   &lt;abschnitt titel=&quot;text&quot;&gt;
     &lt;inhalt titel=&quot;text&quot; quelle=&quot;pfad&quot;  typ=&quot;bild&quot; rahmen=&quot;aus&quot;&gt;
-      &lt;details&gt;text&lt;/details&gt;
+      &lt;details&gt;text&lt;/details&gt;  
       ...
     &lt;/inhalt&gt;
     ...
@@ -61,7 +66,7 @@
   ...
 &lt;/doku&gt;
 </code></pre>
-<p>Es können beliebig viele Bereiche 'abschnitt' in der Dokumentation vorkommen. In jedem 'abschnitt' können beliebig viele 'inhalt' Bereiche zusammengefasst werden. Und in jedem dieser Bereiche können beliebig viele 'details' Bereiche eingeschlossen sein. Es bietet sich an hier etwas herum zu spielen und zu beobachten welche Änderungen in der Doku eintreten.</p>
+<p>Es können beliebig viele Bereiche 'abschnitt' in der Dokumentation vorkommen. In jedem 'abschnitt' können beliebig viele 'inhalt' Bereiche zusammengefasst werden. Und in jedem dieser Bereiche können beliebig viele 'details' Bereiche eingeschlossen sein. Es bietet sich an hier etwas herum zu spielen und zu beobachten welche Änderungen in der Doku eintreten. </p>
 <ul>
 <li>Die Attribute <em>abschnitt: titel</em> und <em>inhalt: titel</em> <strong>können</strong> beliebigen Text beinhalten. Beispielsweise den Titel der Aufgabe.</li>
 <li>Das Attribut <em>inhalt: quelle</em> <strong>muss</strong> einer gültigen, realtiven URL zum gewünschten Bild, zur Flash-Animation oder zum Ordner der Animation entsprechen.</li>
@@ -69,7 +74,7 @@
 <li>Das Attribut <em>inhalt: rahmen</em> <strong>muss</strong> einem der folgenden Werte entsprechen: 'ein' oder 'aus'.</li>
 </ul>
 <p>Eine alternative Darstellung mittels <a href="https://de.wikipedia.org/wiki/Dokumenttypdefinition">Dokumenttypdefinition</a></p>
-<pre><code class="language-xml">&lt;!ELEMENT doku (abschnitt)+&gt;
+<pre class="prettyprint lang-xml"><code>&lt;!ELEMENT doku (abschnitt)+&gt;
 &lt;!ELEMENT abschnitt (inhalt)+&gt;
 &lt;!ATTLIST abschnitt
   titel    CDATA   #REQUIRED
@@ -90,143 +95,155 @@
 <ul>
 <li>
 <p>Falsche Schreibweise im Pfad, oder im Dateinamen sowie eine fehlende Dateiendung.
--- <em>Pfad prüfen und richtig eintragen.</em></p>
+  -- <em>Pfad prüfen und richtig eintragen.</em></p>
 </li>
 <li>
-<p>Typ des Inhalts falsch angegeben.
--- <em>&quot;animation&quot;/&quot;flash&quot; ändern in &quot;bild&quot; oder umgekehrt</em></p>
+<p>Typ des Inhalts falsch angegeben. 
+  -- <em>&quot;animation&quot;/&quot;flash&quot; ändern in &quot;bild&quot; oder umgekehrt</em></p>
 </li>
 <li>
-<p>Unzulässige Zeichen im Pfad.
--- <em>&lt; &gt; : &quot; \ / | * ? entfernen</em></p>
+<p>Unzulässige Zeichen im Pfad. 
+  -- <em>&lt; &gt; : \&quot; \ \/ | * \? entfernen</em>    
+</p>
 </li>
 <li>
-<p>Inhalt ist nicht im Format 720 px * 540 px.
--- <em>Bildgröße anpassen</em></p>
+<p>Inhalt ist nicht im Format 720 px * 540 px. 
+  -- <em>Bildgröße anpassen</em></p>
 </li>
 <li>
 <p>Bildformat wird nicht unterstützt.<br />
--- <em><a href="https://en.wikipedia.org/wiki/Comparison_of_web_browsers#Image_format_support">Wikipedia - Von Browsern unterstützte Bildformate</a></em></p>
+  -- <em><a href="https://en.wikipedia.org/wiki/Comparison_of_web_browsers#Image_format_support">Wikipedia - Von Browsern unterstützte Bildformate</a></em></p>
 </li>
 </ul>
 <h4>JavaScript</h4>
 <blockquote>
-<p><strong>Datei:</strong> asset/lib/animation.js</p>
+<p><strong>Datei:</strong> asset/lib/animation.js  
+</p>
 </blockquote>
-<p>Die Datei <em>&quot;animation.js&quot;</em> im Unterverzeichnis asset -&gt; lib des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.</p>
-<p>Innerhalb der Datei befindet sich ab Zeile 60 (Stand Mai 2016) der Abschnitt</p>
-<pre><code class="language-javascript">// Permutationen
+<p>Die Datei <em>&quot;animation.js&quot;</em> im Unterverzeichnis asset -&gt; lib des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.  </p>
+<p>Innerhalb der Datei befindet sich ab Zeile 60 (Stand Mai 2016) der Abschnitt </p>
+<pre class="prettyprint lang-javascript"><code>// Permutationen
 var permutationen =
 [[
-[8, 7, 6, 5, 4, 3, 2, 1],
-[7, 8, 7, 6, 5, 4, 3, 2],
-[6, 7, 8, 7, 6, 5, 4, 3],
-[5, 6, 7, 8, 7, 6, 5, 4],
-[4, 5, 6, 7, 8, 7, 6, 5],
-[3, 4, 5, 6, 7, 8, 7, 6],
-[2, 3, 4, 5, 6, 7, 8, 7],
-[1, 2, 3, 4, 5, 6, 7, 8]
+    [8, 7, 6, 5, 4, 3, 2, 1],
+    [7, 8, 7, 6, 5, 4, 3, 2],
+    [6, 7, 8, 7, 6, 5, 4, 3],
+    [5, 6, 7, 8, 7, 6, 5, 4],
+    [4, 5, 6, 7, 8, 7, 6, 5],
+    [3, 4, 5, 6, 7, 8, 7, 6],
+    [2, 3, 4, 5, 6, 7, 8, 7],
+    [1, 2, 3, 4, 5, 6, 7, 8]
 ], [
-[5, 1],
-[1, 5]
+    [5, 1],
+    [1, 5]
 ], 
 ...
 </code></pre>
-<p>Die Permutationen können beliebig groß oder klein sein. Sie werden vom Framework auf die weiter unten angegebene Größe erweitert. Hierbei kopiert das Framework die Zeilen und oder Spalten nach Bedarf um eine quadratische Matrix zu erhalten. Sollte die eingegebene Permutation also nur 2 Zeilen und 2 Spalten umfassen, aber eine benötigte Größe von 7x7 benötigt sein, werden die Zeilen und Spalten rotationsmäßig erweitert.
-Aus dem zweiten Beispiel oben</p>
-<pre><code class="language-javascript">... [
-[5, 1],
-[1, 5]
+<p>Die Permutationen können beliebig groß oder klein sein. Sie werden vom Framework auf die weiter unten angegebene Größe erweitert. Hierbei kopiert das Framework die Zeilen und oder Spalten nach Bedarf um eine quadratische Matrix zu erhalten. Sollte die eingegebene Permutation also nur 2 Zeilen und 2 Spalten umfassen, aber eine benötigte Größe von 7x7 benötigt sein, werden die Zeilen und Spalten rotationsmäßig erweitert. 
+Aus dem zweiten Beispiel oben </p>
+<pre class="prettyprint lang-javascript"><code>... [
+    [5, 1],
+    [1, 5]
 ], 
 ...
 </code></pre>
 <p>wird dementsprechend intern die folgende Matrix abgeleitet:</p>
-<pre><code class="language-javascript">... [
-[5, 1, 5, 1, 5, 1, 5],
-[1, 5, 1, 5, 1, 5, 1],
-[5, 1, 5, 1, 5, 1, 5],
-[1, 5, 1, 5, 1, 5, 1],
-[5, 1, 5, 1, 5, 1, 5],
-[1, 5, 1, 5, 1, 5, 1]
+<pre class="prettyprint lang-javascript"><code>... [
+    [5, 1, 5, 1, 5, 1, 5],
+    [1, 5, 1, 5, 1, 5, 1],
+    [5, 1, 5, 1, 5, 1, 5],
+    [1, 5, 1, 5, 1, 5, 1],
+    [5, 1, 5, 1, 5, 1, 5],
+    [1, 5, 1, 5, 1, 5, 1]
 ], 
 ...
 </code></pre>
 <p>Demnach sollten Permutationen mindestens 7-8 Zeilen und/oder Spalten beinhalten, da ansonsten die Darstellung darunter leiden kann. Es kann zu unschönen Sprüngen in der Anzeige kommen, da das Verfahren keine ästhetischen Gesichtspunkte berücksichtigt.</p>
-<p>Die Angabe der Objekte, welche angezeigt werden sollen, erfolgt ebenfalls in der Datei <em>&quot;animation.js&quot;</em>. Es handelt sich hier um eine verschachtelte JSON.</p>
+<p>Die Angabe der Objekte, welche angezeigt werden sollen, erfolgt ebenfalls in der Datei <em>&quot;animation.js&quot;</em>. Es handelt sich hier um eine verschachtelte JSON. </p>
 <p>JSON Schema</p>
-<pre><code class="language-javascript">{
-&quot;numberOfObjects&quot;: &quot;n&quot;,
-&quot;desiredSize&quot;: &quot;m&quot;,
-&quot;elements&quot;: [
-{ &quot;name&quot;: &quot;folder1&quot; },
-...
-]
+<pre class="prettyprint lang-javascript"><code>{
+    &quot;numberOfObjects&quot;: &quot;n&quot;,
+    &quot;desiredSize&quot;: &quot;m&quot;,
+    &quot;elements&quot;: [
+        { &quot;name&quot;: &quot;folder1&quot; },
+        ...
+    ]
 }, 
 ...
 </code></pre>
 <p>Unter <em>numberOfObjects</em> wird angegeben wie viele Objekte aus einem Ordner gelesen werden. Diese Angabe ist wichtig, damit das Framework weiß wieviele Objekte sich im Ordner befinden. Hiermit kann außerdem die Darstellung feiner eingestellt werden. Sollte in der Entwicklung dieser Permutationsreihe beispielsweise 8 Objekte entstanden sein, die Darstellung aber mit 6 Objekten ästhetischer sein können die letzten 2 Objekte hiermit ausgeschlossen werden.</p>
-<p>Unter <em>desiredSize</em> wird angegeben wieviele Felder für die Darstellung verwendet werden. Im Normalfall handelt es sich um die Anzahl der Objekte. Hiermit kann aber auch die Permutationsreihe auf eine Vielzahl von Feldern erweitert werden.</p>
-<p>Unter <em>elements</em> werden die Ordner der Permutationsreihen angegeben. Der Wunsch bestand, dass man unterschiedliche Versionen der Permutationsreihe darstellen kann. Insbesondere die Reinzeichnung im vergleich zur eingescannten Skizze. Hierbei ist wichtig, dass unter dem <em>name</em> Attribut nur die Namen der Ordner in denen sich Objekte befinden angegeben wird.</p>
+<p>Unter <em>desiredSize</em> wird angegeben wieviele Felder für die Darstellung verwendet werden. Im Normalfall handelt es sich um die Anzahl der Objekte. Hiermit kann aber auch die Permutationsreihe auf eine Vielzahl von Feldern erweitert werden. </p>
+<p>Unter <em>elements</em> werden die Ordner der Permutationsreihen angegeben. Der Wunsch bestand, dass man unterschiedliche Versionen der Permutationsreihe darstellen kann. Insbesondere die Reinzeichnung im vergleich zur eingescannten Skizze. Hierbei ist wichtig, dass unter dem <em>name</em> Attribut nur die Namen der Ordner in denen sich Objekte befinden angegeben wird. </p>
 <p>Ab Zeile 112 folgt:</p>
-<pre><code class="language-javascript">var objekte =
+<pre class="prettyprint lang-javascript"><code>var objekte =
 [{
-&quot;numberOfObjects&quot;: &quot;7&quot;,
-&quot;desiredSize&quot;: &quot;7&quot;,
-&quot;elements&quot;: [
-{ &quot;name&quot;: &quot;group1&quot; }
-]
+    &quot;numberOfObjects&quot;: &quot;7&quot;,
+    &quot;desiredSize&quot;: &quot;7&quot;,
+    &quot;elements&quot;: [
+        { &quot;name&quot;: &quot;group1&quot; }
+    ]
 },
 {
-&quot;numberOfObjects&quot;: &quot;6&quot;,
-&quot;desiredSize&quot;: &quot;10&quot;,
-&quot;elements&quot;: [
-{ &quot;name&quot;: &quot;group2&quot; },
-{ &quot;name&quot;: &quot;group2_reinzeichnung&quot; }
-]
+    &quot;numberOfObjects&quot;: &quot;6&quot;,
+    &quot;desiredSize&quot;: &quot;10&quot;,
+    &quot;elements&quot;: [
+        { &quot;name&quot;: &quot;group2&quot; },
+        { &quot;name&quot;: &quot;group2_reinzeichnung&quot; }
+    ]
 }];
 ...
 </code></pre>
-<p>Hier sehen wir ein Beispiel für Permutationsreihen.</p>
+<p>Hier sehen wir ein Beispiel für Permutationsreihen. </p>
 <p>Die erste Permutationsreihe besitzt 1 Version (angegeben in <em>elements</em>) mit dem Namen &quot;group1&quot;. Diese Reihe ist 7 Elemente groß und soll auch so dargestellt werden. Also befinden sich 7 Bilder (1.png, 2.png, ..., 7.png) im Ordner ./inhalte/animation/group1 .</p>
 <p>Die zweite Permutationsreihe besitzt 2 Versionen (angegeben in <em>elements</em>) mit den Namen &quot;group2&quot; und &quot;group2_reinzeichnung&quot;. Diese Reihe ist 6 Elemente groß und soll auf 10 Elemente &quot;gestreckt&quot; werden. Es befinden sich demnach 6 Bilder (1.png, ..., 6.png) im Ordner ./inhalte/animation/group2 und 6 Bilder (1.png, ..., 6.png) im Ordner ./inhalte/animation/group2_reinzeichnung .</p>
-<p>Zu beachten ist:</p>
-<ul>
-<li>Die Objekte müssen zwingend im Ordner ./inhalte/animation/ sein!</li>
-<li>Die Bilder müssen mit 1.png … n.png durchnummeriert sein!</li>
-<li>Die Anzahl der Objekte muss angegeben werden.</li>
-<li>Die gewünschte Anzahl an dargestellten Objekten muss angegeben werden, im Standardfall entspricht diese aber der Anzahl der Objekte</li>
-<li>Die Bilder der Objekte müssen 50 px auf 50 px groß sein.</li>
-</ul>
 <h5>Typische Fehler</h5>
 <ul>
 <li>
 <p>Angegebene Permutation ist nicht quadratisch.
--- <em>gleiche Anzahl der Spalten und Zeilen einhalten.</em></p>
+  -- <em>gleiche Anzahl der Spalten und Zeilen einhalten.</em></p>
+</li>
+<li>
+<p>Dateien befinden sich nicht in ./inhalte/animation/ .
+  -- <em>Ordner Umbenennen oder Dateien verschieben</em></p>
+</li>
+<li>
+<p>Dateien sind nicht richtig benannt.
+  -- <em>Bilder mit 1.png … n.png durchnummerieren</em></p>
+</li>
+<li>
+<p>Anzahl der Objekte ist nicht angegeben.
+  -- <em>Angeben wieviele Bilder sich im Ordner befinden</em></p>
+</li>
+<li>
+<p>Anzahl der darzustellenden Objekte ist nicht angegeben.
+  -- <em>Angeben wieviele Kacheln angezeigt werden sollen</em></p>
 </li>
 <li>
 <p>Falsche Ordnernamen, oder Schreibfehler in den Ordnernamen.
--- <em>Prüfen, ob die Ordner existieren und auch so heißen, wie angegeben.</em></p>
+  -- <em>Prüfen, ob die Ordner existieren und auch so heißen, wie angegeben.</em></p>
 </li>
 <li>
-<p>Unzulässige Zeichen im Pfad.
--- <em>&lt; &gt; : &quot; \ / | * ? entfernen</em></p>
+<p>Unzulässige Zeichen im Pfad. 
+  -- <em>&lt; &gt; : \&quot; \ \/ | * \? entfernen</em>    
+</p>
 </li>
 <li>
-<p>Inhalt ist nicht im Format 50 px * 50 px.
--- <em>Bildgröße anpassen</em></p>
+<p>Inhalt ist nicht im Format 50 px * 50 px. 
+  -- <em>Bildgröße anpassen</em></p>
 </li>
 <li>
 <p>Bildformat wird nicht unterstützt.<br />
--- <em><a href="https://en.wikipedia.org/wiki/Comparison_of_web_browsers#Image_format_support">Wikipedia - Von Browsern unterstützte Bildformate</a></em></p>
+  -- <em><a href="https://en.wikipedia.org/wiki/Comparison_of_web_browsers#Image_format_support">Wikipedia - Von Browsern unterstützte Bildformate</a></em></p>
 </li>
 </ul>
 <h4>CSS - cascading style sheet</h4>
 <blockquote>
-<p><strong>Datei:</strong> asset/css/animation.css</p>
+<p><strong>Datei:</strong> asset/css/animation.css  
+</p>
 </blockquote>
-<p>Die Datei <em>&quot;animation.css&quot;</em> im Unterverzeichnis asset -&gt; css des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.</p>
-<p>Innerhalb der Datei befindet sich ab Zeile 40 (Stand Mai 2016) der Abschnitt</p>
-<pre><code class="language-css">#button1 {
+<p>Die Datei <em>&quot;animation.css&quot;</em> im Unterverzeichnis asset -&gt; css des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.  </p>
+<p>Innerhalb der Datei befindet sich ab Zeile 40 (Stand Mai 2016) der Abschnitt </p>
+<pre class="prettyprint lang-css"><code>#button1 {
   background-image: url(&quot;../../inhalte/buttons/play_1.png&quot;);
   width: 75px;
   height: 30px;
@@ -254,33 +271,27 @@ Aus dem zweiten Beispiel oben</p>
 <ul>
 <li>Falsche Schreibweise im Pfad, oder im Dateinamen sowie eine fehlende Dateiendung.</li>
 <li>Falsche Schreibweise der regeln. HTML-Element muss gleiche id haben wie der zugehörige CSS-Selektor</li>
-<li>Unzulässige Zeichen im Pfad.</li>
+<li>Unzulässige Zeichen im Pfad. </li>
 <li>Bilder sind nicht in der gleichen Größe wie in den CSS-Regeln angegeben.</li>
 <li>Einheiten vergessen ([..]px)</li>
 </ul>
 <h3>Beispiele</h3>
 <h4>Beispiel 1</h4>
-<p>Ich möchte gerne keine Typumschaltung haben. Mein Vorgehen ist dann das folgende:</p>
-<ol>
-<li>(HTML) Ich Lösche den „button2“ welcher für den Typeswitch zuständig ist aus der doku.html</li>
-<li>(HTML) Ich passe die Positionen der Buttons 3-8 an damit mein Menü wieder ordentlich ist.</li>
-</ol>
+<p>Ich möchte gerne keine Typumschaltung haben. Mein Vorgehen ist dann das folgende:
+1. (HTML) Ich Lösche den „button2“ welcher für den Typeswitch zuständig ist aus der doku.html
+2. (HTML) Ich passe die Positionen der Buttons 3-8 an damit mein Menü wieder ordentlich ist.</p>
 <h4>Beispiel 2</h4>
-<p>Ich möchte gerne keine Vorwärts- und Rückwärtsumschaltung für Objekte und Permutationen haben. Mein Vorgehen ist dann das folgende:</p>
-<ol>
-<li>(HTML) Ich Lösche den „button6“ welcher für das Rückwärtsschalten der Permutationen zuständig ist.</li>
-<li>(HTML) Ich Lösche den „button8“ welcher für das Rückwärtsschalten der Objekte zuständig ist.</li>
-<li>(CSS) Ich passe den „button7“ an um wieder eine hübsche Darstellung zu erhalten.</li>
-</ol>
+<p>Ich möchte gerne keine Vorwärts- und Rückwärtsumschaltung für Objekte und Permutationen haben. Mein Vorgehen ist dann das folgende:
+1. (HTML) Ich Lösche den „button6“ welcher für das Rückwärtsschalten der Permutationen zuständig ist.
+2. (HTML) Ich Lösche den „button8“ welcher für das Rückwärtsschalten der Objekte zuständig ist.
+3. (CSS) Ich passe den „button7“ an um wieder eine hübsche Darstellung zu erhalten.</p>
 <h4>Beispiel 3</h4>
-<p>Ich möchte gerne einen separaten Pause-Button haben:</p>
-<ol>
-<li>(HTML) Ich kopiere den „button1“ im HTML und benenne das id-Attribut um in bspw. „button9“</li>
-<li>(HTML/JS) Ich ändere das Verhalten des „button1“ beim clicken (oncklick-Methode) auf „playAnimation()“ (zu finden ist die Methode in der animation.js)</li>
-<li>(HTML/JS) Ich ändere das Verhalten des „button9“ beim clicken (oncklick-Methode) auf „pauseAnimation()“</li>
-<li>(CSS) Ich kopiere alle CSS-Regeln welche für den Button 1 bestimmt sind und benenne auch diese um in „button9“</li>
-<li>(CSS) Ich ändere die positionswerte für meinen neuen „button9“ (top, left)</li>
-</ol>
+<p>Ich möchte gerne einen separaten Pause-Button haben:
+1. (HTML) Ich kopiere den „button1“ im HTML und benenne das id-Attribut um in bspw. „button9“
+2. (HTML/JS) Ich ändere das Verhalten des „button1“ beim clicken (oncklick-Methode) auf „playAnimation()“ (zu finden ist die Methode in der animation.js)
+3. (HTML/JS) Ich ändere das Verhalten des „button9“ beim clicken (oncklick-Methode) auf „pauseAnimation()“ 
+4. (CSS) Ich kopiere alle CSS-Regeln welche für den Button 1 bestimmt sind und benenne auch diese um in „button9“
+5. (CSS) Ich ändere die positionswerte für meinen neuen „button9“ (top, left)</p>
 <h3>Fragen und Antworten</h3>
 <p><strong>F: Darf ich die Farbe des Frameworks in der css verändern?</strong></p>
 <p><strong>A:</strong> Nein. Das Framework darf nicht verändert werden, nur die Inhalte.</p>
@@ -309,8 +320,8 @@ Aus dem zweiten Beispiel oben</p>
 <h4>Test:</h4>
 <p>Framework wurde in folgenden Browsern getestet und die Funktionsweise bestätigt:</p>
 <ul>
-<li>Google Chrome 46+</li>
-<li>Mozilla Firefox 42+</li>
+<li>Google Chrome 46+ </li>
+<li>Mozilla Firefox 42+ </li>
 <li>Opera 33+</li>
 <li>Safari 5+</li>
 <li>Microsoft Edge 20+</li>
@@ -323,4 +334,3 @@ Aus dem zweiten Beispiel oben</p>
 Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.</p>
 <p>You should have received a copy of the license along with this
 work.  If not, see <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">http://creativecommons.org/licenses/by-nc-nd/3.0/</a>.</p>
-

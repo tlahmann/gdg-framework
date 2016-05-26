@@ -203,16 +203,21 @@ Die erste Permutationsreihe besitzt 1 Version (angegeben in *elements*) mit dem 
 
 Die zweite Permutationsreihe besitzt 2 Versionen (angegeben in *elements*) mit den Namen "group2" und "group2_reinzeichnung". Diese Reihe ist 6 Elemente groß und soll auf 10 Elemente "gestreckt" werden. Es befinden sich demnach 6 Bilder (1.png, ..., 6.png) im Ordner ./inhalte/animation/group2 und 6 Bilder (1.png, ..., 6.png) im Ordner ./inhalte/animation/group2_reinzeichnung .
 
-Zu beachten ist:
-* Die Objekte müssen zwingend im Ordner ./inhalte/animation/ sein!
-* Die Bilder müssen mit 1.png … n.png durchnummeriert sein!
-* Die Anzahl der Objekte muss angegeben werden.
-* Die gewünschte Anzahl an dargestellten Objekten muss angegeben werden, im Standardfall entspricht diese aber der Anzahl der Objekte
-* Die Bilder der Objekte müssen 50 px auf 50 px groß sein.
-
 ##### Typische Fehler
 * Angegebene Permutation ist nicht quadratisch.
   -- *gleiche Anzahl der Spalten und Zeilen einhalten.*
+
+* Dateien befinden sich nicht in ./inhalte/animation/ .
+  -- *Ordner Umbenennen oder Dateien verschieben*
+
+* Dateien sind nicht richtig benannt.
+  -- *Bilder mit 1.png … n.png durchnummerieren*
+
+* Anzahl der Objekte ist nicht angegeben.
+  -- *Angeben wieviele Bilder sich im Ordner befinden*
+
+* Anzahl der darzustellenden Objekte ist nicht angegeben.
+  -- *Angeben wieviele Kacheln angezeigt werden sollen*
 
 * Falsche Ordnernamen, oder Schreibfehler in den Ordnernamen.
   -- *Prüfen, ob die Ordner existieren und auch so heißen, wie angegeben.*
