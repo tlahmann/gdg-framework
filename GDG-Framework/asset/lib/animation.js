@@ -250,11 +250,12 @@ function slower() {
     }
 }
 
-//function changePermutation() {
-//    currentPerm += 1;
-//    currentPerm %= permutationen.length;
-//    initialize();
-//}
+// funktion: permutation weiter schalten
+function changePermutation() {
+    currentPerm += 1;
+    currentPerm %= permutationen.length;
+    initialize();
+}
 
 // funktion: permutationen weiter schalten
 function changePermutationFwrd() {
@@ -274,13 +275,14 @@ function changePermutationBack() {
     initialize();
 }
 
-//function changeObject() {
-//    currentObject += 1;
-//    currentObject %= objekte.length;
-//    initialize();
-//}
+// funktion: objekt weiter schalten
+function changeObject() {
+    currentObject += 1;
+    currentObject %= objekte.length;
+    initialize();
+}
 
-// objekt ++
+// funktion: objekt weiter schalten
 function changeObjectFwrd() {
     currentObject += 1;
     currentObject %= objekte.length;
@@ -288,7 +290,7 @@ function changeObjectFwrd() {
     initialize();
 }
 
-// objekt --
+// funktion: objekt zurück schalten
 function changeObjectBack() {
     currentObject -= 1;
     if (currentObject < 0) {
@@ -300,6 +302,7 @@ function changeObjectBack() {
     initialize();
 }
 
+// funktion: objekttyp ändern
 function changeTypeOfObj() {
     typeSwitch += 1;
     typeSwitch %= objekte[currentObject].elements.length;
