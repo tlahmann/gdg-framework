@@ -38,7 +38,7 @@ Links zum Download sind weiter unten eingetragen. Auch wenn dort immer die Entwi
 #### HTML - hypertext markup language
 > **Datei:** doku.html
 
-Nachdem die die Reinzeichnung der ersten Werke erstellt wurden können diese direkt in die doku eingefügt werden. Die Datei *"doku.html"* im Hauptverzeichnis des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.
+Nachdem die die Reinzeichnung der ersten Werke erstellt wurden können diese direkt in die Doku eingefügt werden. Die Datei *"doku.html"* im Hauptverzeichnis des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.
 
 Innerhalb der Datei befindet sich ab Zeile 130 (Stand Mai 2016) der Abschnitt 
 
@@ -63,7 +63,7 @@ Die Struktur der Dokumentation im Abschnitt *data*:
 Es können beliebig viele Bereiche 'abschnitt' in der Dokumentation vorkommen. In jedem 'abschnitt' können beliebig viele 'inhalt' Bereiche zusammengefasst werden. Und in jedem dieser Bereiche können beliebig viele 'details' Bereiche eingeschlossen sein. Es bietet sich an hier etwas herum zu spielen und zu beobachten welche Änderungen in der Doku eintreten. 
 
 * Die Attribute *abschnitt: titel* und *inhalt: titel* **können** beliebigen Text beinhalten. Beispielsweise den Titel der Aufgabe.
-* Das Attribut *inhalt: quelle* **muss** einer gültigen, realtiven URL zum gewünschten Bild, zur Flash-Animation oder zum Ordner der Animation entsprechen.
+* Das Attribut *inhalt: quelle* **muss** einer gültigen, relativen URL zum gewünschten Bild, zur Flash-Animation oder zum Ordner der Animation entsprechen.
 * Das Attribut *inhalt: typ* **muss** einem der folgenden Werte entsprechen: 'bild', 'flash' oder 'animation'.
 * Das Attribut *inhalt: rahmen* **muss** einem der folgenden Werte entsprechen: 'ein' oder 'aus'.
 
@@ -84,9 +84,9 @@ Eine alternative Darstellung mittels [Dokumenttypdefinition](https://de.wikipedi
 >
 <!ELEMENT details (#PCDATA)>
 ```
-Die Struktur des Ordners 'inhalte' kann beliebig gewählt werden. Wichtig für die Anzeige der Inhalte ist die verlinkung im *quelle* Attribut des inhalte Tags. Ein Link muss [relativ](https://de.wikipedia.org/wiki/Uniform_Resource_Locator#Relative_URLs) sein. Beispiele für die korrekte Verlinkung können dem Framework entnommen werden.
+Die Struktur des Ordners 'inhalte' kann beliebig gewählt werden. Wichtig für die Anzeige der Inhalte ist die Verlinkung im *quelle* Attribut des inhalte Tags. Ein Link muss [relativ](https://de.wikipedia.org/wiki/Uniform_Resource_Locator#Relative_URLs) sein. Beispiele für die korrekte Verlinkung können dem Framework entnommen werden.
 
-Der Typ des Inhalts muss im *typ* Attribut angegeben werden. Wenn dies nicht, oder falsch geschehen ist weden die Inhalte vom Framework falsch behandelt und werden nicht angezeigt.
+Der Typ des Inhalts muss im *typ* Attribut angegeben werden. Wenn dies nicht, oder falsch geschehen ist werden die Inhalte vom Framework falsch behandelt und werden nicht angezeigt.
 
 Bildformate sind nicht auf PNGs beschränkt. Es können beliebige Bildformate gewählt und vom Framework angezeigt werden. Für Reinzeichnungen empfohlen ist .png. Für Fotos empfohlen ist .jpg.
 
@@ -172,7 +172,7 @@ JSON Schema
 ```
 Unter *numberOfObjects* wird angegeben wie viele Objekte aus einem Ordner gelesen werden. Diese Angabe ist wichtig, damit das Framework weiß wieviele Objekte sich im Ordner befinden. Hiermit kann außerdem die Darstellung feiner eingestellt werden. Sollte in der Entwicklung dieser Permutationsreihe beispielsweise 8 Objekte entstanden sein, die Darstellung aber mit 6 Objekten ästhetischer sein können die letzten 2 Objekte hiermit ausgeschlossen werden.
 
-Unter *elements* werden die Ordner der Permutationsreihen angegeben. Der Wunsch bestand, dass man unterschiedliche Versionen der Permutationsreihe darstellen kann. Insbesondere die Reinzeichnung im vergleich zur eingescannten Skizze. Hierbei ist wichtig, dass unter dem *name* Attribut nur die Namen der Ordner in denen sich Objekte befinden angegeben wird. 
+Unter *elements* werden die Ordner der Permutationsreihen angegeben. Der Wunsch bestand, dass man unterschiedliche Versionen der Permutationsreihe darstellen kann. Insbesondere die Reinzeichnung im Vergleich zur eingescannten Skizze. Hierbei ist wichtig, dass unter dem *name* Attribut nur die Namen der Ordner in denen sich Objekte befinden angegeben wird. 
 
 Ab Zeile 112 folgt:
 ```javascript
@@ -215,10 +215,10 @@ Unter *elements* **können** mehrere Versionen der Permutationsreihe angegeben w
   -- *Bilder mit 1.png … n.png durchnummerieren*
 
 * Anzahl der Objekte ist nicht (richtig) angegeben.
-  -- *Angeben wieviele Bilder sich im Ordner befinden*
+  -- *Angeben wie viele Bilder sich im Ordner befinden*
 
 * Anzahl der darzustellenden Objekte ist nicht angegeben.
-  -- *Angeben wieviele Kacheln angezeigt werden sollen*
+  -- *Angeben wie viele Kacheln angezeigt werden sollen*
 
 * Falsche Ordnernamen, oder Schreibfehler in den Ordnernamen.
   -- *Prüfen, ob die Ordner existieren und so heißen, wie angegeben.*
@@ -238,7 +238,7 @@ Unter *elements* **können** mehrere Versionen der Permutationsreihe angegeben w
 
 Die Datei *"animation.css"* im Unterverzeichnis asset -> css des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.
 
-CSS Regeln werden von einem Webbrowser gelesen und dazu verwendet die zugehörigen Elemente in ihrem Aussehen zu verändern. In css wird zwischen Klassen und IDs unterschieden. Hierbei steht in der css-Datei die Raute *(#)* für eine ID und der Punkt *(.)* für eine Klasse. IDs sind in einem html-Dokument eindeutige Bezeichner für ein Element und können nur ein mal vergeben werden. Klassen sind gruppierungen von verschiedenen Elementen, welche alle dieselbe Form haben sollen. 
+CSS Regeln werden von einem Webbrowser gelesen und dazu verwendet die zugehörigen Elemente in ihrem Aussehen zu verändern. In css wird zwischen Klassen und IDs unterschieden. Hierbei steht in der css-Datei die Raute *(#)* für eine ID und der Punkt *(.)* für eine Klasse. IDs sind in einem html-Dokument eindeutige Bezeichner für ein Element und können nur ein Mal vergeben werden. Klassen sind Gruppierungen von verschiedenen Elementen, welche alle dieselbe Form haben sollen. 
 
 In dieser Dokumentation ist es wichtig, dass jeder Button eine eigene Position erhält. Aus diesem Grund werden die Buttons mit eigenen IDs belegt und jede dieser IDs muss in der css-Datei definiert werden. 
 
@@ -264,7 +264,7 @@ Innerhalb der Datei befindet sich ab Zeile 40 (Stand Mai 2016) der Abschnitt
 
 Es werden eigene Abschnitte für jeden Button definiert. Im Beispiel oben sehen wir die zum ersten Button gehörende Definition. Dieser Button ist 75px breit und 30 px hoch. Er befindet sich 50px von der linken Kante des Animationsbereichs und 50px von der oberen Kante entfernt.
 
-Css-Regeln können auch gruppiert auf mehrere IDs oder Klassen gleichzeitig angewendet werden, wie es bispielsweise einige Zeilen Darüber geschehen ist. Zeile 15-18 gruppiert mehrere buttons und wendet die darunter befindlichen regeln auf alle an. Die IDs sind mit Komma getrennt.
+Css-Regeln können auch gruppiert auf mehrere IDs oder Klassen gleichzeitig angewendet werden, wie es beispielsweise einige Zeilen Darüber geschehen ist. Zeile 15-18 gruppiert mehrere Buttons und wendet die darunter befindlichen regeln auf alle an. Die IDs sind mit Komma getrennt.
 
 In css werden die verfügbaren Regeln von oben nach unten gelesen und eventuell später im Dokument vorkommende Regeln überschreiben weiter oben befindliche.
 
