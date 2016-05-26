@@ -23,7 +23,7 @@ Date: May 2016
 * [Hilfreiche Links](#hilfreiche-links)
   * [Tutorials](#Tutorials)
   * [Downloads](#downloads)
-* [Zusätzliche Infos](#zusätzliche-infos)
+* [Zusätzliche Information](#zusätzliche-information)
   * [Test](#test)
 * [Lizenz](#lizenz)
 
@@ -31,14 +31,14 @@ Date: May 2016
 ### Allgemeines
 Alle Dateien können mit beliebigen Texteditoren geöffnet und manipuliert werden. Oft nutzen Entwickler Texteditoren die syntax highlighting anbieten. Für Microsoft Windows nutze ich meistens den Notepad++ Texteditor oder SublimeText. Unter Apple OSX ist der TextMate zu empfehlen. Und unter Unix bietet VIM bzw. GVIM viele hilfreiche Funktionen. 
 
-Links zum Download sind weiter unten eingetragen. Auch wenn dort immer die Entwicklerseite angegeben ist besteht jedoch keine Garantie über die Sicherheit dieser Downloads.
+Links zum Download sind weiter unten eingetragen. Auch wenn dort immer die Entwicklerseite angegeben ist, besteht jedoch keine Garantie über die Sicherheit dieser Downloads.
 
 ### Anleitung
 
 #### HTML - hypertext markup language
 > **Datei:** doku.html
 
-Nachdem die die Reinzeichnung der ersten Werke erstellt wurden können diese direkt in die Doku eingefügt werden. Die Datei *"doku.html"* im Hauptverzeichnis des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.
+Nachdem die Reinzeichnung der ersten Werke erstellt wurden können diese direkt in die Doku eingefügt werden. Die Datei *"doku.html"* im Hauptverzeichnis des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.
 
 Innerhalb der Datei befindet sich ab Zeile 130 (Stand Mai 2016) der Abschnitt 
 
@@ -60,7 +60,7 @@ Die Struktur der Dokumentation im Abschnitt *data*:
   ...
 </doku>
 ```
-Es können beliebig viele Bereiche 'abschnitt' in der Dokumentation vorkommen. In jedem 'abschnitt' können beliebig viele 'inhalt' Bereiche zusammengefasst werden. Und in jedem dieser Bereiche können beliebig viele 'details' Bereiche eingeschlossen sein. Es bietet sich an hier etwas herum zu spielen und zu beobachten welche Änderungen in der Doku eintreten. 
+Es können beliebig viele Bereiche 'abschnitt' in der Dokumentation vorkommen. In jedem 'abschnitt' können beliebig viele 'inhalt' Bereiche zusammengefasst werden. Und in jedem dieser Bereiche können beliebig viele 'details' Bereiche eingeschlossen sein. Es bietet sich an hier etwas herumzuspielen und zu beobachten welche Änderungen in der Doku eintreten. 
 
 * Die Attribute *abschnitt: titel* und *inhalt: titel* **können** beliebigen Text beinhalten. Beispielsweise den Titel der Aufgabe.
 * Das Attribut *inhalt: quelle* **muss** einer gültigen, relativen URL zum gewünschten Bild, zur Flash-Animation oder zum Ordner der Animation entsprechen.
@@ -86,7 +86,7 @@ Eine alternative Darstellung mittels [Dokumenttypdefinition](https://de.wikipedi
 ```
 Die Struktur des Ordners 'inhalte' kann beliebig gewählt werden. Wichtig für die Anzeige der Inhalte ist die Verlinkung im *quelle* Attribut des inhalte Tags. Ein Link muss [relativ](https://de.wikipedia.org/wiki/Uniform_Resource_Locator#Relative_URLs) sein. Beispiele für die korrekte Verlinkung können dem Framework entnommen werden.
 
-Der Typ des Inhalts muss im *typ* Attribut angegeben werden. Wenn dies nicht, oder falsch geschehen ist werden die Inhalte vom Framework falsch behandelt und werden nicht angezeigt.
+Der Typ des Inhalts muss im *typ* Attribut angegeben werden. Wenn dies nicht, oder falsch geschehen ist, werden die Inhalte vom Framework falsch behandelt und werden nicht angezeigt.
 
 Bildformate sind nicht auf PNGs beschränkt. Es können beliebige Bildformate gewählt und vom Framework angezeigt werden. Für Reinzeichnungen empfohlen ist .png. Für Fotos empfohlen ist .jpg.
 
@@ -170,9 +170,9 @@ JSON Schema
 }, 
 ...
 ```
-Unter *numberOfObjects* wird angegeben wie viele Objekte aus einem Ordner gelesen werden. Diese Angabe ist wichtig, damit das Framework weiß wieviele Objekte sich im Ordner befinden. Hiermit kann außerdem die Darstellung feiner eingestellt werden. Sollte in der Entwicklung dieser Permutationsreihe beispielsweise 8 Objekte entstanden sein, die Darstellung aber mit 6 Objekten ästhetischer sein können die letzten 2 Objekte hiermit ausgeschlossen werden.
+Unter *numberOfObjects* wird angegeben wie viele Objekte aus einem Ordner gelesen werden. 
 
-Unter *elements* werden die Ordner der Permutationsreihen angegeben. Der Wunsch bestand, dass man unterschiedliche Versionen der Permutationsreihe darstellen kann. Insbesondere die Reinzeichnung im Vergleich zur eingescannten Skizze. Hierbei ist wichtig, dass unter dem *name* Attribut nur die Namen der Ordner in denen sich Objekte befinden angegeben wird. 
+Unter *elements* werden die Ordner der Permutationsreihen angegeben. 
 
 Ab Zeile 112 folgt:
 ```javascript
@@ -264,11 +264,9 @@ Innerhalb der Datei befindet sich ab Zeile 40 (Stand Mai 2016) der Abschnitt
 
 Es werden eigene Abschnitte für jeden Button definiert. Im Beispiel oben sehen wir die zum ersten Button gehörende Definition. Dieser Button ist 75px breit und 30 px hoch. Er befindet sich 50px von der linken Kante des Animationsbereichs und 50px von der oberen Kante entfernt.
 
-Css-Regeln können auch gruppiert auf mehrere IDs oder Klassen gleichzeitig angewendet werden, wie es beispielsweise einige Zeilen Darüber geschehen ist. Zeile 15-18 gruppiert mehrere Buttons und wendet die darunter befindlichen regeln auf alle an. Die IDs sind mit Komma getrennt.
+Css-Regeln können auch gruppiert auf mehrere IDs oder Klassen gleichzeitig angewendet werden, wie es beispielsweise einige Zeilen darüber geschehen ist. Zeile 15-18 gruppiert mehrere Buttons und wendet die darunter befindlichen Regeln auf alle an. Die IDs sind mit Komma getrennt.
 
 In css werden die verfügbaren Regeln von oben nach unten gelesen und eventuell später im Dokument vorkommende Regeln überschreiben weiter oben befindliche.
-
-Wenn weniger Buttons benötigt werden können beispielsweise die Links zu den Bildern verändert werden. Falls mehr Buttons als hier mitgeliefert benötigt werden sollte das Beispiel weiter unten beachtet werden.
 
 ##### Typische Fehler
 * Falsche Schreibweise im Pfad, oder im Dateinamen sowie eine fehlende Dateiendung.
@@ -308,7 +306,7 @@ Animation: Button hinzufügen
 1. (HTML) Kopiere ein Button-Element *\< imput id="..* in der Datei doku.html und vergebe eine neue, eindeutige ID.
 2. (CSS) Darstellung anpassen
   * Kopiere die css-Regeln von einem bestehenden Button und achte darauf auch die Regel entsprechend der ID zu benennen, z.B. *"#button100"*
-  * Passe die Referenz auf das dargestellt Bild an.
+  * Passe die Referenz auf das dargestellte Bild an.
   * Passe die Positionierung mittels der Werte in *top* und *left* an.
 
 <!--#### Beispiel 3
@@ -323,7 +321,7 @@ Ich möchte gerne einen separaten Pause-Button haben:
 #### Beispiel 3
 Doku: Eine zweite Animations "Folie" wird benötigt
 
-1. Leider gibt es hierfür keine direkte Lösung. Wer sich damit auskennt kann gerne die Aufgabe in Angriff nehmen. Wer sich nicht so gut damit auskennt kann auch gerne eine [email schreiben](mailto:tobias.lahmann@uni-ulm.de).
+1. Leider gibt es hierfür keine direkte Lösung. Wer sich damit auskennt kann gerne die Aufgabe in Angriff nehmen. Wer sich nicht so gut damit auskennt kann auch gerne eine [E-Mail schreiben](mailto:tobias.lahmann@uni-ulm.de).
 
 ### Fragen und Antworten
 **F: Darf ich die Farbe des Frameworks in der css verändern?**
@@ -356,7 +354,7 @@ Doku: Eine zweite Animations "Folie" wird benötigt
 * [TextMate](http://macromates.com/)
 * [VIM](http://www.vim.org/)
 
-### Zusätzliche Infos
+### Zusätzliche Information
 
 #### Test: 
 Framework wurde in folgenden Browsern getestet und die Funktionsweise bestätigt:

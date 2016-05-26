@@ -34,7 +34,7 @@
 </ul>
 </li>
 <li>
-<a href="#zusätzliche-infos">Zusätzliche Infos</a>
+<a href="#zusätzliche-information">Zusätzliche Information</a>
 <ul>
 <li><a href="#test">Test</a></li>
 </ul>
@@ -44,14 +44,14 @@
 <hr />
 <h3>Allgemeines</h3>
 <p>Alle Dateien können mit beliebigen Texteditoren geöffnet und manipuliert werden. Oft nutzen Entwickler Texteditoren die syntax highlighting anbieten. Für Microsoft Windows nutze ich meistens den Notepad++ Texteditor oder SublimeText. Unter Apple OSX ist der TextMate zu empfehlen. Und unter Unix bietet VIM bzw. GVIM viele hilfreiche Funktionen. </p>
-<p>Links zum Download sind weiter unten eingetragen. Auch wenn dort immer die Entwicklerseite angegeben ist besteht jedoch keine Garantie über die Sicherheit dieser Downloads.</p>
+<p>Links zum Download sind weiter unten eingetragen. Auch wenn dort immer die Entwicklerseite angegeben ist, besteht jedoch keine Garantie über die Sicherheit dieser Downloads.</p>
 <h3>Anleitung</h3>
 <h4>HTML - hypertext markup language</h4>
 <blockquote>
 <p><strong>Datei:</strong> doku.html  
 </p>
 </blockquote>
-<p>Nachdem die die Reinzeichnung der ersten Werke erstellt wurden können diese direkt in die Doku eingefügt werden. Die Datei <em>&quot;doku.html&quot;</em> im Hauptverzeichnis des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.</p>
+<p>Nachdem die Reinzeichnung der ersten Werke erstellt wurden können diese direkt in die Doku eingefügt werden. Die Datei <em>&quot;doku.html&quot;</em> im Hauptverzeichnis des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.</p>
 <p>Innerhalb der Datei befindet sich ab Zeile 130 (Stand Mai 2016) der Abschnitt </p>
 <p><em>&lt; xml id=&quot;data&quot; name=&quot;Maximilian Mustermann&quot; style=&quot;display:none;&quot; &gt;[...]</em>   </p>
 <p>Es handelt sich hierbei um den Abschnitt der Daten auf welche das Framework zugreift. Es ist daher wichtig, dass <em>id=&quot;data&quot;</em> und <em>style=&quot;display:none;&quot;</em> nicht verändert werden. Der Name unter <em>name=&quot;Maximilian Mustermann&quot;</em> muss allerdings eurem eigenen Namen entsprechen.</p>
@@ -67,7 +67,7 @@
   ...
 &lt;/doku&gt;
 </code></pre>
-<p>Es können beliebig viele Bereiche 'abschnitt' in der Dokumentation vorkommen. In jedem 'abschnitt' können beliebig viele 'inhalt' Bereiche zusammengefasst werden. Und in jedem dieser Bereiche können beliebig viele 'details' Bereiche eingeschlossen sein. Es bietet sich an hier etwas herum zu spielen und zu beobachten welche Änderungen in der Doku eintreten. </p>
+<p>Es können beliebig viele Bereiche 'abschnitt' in der Dokumentation vorkommen. In jedem 'abschnitt' können beliebig viele 'inhalt' Bereiche zusammengefasst werden. Und in jedem dieser Bereiche können beliebig viele 'details' Bereiche eingeschlossen sein. Es bietet sich an hier etwas herumzuspielen und zu beobachten welche Änderungen in der Doku eintreten. </p>
 <ul>
 <li>Die Attribute <em>abschnitt: titel</em> und <em>inhalt: titel</em> <strong>können</strong> beliebigen Text beinhalten. Beispielsweise den Titel der Aufgabe.</li>
 <li>Das Attribut <em>inhalt: quelle</em> <strong>muss</strong> einer gültigen, relativen URL zum gewünschten Bild, zur Flash-Animation oder zum Ordner der Animation entsprechen.</li>
@@ -90,7 +90,7 @@
 &lt;!ELEMENT details (#PCDATA)&gt;
 </code></pre>
 <p>Die Struktur des Ordners 'inhalte' kann beliebig gewählt werden. Wichtig für die Anzeige der Inhalte ist die Verlinkung im <em>quelle</em> Attribut des inhalte Tags. Ein Link muss <a href="https://de.wikipedia.org/wiki/Uniform_Resource_Locator#Relative_URLs">relativ</a> sein. Beispiele für die korrekte Verlinkung können dem Framework entnommen werden.</p>
-<p>Der Typ des Inhalts muss im <em>typ</em> Attribut angegeben werden. Wenn dies nicht, oder falsch geschehen ist werden die Inhalte vom Framework falsch behandelt und werden nicht angezeigt.</p>
+<p>Der Typ des Inhalts muss im <em>typ</em> Attribut angegeben werden. Wenn dies nicht, oder falsch geschehen ist, werden die Inhalte vom Framework falsch behandelt und werden nicht angezeigt.</p>
 <p>Bildformate sind nicht auf PNGs beschränkt. Es können beliebige Bildformate gewählt und vom Framework angezeigt werden. Für Reinzeichnungen empfohlen ist .png. Für Fotos empfohlen ist .jpg.</p>
 <h5>Typische Fehler</h5>
 <ul>
@@ -171,8 +171,8 @@ Aus dem zweiten Beispiel oben </p>
 }, 
 ...
 </code></pre>
-<p>Unter <em>numberOfObjects</em> wird angegeben wie viele Objekte aus einem Ordner gelesen werden. Diese Angabe ist wichtig, damit das Framework weiß wieviele Objekte sich im Ordner befinden. Hiermit kann außerdem die Darstellung feiner eingestellt werden. Sollte in der Entwicklung dieser Permutationsreihe beispielsweise 8 Objekte entstanden sein, die Darstellung aber mit 6 Objekten ästhetischer sein können die letzten 2 Objekte hiermit ausgeschlossen werden.</p>
-<p>Unter <em>elements</em> werden die Ordner der Permutationsreihen angegeben. Der Wunsch bestand, dass man unterschiedliche Versionen der Permutationsreihe darstellen kann. Insbesondere die Reinzeichnung im Vergleich zur eingescannten Skizze. Hierbei ist wichtig, dass unter dem <em>name</em> Attribut nur die Namen der Ordner in denen sich Objekte befinden angegeben wird. </p>
+<p>Unter <em>numberOfObjects</em> wird angegeben wie viele Objekte aus einem Ordner gelesen werden. </p>
+<p>Unter <em>elements</em> werden die Ordner der Permutationsreihen angegeben. </p>
 <p>Ab Zeile 112 folgt:</p>
 <pre class="prettyprint lang-javascript"><code>var objekte =
 [{
@@ -262,9 +262,8 @@ Aus dem zweiten Beispiel oben </p>
 }
 </code></pre>
 <p>Es werden eigene Abschnitte für jeden Button definiert. Im Beispiel oben sehen wir die zum ersten Button gehörende Definition. Dieser Button ist 75px breit und 30 px hoch. Er befindet sich 50px von der linken Kante des Animationsbereichs und 50px von der oberen Kante entfernt.</p>
-<p>Css-Regeln können auch gruppiert auf mehrere IDs oder Klassen gleichzeitig angewendet werden, wie es beispielsweise einige Zeilen Darüber geschehen ist. Zeile 15-18 gruppiert mehrere Buttons und wendet die darunter befindlichen regeln auf alle an. Die IDs sind mit Komma getrennt.</p>
+<p>Css-Regeln können auch gruppiert auf mehrere IDs oder Klassen gleichzeitig angewendet werden, wie es beispielsweise einige Zeilen darüber geschehen ist. Zeile 15-18 gruppiert mehrere Buttons und wendet die darunter befindlichen Regeln auf alle an. Die IDs sind mit Komma getrennt.</p>
 <p>In css werden die verfügbaren Regeln von oben nach unten gelesen und eventuell später im Dokument vorkommende Regeln überschreiben weiter oben befindliche.</p>
-<p>Wenn weniger Buttons benötigt werden können beispielsweise die Links zu den Bildern verändert werden. Falls mehr Buttons als hier mitgeliefert benötigt werden sollte das Beispiel weiter unten beachtet werden.</p>
 <h5>Typische Fehler</h5>
 <ul>
 <li>
@@ -320,7 +319,7 @@ Aus dem zweiten Beispiel oben </p>
 (CSS) Darstellung anpassen
 <ul>
 <li>Kopiere die css-Regeln von einem bestehenden Button und achte darauf auch die Regel entsprechend der ID zu benennen, z.B. <em>&quot;#button100&quot;</em></li>
-<li>Passe die Referenz auf das dargestellt Bild an.</li>
+<li>Passe die Referenz auf das dargestellte Bild an.</li>
 <li>Passe die Positionierung mittels der Werte in <em>top</em> und <em>left</em> an.</li>
 </ul>
 </li>
@@ -336,7 +335,7 @@ Ich möchte gerne einen separaten Pause-Button haben:
 <h4>Beispiel 3</h4>
 <p>Doku: Eine zweite Animations &quot;Folie&quot; wird benötigt</p>
 <ol>
-<li>Leider gibt es hierfür keine direkte Lösung. Wer sich damit auskennt kann gerne die Aufgabe in Angriff nehmen. Wer sich nicht so gut damit auskennt kann auch gerne eine <a href="&#109;&#97;&#105;l&#116;&#x6f;&#x3a;t&#x6f;&#x62;&#x69;&#97;&#x73;&#46;&#x6c;&#x61;h&#109;&#x61;&#x6e;&#110;&#64;&#117;&#110;&#x69;&#45;&#x75;&#x6c;&#x6d;.&#x64;&#101;">&#x65;&#109;&#x61;&#105;&#x6c;&#x20;s&#99;&#104;&#x72;&#x65;&#105;&#98;&#x65;&#110;</a>.</li>
+<li>Leider gibt es hierfür keine direkte Lösung. Wer sich damit auskennt kann gerne die Aufgabe in Angriff nehmen. Wer sich nicht so gut damit auskennt kann auch gerne eine <a href="&#109;&#97;&#105;l&#116;&#x6f;&#x3a;t&#x6f;&#x62;&#x69;&#97;&#x73;&#46;&#x6c;&#x61;h&#109;&#x61;&#x6e;&#110;&#64;&#117;&#110;&#x69;&#45;&#x75;&#x6c;&#x6d;.&#x64;&#101;">&#x45;&#x2d;&#x4d;&#x61;&#105;&#x6c;&#32;&#115;&#x63;&#x68;&#x72;&#x65;&#x69;&#x62;&#101;&#110;</a>.</li>
 </ol>
 <h3>Fragen und Antworten</h3>
 <p><strong>F: Darf ich die Farbe des Frameworks in der css verändern?</strong></p>
@@ -362,7 +361,7 @@ Ich möchte gerne einen separaten Pause-Button haben:
 <li><a href="http://macromates.com/">TextMate</a></li>
 <li><a href="http://www.vim.org/">VIM</a></li>
 </ul>
-<h3>Zusätzliche Infos</h3>
+<h3>Zusätzliche Information</h3>
 <h4>Test:</h4>
 <p>Framework wurde in folgenden Browsern getestet und die Funktionsweise bestätigt:</p>
 <ul>
