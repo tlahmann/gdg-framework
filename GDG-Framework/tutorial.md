@@ -217,9 +217,6 @@ Unter *elements* **können** mehrere Versionen der Permutationsreihe angegeben w
 * Anzahl der Objekte ist nicht (richtig) angegeben.
   -- *Angeben wie viele Bilder sich im Ordner befinden*
 
-* Anzahl der darzustellenden Objekte ist nicht angegeben.
-  -- *Angeben wie viele Kacheln angezeigt werden sollen*
-
 * Falsche Ordnernamen, oder Schreibfehler in den Ordnernamen.
   -- *Prüfen, ob die Ordner existieren und heißen, wie angegeben.*
 
