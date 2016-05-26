@@ -98,7 +98,7 @@ Bildformate sind nicht auf PNGs beschränkt. Es können beliebige Formate gewäh
   -- *"animation"/"flash" ändern in "bild" oder umgekehrt*
 
 * Unzulässige Zeichen im Pfad. 
-  -- *\< \> \: \" \\ \/ \| \* \? entfernen*
+  -- *\< \> \: " \\ / \| \* ? entfernen*
 
 * Inhalt ist nicht im Format 720 px * 540 px. 
   -- *Bildgröße anpassen*
@@ -221,7 +221,7 @@ Unter *elements* **können** mehrere Versionen der Permutationsreihe angegeben w
   -- *Prüfen, ob die Ordner existieren und heißen, wie angegeben.*
 
 * Unzulässige Zeichen im Pfad. 
-  -- *\< \> \: \" \\ \/ \| \* \? entfernen*
+  -- *\< \> \: " \\ / \| \* ? entfernen*
 
 * Inhalt ist nicht im Format 50 px * 50 px. 
   -- *Bildgröße anpassen*
@@ -279,7 +279,7 @@ In css werden die verfügbaren Regeln von oben nach unten gelesen und eventuell 
   -- *Prüfen, ob die Ordner existieren und heißen, wie angegeben.*
 
 * Unzulässige Zeichen im Pfad. 
-  -- *\< \> \: \" \\ \/ \| \* \? entfernen*
+  -- *\< \> \: " \\ / \| \* ? entfernen*
 
 * Bilder sind nicht in der angegebenen Größe
   -- *Bildgröße anpassen* oder *angegebene Größe ändern*
