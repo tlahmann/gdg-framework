@@ -39,23 +39,6 @@
  *                 [[1,2,1],
  *                  [1,1,2],
  *                  [2,1,1]]
- * 
- * ============================================================================================
- * Wenn die gewünschte Anzahl an Objekten ('desiredSize') die anzahl der Objekte der Folge  
- * übersteigt werden diese ebenfalls zyklisch erweitert um die gewünschte Anzahl an Objekten 
- * zu erreichen.
- * Beispiel: 
- *          Perm = [[22,44,66],
- *                  [66,22,44],
- *                  [44,66,22]]
- *          Obj = { 1, 2, 3}, mit gewünschter Anzahl an Objekten = 5
- * 
- * Dann ist die Resultierende Verteilung der Objekte auf dem Array:
- *                 [[3,2,1,3,2],
- *                  [1,3,2,1,3],
- *                  [2,1,3,2,1],
- *                  [3,2,1,3,2],
- *                  [3,2,1,3,2]]]
  */
 
 // Permutationen
@@ -93,16 +76,12 @@ var permutationen =
  * numberOfObjects: gibt an wie viele Elemente die Folge enthält. Es ist wichtig, dass 
  *                  (mindestens!) die angegebene Anzahl an Bildern im ausgewiesenem Ordner ist.
  * 
- * desiredSize: sollte die Folge mit mehr objekten dargestellt werden, als im Ordner vorhanden
- *              sind so kann dies hier angegeben werden
- * 
  * elements: listet die Ordner der objekte auf, die zu dieser Gruppe gehören.
  * 
  * Datenstruktur zum Backup:
  * 
  {
     "numberOfObjects": "n",
-    "desiredSize": "m",
     "elements": [
         { "name": "folder1" },
         { "name": "folder2" }
@@ -112,7 +91,6 @@ var permutationen =
 var objekte =
 [{
     "numberOfObjects": "7",
-    "desiredSize": "7",
     "elements": [
         { "name": "group1_v1" },
         { "name": "group1_v2" },
@@ -121,7 +99,6 @@ var objekte =
 },
 {
     "numberOfObjects": "7",
-    "desiredSize": "6",
     "elements": [
         { "name": "group2" },
         { "name": "2-2" }
@@ -129,7 +106,6 @@ var objekte =
 },
 {
     "numberOfObjects": "8",
-    "desiredSize": "8",
     "elements": [
         { "name": "SUPERTOLLERORDNER" },
         { "name": "Neuer Ordner" }
@@ -151,7 +127,7 @@ var animat = []; // Array, welches die Bilder beihaltet
 
 var context = document.getElementById('canvas').getContext('2d');
 
-var obj, des, matriceHeight, matriceWidth, scale;
+var obj, matriceHeight, matriceWidth, scale;
 
 //funktion: entsprechende Animationsobjekte initialisieren
 function initialize() {
@@ -173,11 +149,10 @@ function initialize() {
     }
 
     // Skaliert die einzelnen currAnim um bei unterschiedlicher Frame-Anzahl immer die gleiche Größe des Animationsbereichs beizubehalten
-    scale = ANIMATIONSIZE / objekte[currentObject].desiredSize;
+    scale = ANIMATIONSIZE / objekte[currentObject].numberOfObjects;
 
     // berechne die aktuellen Array-Größen
     obj = objekte[currentObject].numberOfObjects;
-    des = objekte[currentObject].desiredSize;
     matriceHeight = permutationen[currentPerm].length;
     matriceWidth = permutationen[currentPerm][0].length;
 
@@ -213,8 +188,8 @@ function draw() {
             }
 
             // zeichne an die berechneten Positionen die benötigten bilder
-            for (i = 0; i < des; i++) {
-                for (j = 0; j < des; j++) {
+            for (i = 0; i < obj; i++) {
+                for (j = 0; j < obj; j++) {
                     var d = null;
                     d = permutationen[currentPerm][j % matriceHeight][i % matriceWidth] % obj;
                     context.drawImage(animat[d],
