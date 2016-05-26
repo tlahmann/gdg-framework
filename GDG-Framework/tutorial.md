@@ -4,9 +4,9 @@
 ## Institut für Medienforschung und -entwicklung
 
 ---------------
-Author: Tobias Lahmann
+Autor: Tobias Lahmann
 
-Date: May 2016
+Datum: May 2016
 
 ---------------
 ### Inhalt
@@ -29,7 +29,7 @@ Date: May 2016
 
 ---------------
 ### Allgemeines
-Alle Dateien können mit beliebigen Texteditoren geöffnet und manipuliert werden. Oft nutzen Entwickler Texteditoren die syntax highlighting anbieten. Für Microsoft Windows nutze ich meistens den Notepad++ Texteditor oder SublimeText. Unter Apple OSX ist der TextMate zu empfehlen. Und unter Unix bietet VIM bzw. GVIM viele hilfreiche Funktionen. 
+Alle Dateien können mit beliebigen Textbearbeitungsprogrammen geöffnet und manipuliert werden. Oft nutzen Entwickler Texteditoren die syntax highlighting anbieten. Für Microsoft Windows nutze ich meistens den Notepad++ Texteditor oder SublimeText. Unter Apple OSX ist der TextMate zu empfehlen. Und unter Unix bietet VIM bzw. GVIM viele hilfreiche Funktionen. 
 
 Links zum Download sind weiter unten eingetragen. Auch wenn dort immer die Entwicklerseite angegeben ist, besteht jedoch keine Garantie über die Sicherheit dieser Downloads.
 
@@ -88,7 +88,7 @@ Die Struktur des Ordners 'inhalte' kann beliebig gewählt werden. Wichtig für d
 
 Der Typ des Inhalts muss im *typ* Attribut angegeben werden. Wenn dies nicht, oder falsch geschehen ist, werden die Inhalte vom Framework falsch behandelt und werden nicht angezeigt.
 
-Bildformate sind nicht auf PNGs beschränkt. Es können beliebige Bildformate gewählt und vom Framework angezeigt werden. Für Reinzeichnungen empfohlen ist .png. Für Fotos empfohlen ist .jpg.
+Bildformate sind nicht auf PNGs beschränkt. Es können beliebige Formate gewählt und vom Framework angezeigt werden. Für Reinzeichnungen empfohlen ist .png. Für Fotos ist dies .jpg.
 
 ##### Typische Fehler
 * Falsche Schreibweise im Pfad, oder im Dateinamen sowie eine fehlende Dateiendung.
@@ -132,7 +132,7 @@ var permutationen =
 ...
 ```
 
-Die Permutationen können beliebig groß oder klein sein. Sie werden vom Framework auf die weiter unten angegebene Größe erweitert. Hierbei kopiert das Framework die Zeilen und oder Spalten nach Bedarf um eine quadratische Matrix zu erhalten. Sollte die eingegebene Permutation also nur 2 Zeilen und 2 Spalten umfassen, aber eine benötigte Größe von 7x7 benötigt sein, werden die Zeilen und Spalten rotationsmäßig erweitert. 
+Die Permutationen können beliebig groß oder klein sein. Sie werden vom Framework auf die weiter unten angegebene Größe erweitert. Hierbei kopiert das Framework die Zeilen und oder Spalten nach Bedarf um eine quadratische Matrix zu erhalten. Sollte die eingegebene Permutation also nur jeweils 2 Zeilen und Spalten umfassen, aber eine benötigte Größe von 7x7 benötigt sein, werden die Zeilen und Spalten rotationsmäßig erweitert. 
 Aus dem zweiten Beispiel oben 
 
 ```javascript
@@ -202,7 +202,7 @@ Die zweite Permutationsreihe besitzt 2 Versionen (angegeben in *elements*) mit d
 
 Die Angabe der Elemente in *numberOfObjects* ist notwendig, da im Kontext von Webseiten nicht auf ein Dateisystem zugegriffen werden kann. Das Skript hat also keine Möglichkeit zu erfahren wie viele Bilder in dem angegebenen Ordner sind. Die Behelfslösung ist hier also mittels JavaScript Image-Objekte zu erstellen, welche einen Link zum Bild darstellen. Um zu erfahren wie viele Bilder das Skript erstellen soll geben wir diese Info an.
 
-Unter *elements* **können** mehrere Versionen der Permutationsreihe angegeben werden. Falls unterschiedliche Varianten der Permutationsreihe erstellt wurden, wie beispielsweise eine "gefüllte" Version und eine Strich­zeich­nung.
+Unter *elements* **können** mehrere Versionen der Permutationsreihe angegeben werden, falls unterschiedliche Varianten, wie beispielsweise eine "gefüllte" Version und eine Strich­zeich­nung, erstellt wurden.
 
 ##### Typische Fehler
 * Angegebene Permutation ist nicht quadratisch.
@@ -262,7 +262,7 @@ Innerhalb der Datei befindet sich ab Zeile 40 (Stand Mai 2016) der Abschnitt
 }
 ```
 
-Es werden eigene Abschnitte für jeden Button definiert. Im Beispiel oben sehen wir die zum ersten Button gehörende Definition. Dieser Button ist 75px breit und 30 px hoch. Er befindet sich 50px von der linken Kante des Animationsbereichs und 50px von der oberen Kante entfernt.
+Es werden eigene Abschnitte für jeden Button definiert. Im Beispiel oben sehen wir die zum ersten gehörende Definition. Dieser ist 75px breit und 30 px hoch. Er befindet sich 50px von der linken Kante des Animationsbereichs und 50px von der oberen Kante entfernt.
 
 Css-Regeln können auch gruppiert auf mehrere IDs oder Klassen gleichzeitig angewendet werden, wie es beispielsweise einige Zeilen darüber geschehen ist. Zeile 15-18 gruppiert mehrere Buttons und wendet die darunter befindlichen Regeln auf alle an. Die IDs sind mit Komma getrennt.
 
@@ -298,7 +298,7 @@ Animation: Button löschen
 1. (HTML) Lösche das Element *\< imput id="..* aus der Datei doku.html
 2. (CSS) Darstellung anpassen
   * Passe die Positionierung der übrigen Buttons an. Hierzu könnten die css-Regeln umbenannt werden.
-  * Alternativ könnten die übrigen Buttons die freiwerdenden IDs übernehmen und damit auch deren Positionen. Hier muss allerdings darauf geachtet werden, dass auch die Referenzen auf die Bilder verändert werden.  
+  * Alternativ können die übrigen Buttons freiwerdende IDs übernehmen und damit auch deren Positionen. Hier muss allerdings darauf geachtet werden, dass auch die Referenzen auf Bilder verändert werden.  
 
 #### Beispiel 2
 Animation: Button hinzufügen
@@ -308,15 +308,6 @@ Animation: Button hinzufügen
   * Kopiere die css-Regeln von einem bestehenden Button und achte darauf auch die Regel entsprechend der ID zu benennen, z.B. *"#button100"*
   * Passe die Referenz auf das dargestellte Bild an.
   * Passe die Positionierung mittels der Werte in *top* und *left* an.
-
-<!--#### Beispiel 3
-Ich möchte gerne einen separaten Pause-Button haben:
-
-1. (HTML) Ich kopiere den „button1“ im HTML und benenne das id-Attribut um in bspw. „button9“
-2. (HTML/JS) Ich ändere das Verhalten des „button1“ beim clicken (oncklick-Methode) auf „playAnimation()“ (zu finden ist die Methode in der animation.js)
-3. (HTML/JS) Ich ändere das Verhalten des „button9“ beim clicken (oncklick-Methode) auf „pauseAnimation()“ 
-4. (CSS) Ich kopiere alle CSS-Regeln welche für den Button 1 bestimmt sind und benenne auch diese um in „button9“
-5. (CSS) Ich ändere die positionswerte für meinen neuen „button9“ (top, left)-->
 
 #### Beispiel 3
 Doku: Eine zweite Animations "Folie" wird benötigt
@@ -331,14 +322,6 @@ Doku: Eine zweite Animations "Folie" wird benötigt
 **F: Darf ich Musik in meinem Framework verwenden?**
 
 **A:** Nein. Es geht hier um visuelle Effekte und nicht um Musik. Mach dafür einfach GdG II mit.
-
-**F: In meiner Animation möchte ich gerne 10 Buttons haben. Wie geht das?**
-
-**A:** Buttons können in der doku.html hinzugefügt werden. Die animation.css muss angepasst werden, damit der Button eigene Positionen und das gleiche Aussehen wie die Anderen erhält. Die animation.js muss angepasst werden, damit der Button auch eine Funktion erhält.
-
-**F: Wie kann ich eine zweite Animation in meine Doku einfügen?**
-
-**A:** Dieses Vorhaben benötigt sogar etwas mehr Aufwand und Verständnis der Materie. TODO!
 
 ### Hilfreiche Links
 
