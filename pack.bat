@@ -18,7 +18,7 @@ xcopy ".\GDG-Framework\asset\font\Apache License.txt" ".\Abgabe\GDG-Framework\as
 xcopy .\GDG-Framework\asset\font\Roboto-Regular.ttf .\Abgabe\GDG-Framework\asset\font\Roboto-Regular.ttf*
 
 :: readme
-xcopy .\GDG-Framework\tutorial.html .\Abgabe\GDG-Framework\tutorial.html*
+copy .\GDG-Framework\tutorial_style.txt+.\GDG-Framework\tutorial.html .\Abgabe\GDG-Framework\tutorial.html
 
 :: inhalte
 xcopy .\GDG-Framework\inhalte\png\A1a_1.png .\Abgabe\GDG-Framework\inhalte\png\A1a_1.png*
