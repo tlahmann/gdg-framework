@@ -17,7 +17,7 @@ Date: May 2016
   * [CSS - cascading style sheet](#css-cascading-style-sheet)
 * [Beispiele](#beispiele)
   * [Beispiel 1](#beispiel-1)
-  * [Beispiel 2](#beispiel-2)
+  * [Beispiel 2](#beispiel-2)  
   * [Beispiel 3](#beispiel-3)
 * [Fragen und Antworten](#fragen-und-antworten)
 * [Hilfreiche Links](#hilfreiche-links)
@@ -29,7 +29,7 @@ Date: May 2016
 
 ---------------
 ### Allgemeines
-Alle Dateien können mit beliebigen Texteditoren geöffnet und manipuliert werden. Oft nutzen Entwickler Texteditoren die syntax highlighting anbieten. Für Microsoft Windows nutze ich meistens den Notepad++ Texteditor oder SublimeText. Unter Apple OSX ist der TextMate zu empfehlen. Und unter Unix bietet VIM bzw GVIM viele hilfreiche Funktionen. 
+Alle Dateien können mit beliebigen Texteditoren geöffnet und manipuliert werden. Oft nutzen Entwickler Texteditoren die syntax highlighting anbieten. Für Microsoft Windows nutze ich meistens den Notepad++ Texteditor oder SublimeText. Unter Apple OSX ist der TextMate zu empfehlen. Und unter Unix bietet VIM bzw. GVIM viele hilfreiche Funktionen. 
 
 Links zum Download sind weiter unten eingetragen. Auch wenn dort immer die Entwicklerseite angegeben ist besteht jedoch keine Garantie über die Sicherheit dieser Downloads.
 
@@ -42,7 +42,7 @@ Nachdem die die Reinzeichnung der ersten Werke erstellt wurden können diese dir
 
 Innerhalb der Datei befindet sich ab Zeile 130 (Stand Mai 2016) der Abschnitt 
 
-*\<xml id="data" name="Maximilian Mustermann" style="display:none;"\>[...]* 
+*\< xml id="data" name="Maximilian Mustermann" style="display:none;" \>[...]* 
 
 Es handelt sich hierbei um den Abschnitt der Daten auf welche das Framework zugreift. Es ist daher wichtig, dass *id="data"* und *style="display:none;"* nicht verändert werden. Der Name unter *name="Maximilian Mustermann"* muss allerdings eurem eigenen Namen entsprechen.
 
@@ -163,7 +163,6 @@ JSON Schema
 ```javascript
 {
     "numberOfObjects": "n",
-    "desiredSize": "m",
     "elements": [
         { "name": "folder1" },
         ...
@@ -173,8 +172,6 @@ JSON Schema
 ```
 Unter *numberOfObjects* wird angegeben wie viele Objekte aus einem Ordner gelesen werden. Diese Angabe ist wichtig, damit das Framework weiß wieviele Objekte sich im Ordner befinden. Hiermit kann außerdem die Darstellung feiner eingestellt werden. Sollte in der Entwicklung dieser Permutationsreihe beispielsweise 8 Objekte entstanden sein, die Darstellung aber mit 6 Objekten ästhetischer sein können die letzten 2 Objekte hiermit ausgeschlossen werden.
 
-Unter *desiredSize* wird angegeben wieviele Felder für die Darstellung verwendet werden. Im Normalfall handelt es sich um die Anzahl der Objekte. Hiermit kann aber auch die Permutationsreihe auf eine Vielzahl von Feldern erweitert werden. 
-
 Unter *elements* werden die Ordner der Permutationsreihen angegeben. Der Wunsch bestand, dass man unterschiedliche Versionen der Permutationsreihe darstellen kann. Insbesondere die Reinzeichnung im vergleich zur eingescannten Skizze. Hierbei ist wichtig, dass unter dem *name* Attribut nur die Namen der Ordner in denen sich Objekte befinden angegeben wird. 
 
 Ab Zeile 112 folgt:
@@ -182,14 +179,12 @@ Ab Zeile 112 folgt:
 var objekte =
 [{
     "numberOfObjects": "7",
-    "desiredSize": "7",
     "elements": [
         { "name": "group1" }
     ]
 },
 {
     "numberOfObjects": "6",
-    "desiredSize": "10",
     "elements": [
         { "name": "group2" },
         { "name": "group2_reinzeichnung" }
@@ -199,28 +194,34 @@ var objekte =
 ```
 Hier sehen wir ein Beispiel für Permutationsreihen. 
 
-Die erste Permutationsreihe besitzt 1 Version (angegeben in *elements*) mit dem Namen "group1". Diese Reihe ist 7 Elemente groß und soll auch so dargestellt werden. Also befinden sich 7 Bilder (1.png, 2.png, ..., 7.png) im Ordner ./inhalte/animation/group1 .
+Die erste Permutationsreihe besitzt 1 Version (angegeben in *elements*) mit dem Namen "group1". Diese Reihe ist 7 Elemente groß. Also befinden sich 7 Bilder (1.png, 2.png, ..., 7.png) im Ordner ./inhalte/animation/group1 .
 
-Die zweite Permutationsreihe besitzt 2 Versionen (angegeben in *elements*) mit den Namen "group2" und "group2_reinzeichnung". Diese Reihe ist 6 Elemente groß und soll auf 10 Elemente "gestreckt" werden. Es befinden sich demnach 6 Bilder (1.png, ..., 6.png) im Ordner ./inhalte/animation/group2 und 6 Bilder (1.png, ..., 6.png) im Ordner ./inhalte/animation/group2_reinzeichnung .
+Die zweite Permutationsreihe besitzt 2 Versionen (angegeben in *elements*) mit den Namen "group2" und "group2\_reinzeichnung". Diese Reihe ist 6 Elemente groß. Es befinden sich demnach 6 Bilder (1.png, ..., 6.png) im Ordner ./inhalte/animation/group2 und 6 Bilder (1.png, ..., 6.png) im Ordner ./inhalte/animation/group2\_reinzeichnung.
+
+###### Motivation
+
+Die Angabe der Elemente in *numberOfObjects* ist notwendig, da im Kontext von Webseiten nicht auf ein Dateisystem zugegriffen werden kann. Das Skript hat also keine Möglichkeit zu erfahren wie viele Bilder in dem angegebenen Ordner sind. Die Behelfslösung ist hier also mittels JavaScript Image-Objekte zu erstellen, welche einen Link zum Bild darstellen. Um zu erfahren wie viele Bilder das Skript erstellen soll geben wir diese Info an.
+
+Unter *elements* **können** mehrere Versionen der Permutationsreihe angegeben werden. Falls unterschiedliche Varianten der Permutationsreihe erstellt wurden, wie beispielsweise eine "gefüllte" Version und eine Strich­zeich­nung.
 
 ##### Typische Fehler
 * Angegebene Permutation ist nicht quadratisch.
   -- *gleiche Anzahl der Spalten und Zeilen einhalten.*
 
-* Dateien befinden sich nicht in ./inhalte/animation/ .
+* Dateien befinden sich nicht angegebenen Ordner.
   -- *Ordner Umbenennen oder Dateien verschieben*
 
 * Dateien sind nicht richtig benannt.
   -- *Bilder mit 1.png … n.png durchnummerieren*
 
-* Anzahl der Objekte ist nicht angegeben.
+* Anzahl der Objekte ist nicht (richtig) angegeben.
   -- *Angeben wieviele Bilder sich im Ordner befinden*
 
 * Anzahl der darzustellenden Objekte ist nicht angegeben.
   -- *Angeben wieviele Kacheln angezeigt werden sollen*
 
 * Falsche Ordnernamen, oder Schreibfehler in den Ordnernamen.
-  -- *Prüfen, ob die Ordner existieren und auch so heißen, wie angegeben.*
+  -- *Prüfen, ob die Ordner existieren und so heißen, wie angegeben.*
 
 * Unzulässige Zeichen im Pfad. 
   -- *\< \> \: \" \\ \/ \| \* \? entfernen*
@@ -237,6 +238,10 @@ Die zweite Permutationsreihe besitzt 2 Versionen (angegeben in *elements*) mit d
 
 Die Datei *"animation.css"* im Unterverzeichnis asset -> css des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.
 
+CSS Regeln werden von einem Webbrowser gelesen und dazu verwendet die zugehörigen Elemente in ihrem Aussehen zu verändern. In css wird zwischen Klassen und IDs unterschieden. Hierbei steht in der css-Datei die Raute *(#)* für eine ID und der Punkt *(.)* für eine Klasse. IDs sind in einem html-Dokument eindeutige Bezeichner für ein Element und können nur ein mal vergeben werden. Klassen sind gruppierungen von verschiedenen Elementen, welche alle dieselbe Form haben sollen. 
+
+In dieser Dokumentation ist es wichtig, dass jeder Button eine eigene Position erhält. Aus diesem Grund werden die Buttons mit eigenen IDs belegt und jede dieser IDs muss in der css-Datei definiert werden. 
+
 Innerhalb der Datei befindet sich ab Zeile 40 (Stand Mai 2016) der Abschnitt 
 
 ```css
@@ -252,48 +257,73 @@ Innerhalb der Datei befindet sich ab Zeile 40 (Stand Mai 2016) der Abschnitt
   background-image: url("../../inhalte/buttons/play_2.png");
 }
 #button1:active {
-  /* Das Bild ändert sich, solange der button gedrückt (und gehalten) wird */
+  /* Das Bild ändert sich, solange der Button gedrückt (und gehalten) wird */
   background-image: url("../../inhalte/buttons/play_3.png");
 }
 ```
 
-Zu beachten ist:
+Es werden eigene Abschnitte für jeden Button definiert. Im Beispiel oben sehen wir die zum ersten Button gehörende Definition. Dieser Button ist 75px breit und 30 px hoch. Er befindet sich 50px von der linken Kante des Animationsbereichs und 50px von der oberen Kante entfernt.
 
-* CSS regeln werden von Oben nach Unten gelesen, wobei spätere Regeln bereits vorhandene überschreiben.
-* Wenn die Buttons zum Beispiel keine Eigenschaften für „gedrückt“ haben sollen kann auch die CSS-Regel :active gelöscht werden
-* Bildformate sind auch hier nicht auf .PNG beschränkt.
+Css-Regeln können auch gruppiert auf mehrere IDs oder Klassen gleichzeitig angewendet werden, wie es bispielsweise einige Zeilen Darüber geschehen ist. Zeile 15-18 gruppiert mehrere buttons und wendet die darunter befindlichen regeln auf alle an. Die IDs sind mit Komma getrennt.
 
-Hier ist auch wichtig: Wenn man keine Buttons haben will die vorwärts und rückwärts durchschalten sondern zyklisch durch alle vorhandenen Objekte/Permutationen gehen sollte man die HTML-Elemente löschen. Das Löschen von CSS-Regeln ist nicht notwendig.
+In css werden die verfügbaren Regeln von oben nach unten gelesen und eventuell später im Dokument vorkommende Regeln überschreiben weiter oben befindliche.
 
-Ein weiteres Beispiel (für das auch das anpassen der animation.js notwendig ist) folgt weiter unten.
+Wenn weniger Buttons benötigt werden können beispielsweise die Links zu den Bildern verändert werden. Falls mehr Buttons als hier mitgeliefert benötigt werden sollte das Beispiel weiter unten beachtet werden.
 
 ##### Typische Fehler
 * Falsche Schreibweise im Pfad, oder im Dateinamen sowie eine fehlende Dateiendung.
-* Falsche Schreibweise der regeln. HTML-Element muss gleiche id haben wie der zugehörige CSS-Selektor
+  -- *[Relative Pfade](https://de.wikipedia.org/wiki/Uniform_Resource_Locator#Relative_URLs)*
+
+* Falsche Schreibweise der Regeln. 
+  -- *HTML-Element muss gleiche ID haben wie der zugehörige CSS-Selektor*
+
+* Einheiten vergessen 
+  -- *[..]px hinzufügen* [-> alternativen](https://www.w3.org/Style/Examples/007/units.de.html)
+
+* Falsche Ordnernamen, oder Schreibfehler in den Ordnernamen.
+  -- *Prüfen, ob die Ordner existieren und so heißen, wie angegeben.*
+
 * Unzulässige Zeichen im Pfad. 
-* Bilder sind nicht in der gleichen Größe wie in den CSS-Regeln angegeben.
-* Einheiten vergessen ([..]px)
+  -- *\< \> \: \" \\ \/ \| \* \? entfernen*
+
+* Bilder sind nicht in der angegebenen Größe
+  -- *Bildgröße anpassen* oder *angegebene Größe ändern*
+
+* Bildformat wird nicht unterstützt.  
+  -- *[Wikipedia - Von Browsern unterstützte Bildformate](https://en.wikipedia.org/wiki/Comparison_of_web_browsers#Image_format_support)*
 
 ### Beispiele
 
 #### Beispiel 1
-Ich möchte gerne keine Typumschaltung haben. Mein Vorgehen ist dann das folgende:
-1. (HTML) Ich Lösche den „button2“ welcher für den Typeswitch zuständig ist aus der doku.html
-2. (HTML) Ich passe die Positionen der Buttons 3-8 an damit mein Menü wieder ordentlich ist.
+Animation: Button löschen
+
+1. (HTML) Lösche das Element *\< imput id="..* aus der Datei doku.html
+2. (CSS) Darstellung anpassen
+  * Passe die Positionierung der übrigen Buttons an. Hierzu könnten die css-Regeln umbenannt werden.
+  * Alternativ könnten die übrigen Buttons die freiwerdenden IDs übernehmen und damit auch deren Positionen. Hier muss allerdings darauf geachtet werden, dass auch die Referenzen auf die Bilder verändert werden.  
 
 #### Beispiel 2
-Ich möchte gerne keine Vorwärts- und Rückwärtsumschaltung für Objekte und Permutationen haben. Mein Vorgehen ist dann das folgende:
-1. (HTML) Ich Lösche den „button6“ welcher für das Rückwärtsschalten der Permutationen zuständig ist.
-2. (HTML) Ich Lösche den „button8“ welcher für das Rückwärtsschalten der Objekte zuständig ist.
-3. (CSS) Ich passe den „button7“ an um wieder eine hübsche Darstellung zu erhalten.
+Animation: Button hinzufügen
 
-#### Beispiel 3
+1. (HTML) Kopiere ein Button-Element *\< imput id="..* in der Datei doku.html und vergebe eine neue, eindeutige ID.
+2. (CSS) Darstellung anpassen
+  * Kopiere die css-Regeln von einem bestehenden Button und achte darauf auch die Regel entsprechend der ID zu benennen, z.B. *"#button100"*
+  * Passe die Referenz auf das dargestellt Bild an.
+  * Passe die Positionierung mittels der Werte in *top* und *left* an.
+
+<!--#### Beispiel 3
 Ich möchte gerne einen separaten Pause-Button haben:
+
 1. (HTML) Ich kopiere den „button1“ im HTML und benenne das id-Attribut um in bspw. „button9“
 2. (HTML/JS) Ich ändere das Verhalten des „button1“ beim clicken (oncklick-Methode) auf „playAnimation()“ (zu finden ist die Methode in der animation.js)
 3. (HTML/JS) Ich ändere das Verhalten des „button9“ beim clicken (oncklick-Methode) auf „pauseAnimation()“ 
 4. (CSS) Ich kopiere alle CSS-Regeln welche für den Button 1 bestimmt sind und benenne auch diese um in „button9“
-5. (CSS) Ich ändere die positionswerte für meinen neuen „button9“ (top, left)
+5. (CSS) Ich ändere die positionswerte für meinen neuen „button9“ (top, left)-->
+
+#### Beispiel 3
+Doku: Eine zweite Animations "Folie" wird benötigt
+
+1. Leider gibt es hierfür keine direkte Lösung. Wer sich damit auskennt kann gerne die Aufgabe in Angriff nehmen. Wer sich nicht so gut damit auskennt kann auch gerne eine [email schreiben](mailto:tobias.lahmann@uni-ulm.de).
 
 ### Fragen und Antworten
 **F: Darf ich die Farbe des Frameworks in der css verändern?**
