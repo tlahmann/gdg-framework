@@ -6,7 +6,7 @@
 ---------------
 Autor: Tobias Lahmann
 
-Datum: May 2016
+Datum: Mai 2016
 
 ---------------
 ### Inhalt
@@ -200,7 +200,7 @@ Die zweite Permutationsreihe besitzt 2 Versionen (angegeben in *elements*) mit d
 
 ###### Motivation
 
-Die Angabe der Elemente in *numberOfObjects* ist notwendig, da im Kontext von Webseiten nicht auf ein Dateisystem zugegriffen werden kann. Das Skript hat also keine Möglichkeit zu erfahren wie viele Bilder in dem angegebenen Ordner sind. Die Behelfslösung ist hier also mittels JavaScript Image-Objekte zu erstellen, welche einen Link zum Bild darstellen. Um zu erfahren wie viele Bilder das Skript erstellen soll geben wir diese Info an.
+Die Angabe der Elemente in *numberOfObjects* ist notwendig, da im Kontext von Webseiten nicht auf ein Dateisystem zugegriffen werden kann. Das Skript hat also keine Möglichkeit zu erfahren wie viele Bilder in dem angegebenen Ordner sind. Die Behelfslösung ist hier mittels JavaScript Image-Objekte zu erstellen, welche einen Link zum Bild darstellen. Um zu erfahren wie viele Bilder das Skript erstellen soll geben wir diese Info an.
 
 Unter *elements* **können** mehrere Versionen der Permutationsreihe angegeben werden, falls unterschiedliche Varianten, wie beispielsweise eine "gefüllte" Version und eine Strich­zeich­nung, erstellt wurden.
 
@@ -221,7 +221,7 @@ Unter *elements* **können** mehrere Versionen der Permutationsreihe angegeben w
   -- *Angeben wie viele Kacheln angezeigt werden sollen*
 
 * Falsche Ordnernamen, oder Schreibfehler in den Ordnernamen.
-  -- *Prüfen, ob die Ordner existieren und so heißen, wie angegeben.*
+  -- *Prüfen, ob die Ordner existieren und heißen, wie angegeben.*
 
 * Unzulässige Zeichen im Pfad. 
   -- *\< \> \: \" \\ \/ \| \* \? entfernen*
@@ -264,7 +264,7 @@ Innerhalb der Datei befindet sich ab Zeile 40 (Stand Mai 2016) der Abschnitt
 
 Es werden eigene Abschnitte für jeden Button definiert. Im Beispiel oben sehen wir die zum ersten gehörende Definition. Dieser ist 75px breit und 30 px hoch. Er befindet sich 50px von der linken Kante des Animationsbereichs und 50px von der oberen Kante entfernt.
 
-Css-Regeln können auch gruppiert auf mehrere IDs oder Klassen gleichzeitig angewendet werden, wie es beispielsweise einige Zeilen darüber geschehen ist. Zeile 15-18 gruppiert mehrere Buttons und wendet die darunter befindlichen Regeln auf alle an. Die IDs sind mit Komma getrennt.
+Css-Regeln können gruppiert auf mehrere IDs oder Klassen gleichzeitig angewendet werden, wie es beispielsweise einige Zeilen darüber geschehen ist. Zeile 15-18 gruppiert mehrere Buttons und wendet die darunter befindlichen Regeln auf alle an. Die IDs sind mit Komma getrennt.
 
 In css werden die verfügbaren Regeln von oben nach unten gelesen und eventuell später im Dokument vorkommende Regeln überschreiben weiter oben befindliche.
 
@@ -279,7 +279,7 @@ In css werden die verfügbaren Regeln von oben nach unten gelesen und eventuell 
   -- *[..]px hinzufügen* [-> alternativen](https://www.w3.org/Style/Examples/007/units.de.html)
 
 * Falsche Ordnernamen, oder Schreibfehler in den Ordnernamen.
-  -- *Prüfen, ob die Ordner existieren und so heißen, wie angegeben.*
+  -- *Prüfen, ob die Ordner existieren und heißen, wie angegeben.*
 
 * Unzulässige Zeichen im Pfad. 
   -- *\< \> \: \" \\ \/ \| \* \? entfernen*
@@ -298,21 +298,21 @@ Animation: Button löschen
 1. (HTML) Lösche das Element *\< imput id="..* aus der Datei doku.html
 2. (CSS) Darstellung anpassen
   * Passe die Positionierung der übrigen Buttons an. Hierzu könnten die css-Regeln umbenannt werden.
-  * Alternativ können die übrigen Buttons freiwerdende IDs übernehmen und damit auch deren Positionen. Hier muss allerdings darauf geachtet werden, dass auch die Referenzen auf Bilder verändert werden.  
+  * Alternativ können die übrigen Buttons freiwerdende IDs übernehmen und damit auch deren Positionen. Hier muss allerdings darauf geachtet werden, dass die Referenzen auf Bilder ebenfalls verändert werden.  
 
 #### Beispiel 2
 Animation: Button hinzufügen
 
 1. (HTML) Kopiere ein Button-Element *\< imput id="..* in der Datei doku.html und vergebe eine neue, eindeutige ID.
 2. (CSS) Darstellung anpassen
-  * Kopiere die css-Regeln von einem bestehenden Button und achte darauf auch die Regel entsprechend der ID zu benennen, z.B. *"#button100"*
+  * Kopiere die css-Regeln von einem bestehenden Button und achte darauf die Regel entsprechend der ID zu benennen, z.B. *"#button100"*
   * Passe die Referenz auf das dargestellte Bild an.
   * Passe die Positionierung mittels der Werte in *top* und *left* an.
 
 #### Beispiel 3
 Doku: Eine zweite Animations "Folie" wird benötigt
 
-1. Leider gibt es hierfür keine direkte Lösung. Wer sich damit auskennt kann gerne die Aufgabe in Angriff nehmen. Wer sich nicht so gut damit auskennt kann auch gerne eine [E-Mail schreiben](mailto:tobias.lahmann@uni-ulm.de).
+1. Leider gibt es hierfür keine direkte Lösung. Wer sich damit auskennt kann gerne die Aufgabe in Angriff nehmen. Wer sich nicht so gut damit auskennt kann gerne eine [E-Mail schreiben](mailto:tobias.lahmann@uni-ulm.de).
 
 ### Fragen und Antworten
 **F: Darf ich die Farbe des Frameworks in der css verändern?**
