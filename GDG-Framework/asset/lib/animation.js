@@ -128,8 +128,8 @@ var objekte =
     ]
 },
 {
-    "numberOfObjects": "3",
-    "desiredSize": "15",
+    "numberOfObjects": "8",
+    "desiredSize": "8",
     "elements": [
         { "name": "SUPERTOLLERORDNER" },
         { "name": "Neuer Ordner" }
@@ -160,11 +160,13 @@ function initialize() {
         running = !running;
     }
 
+    var folder = $("inhalt[typ='animation']").attr("quelle");
+
     animat = [];
     // liest die Quelle aller aktuell betrachteten Bilder ein und speichert sie als img() in Array animat
     for (i = 0; i < objekte[currentObject].numberOfObjects; i++) {
         var img = new Image();
-        img.src = "inhalte/animation/"
+        img.src = folder
             + objekte[currentObject].elements[typeSwitch].name
             + "/" + (i + 1) + ".png";
         animat[i] = img;
@@ -181,9 +183,6 @@ function initialize() {
 
     draw();
 }
-
-// initialisierung
-initialize();
 
 // timer hilfsvariablen
 var fps = 12;

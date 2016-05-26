@@ -184,8 +184,13 @@ function displayPicture() {
         $('#canvas').css("display", "none");
         $('#flashCanvas').css("display", "none");
 
+        pauseAnimation();
     }
     else if (con['@attributes']['typ'] == "animation") {
+        // initialize the animation and start animating
+        initialize();
+        playAnimation();
+        
         // display the animation
         $('#contentAnim').css("display", "block");
         $('#canvas').css("display", "block");
@@ -209,6 +214,8 @@ function displayPicture() {
         $('#contentImg').css("display", "none");
         $('#contentAnim').css("display", "none");
         $('#canvas').css("display", "none");
+
+        pauseAnimation();
     }
 
     // change border display
