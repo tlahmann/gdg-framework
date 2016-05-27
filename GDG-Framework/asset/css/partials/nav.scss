@@ -8,7 +8,7 @@ $NavWidth: 300px;
 $NavButtonWidth: 16px;
 $navPadding: 5px;
 $NavScrollWidth: $NavWidth - $NavButtonWidth - (2*$navPadding);
-
+$NavHoverFade: 0.90;
 
 nav {
     @include basic;
@@ -19,7 +19,7 @@ nav {
     left: -$NavScrollWidth - (2*$navPadding);
 
     @include transition(left, .3s, cubic-bezier(.5,.85,.60,1));
-     
+
 
     > .navigation {
         position: relative;
@@ -39,20 +39,26 @@ nav {
             ul li {
                 cursor: pointer;
                 padding-top: 1%;
-                white-space: nowrap;
+                /*white-space: nowrap;*/
+                summary:hover {
+                    background-color: fade_out($lightColor, $NavHoverFade);
+                }
 
-                > summary:hover {
-                    background-color: fade_out($lightColor, 0.95);
+                summary:focus {
+                    outline: 0;
                 }
 
                 > details li {
-                    padding-left: 10%;
+                    padding-left: 8%;
 
                     &:hover {
-                        background-color: fade_out($lightColor, 0.95);
+                        background-color: fade_out($lightColor, $NavHoverFade);
                     }
                 }
             }
+            /*summary:hover {
+                background-color: fade_out($lightColor, $NavHoverFade);
+            }*/
         }
     }
 
@@ -80,7 +86,7 @@ nav {
             &:after {
                 display: inline-block;
                 content: "Navigation ";
-                @include transform(-67%, -100%, 1.0, 1.0, -90deg);
+                @include transform(-68%, -100%, 1.0, 1.0, -90deg);
                 -webkit-transform-origin: 60px 26px;
                 -moz-transform-origin: 60px 26px;
                 -ms-transform-origin: 60px 26px;

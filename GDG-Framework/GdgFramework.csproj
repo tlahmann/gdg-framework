@@ -148,6 +148,12 @@
       <DependentUpon>simplebar.scss</DependentUpon>
     </Content>
     <Content Include="asset\lib\animation.js" />
+    <Content Include="asset\lib\default.es5.js">
+      <DependentUpon>default.js</DependentUpon>
+    </Content>
+    <Content Include="asset\lib\default.es5.min.js">
+      <DependentUpon>default.es5.js</DependentUpon>
+    </Content>
     <Content Include="asset\lib\default.min.js">
       <DependentUpon>default.js</DependentUpon>
     </Content>
@@ -221,11 +227,16 @@
     <Content Include="asset\lib\jquery-2.2.0.min.js.map">
       <DependentUpon>jquery-2.2.0.min.js</DependentUpon>
     </Content>
+    <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <None Include="doku.html" />
+    <Content Include="tutorial.html">
+      <DependentUpon>tutorial.md</DependentUpon>
+    </Content>
+    <Content Include="tutorial.md" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

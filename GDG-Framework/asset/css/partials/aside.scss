@@ -13,11 +13,13 @@ aside {
     right: 0;
     left: 75%;
     margin: 0 10px;
+    overflow: hidden;
 
     #descText {
         padding: 15px 0;
         font-size: 12px;
         line-height: 16px;
+        padding: 15px 15px 15px 0;
     }
 
     &.intro {
@@ -25,6 +27,7 @@ aside {
         height: 60%;
         top: 132px;
         left: 612px;
+        overflow: visible;
 
         h4 {
             font-weight: bold;

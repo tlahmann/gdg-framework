@@ -1,0 +1,18 @@
+﻿[
+  {
+    "outputFile": "asset/css/main.css",
+    "inputFile": "asset/css/main.scss"
+  },
+  {
+    "outputFile": "asset/css/animation.css",
+    "inputFile": "asset/css/vendor/animation.scss"
+  },
+  {
+    "outputFile": "asset/lib/default.es5.js",
+    "inputFile": "asset/lib/default.js"
+  },
+  {
+    "outputFile": "asset/css/modules/colors.css",
+    "inputFile": "asset/css/modules/colors.scss"
+  }
+]

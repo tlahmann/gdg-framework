@@ -37,6 +37,7 @@ function launchIntoFullscreen(element) {
     }
     launchIntoWindowed();
 }
+
 // load XML Data into the program
 $(function () {
     json = xmlToJson(document.getElementById("data"));
@@ -55,9 +56,13 @@ $(function () {
         sectionsCount += json.DOKU.ABSCHNITT.INHALT.length;
     }
 
-    redraw();
+    
     fillNavigation();
     $('#navscroll').simplebar();
+    $('#description').append("<h4 id=\"descTitle\">desctitle</h4><p id=\"descText\">desc</p>");
+    $('#description').simplebar();
+    
+    redraw();
     document.getElementById("studentName").textContent = json["@attributes"].name;
 });
 
@@ -147,6 +152,7 @@ function redraw() {
     displayPicture();
     displayDescription();
     updateCounter();
+    return;
 };
 
 // function to change the picture being shown
@@ -157,6 +163,10 @@ function displayPicture() {
     } else {
         con = json.DOKU.ABSCHNITT;
     }
+
+    // set the title to the title (very top of the pane) of the image
+    $("#title").html(con['@attributes']['titel']);
+
     if (con.INHALT.length > 1) {
         con = con.INHALT[content];
     } else {
@@ -174,8 +184,13 @@ function displayPicture() {
         $('#canvas').css("display", "none");
         $('#flashCanvas').css("display", "none");
 
+        pauseAnimation();
     }
     else if (con['@attributes']['typ'] == "animation") {
+        // initialize the animation and start animating
+        initialize();
+        playAnimation();
+        
         // display the animation
         $('#contentAnim').css("display", "block");
         $('#canvas').css("display", "block");
@@ -199,10 +214,9 @@ function displayPicture() {
         $('#contentImg').css("display", "none");
         $('#contentAnim').css("display", "none");
         $('#canvas').css("display", "none");
-    }
 
-    // set the title to the title (very top of the pane) of the image
-    document.getElementById("title").innerHTML = con['@attributes']['titel'];
+        pauseAnimation();
+    }
 
     // change border display
     if (con['@attributes']['rahmen'] == "ein") {
@@ -233,21 +247,21 @@ function displayDescription() {
     document.getElementById("descTitle").innerHTML = con['@attributes']['titel'];
 
     // if the desription is more than one page long the navigation for the description is shown
-    if (con.DETAILS.length > 1) {
+    if (con.DETAIL.length > 1) {
         // set the description of the image (main area of the aside) to the description of the details node
-        document.getElementById("descText").innerHTML = con.DETAILS[description]['#text'];
+        document.getElementById("descText").innerHTML = con.DETAIL[description]['#text'];
 
         //display the description counter
         $('#descNav').css("display", "block");
         $('#description').css("border-color", "#7a7a80")
 
         // update the description counter
-        descNum.innerHTML = description + 1 + " / " + con.DETAILS.length;
+        descNum.innerHTML = description + 1 + " / " + con.DETAIL.length;
 
     }// if the description is just one page long the navigation for the description is hidden
     else {
         // set the description of the image (main area of the aside) to the description of the details node
-        document.getElementById("descText").innerHTML = con.DETAILS['#text'];
+        document.getElementById("descText").innerHTML = con.DETAIL['#text'];
 
         //hide the description counter
         $('#descNav').css("display", "none");
@@ -295,7 +309,7 @@ function prevImg() {
 
 // next description function
 function nextDesc() {
-    if (description < json.DOKU.ABSCHNITT[section].INHALT[content].DETAILS.length - 1) {
+    if (description < json.DOKU.ABSCHNITT[section].INHALT[content].DETAIL.length - 1) {
         description++;
         displayDescription();
     }
@@ -373,6 +387,7 @@ function fillNavigation() {
     }
     string += '</ul>';
     document.getElementById("navscroll").innerHTML = string;
+    return;
 };
 
 // listener to open the navigation
