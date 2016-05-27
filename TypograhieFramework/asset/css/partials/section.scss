@@ -23,4 +23,5 @@ section {
     color: $darkColor;
     border: 1px solid $darkColor;
     overflow: hidden;
+    @include centering;
 }
