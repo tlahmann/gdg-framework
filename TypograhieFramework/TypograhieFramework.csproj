@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -129,12 +130,6 @@
     <Content Include="asset\css\partials\nav.min.css">
       <DependentUpon>nav.css</DependentUpon>
     </Content>
-    <Content Include="asset\css\partials\reset.css">
-      <DependentUpon>reset.scss</DependentUpon>
-    </Content>
-    <Content Include="asset\css\partials\reset.min.css">
-      <DependentUpon>reset.css</DependentUpon>
-    </Content>
     <Content Include="asset\css\partials\section.css">
       <DependentUpon>section.scss</DependentUpon>
     </Content>
@@ -237,9 +232,6 @@
       <DependentUpon>variables.css</DependentUpon>
     </Content>
     <Content Include="asset\css\partials\reset.scss" />
-    <Content Include="asset\css\partials\reset.css.map">
-      <DependentUpon>reset.css</DependentUpon>
-    </Content>
     <Content Include="asset\css\partials\aside.scss" />
     <Content Include="asset\css\partials\aside.css.map">
       <DependentUpon>aside.css</DependentUpon>
@@ -278,6 +270,10 @@
     <Content Include="asset\css\vendor\video-js.css.map">
       <DependentUpon>video-js.css</DependentUpon>
     </Content>
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
