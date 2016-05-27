@@ -8,7 +8,7 @@
 
 // the footer holds the quick navigation
 footer {
-    border-top: 1px solid $darkColor;
+    border: 1px solid $darkColor;
     position: relative;
     width: $desDimensions * 1px;
     max-width: $desDimensions * 1px;
@@ -16,7 +16,7 @@ footer {
     height: calculateHeight((25, 1), $desDimensions);
     max-height: calculateHeight((25, 1), $desDimensions);
     min-height: calculateHeight((25, 1), $desDimensions);
-    margin: 0 auto;
+    margin: 10px auto;
     background-color: $lightColor;
     padding: 0;
 

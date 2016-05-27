@@ -14,7 +14,7 @@ nav {
     margin: 10px auto;
     color: $darkColor;
     padding: 0;
-    background: #ff0;
+    background: $lightColor;
     @include centering;
 }
 
