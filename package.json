@@ -1,0 +1,16 @@
+{
+  "name": "gdg-framework",
+  "version": "1.0.1",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-coffee": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tlahmann/gdg-framework.git"
+  },
+  "private": true,
+  "license": "Copyrighted - CC BY-NC-ND"
+}
