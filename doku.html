@@ -1,0 +1,184 @@
+﻿<!-- HTML document -->
+<!--
+    Grundlagen der Gestaltung Framework
+    Univerität Ulm
+    Institut für Medienforschung und -entwicklung
+    Tobias Lahmann
+-->
+<!--
+    This is the html-framework for the couse 'Grundlagen der Gestaltung I'
+    of the University of Ulm
+
+    The purpose ist for the students participating to show their work
+    done over the period of one semester.
+
+    The purpose of this framework is to provide a clean and simple to use
+    stage for the students to present their work.
+-->
+<!--
+    Dieser Abschnitt sollte von niemandem verändert werden!
+    Bitte weiterscrollen, hier gibt es nichts zu sehen.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grundlagen der Gestaltung I, WiSe '15/16</title>
+    <!-- Stylesheets -->
+    <link type="text/css" href="asset/css/main.min.css" rel="stylesheet" />
+    <link type="text/css" href="asset/css/animation.css" rel="stylesheet" />
+    <!-- Scripts -->
+    <script type="text/javascript" src="asset/lib/jquery-3.1.1.min.js"></script>
+    <script defer type="text/javascript" src="asset/lib/default.min.js"></script>
+</head>
+<body>
+    <!-- The splash screen when opening the documentation -->
+    <div id="intro" class="frame">
+        <div class="pane">
+            <aside class="intro">
+                <h4>Universität Ulm</h4>
+                <h4>Medieninformatik</h4>
+                <p>Grundlagen der Gestaltung I</p>
+                <p>Wintersemester 2015/16</p>
+                <br />
+                <p>Dokumentation</p>
+                <p id="studentName"></p>
+                <br />
+                <label class="start" onclick="launchIntoFullscreen(document.documentElement);">Vollbild-Modus</label>
+                <label class="start" onclick="launchIntoWindowed()">Fenster-Modus</label>
+            </aside>
+        </div>
+    </div>
+    <!-- The actual documentation -->
+    <div id="doku" class="frame">
+
+        <nav id="navigation">
+            <!-- navigation menu, left -->
+            <div class="navigation">
+                <div id="navscroll" class="simplebar"></div>
+            </div>
+            <div class="navSlideBtn">
+                <!-- trigger button for the navigation menu, left -->
+                <label for="navTrigger" id="navTriggerText"></label>
+            </div>
+        </nav>
+        <input type="checkbox" id="navTrigger" name="navTrigger" class="navTrigger" />
+
+        <div class="pane">
+            <header>
+                <!-- title section -->
+                <label id="title"></label>
+            </header>
+            <section>
+                <!-- content section -->
+                <!-- IMAGE -->
+                <img id="contentImg" />
+                <!-- ANIMATION -->
+                <canvas id="canvas" width="720" height="540"></canvas>
+                <script type="text/javascript" src="asset/lib/animation.js"></script>
+                <div id="contentAnim">
+                    <div id="buttons">
+                        <!-- Hier kann verändert werden, falls die Buttons nicht mittels css, sondern mittels
+                        Bildern/Animationen/Gedanken gesteuert werden.-->
+                        <input id="button1" type="button" onclick="playPauseAnimation()" />
+                        <input id="button2" type="button" onclick="changeTypeOfObj()" />
+                        <input id="button3" type="button" onclick="changeSpeed()" />
+                        <input id="button4" type="button" onclick="slower()" />
+                        <input id="button5" type="button" onclick="changePermutationFwrd()" />
+                        <input id="button6" type="button" onclick="changePermutationBack()" />
+                        <input id="button7" type="button" onclick="changeObjectFwrd()" />
+                        <input id="button8" type="button" onclick="changeObjectBack()" />
+                    </div>
+                </div>
+                <!-- FLASH -->
+                <embed id="flashCanvas" width="720" height="540" type="application/x-shockwave-flash" src="." />
+            </section>
+
+            <aside id="description" class="simplebar">
+                <!-- description section -->
+                <!--<h4 id="descTitle">desctitle</h4>
+                <p id="descText">desc</p>-->
+            </aside>
+
+            <aside id="descNav">
+                <!-- description navigation section -->
+                <input class="before" type="button" onclick="prevDesc()" />
+                <label id="descNum"></label>
+                <input class="after" type="button" onclick="nextDesc()" />
+            </aside>
+
+            <footer>
+                <!-- quicknavigation and border-listener -->
+                <input class="before" type="button" onclick="prevImg()" />
+                <input id="imgNum" type="text" />
+                <input class="after" type="button" onclick="nextImg()" />
+                <input id="blur" type="text" style="display: none; position: absolute; opacity: 0;">
+                <input id="borderListener" name="borderListener" type="checkbox" style="float: right" onclick="triggerBorder()">
+                <label id="textTrigger" for="borderListener">&nbsp;</label>
+                <label id="borderText">Rahmen ein-/ausschalten</label>
+            </footer>
+        </div>
+    </div>
+</body>
+
+<!------------------------------------------------->
+<!-- Hier beginnt der Inhalt der Dokumentation   -->
+<!-- Dazu bitte nach dem bekannten Schema die    -->
+<!-- Verlinkungen zu den Ordnern/Dateien her-    -->
+<!-- stellen und die Bilder in der Dokumentation -->
+<!-- anzuzeigen                                  -->
+<!------------------------------------------------->
+<!-- Typ-Definition:                             -->
+<!--           Bilder: typ="bild"                -->
+<!--           Flash-Objekte: typ="flash"        -->
+<!--           Animation (JS): typ="animation"   -->
+<!------------------------------------------------->
+
+<xml id="data" name="Maximilian Mustermann" style="display:none;">
+    <doku>
+        <abschnitt titel="Lorem ipsum dolor sit amet">
+            <inhalt titel="Consectetuer adipiscing elit" quelle="inhalte/png/A1a_1.png" typ="bild" rahmen="aus">
+                <detail>
+                    Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans. Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt sie mit den nötigen Regelialien. Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die Blindtexte beherrscht - ein geradezu unorthographisches Leben. Eines Tages aber beschloß eine kleine Zeile Blindtext, ihr Name war Lorem Ipsum, hinaus zu gehen in die weite Grammatik. Der große Oxmox riet ihr davon ab, da es dort wimmele von bösen Kommata, wilden Fragezeichen und hinterhältigen Semikoli, doch das Blindtextchen ließ sich nicht beirren. Es packte seine sieben Versalien, schob sich sein Initial in den Gürtel und machte sich auf den Weg. Als es die ersten Hügel des Kursivgebirges erklommen hatte, warf es einen letzten Blick zurück auf die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse. Wehmütig lief ihm eine rethorische Frage über die Wange, dann setzte es seinen Weg fort.
+                </detail>
+                <detail>
+                    Unterwegs traf es eine Copy. Die Copy warnte das Blindtextchen, da, wo sie herkäme wäre sie zigmal umgeschrieben worden und alles, was von ihrem Ursprung noch übrig wäre, sei das Wort "und" und das Blindtextchen solle umkehren und wieder in sein eigenes, sicheres Land zurückkehren. Doch alles Gutzureden konnte es nicht überzeugen und so dauerte es nicht lange, bis ihm ein paar heimtückische Werbetexter auflauerten, es mit Longe und Parole betrunken machten und es dann in ihre Agentur schleppten, wo sie es für ihre Projekte wieder und wieder mißbrauchten. Und wenn es nicht umgeschrieben wurde, dann benutzen Sie es noch heute.
+                </detail>
+            </inhalt>
+            <inhalt titel="Sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat." quelle="inhalte/png/skizze.png" typ="bild" rahmen="aus">
+                <detail>
+                    Ich bin nur ein kleiner Blindtext. Wenn ich gross bin, will ich Ulysses von James Joyce werden. Aber jetzt lohnt es sich noch nicht, mich weiterzulesen. Denn vorerst bin ich nur ein kleiner Blindtext.
+                </detail>
+            </inhalt>
+        </abschnitt>
+        <abschnitt titel="Ut wisi enim ad minim veniam">
+            <inhalt titel="Quis nostrud exerci tation ullamcorper" quelle="inhalte/swf/ball.swf" typ="flash" rahmen="aus">
+                <detail>
+                    Nein, meine Texte les ich nicht, so nicht, stöhnte Oxmox. Er war mit Franklin, Rockwell und dem halbtaxgrauen Panther Weidemann in Memphis (Heartbreak Hotel) zugange. Sie warteten auf die fette Gill, um bei der Bank of Helvetica die Kapitälchen in Kapital umzuwandeln. Oxmox liess nicht locker. Ich fleh euch an, rettet meine Copy, gebt meinem Body nochn Durchschuss! Kein Problem, erbarmte sich Old Face Baskerville, streichelte seinen Hund, zog seine einspaltige Poppl, legte an und traf! (Zeidank nichts Ernstes ­ nurn bisschen Fraktur.) Oxmox: Danke, ist jetzt mit Abstand besser. Derweil jumpte der Fox leise over the Buhl, die sich mal wieder immerdar wie jedes Jahr gesellte.
+                </detail>
+                <detail>
+                    Diesmal war Guaredisch ihr Erwählter, weil seine Laufweite einem vollgetankten Bodoni entsprach und seine ungezügelte Unterlänge ihre Serifen so serafisch streifte, dass sie trotz Techtelmechtelei die magere Futura, jene zuverlässige und gern eingesetzte Langstreckenläuferin, rechtsbündig überholen konnten. Leute, giftelte Tiffany, macht endlich maln Punkt. Und das Komma soll sich gefällixt an die richtige Stelle setzen. Und keine Trennungen. Und nicht zu viele Anschläge heut nacht! Die Goudy war vorbei. Aus einem üblen Geviert tauchte eine Horde Gemeiner auf, angeführt von einem Versalen. Als sie des Grauwerts anblickig wurden, machten sie auf dem Absatz kehrt - ohne Einzug. Die in der letzten Reihe warfen noch schnell eine Handvoll Buchstaben in die Luft, blind darauf vertrauend, dass ...
+                </detail>
+            </inhalt>
+            <inhalt titel="Suscipit lobortis nisl ut aliquip" quelle="inhalte/animation/" typ="animation" rahmen="ein">
+                <detail>
+                    Streng dem definierten Wesen des Blindtextes folgend, fungiere ich als solcher und gebe mich unverbindlich inhaltsleer.
+                </detail>
+                <detail>
+                    In bedrückender Enge in vorgefertigte Masken gepresst friste ich ein freudloses Dasein auf dem schmalen Grat zwischen Nichtbeachtung und Bedeutungslosigkeit und habe doch eine Bitte:
+                </detail>
+                <detail>
+                    Handeln Sie Sinn stiftend für meine Existenz und lesen Sie mich.
+                </detail>
+                <detail>
+                    Quelle: Christian Beckmann / Spiegel Online
+                </detail>
+            </inhalt>
+            <inhalt titel="Ex ea commodo consequat" quelle="inhalte/fotos/foto.jpg" typ="bild" rahmen="aus">
+                <detail>
+                    Dies ist ein Blindtext. Bitte beachten Sie den weiteren Inhalt dieses Textes nicht. Es handelt sich tatsächlich, so war mir Gott helfe, nur um einen Blindtext. Ja ja, ich merke schon, Sie können es wohl nicht lassen. Na gut, dann erzähle ich jetzt einen Witz: Wie viele Blondinen braucht man, um eine Glühbirne zu wechseln? Fünf, eine, die die Glühbirne hält, und vier, die das Zimmer drehen. Soso, jetzt lachen Sie auch noch, wo ich doch ausdrücklich darauf hingewiesen hatte, den Text überhaupt nicht weiter zu lesen. Manche Leute müssen einfach permanent Regeln brechen. Verdammt noch mal, hier kommt nichts mehr, was auch nur irgendwie von Relevanz wäre. Nonsens sozusagen. Nonsens, Nonsens, Nonsens. So was von Nonsens. Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens, Nonsens. Glauben Sie es jetzt? Nichts wichtiges mehr. Gar nichts. Das Telefonbuch wäre interessanter, da lernt man vielleicht noch nette Leute kennen. Oder an die Wand kucken. Was man auf so einer Wand alles sehen kann: Wand, Wand, etwas Wand, Spinnenweben (kommt auf die Wand an), Bilder (so vorhanden), Spiegel (s. Bilder), keine Bilder (s. Bilder und Spiegel), keine Spiegel (s. Bilder, Spiegel und keine Bilder) und andere Sachen. Jedenfalls, um es kurz zu machen, viel interessantere Dinge als diesen Text. Man kan n ja auch einfach mal nichts machen. Einfach mal das etwas etwas sein lassen und nichts machen. Keine Texte lesen, vor allem keine Blindtexte. Und wenn schon Blindtexte, dann auf gar keinen Fall diesen hier. Weil, ich glaube, das hatte ich schon erwähnt, dieser Blindtext absolut keinen Inhalt hat. Sicher, es gibt auch noch andere Dinge, die keinen Inhalt haben, eine leere Flasche zum Beispiel. Obwohl, da ist ja noch Luft drin. Also dann halt eine Flasche mit keiner Luft drin, also mit einem Vakuum. Mist, ist ja doch was drin (das Vakuum meine ich). Oder, anderes Beispiel, der Kopf von Jenny Elvers. Außer dem halben Brötchen mit Teewurst ist da nämlich auch nichts drin. Wobei der Wert dieses halben Teewurstbrötchens den Wert dieses Blindtextes bei weitem übersteigt. Bei weitem ist noch untertrieben. So wie dieser Blindtext inhaltsleer ist, so untertrieben ist der eben genannte Vergleich. Bei weitem, HA! Also mindestens doppelt so untertrieben. Aber ich glaube, bei diesen Größenordnungen von Untertriebensei n wäre jeder Vergleich Nonsens. So wie dieser Blindtext.
+                </detail>
+            </inhalt>
+        </abschnitt>
+    </doku>
+</xml>
+</html>
