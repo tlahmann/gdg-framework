@@ -43,9 +43,9 @@
 }
 
 @for $i from 1 through 8 {
-    $btn: "../../../inhalte/buttons/"+nth($buttons, $i)+"_1.png";
-    $hvr: "../../../inhalte/buttons/"+nth($buttons, $i)+"_2.png";
-    $clk: "../../../inhalte/buttons/"+nth($buttons, $i)+"_3.png";
+    $btn: "../../inhalte/buttons/"+nth($buttons, $i)+"_1.png";
+    $hvr: "../../inhalte/buttons/"+nth($buttons, $i)+"_2.png";
+    $clk: "../../inhalte/buttons/"+nth($buttons, $i)+"_3.png";
     /*========================================================================*/
     /*        BUTTON                                                          */
     /* Bild welches für den button angezeigt wird: variabel (background-image)*/
