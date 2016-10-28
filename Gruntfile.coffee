@@ -37,10 +37,23 @@ module.exports = (grunt)->
           ext: '.min.css'
         ]
     
+    uglify:
+      options:
+        mangle: false
+      dist:
+        files: [
+          'asset/lib/default.min.js': [
+            'asset/lib/default.js'
+          ]
+        ]
+  
     watch:
       coffee:
         files: ["asset/lib/*.coffee"]
         tasks: ["coffee"]
+      coffee:
+        files: ["asset/lib/*.js"]
+        tasks: ["uglify"]
       sass:
         files: ["asset/css/*.scss"]
         tasks: ["sass"]
@@ -52,11 +65,13 @@ module.exports = (grunt)->
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-sass"
   grunt.loadNpmTasks "grunt-contrib-cssmin"
+  grunt.loadNpmTasks "grunt-contrib-uglify"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-notify"
   
   grunt.registerTask "default", [
     "coffee"
+    "uglify"
     "sass"
     "cssmin"
     "watch"
@@ -64,10 +79,7 @@ module.exports = (grunt)->
   
   grunt.registerTask "compile", [
     "coffee"
+    "uglify"
     "sass"
     "cssmin"
-  ]
-  
-  grunt.registerTask "wtch", [
-    "watch"
   ]
