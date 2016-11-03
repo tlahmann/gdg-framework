@@ -44,6 +44,7 @@ module.exports = (grunt)->
         files: [
           'asset/lib/default.min.js': [
             'asset/lib/default.js'
+            'asset/lib/simplebar.js'
           ]
         ]
   
@@ -51,14 +52,20 @@ module.exports = (grunt)->
       coffee:
         files: ["asset/lib/*.coffee"]
         tasks: ["coffee"]
-      coffee:
-        files: ["asset/lib/*.js"]
+      uglify:
+        files: [
+          "asset/lib/*.js"
+          "!asset/lib/*.min.js"
+        ]
         tasks: ["uglify"]
       sass:
         files: ["asset/css/*.scss"]
         tasks: ["sass"]
       cssmin:
-        files: ["asset/css/*.css"]
+        files: [
+          "asset/css/*.css"
+          "!asset/css/*.min.css"
+        ]
         tasks: ["cssmin"]
   
   
