@@ -232,7 +232,7 @@ GDG-Framework/notes/*
 *.psd
 *.docx
 backup/
-Abgabe/
+release/
 
 
 ### Node ###
