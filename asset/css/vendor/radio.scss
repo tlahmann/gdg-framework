@@ -1,0 +1,122 @@
+﻿@import "buttons";
+@import "../modules/mixins";
+
+#buttons {
+    #radiogroup {
+        input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border:none;
+            border-radius: 0;
+            font-size: 1em;
+            width: 100%
+        }
+        
+        #radio1RD {
+            &:checked {
+                ~ #radio1 {
+                    z-index: -10;
+                }
+                ~ #radio2 {
+                    z-index: -5;
+                }
+                ~ #radio3 {
+                    z-index: 0;
+                }
+            }
+        }
+        #radio2RD {
+            &:checked {
+                ~ #radio2 {
+                    z-index: -10;
+                }
+                ~ #radio3 {
+                    z-index: -5;
+                }
+                ~ #radio1 {
+                    z-index: 0;
+                }
+            }
+        }
+        #radio3RD {
+            &:checked {
+                ~ #radio3 {
+                    z-index: -10;
+                }
+                ~ #radio1 {
+                    z-index: -5;
+                }
+                ~ #radio2 {
+                    z-index: 0;
+                }
+            }
+        }
+    }
+}
+
+#radio1, #radio2, #radio3 {
+    /* Diese Eigenschaften müssen nicht verändert werden */
+    /* Grundeigenschaften wi bei anderen Buttons */
+    @include buttonbasics;
+    padding: 0;
+    /* Diese folgenden Werte können verändert werden, um die Position des Buttons festzulegen. */
+    /*========================================================================*/
+    /*        BUTTON                                                          */
+    /* Breite: 75px (width)                                                   */
+    /* Höhe: 30px (height)                                                    */
+    /* Abstand zur linken Kante/Rahmen: 50px (left)                           */
+    /* Abstand zur oberen Kante/Rahmen: Hier 50px (top)                       */
+    /*========================================================================*/
+    @include button;
+    top: 100px;
+    
+    /* Diese Eigenschaften müssen ebenfalls nicht verändert werden */
+    &:before , &:after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        margin: 0;
+        border: none;
+        @include animate(none, 0, ease-in);
+        -webkit-transform-origin: 0;
+        -moz-transform-origin: 0;
+        -ms-transform-origin: 0;
+        -o-transform-origin: 0;
+        transform-origin: 0;
+        -webkit-transition: none;
+        -moz-transition: none;
+        -o-transition: none;
+        transition: none;
+        filter: none;
+    }
+}
+
+$buttons: "state3", "state2", "state1";
+
+@for $i from 1 through length($buttons) {
+    $btn: "../../inhalte/buttons/"+nth($buttons, $i)+"_1.png";
+    $hvr: "../../inhalte/buttons/"+nth($buttons, $i)+"_2.png";
+    $clk: "../../inhalte/buttons/"+nth($buttons, $i)+"_3.png";
+    // length($buttons) - $i + 1
+    
+    #radio#{$i} {
+        &:before {
+            /* Das Bild, was im Zustand #{$i} angezeigt wird */
+            background-image: url($btn);
+        }
+        
+        &:hover:before {
+            /* Das Bild, was im Zustand #{$i} beim 'Schweben' angezeigt wird */
+            background-image: url($hvr); 
+        }
+        
+        &:active:before {
+            /* Das Bild, was im Zustand #{$i} beim drücken (und halten) angezeigt wird */
+            background-image: url($clk);
+        }
+    }
+}

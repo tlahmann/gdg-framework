@@ -26,6 +26,7 @@
     <!-- Stylesheets -->
     <link type="text/css" href="asset/css/main.min.css" rel="stylesheet" />
     <link type="text/css" href="asset/css/animation.css" rel="stylesheet" />
+    <link type="text/css" href="asset/css/radio.css" rel="stylesheet" />
     <!-- Scripts -->
     <script type="text/javascript" src="asset/lib/jquery-3.1.1.min.js"></script>
     <script defer type="text/javascript" src="asset/lib/default.min.js"></script>
@@ -80,7 +81,14 @@
                         <!-- Hier kann verändert werden, falls die Buttons nicht mittels css, sondern mittels
                         Bildern/Animationen/Gedanken gesteuert werden.-->
                         <input id="button1" type="button" onclick="playPauseAnimation()" />
-                        <input id="button2" type="button" onclick="changeTypeOfObj()" />
+                        <div id="radiogroup">
+                          <input id="radio1RD" name="radiogroup" type="radio" onclick="changeTypeOfObj()">
+                            <label id="radio1" for="radio1RD">Value</label>
+                          <input id="radio2RD" name="radiogroup" type="radio" onclick="changeTypeOfObj()">
+                            <label id="radio2" for="radio2RD">Value</label>
+                          <input id="radio3RD" name="radiogroup" type="radio" onclick="changeTypeOfObj()">
+                            <label id="radio3" for="radio3RD">Value</label>
+                        </div>
                         <input id="button3" type="button" onclick="changeSpeed()" />
                         <input id="button4" type="button" onclick="slower()" />
                         <input id="button5" type="button" onclick="changePermutationFwrd()" />

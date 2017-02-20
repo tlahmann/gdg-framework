@@ -28,6 +28,12 @@ module.exports = (grunt)->
         files: [
           'asset/css/toggle.css': 'asset/css/vendor/toggle.scss'
         ]
+      radio:
+        options:
+          sourceMap: false
+        files: [
+          'asset/css/radio.css': 'asset/css/vendor/radio.scss'
+        ]
     
     cssmin:
       dist:
@@ -70,6 +76,9 @@ module.exports = (grunt)->
       toggle:
         files: ["asset/css/vendor/toggle.scss"]
         tasks: ["sass:toggle"]
+      radio:
+        files: ["asset/css/vendor/radio.scss"]
+        tasks: ["sass:radio"]
       cssmin:
         files: [
           "asset/css/*.css"
@@ -103,4 +112,9 @@ module.exports = (grunt)->
   grunt.registerTask "toggle", [
     "sass:toggle"
     "watch:toggle"
+  ]
+  
+  grunt.registerTask "radio", [
+    "sass:radio"
+    "watch:radio"
   ]
