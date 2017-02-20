@@ -1,0 +1,26 @@
+﻿<!-- HTML document -->
+<!--
+    Grundlagen der Gestaltung Framework
+    Univerität Ulm
+    Institut für Medienforschung und -entwicklung
+    Tobias Lahmann
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Toggle Button zum Grundlagen der Gestaltung I, WiSe '16/17</title>
+    <!-- Stylesheets -->
+    <link type="text/css" href="asset/css/main.min.css" rel="stylesheet" />
+    <link type="text/css" href="asset/css/animation.css" rel="stylesheet" />
+    <link type="text/css" href="asset/css/toggle.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="buttons">
+        <!-- Derjenige Button, welcher in Zukunft ein Toggle-Button sein soll muss durch die
+         folgenden 2 Zeilen ersetzt werden. Beim Ersetzen eines anderen Buttons als den Play/Pause
+         Button muss selbstverständlich auch die aufgerufene Funktion ersetzt werden.
+         (onclick="irgendwasAnderes()") -->
+        <input id="toggleCB" type="checkbox" onclick="playPauseAnimation()" />
+        <label id="toggle" for="toggleCB">&nbsp;</label>
+    </div>
+</body>

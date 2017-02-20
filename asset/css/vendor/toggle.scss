@@ -1,0 +1,67 @@
+﻿@import "buttons";
+@import "../modules/mixins";
+
+#toggle {
+    /* Diese Eigenschaften müssen nicht verändert werden */
+    /* Grundeigenschaften wi bei anderen Buttons */
+    @include buttonbasics;
+    padding: 0;
+    /* Diese folgenden Werte können verändert werden, um die Position des Buttons festzulegen. */
+    @include button;
+    top: 50px;
+    
+    /* Diese Eigenschaften müssen ebenfalls nicht verändert werden */
+    &:before , &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        margin: 0;
+        border: none;
+        @include animate(none, 0, ease-in);
+        -webkit-transform-origin: 0;
+        -moz-transform-origin: 0;
+        -ms-transform-origin: 0;
+        -o-transform-origin: 0;
+        transform-origin: 0;
+        -webkit-transition: none;
+        -moz-transition: none;
+        -o-transition: none;
+        transition: none;
+        filter: none;
+    }
+
+    &:before {
+        /* Das Bild, was im Zustand 1 angezeigt wird */
+        background-image: url("../../inhalte/buttons/togglePause_1.png");  
+    }
+        
+    &:hover:before {
+        /* Das Bild, was im Zustand 1 beim 'Schweben' angezeigt wird */
+        background-image: url("../../inhalte/buttons/togglePause_2.png"); 
+    }
+    
+    &:after {
+        /* Das Bild, was im Zustand 2 angezeigt wird */
+        background-image: url("../../inhalte/buttons/togglePlay_1.png"); 
+    }
+    
+    &:hover:after {
+        /* Das Bild, was im Zustand 2 beim 'Schweben' angezeigt wird */
+        background-image: url("../../inhalte/buttons/togglePlay_2.png"); 
+    }
+}
+
+#toggleCB:active {
+    + #toggle:before {
+        /* Das Bild, was im Zustand 1 beim drücken (und halten) angezeigt wird */
+        background-image: url("../../inhalte/buttons/togglePause_3.png"); 
+    }
+    
+    + #toggle:after {
+        /* Das Bild, was im Zustand 2 beim drücken (und halten) angezeigt wird */
+        background-image: url("../../inhalte/buttons/togglePlay_3.png"); 
+    }
+}

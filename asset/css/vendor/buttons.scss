@@ -1,0 +1,17 @@
+﻿@mixin buttonbasics {
+    background-size: contain;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+    position: absolute;
+    cursor: pointer;
+    outline: none;
+}
+
+@mixin button {
+    width: 75px;
+    height: 30px;
+    left: 50px;
+}

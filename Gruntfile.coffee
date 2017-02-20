@@ -22,6 +22,12 @@ module.exports = (grunt)->
           'asset/css/main.css': 'asset/css/main.scss'
           'asset/css/animation.css': 'asset/css/vendor/animation.scss'
         ]
+      toggle:
+        options:
+          sourceMap: false
+        files: [
+          'asset/css/toggle.css': 'asset/css/vendor/toggle.scss'
+        ]
     
     cssmin:
       dist:
@@ -61,6 +67,9 @@ module.exports = (grunt)->
       sass:
         files: ["asset/css/*.scss"]
         tasks: ["sass"]
+      toggle:
+        files: ["asset/css/vendor/toggle.scss"]
+        tasks: ["sass:toggle"]
       cssmin:
         files: [
           "asset/css/*.css"
@@ -89,4 +98,9 @@ module.exports = (grunt)->
     "uglify"
     "sass"
     "cssmin"
+  ]
+  
+  grunt.registerTask "toggle", [
+    "sass:toggle"
+    "watch:toggle"
   ]

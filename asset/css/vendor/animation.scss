@@ -1,22 +1,6 @@
 ﻿$buttons: "play", "type", "speed1", "speed2", "perm1", "perm2", "obj1", "obj2";
 
-@mixin buttonbasics {
-    background-size: contain;
-    -webkit-transform: none;
-    -moz-transform: none;
-    -ms-transform: none;
-    -o-transform: none;
-    transform: none;
-    position: absolute;
-    cursor: pointer;
-    outline: none;
-}
-
-@mixin button {
-    width: 75px;
-    height: 30px;
-    left: 50px;
-}
+@import "buttons";
 
 /* Wichtig: Bitte darauf achten, dass die Bilder, welche die 
     Buttons schmücken die gleiche Größe wie diese haben. */
