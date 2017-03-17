@@ -222,7 +222,7 @@ _Pvt_Extensions
 *.css
 
 # Dont ignore addons
-!addons/
+!addons/*/*
 
 ### PROJECT ###
 GDG-Framework/inhalte/*
