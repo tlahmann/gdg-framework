@@ -221,6 +221,9 @@ _Pvt_Extensions
 *.css.map
 *.css
 
+# Dont ignore addons
+!addons/
+
 ### PROJECT ###
 GDG-Framework/inhalte/*
 GDG-Framework/notes/*
