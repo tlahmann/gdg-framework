@@ -6,7 +6,7 @@
 ---------------
 Author: Tobias Lahmann
 
-Date: May 2016
+Date: November 2017
 
 ---------------
 ### Lizenz
