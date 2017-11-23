@@ -20,9 +20,9 @@
  *          Obj = { 1, 2, 3 }
  * 
  * Dann ist die Resultierende Verteilung der Objekte auf dem Array:
- *                 [[3,2,1],
- *                  [1,3,2],
- *                  [2,1,3]]
+ *                 [[1,2,3],
+ *                  [3,1,2],
+ *                  [2,3,1]]
  * 
  * Hier werden die Elemente dann zyklisch durchgeschaltet (alle Stellen +1)
  * 
@@ -186,7 +186,7 @@ function draw() {
                     permutationen[currentPerm][i][j] += 1;
                 }
             }
-
+            
             // zeichne an die berechneten Positionen die benötigten bilder
             for (i = 0; i < obj; i++) {
                 for (j = 0; j < obj; j++) {

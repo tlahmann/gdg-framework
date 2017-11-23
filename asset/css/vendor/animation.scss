@@ -1,4 +1,4 @@
-﻿$buttons: "play", "type", "speed1", "speed2", "perm1", "perm2", "obj1", "obj2";
+﻿$buttons: "Play", "Pause", "TypeChange", "Faster", "Slower", "PermutationForward", "PermutationBackward", "ObjectForward", "ObjectBackward";
 
 @import "buttons";
 
@@ -20,13 +20,14 @@
 #button1, #button2,
 #button3, #button4,
 #button5, #button6,
-#button7, #button8 {
+#button7, #button8,
+#button9 {
     /* Diese Eigenschaften müssen nicht verändert werden */
     /* Alle Buttons haben die selben Grundeigenschaften */
     @include buttonbasics;
 }
 
-@for $i from 1 through 8 {
+@for $i from 1 through 9 {
     $btn: "../../inhalte/buttons/"+nth($buttons, $i)+"_1.png";
     $hvr: "../../inhalte/buttons/"+nth($buttons, $i)+"_2.png";
     $clk: "../../inhalte/buttons/"+nth($buttons, $i)+"_3.png";
