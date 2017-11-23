@@ -65,7 +65,7 @@ $(function() {
   $('#description').append('<h4 id="descTitle">desctitle</h4><p id="descText">desc</p>');
   $('#description').simplebar();
   redraw();
-  return document.getElementById('studentName').textContent = json['@attributes'].name;
+  return document.getElementById('sN').textContent = json['@attributes'].name;
 });
 
 xmlToJson = function(xml) {

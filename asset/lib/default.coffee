@@ -53,7 +53,7 @@ $ ->
   $('#description').append '<h4 id="descTitle">desctitle</h4><p id="descText">desc</p>'
   $('#description').simplebar()
   redraw()
-  document.getElementById('studentName').textContent = json['@attributes'].name
+  document.getElementById('sN').textContent = json['@attributes'].name
 
 
 xmlToJson = (xml) ->
