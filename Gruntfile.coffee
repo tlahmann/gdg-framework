@@ -71,7 +71,7 @@ module.exports = (grunt)->
         ]
         tasks: ["uglify"]
       sass:
-        files: ["asset/css/*.scss"]
+        files: ["asset/**/*.scss"]
         tasks: ["sass"]
       toggle:
         files: ["asset/css/vendor/toggle.scss"]
@@ -107,14 +107,4 @@ module.exports = (grunt)->
     "uglify"
     "sass"
     "cssmin"
-  ]
-  
-  grunt.registerTask "toggle", [
-    "sass:toggle"
-    "watch:toggle"
-  ]
-  
-  grunt.registerTask "radio", [
-    "sass:radio"
-    "watch:radio"
   ]

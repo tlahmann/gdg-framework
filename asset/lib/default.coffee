@@ -331,19 +331,19 @@ $(document).keydown (e) ->
     document.getElementById('blur').focus()
   return
 # listener to input numbers directly into the pane
-$('#imgNum').on('focus', ->
-  plainNumber()
-  lock = true
-  return
-).on('blur', ->
-  updateCounter()
-  lock = false
-  return
-).on 'keyup', ->
-  pictureInput()
-  displayPicture()
-  displayDescription()
-  return
+# $('#imgNum').on('focus', ->
+#   plainNumber()
+#   lock = true
+#   return
+# ).on('blur', ->
+#   updateCounter()
+#   lock = false
+#   return
+# ).on 'keyup', ->
+#   pictureInput()
+#   displayPicture()
+#   displayDescription()
+#   return
 # prevent the navigation menu from closing when the mouse is over the area
 # close the navigation menu when the mouse leaves area (delay 1000ms)
 $('#navigation').on('mouseenter', ->

@@ -337,18 +337,6 @@ $(document).keydown(function(e) {
   }
 });
 
-$('#imgNum').on('focus', function() {
-  plainNumber();
-  lock = true;
-}).on('blur', function() {
-  updateCounter();
-  lock = false;
-}).on('keyup', function() {
-  pictureInput();
-  displayPicture();
-  displayDescription();
-});
-
 $('#navigation').on('mouseenter', function() {
   clearTimeout($.data(this, 'timer'));
   $('#navigation').stop(true, true);
