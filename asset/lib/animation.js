@@ -6,111 +6,96 @@
     Tobias Lahmann
 */
 
-/*
- * Die Permutationen werden automatisch erweitert. Es muss darauf geachtet werden, dass
- * die Permutationen Ein Zeilen- oder Spaltenvektor oder eine Matrix sind. 
- * 
- * ============================================================================================
- * Die Perutationen können mit beliebigen Zahlen gefüllt werden, diese werden allerding auf 
- * die Anzahl der Elemente einer Folge hinuntergerechnet. 
- * Beispiel: 
- *          Perm = [[22,44,66],
- *                  [66,22,44],
- *                  [44,66,22]]
- *          Obj = { 1, 2, 3 }
- * 
- * Dann ist die Resultierende Verteilung der Objekte auf dem Array:
- *                 [[3,2,1],
- *                  [1,3,2],
- *                  [2,1,3]]
- * 
- * Hier werden die Elemente dann zyklisch durchgeschaltet (alle Stellen +1)
- * 
- * ============================================================================================
- * Sollte die Permutation größer als die anzahl der Elemente sein wird dieses ebenfalls 
- * umgerechnet um die Elemente zu verteilen.
- * Beispiel: 
- *          Perm = [[22,44,66],
- *                  [66,22,44],
- *                  [44,66,22]]
- *          Obj = { 1, 2 }
- * 
- * Dann ist die Resultierende Verteilung der Objekte auf dem Array:
- *                 [[1,2,1],
- *                  [1,1,2],
- *                  [2,1,1]]
- */
-
-// Permutationen
-var permutationen =
-[[
-    [8, 7, 6, 5, 4, 3, 2, 1],
-    [7, 8, 7, 6, 5, 4, 3, 2],
-    [6, 7, 8, 7, 6, 5, 4, 3],
-    [5, 6, 7, 8, 7, 6, 5, 4],
-    [4, 5, 6, 7, 8, 7, 6, 5],
-    [3, 4, 5, 6, 7, 8, 7, 6],
-    [2, 3, 4, 5, 6, 7, 8, 7],
-    [1, 2, 3, 4, 5, 6, 7, 8]
-], [
-    [5, 1],
-    [1, 5]
-], [
-    [6, 5, 4, 3, 2, 1],
-    [1, 2, 3, 4, 5, 6]
-], [
-    [7],
-    [6],
-    [5],
-    [4],
-    [3],
-    [2],
-    [1]
-], [
-    [1]
-]];
-
-/* ============================================================================================
- * Verwendete Objekte werden hier eingetragen, dabei ist darauf zu achten, dass das Bennenungs-
- * schema und die Struktur erhalten bleibt.
- * numberOfObjects: gibt an wie viele Elemente die Folge enthält. Es ist wichtig, dass 
- *                  (mindestens!) die angegebene Anzahl an Bildern im ausgewiesenem Ordner ist.
- * 
- * elements: listet die Ordner der objekte auf, die zu dieser Gruppe gehören.
- * 
- * Datenstruktur zum Backup:
- * 
- {
-    "numberOfObjects": "n",
-    "elements": [
-        { "name": "folder1" },
-        { "name": "folder2" }
+var permutationen = {
+    "diagonalSplit": [
+        [7, 6, 5, 4, 3, 2, 1],
+        [7, 7, 6, 5, 4, 3, 2],
+        [6, 7, 7, 6, 5, 4, 3],
+        [5, 6, 7, 7, 6, 5, 4],
+        [4, 5, 6, 7, 7, 6, 5],
+        [3, 4, 5, 6, 7, 7, 6],
+        [2, 3, 4, 5, 6, 7, 7],
+        [1, 2, 3, 4, 5, 6, 7]
+    ],
+    "schachbrett": [
+        [4, 1],
+        [1, 4]
+    ], 
+    "gegenläufig": [
+        [6, 5, 4, 3, 2, 1],
+        [1, 2, 3, 4, 5, 6]
+    ], 
+    "fallen": [
+        [7],
+        [6],
+        [5],
+        [4],
+        [3],
+        [2],
+        [1]
+    ], 
+    "block": [
+        [1]
     ]
 }
- */
-var objekte =
-[{
-    "numberOfObjects": "7",
-    "elements": [
-        { "name": "group1_v1" },
-        { "name": "group1_v2" },
-        { "name": "group1_v3" }
+
+// var folder = 'inhalte/animation/';
+// Alle Nutzerdaten, die angegeben werden müssen um die Animation zum Laufen zu bringen.
+var objekte = {
+    "dreieck": [
+        [
+            "inhalte/animation/group1_v1/1.png", 
+            "inhalte/animation/group1_v1/2.png", 
+            "inhalte/animation/group1_v1/3.png", 
+            "inhalte/animation/group1_v1/4.png", 
+            "inhalte/animation/group1_v1/5.png", 
+            "inhalte/animation/group1_v1/6.png", 
+            "inhalte/animation/group1_v1/7.png"
+        ],
+        [
+            "inhalte/animation/group1_v2/1.png", 
+            "inhalte/animation/group1_v2/2.png", 
+            "inhalte/animation/group1_v2/3.png", 
+            "inhalte/animation/group1_v2/4.png", 
+            "inhalte/animation/group1_v2/5.png", 
+            "inhalte/animation/group1_v2/6.png", 
+            "inhalte/animation/group1_v2/7.png"
+        ]
+    ],
+    "balken": [
+        [
+            "inhalte/animation/group2/1.png", 
+            "inhalte/animation/group2/2.png", 
+            "inhalte/animation/group2/3.png", 
+            "inhalte/animation/group2/4.png", 
+            "inhalte/animation/group2/5.png", 
+            "inhalte/animation/group2/6.png", 
+            "inhalte/animation/group2/7.png"
+        ]
+    ],
+    "punkt": [
+        [
+            "inhalte/animation/group3_v1/1.png", 
+            "inhalte/animation/group3_v1/2.png", 
+            "inhalte/animation/group3_v1/3.png", 
+            "inhalte/animation/group3_v1/4.png", 
+            "inhalte/animation/group3_v1/5.png", 
+            "inhalte/animation/group3_v1/6.png", 
+            "inhalte/animation/group3_v1/7.png",
+            "inhalte/animation/group3_v1/8.png"
+        ],
+        [
+            "inhalte/animation/group3_v2/1.png", 
+            "inhalte/animation/group3_v2/2.png", 
+            "inhalte/animation/group3_v2/3.png", 
+            "inhalte/animation/group3_v2/4.png", 
+            "inhalte/animation/group3_v2/5.png", 
+            "inhalte/animation/group3_v2/6.png", 
+            "inhalte/animation/group3_v2/7.png",
+            "inhalte/animation/group3_v2/8.png"
+        ]
     ]
-},
-{
-    "numberOfObjects": "7",
-    "elements": [
-        { "name": "group2" },
-        { "name": "2-2" }
-    ]
-},
-{
-    "numberOfObjects": "8",
-    "elements": [
-        { "name": "SUPERTOLLERORDNER" },
-        { "name": "Neuer Ordner" }
-    ]
-}];
+}
 
 var currentPerm = 0; // Speichert die aktuelle Permutation
 var currentObject = 0; // Speichert das akutelle Objekt
@@ -123,30 +108,27 @@ var ANIMATIONPOSITIONX = 200; // x Koordinate des Animationsbereichs
 var ANIMATIONPOSITIONY = 50; // y Koordinate des Animationsbereichs
 var ANIMATIONSIZE = 350; // Größe (Höhe, Breite) des Animationsbereichs, immer quadratisch
 
-var animat = []; // Array, welches die Bilder beihaltet
 
 var context = document.getElementById('canvas').getContext('2d');
 
 var obj, matriceHeight, matriceWidth, scale;
 
+
+var animat = {}; // Array, welches die Bilder beihaltet
 //funktion: entsprechende Animationsobjekte initialisieren
 function initialize() {
-    // Bei der Umschaltung von Objekten oder der umschaltung von permutationen wird die initialize()-Methode aufgerufen. In diesem Fall wird der running-Boolean ebenfalls umgeschaltet um die Funktion des Play/Pause-Buttons wieder zu berichtigen.
-    if (!running) {
-        running = !running;
-    }
+    
 
-    var folder = $("inhalt[typ='animation']").attr("quelle");
-
-    animat = [];
-    // liest die Quelle aller aktuell betrachteten Bilder ein und speichert sie als img() in Array animat
-    for (i = 0; i < objekte[currentObject].numberOfObjects; i++) {
-        var img = new Image();
-        img.src = folder
-            + objekte[currentObject].elements[typeSwitch].name
-            + "/" + (i + 1) + ".png";
-        animat[i] = img;
-    }
+    $.each(objekte, function(k,v) {
+        animat[k] = [];
+        for (i = 0; i < v.numberOfObjects; i++) {
+            var img = new Image();
+            img.src = folder
+                    + objekte[currentObject].elements[typeSwitch].name
+                    + "/" + (i + 1) + ".png";
+            animat[k].push(img);
+        }
+    });
 
     // Skaliert die einzelnen currAnim um bei unterschiedlicher Frame-Anzahl immer die gleiche Größe des Animationsbereichs beizubehalten
     scale = ANIMATIONSIZE / objekte[currentObject].numberOfObjects;

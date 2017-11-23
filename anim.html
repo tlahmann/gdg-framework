@@ -1,0 +1,136 @@
+﻿<!-- HTML document -->
+<!--
+    Grundlagen der Gestaltung Framework
+    Univerität Ulm
+    Institut für Medienforschung und -entwicklung
+    Tobias Lahmann
+-->
+<!--
+    This is the html-framework for the couse 'Grundlagen der Gestaltung I'
+    of the University of Ulm
+
+    The purpose ist for the students participating to show their work
+    done over the period of one semester.
+
+    The purpose of this framework is to provide a clean and simple to use
+    stage for the students to present their work.
+-->
+<!--
+    Dieser Abschnitt sollte von niemandem verändert werden!
+    Bitte weiterscrollen, hier gibt es nichts zu sehen.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grundlagen der Gestaltung I, WiSe '15/16</title>
+    <!-- Stylesheets -->
+    <link type="text/css" href="asset/css/main.css" rel="stylesheet" />
+    <link type="text/css" href="asset/css/animation.css" rel="stylesheet" />
+    <!-- Scripts -->
+    <script type="text/javascript" src="asset/lib/jquery-3.1.1.min.js"></script>
+    <script defer type="text/javascript" src="asset/lib/default.min.js"></script>
+</head>
+<body>
+        <!-- The actual documentation -->
+    <div id="doku" class="frame">
+
+        <nav id="navigation">
+            <!-- navigation menu, left -->
+            <div class="navigation">
+                <div id="navscroll" class="simplebar"></div>
+            </div>
+            <div class="navSlideBtn">
+                <!-- trigger button for the navigation menu, left -->
+                <label for="navTrigger" id="navTriggerText"></label>
+            </div>
+        </nav>
+        <input type="checkbox" id="navTrigger" name="navTrigger" class="navTrigger" />
+
+        <div class="pane">
+            <header>
+                <!-- title section -->
+                <label id="title"></label>
+            </header>
+            <section>
+                <!-- content section -->
+                <!-- IMAGE -->
+                <img id="contentImg" />
+                <!-- ANIMATION -->
+                <canvas id="canvas" width="720" height="540"></canvas>
+                <script type="text/javascript" src="asset/lib/animation.js"></script>
+                <div id="contentAnim">
+                    <div id="buttons">
+                        <!-- Hier kann verändert werden, falls die Buttons nicht mittels css, sondern mittels
+                        Bildern/Animationen/Gedanken gesteuert werden.-->
+                        <input id="button1" type="button" onclick="playPauseAnimation()" />
+                        <input id="button2" type="button" onclick="changeTypeOfObj()" />
+                        <input id="button3" type="button" onclick="changeSpeed()" />
+                        <input id="button4" type="button" onclick="slower()" />
+                        <input id="button5" type="button" onclick="changePermutationFwrd()" />
+                        <input id="button6" type="button" onclick="changePermutationBack()" />
+                        <input id="button7" type="button" onclick="changeObjectFwrd()" />
+                        <input id="button8" type="button" onclick="changeObjectBack()" />
+                    </div>
+                </div>
+                <!-- FLASH -->
+                <embed id="flashCanvas" width="720" height="540" type="application/x-shockwave-flash" src="." />
+            </section>
+
+            <aside id="description" class="simplebar">
+            </aside>
+
+            <aside id="descNav">
+                <!-- description navigation section -->
+                <input class="before" type="button" onclick="prevDesc()" />
+                <label id="descNum"></label>
+                <input class="after" type="button" onclick="nextDesc()" />
+            </aside>
+
+            <footer>
+                <!-- quicknavigation and border-listener -->
+                <input class="before" type="button" onclick="prevImg()" />
+                <input id="imgNum" type="text" />
+                <input class="after" type="button" onclick="nextImg()" />
+                <input id="blur" type="text" style="display: none; position: absolute; opacity: 0;">
+                <input id="borderListener" name="borderListener" type="checkbox" style="float: right" onclick="triggerBorder()">
+                <label id="textTrigger" for="borderListener">&nbsp;</label>
+                <label id="borderText">Rahmen ein-/ausschalten</label>
+            </footer>
+        </div>
+    </div>
+</body>
+
+<!------------------------------------------------->
+<!-- Hier beginnt der Inhalt der Dokumentation   -->
+<!-- Dazu bitte nach dem bekannten Schema die    -->
+<!-- Verlinkungen zu den Ordnern/Dateien her-    -->
+<!-- stellen und die Bilder in der Dokumentation -->
+<!-- anzuzeigen                                  -->
+<!------------------------------------------------->
+<!-- Typ-Definition:                             -->
+<!--           Bilder: typ="bild"                -->
+<!--           Flash-Objekte: typ="flash"        -->
+<!--           Animation (JS): typ="animation"   -->
+<!------------------------------------------------->
+
+<xml id="data" name="Maximilian Mustermann" style="display:none;">
+    <doku>
+        <abschnitt titel="Ut wisi enim ad minim veniam">
+            <inhalt titel="Suscipit lobortis nisl ut aliquip" quelle="" typ="animation" rahmen="ein">
+                <detail>
+                    Streng dem definierten Wesen des Blindtextes folgend, fungiere ich als solcher und gebe mich unverbindlich inhaltsleer.
+                </detail>
+                <detail>
+                    In bedrückender Enge in vorgefertigte Masken gepresst friste ich ein freudloses Dasein auf dem schmalen Grat zwischen Nichtbeachtung und Bedeutungslosigkeit und habe doch eine Bitte:
+                </detail>
+                <detail>
+                    Handeln Sie Sinn stiftend für meine Existenz und lesen Sie mich.
+                </detail>
+                <detail>
+                    Quelle: Christian Beckmann / Spiegel Online
+                </detail>
+            </inhalt>
+        </abschnitt>
+    </doku>
+</xml>
+</html>
