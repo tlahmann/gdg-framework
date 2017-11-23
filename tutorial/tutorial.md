@@ -6,7 +6,7 @@
 ---------------
 Autor: Tobias Lahmann
 
-Datum: Mai 2016
+Datum: November 2017
 
 ---------------
 ### Inhalt
@@ -29,7 +29,7 @@ Datum: Mai 2016
 
 ---------------
 ### Allgemeines
-Alle Dateien können mit beliebigen Textbearbeitungsprogrammen geöffnet und manipuliert werden. Oft nutzen Entwickler Texteditoren die syntax highlighting anbieten. Für Microsoft Windows nutze ich meistens den Notepad++ Texteditor oder SublimeText. Unter Apple OSX ist der TextMate zu empfehlen. Und unter Unix bietet VIM bzw. GVIM viele hilfreiche Funktionen. 
+Alle Dateien können mit beliebigen Textbearbeitungsprogrammen geöffnet und manipuliert werden. Oft nutzen Entwickler Texteditoren die Syntax highlighting anbieten. Für Microsoft Windows nutze ich meistens den Notepad++ Texteditor oder SublimeText. Unter Apple OSX ist der TextMate zu empfehlen. Und unter Unix bietet VIM bzw. GVIM viele hilfreiche Funktionen. 
 
 Links zum Download sind weiter unten eingetragen. Auch wenn dort immer die Entwicklerseite angegeben ist, besteht jedoch keine Garantie über die Sicherheit dieser Downloads.
 
@@ -38,13 +38,13 @@ Links zum Download sind weiter unten eingetragen. Auch wenn dort immer die Entwi
 #### HTML - hypertext markup language
 > **Datei:** doku.html
 
-Nachdem die Reinzeichnung der ersten Werke erstellt wurden können diese direkt in die Doku eingefügt werden. Die Datei *"doku.html"* im Hauptverzeichnis des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.
+Nachdem die Reinzeichnung der ersten Werke erstellt wurden, können diese direkt in die Doku eingefügt werden. Die Datei *"doku.html"* im Hauptverzeichnis des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.
 
-Innerhalb der Datei befindet sich ab Zeile 130 (Stand Mai 2016) der Abschnitt 
+Innerhalb der Datei befindet sich ab Zeile 130 (Stand Mai 2016) der Abschnitt:
 
 *\< xml id="data" name="Maximilian Mustermann" style="display:none;" \>[...]* 
 
-Es handelt sich hierbei um den Abschnitt der Daten auf welche das Framework zugreift. Es ist daher wichtig, dass *id="data"* und *style="display:none;"* nicht verändert werden. Der Name unter *name="Maximilian Mustermann"* muss allerdings eurem eigenen Namen entsprechen.
+Es handelt sich hierbei um den Abschnitt der Daten, auf welche das Framework zugreift. Es ist daher wichtig, dass *id="data"* und *style="display:none;"* nicht verändert werden. Der Name unter *name="Maximilian Mustermann"* muss allerdings eurem eigenen Namen entsprechen.
 
 Die Struktur der Dokumentation im Abschnitt *data*:
 
@@ -60,7 +60,7 @@ Die Struktur der Dokumentation im Abschnitt *data*:
   ...
 </doku>
 ```
-Es können beliebig viele Bereiche 'abschnitt' in der Dokumentation vorkommen. In jedem 'abschnitt' können beliebig viele 'inhalt' Bereiche zusammengefasst werden. Und in jedem dieser Bereiche können beliebig viele 'details' Bereiche eingeschlossen sein. Es bietet sich an hier etwas herumzuspielen und zu beobachten welche Änderungen in der Doku eintreten. 
+Es können beliebig viele Bereiche 'abschnitt' in der Dokumentation vorkommen. In jedem 'abschnitt' können beliebig viele 'inhalt' Bereiche zusammengefasst werden. Und in jedem dieser Bereiche können beliebig viele 'details' Bereiche eingeschlossen sein. Es bietet sich an hier etwas herumzuspielen und zu beobachten, welche Änderungen in der Doku eintreten. 
 
 * Die Attribute *abschnitt: titel* und *inhalt: titel* **können** beliebigen Text beinhalten. Beispielsweise den Titel der Aufgabe.
 * Das Attribut *inhalt: quelle* **muss** einer gültigen, relativen URL zum gewünschten Bild, zur Flash-Animation oder zum Ordner der Animation entsprechen.
@@ -111,7 +111,7 @@ Bildformate sind nicht auf PNGs beschränkt. Es können beliebige Formate gewäh
 
 Die Datei *"animation.js"* im Unterverzeichnis asset -> lib des Frameworks kann mit jedem beliebigen Texteditor geöffnet werden.
 
-Innerhalb der Datei befindet sich ab Zeile 60 (Stand Mai 2016) der Abschnitt 
+Innerhalb der Datei befindet sich ab Zeile 60 (Stand Mai 2016) der Abschnitt:
 
 ```javascript
 // Permutationen
@@ -132,7 +132,7 @@ var permutationen =
 ...
 ```
 
-Die Permutationen können beliebig groß oder klein sein. Sie werden vom Framework auf die weiter unten angegebene Größe erweitert. Hierbei kopiert das Framework die Zeilen und oder Spalten nach Bedarf um eine quadratische Matrix zu erhalten. Sollte die eingegebene Permutation also nur jeweils 2 Zeilen und Spalten umfassen, aber eine benötigte Größe von 7x7 benötigt sein, werden die Zeilen und Spalten rotationsmäßig erweitert. 
+Die Permutationen können beliebig groß oder klein sein. Sie werden vom Framework auf die weiter unten angegebene Größe erweitert. Hierbei kopiert das Framework die Zeilen und oder Spalten nach Bedarf, um eine quadratische Matrix zu erhalten. Sollte die eingegebene Permutation also nur jeweils 2 Zeilen und Spalten umfassen, aber eine benötigte Größe von 7x7 benötigt sein, werden die Zeilen und Spalten rotationsmäßig erweitert. 
 Aus dem zweiten Beispiel oben 
 
 ```javascript
@@ -170,7 +170,7 @@ JSON Schema
 }, 
 ...
 ```
-Unter *numberOfObjects* wird angegeben wie viele Objekte aus einem Ordner gelesen werden. 
+Unter *numberOfObjects* wird angegeben, wie viele Objekte aus einem Ordner gelesen werden. 
 
 Unter *elements* werden die Ordner der Permutationsreihen angegeben. 
 
@@ -239,7 +239,7 @@ CSS Regeln werden von einem Webbrowser gelesen und dazu verwendet die zugehörig
 
 In dieser Dokumentation ist es wichtig, dass jeder Button eine eigene Position erhält. Aus diesem Grund werden die Buttons mit eigenen IDs belegt und jede dieser IDs muss in der css-Datei definiert werden. 
 
-Innerhalb der Datei befindet sich ab Zeile 40 (Stand Mai 2016) der Abschnitt 
+Innerhalb der Datei befindet sich ab Zeile 40 (Stand Mai 2016) der Abschnitt:
 
 ```css
 #button1 {
@@ -259,7 +259,7 @@ Innerhalb der Datei befindet sich ab Zeile 40 (Stand Mai 2016) der Abschnitt
 }
 ```
 
-Es werden eigene Abschnitte für jeden Button definiert. Im Beispiel oben sehen wir die zum ersten gehörende Definition. Dieser ist 75px breit und 30 px hoch. Er befindet sich 50px von der linken Kante des Animationsbereichs und 50px von der oberen Kante entfernt.
+Es werden eigene Abschnitte für jeden Button definiert. Im Beispiel oben sehen wir die zum Ersten gehörende Definition. Dieser ist 75px breit und 30 px hoch. Er befindet sich 50px von der linken Kante des Animationsbereichs und 50px von der oberen Kante entfernt.
 
 Css-Regeln können gruppiert auf mehrere IDs oder Klassen gleichzeitig angewendet werden, wie es beispielsweise einige Zeilen darüber geschehen ist. Zeile 15-18 gruppiert mehrere Buttons und wendet die darunter befindlichen Regeln auf alle an. Die IDs sind mit Komma getrennt.
 
