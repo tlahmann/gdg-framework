@@ -6,26 +6,34 @@
 ---------------
 Autor: Tobias Lahmann
 
-Datum: November 2017
+Datum: Dezember 2018
 
 ---------------
 ### Inhalt
-* [Allgemeines](#allgemein)
-* [Anleitung](#anleitung)
-  * [HTML - hypertext markup language](#html-hypertext-markup-language)
-  * [JavaScript](#javascript)
-  * [CSS - cascading style sheet](#css-cascading-style-sheet)
-* [Beispiele](#beispiele)
-  * [Beispiel 1](#beispiel-1)
-  * [Beispiel 2](#beispiel-2)  
-  * [Beispiel 3](#beispiel-3)
-* [Fragen und Antworten](#fragen-und-antworten)
-* [Hilfreiche Links](#hilfreiche-links)
-  * [Tutorials](#Tutorials)
-  * [Downloads](#downloads)
-* [Zusätzliche Information](#zusätzliche-information)
-  * [Test](#test)
-* [Lizenz](#lizenz)
+- [Grundlagen der Gestaltung Framework](#grundlagen-der-gestaltung-framework)
+  - [Universität Ulm](#universit%C3%A4t-ulm)
+  - [Institut für Medienforschung und -entwicklung](#institut-f%C3%BCr-medienforschung-und--entwicklung)
+    - [Inhalt](#inhalt)
+    - [Allgemeines](#allgemeines)
+    - [Anleitung](#anleitung)
+      - [HTML - hypertext markup language](#html---hypertext-markup-language)
+        - [Typische Fehler](#typische-fehler)
+      - [JavaScript](#javascript)
+          - [Motivation](#motivation)
+        - [Typische Fehler](#typische-fehler-1)
+      - [CSS - cascading style sheet](#css---cascading-style-sheet)
+        - [Typische Fehler](#typische-fehler-2)
+    - [Beispiele](#beispiele)
+      - [Beispiel 1](#beispiel-1)
+      - [Beispiel 2](#beispiel-2)
+      - [Beispiel 3](#beispiel-3)
+    - [Fragen und Antworten](#fragen-und-antworten)
+    - [Hilfreiche Links](#hilfreiche-links)
+      - [Tutorials](#tutorials)
+      - [Downloads](#downloads)
+    - [Zusätzliche Information](#zus%C3%A4tzliche-information)
+      - [Test:](#test)
+    - [Lizenz](#lizenz)
 
 ---------------
 ### Allgemeines
@@ -163,46 +171,36 @@ JSON Schema
 ```javascript
 {
     "numberOfObjects": "n",
-    "elements": [
-        { "name": "folder1" },
-        ...
-    ]
+    "elements": "folder1"
 }, 
 ...
 ```
 Unter *numberOfObjects* wird angegeben, wie viele Objekte aus einem Ordner gelesen werden. 
 
-Unter *elements* werden die Ordner der Permutationsreihen angegeben. 
+Unter *elements* wird der Ordner der Permutationsreihen angegeben. 
 
 Ab Zeile 112 folgt:
 ```javascript
 var objekte =
 [{
     "numberOfObjects": "7",
-    "elements": [
-        { "name": "group1" }
-    ]
+    "elements": "group1"
 },
 {
     "numberOfObjects": "6",
-    "elements": [
-        { "name": "group2" },
-        { "name": "group2_reinzeichnung" }
-    ]
+    "elements": "group2"
 }];
 ...
 ```
 Hier sehen wir ein Beispiel für Permutationsreihen. 
 
-Die erste Permutationsreihe besitzt 1 Version (angegeben in *elements*) mit dem Namen "group1". Diese Reihe ist 7 Elemente groß. Also befinden sich 7 Bilder (1.png, 2.png, ..., 7.png) im Ordner ./inhalte/animation/group1 .
+Die erste Permutationsreihe besitzt eine Version (angegeben in *elements*) mit dem Namen "group1". Diese Reihe ist 7 Elemente groß. Also befinden sich 7 Bilder (1.png, 2.png, ..., 7.png) im Ordner ./inhalte/animation/group1 .
 
-Die zweite Permutationsreihe besitzt 2 Versionen (angegeben in *elements*) mit den Namen "group2" und "group2\_reinzeichnung". Diese Reihe ist 6 Elemente groß. Es befinden sich demnach 6 Bilder (1.png, ..., 6.png) im Ordner ./inhalte/animation/group2 und 6 Bilder (1.png, ..., 6.png) im Ordner ./inhalte/animation/group2\_reinzeichnung.
+Die zweite Permutationsreihe besitzt die Version "group2" (angegeben in *elements*). Diese Reihe ist 6 Elemente groß. Es befinden sich demnach 6 Bilder (1.png, ..., 6.png) im Ordner ./inhalte/animation/group2.
 
 ###### Motivation
 
 Die Angabe der Elemente in *numberOfObjects* ist notwendig, da im Kontext von Webseiten nicht auf ein Dateisystem zugegriffen werden kann. Das Skript hat also keine Möglichkeit zu erfahren wie viele Bilder in dem angegebenen Ordner sind. Die Behelfslösung ist hier mittels JavaScript Image-Objekte zu erstellen, welche einen Link zum Bild darstellen. Um zu erfahren wie viele Bilder das Skript erstellen soll geben wir diese Info an.
-
-Unter *elements* **können** mehrere Versionen der Permutationsreihe angegeben werden, falls unterschiedliche Varianten, wie beispielsweise eine "gefüllte" Version und eine Strich­zeich­nung, erstellt wurden.
 
 ##### Typische Fehler
 * Angegebene Permutation ist nicht quadratisch.
