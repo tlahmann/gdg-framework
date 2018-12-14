@@ -91,36 +91,25 @@ var permutationen =
 var objekte =
 [{
     "numberOfObjects": "7",
-    "elements": [
-        { "name": "group1_v1" },
-        { "name": "group1_v2" },
-        { "name": "group1_v3" }
-    ]
+    "elements": "group1_v1"
 },
 {
     "numberOfObjects": "7",
-    "elements": [
-        { "name": "group2" },
-        { "name": "2-2" }
-    ]
+    "elements": "group2"
 },
 {
     "numberOfObjects": "8",
-    "elements": [
-        { "name": "SUPERTOLLERORDNER" },
-        { "name": "Neuer Ordner" }
-    ]
+    "elements": "SUPERTOLLERORDNER"
 }];
 
 var currentPerm = 0; // Speichert die aktuelle Permutation
 var currentObject = 0; // Speichert das akutelle Objekt
 
 var running = Boolean(true); // spielt ab
-var typeSwitch = 0; // Umschaltung zwischen typen
 var animationrate = 100; // ms
 
-var ANIMATIONPOSITIONX = 200; // x Koordinate des Animationsbereichs
-var ANIMATIONPOSITIONY = 50; // y Koordinate des Animationsbereichs
+var ANIMATIONPOSITIONX = 185; // x Koordinate des Animationsbereichs
+var ANIMATIONPOSITIONY = 95; // y Koordinate des Animationsbereichs
 var ANIMATIONSIZE = 350; // Größe (Höhe, Breite) des Animationsbereichs, immer quadratisch
 
 var animat = []; // Array, welches die Bilder beihaltet
@@ -143,7 +132,7 @@ function initialize() {
     for (i = 0; i < objekte[currentObject].numberOfObjects; i++) {
         var img = new Image();
         img.src = folder
-            + objekte[currentObject].elements[typeSwitch].name
+            + objekte[currentObject].elements
             + "/" + (i + 1) + ".png";
         animat[i] = img;
     }
@@ -225,16 +214,6 @@ function playAnimation() {
 }
 
 // funktion: geschwindigkeit erhoehen;
-function changeSpeed() {
-    if (fps < 35) {
-        fps += 7;
-    } else {
-        fps = 7;
-    }
-    interval = 1000 / fps;
-}
-
-// funktion: geschwindigkeit erhoehen;
 function faster() {
     if (fps < 30) {
         fps += 2;
@@ -257,54 +236,9 @@ function changePermutation() {
     initialize();
 }
 
-// funktion: permutationen weiter schalten
-function changePermutationFwrd() {
-    currentPerm += 1;
-    currentPerm %= permutationen.length;
-    initialize();
-}
-
-// funktion: permutationen zurück schalten
-function changePermutationBack() {
-    currentPerm -= 1;
-    if (currentPerm < 0) {
-        currentPerm = permutationen.length - 1;
-    } else {
-        currentPerm %= permutationen.length;
-    }
-    initialize();
-}
-
 // funktion: objekt weiter schalten
 function changeObject() {
     currentObject += 1;
     currentObject %= objekte.length;
-    initialize();
-}
-
-// funktion: objekt weiter schalten
-function changeObjectFwrd() {
-    currentObject += 1;
-    currentObject %= objekte.length;
-    typeSwitch = 0;
-    initialize();
-}
-
-// funktion: objekt zurück schalten
-function changeObjectBack() {
-    currentObject -= 1;
-    if (currentObject < 0) {
-        currentObject = objekte.length - 1;
-    } else {
-        currentObject %= objekte.length;
-    }
-    typeSwitch = 0;
-    initialize();
-}
-
-// funktion: objekttyp ändern
-function changeTypeOfObj() {
-    typeSwitch += 1;
-    typeSwitch %= objekte[currentObject].elements.length;
     initialize();
 }

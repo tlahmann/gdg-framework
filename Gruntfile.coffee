@@ -1,3 +1,5 @@
+sass = require('node-sass')
+
 module.exports = (grunt)->
   grunt.initConfig
     pkg: grunt.file.readJSON("package.json")
@@ -17,6 +19,7 @@ module.exports = (grunt)->
     sass:
       dist:
         options:
+          implementation: sass
           sourceMap: false
         files: [
           'asset/css/main.css': 'asset/css/main.scss'
@@ -24,12 +27,14 @@ module.exports = (grunt)->
         ]
       toggle:
         options:
+          implementation: sass
           sourceMap: false
         files: [
           'asset/css/toggle.css': 'asset/css/vendor/toggle.scss'
         ]
       radio:
         options:
+          implementation: sass
           sourceMap: false
         files: [
           'asset/css/radio.css': 'asset/css/vendor/radio.scss'

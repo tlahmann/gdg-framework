@@ -1,10 +1,10 @@
-
 /* 
     Grundlagen der Gestaltung Framework
     Univerität Ulm
     Institut für Medienforschung und -entwicklung
     Tobias Lahmann
- */
+*/
+    /*  region HELPER */
 var content, description, displayDescription, displayPicture, fillNavigation, json, jumpTo, lock, nextDesc, nextImg, pictureInput, plainNumber, prevDesc, prevImg, redraw, section, sectionsCount, sectionsPointer, triggerBorder, updateCounter, xml, xmlToJson;
 
 json = void 0;
@@ -43,6 +43,8 @@ this.launchIntoFullscreen = function(element) {
   launchIntoWindowed();
 };
 
+// Changes XML to JSON
+// load XML Data into the program
 $(function() {
   var con, i;
   json = xmlToJson(document.getElementById('data'));
@@ -70,8 +72,11 @@ $(function() {
 
 xmlToJson = function(xml) {
   var attribute, i, item, j, nodeName, obj, old;
+  // Create the return object
   obj = {};
   if (xml.nodeType === 1) {
+    // element
+    // do attributes
     if (xml.attributes.length > 0) {
       obj['@attributes'] = {};
       j = 0;
@@ -82,8 +87,10 @@ xmlToJson = function(xml) {
       }
     }
   } else if (xml.nodeType === 3) {
+    // text
     obj = xml.nodeValue;
   }
+  // do children
   if (xml.hasChildNodes()) {
     i = 0;
     while (i < xml.childNodes.length) {
@@ -111,6 +118,7 @@ redraw = function() {
   updateCounter();
 };
 
+// function to change the picture being shown
 displayPicture = function() {
   var clone, con, game, source;
   con = null;
@@ -119,6 +127,7 @@ displayPicture = function() {
   } else {
     con = json.DOKU.ABSCHNITT;
   }
+  // set the title to the title (very top of the pane) of the image
   $('#title').html(con['@attributes']['titel']);
   if (con.INHALT.length > 1) {
     con = con.INHALT[content];
@@ -126,31 +135,40 @@ displayPicture = function() {
     con = con.INHALT;
   }
   if (con['@attributes']['typ'] === 'bild') {
+    // display picture
     $('#contentImg').css('display', 'block');
+    // set the image
     document.getElementById('contentImg').src = con['@attributes']['quelle'];
+    // hide other sections
     $('#contentAnim').css('display', 'none');
     $('#canvas').css('display', 'none');
     $('#flashCanvas').css('display', 'none');
     pauseAnimation();
   } else if (con['@attributes']['typ'] === 'animation') {
+    // initialize the animation and start animating
     initialize();
     playAnimation();
+    // display the animation
     $('#contentAnim').css('display', 'block');
     $('#canvas').css('display', 'block');
+    // hide other sections
     $('#contentImg').css('display', 'none');
     $('#flashCanvas').css('display', 'none');
   } else if (con['@attributes']['typ'] === 'flash') {
+    // display the flash element (<embed>)
     source = con['@attributes']['quelle'];
     game = document.getElementById('flashCanvas');
     clone = game.cloneNode(true);
     clone.setAttribute('src', source);
     game.parentNode.replaceChild(clone, game);
     $('#flashCanvas').css('display', 'block');
+    // hide other sections
     $('#contentImg').css('display', 'none');
     $('#contentAnim').css('display', 'none');
     $('#canvas').css('display', 'none');
     pauseAnimation();
   }
+  // change border display
   if (con['@attributes']['rahmen'] === 'ein') {
     $('input[name = \'borderListener\']').prop('checked', true);
     triggerBorder();
@@ -160,6 +178,7 @@ displayPicture = function() {
   }
 };
 
+// function to change the description
 displayDescription = function() {
   var con;
   con = null;
@@ -173,19 +192,27 @@ displayDescription = function() {
   } else {
     con = con.INHALT;
   }
+  // set the title of the image description (top of aside) to the title of the description
   $('#descTitle').text(con['@attributes']['titel']);
+  // if the desription is more than one page long the navigation for the description is shown
   if (con.DETAIL.length > 1) {
+    // set the description of the image (main area of the aside) to the description of the details node
     $('#descText').text(con.DETAIL[description]['#text']);
+    //display the description counter
     $('#descNav').css('display', 'block');
     $('#description').css('border-color', '#7a7a80');
+    // update the description counter
     descNum.innerHTML = description + 1 + ' / ' + con.DETAIL.length;
   } else {
+    // set the description of the image (main area of the aside) to the description of the details node
     $('#descText').text(con.DETAIL['#text']);
+    //hide the description counter
     $('#descNav').css('display', 'none');
     $('#description').css('border-color', '#FFF');
   }
 };
 
+// next image function
 nextImg = function() {
   if (sectionsPointer < sectionsCount - 1) {
     sectionsPointer++;
@@ -200,6 +227,7 @@ nextImg = function() {
   }
 };
 
+// previous image function
 prevImg = function() {
   if (sectionsPointer > 0) {
     sectionsPointer--;
@@ -214,6 +242,7 @@ prevImg = function() {
   }
 };
 
+// next description function
 nextDesc = function() {
   if (description < json.DOKU.ABSCHNITT[section].INHALT[content].DETAIL.length - 1) {
     description++;
@@ -221,15 +250,13 @@ nextDesc = function() {
   }
 };
 
+// previous description function
 prevDesc = function() {
   if (description > 0) {
     description--;
     displayDescription();
   }
 };
-
-
-/*  region HELPER */
 
 plainNumber = function() {
   imgNum.value = imgNum.value.substring(0, imgNum.value.lastIndexOf('/'));
@@ -265,6 +292,8 @@ pictureInput = function() {
   }
 };
 
+// helper to fill the navigation with info
+// string concat
 fillNavigation = function() {
   var c, i, j, string;
   string = '<ul>';
@@ -300,6 +329,7 @@ fillNavigation = function() {
   document.getElementById('navscroll').innerHTML = string;
 };
 
+// jump to selected slide from navigation menu
 jumpTo = function(id) {
   var data, jump;
   data = id.dataset.link.split(':');
@@ -310,6 +340,9 @@ jumpTo = function(id) {
   redraw();
 };
 
+// function to change the border color of the displayed object (& others)
+// the border is always shown and just the color is changed (grey <-> white)
+// to prevent the rendering engine from moving the obj by 1px (borderwidth)
 triggerBorder = function() {
   if ($('#borderListener').is(':checked')) {
     $('input[name = \'borderListener\']').prop('checked', true);
@@ -324,11 +357,14 @@ triggerBorder = function() {
   }
 };
 
+// listener function to navigate via arrow keys
 $(document).keydown(function(e) {
   if (!lock) {
     if ((e.keyCode || e.which) === 37 || (e.keyCode || e.which) === 38) {
+      // left
       prevImg();
     } else if ((e.keyCode || e.which) === 39 || (e.keyCode || e.which) === 40) {
+      // right
       nextImg();
     }
   }
@@ -337,6 +373,22 @@ $(document).keydown(function(e) {
   }
 });
 
+// listener to input numbers directly into the pane
+// $('#imgNum').on('focus', ->
+//   plainNumber()
+//   lock = true
+//   return
+// ).on('blur', ->
+//   updateCounter()
+//   lock = false
+//   return
+// ).on 'keyup', ->
+//   pictureInput()
+//   displayPicture()
+//   displayDescription()
+//   return
+// prevent the navigation menu from closing when the mouse is over the area
+// close the navigation menu when the mouse leaves area (delay 1000ms)
 $('#navigation').on('mouseenter', function() {
   clearTimeout($.data(this, 'timer'));
   $('#navigation').stop(true, true);
@@ -350,6 +402,7 @@ $('#navigation').on('mouseenter', function() {
   }), 1000));
 });
 
+// listener to open the navigation
 $('input[name=\'navTrigger\']').change(function() {
   if ($(this).is(':checked')) {
     $('#navigation').css('left', 0);

@@ -118,7 +118,8 @@ input[type="button"] {
     }
 }
 
-input[type="checkbox"] {
+// input[type="checkbox"] {
+#borderListener {
     @include vh();
 
     &:focus,
