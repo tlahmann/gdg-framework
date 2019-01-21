@@ -12,7 +12,37 @@ description = 0
 sectionsCount = 0
 sectionsPointer = 0
 lock = true
-xml = undefined
+xmlData = undefined
+schemaData = '<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="doku">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="abschnitt"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="abschnitt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="inhalt"/>
+      </xs:sequence>
+      <xs:attribute name="titel" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="inhalt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="detail"/>
+      </xs:sequence>
+      <xs:attribute name="quelle" use="required"/>
+      <xs:attribute name="rahmen" use="required" type="xs:NCName"/>
+      <xs:attribute name="titel" use="required"/>
+      <xs:attribute name="typ" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="detail" type="xs:string"/>
+</xs:schema>'
+
 
 @launchIntoWindowed = ->
   $('#intro').css 'opacity', 0
@@ -36,7 +66,13 @@ xml = undefined
 # Changes XML to JSON
 # load XML Data into the program
 $ ->
-  json = xmlToJson(document.getElementById('data'))
+  xmlData = document.getElementById('data')
+  errors = xmllint.validateXML({ xml: xmlData.innerHTML, schema: schemaData}).errors
+  if errors
+    alert(errors)
+    return
+
+  json = xmlToJson(xmlData)
   con = json.DOKU.ABSCHNITT
   if con.length > 1
     i = 0

@@ -5,7 +5,7 @@
     Tobias Lahmann
 */
     /*  region HELPER */
-var content, description, displayDescription, displayPicture, fillNavigation, json, jumpTo, lock, nextDesc, nextImg, pictureInput, plainNumber, prevDesc, prevImg, redraw, section, sectionsCount, sectionsPointer, triggerBorder, updateCounter, xml, xmlToJson;
+var content, description, displayDescription, displayPicture, fillNavigation, json, jumpTo, lock, nextDesc, nextImg, pictureInput, plainNumber, prevDesc, prevImg, redraw, schemaData, section, sectionsCount, sectionsPointer, triggerBorder, updateCounter, xmlData, xmlToJson;
 
 json = void 0;
 
@@ -21,7 +21,9 @@ sectionsPointer = 0;
 
 lock = true;
 
-xml = void 0;
+xmlData = void 0;
+
+schemaData = '<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"> <xs:element name="doku"> <xs:complexType> <xs:sequence> <xs:element maxOccurs="unbounded" ref="abschnitt"/> </xs:sequence> </xs:complexType> </xs:element> <xs:element name="abschnitt"> <xs:complexType> <xs:sequence> <xs:element minOccurs="1" maxOccurs="unbounded" ref="inhalt"/> </xs:sequence> <xs:attribute name="titel" use="required"/> </xs:complexType> </xs:element> <xs:element name="inhalt"> <xs:complexType> <xs:sequence> <xs:element minOccurs="1" maxOccurs="unbounded" ref="detail"/> </xs:sequence> <xs:attribute name="quelle" use="required"/> <xs:attribute name="rahmen" use="required" type="xs:NCName"/> <xs:attribute name="titel" use="required"/> <xs:attribute name="typ" use="required" type="xs:NCName"/> </xs:complexType> </xs:element> <xs:element name="detail" type="xs:string"/> </xs:schema>';
 
 this.launchIntoWindowed = function() {
   $('#intro').css('opacity', 0);
@@ -46,8 +48,17 @@ this.launchIntoFullscreen = function(element) {
 // Changes XML to JSON
 // load XML Data into the program
 $(function() {
-  var con, i;
-  json = xmlToJson(document.getElementById('data'));
+  var con, errors, i;
+  xmlData = document.getElementById('data');
+  errors = xmllint.validateXML({
+    xml: xmlData.innerHTML,
+    schema: schemaData
+  }).errors;
+  if (errors) {
+    alert(errors);
+    return;
+  }
+  json = xmlToJson(xmlData);
   con = json.DOKU.ABSCHNITT;
   if (con.length > 1) {
     i = 0;
