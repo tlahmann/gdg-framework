@@ -82,10 +82,7 @@ var permutationen =
  * 
  {
     "numberOfObjects": "n",
-    "elements": [
-        { "name": "folder1" },
-        { "name": "folder2" }
-    ]
+    "elements": "folder1"
 }
  */
 var objekte =
