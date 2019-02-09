@@ -64,14 +64,14 @@ $(function() {
     i = 0;
     while (i < con.length) {
       if (con[i].INHALT.length >= 1) {
-        sectionsCount += json.DOKU.ABSCHNITT[i].INHALT.length;
+        sectionsCount += json.DOKU.ABSCHNITT[i].INHALT.length || 1;
       } else {
         sectionsCount++;
       }
       ++i;
     }
   } else {
-    sectionsCount += json.DOKU.ABSCHNITT.INHALT.length;
+    sectionsCount += json.DOKU.ABSCHNITT[0].INHALT.length || 1;
   }
   fillNavigation();
   $('#navscroll').simplebar();
@@ -82,7 +82,7 @@ $(function() {
 });
 
 xmlToJson = function(xml) {
-  var attribute, i, item, j, nodeName, obj, old;
+  var attribute, i, item, j, jsn, nodeName, obj, old;
   // Create the return object
   obj = {};
   if (xml.nodeType === 1) {
@@ -107,8 +107,12 @@ xmlToJson = function(xml) {
     while (i < xml.childNodes.length) {
       item = xml.childNodes.item(i);
       nodeName = item.nodeName;
+      // if nodeName.indexOf('#text') != -1
+      //   i++
+      //   continue
       if (typeof obj[nodeName] === 'undefined') {
-        obj[nodeName] = xmlToJson(item);
+        jsn = xmlToJson(item);
+        obj[nodeName] = nodeName === 'DOKU' ? jsn : [jsn];
       } else {
         if (typeof obj[nodeName].push === 'undefined') {
           old = obj[nodeName];
@@ -136,14 +140,14 @@ displayPicture = function() {
   if (json.DOKU.ABSCHNITT.length > 1) {
     con = json.DOKU.ABSCHNITT[section];
   } else {
-    con = json.DOKU.ABSCHNITT;
+    con = json.DOKU.ABSCHNITT[0];
   }
   // set the title to the title (very top of the pane) of the image
   $('#title').html(con['@attributes']['titel']);
   if (con.INHALT.length > 1) {
     con = con.INHALT[content];
   } else {
-    con = con.INHALT;
+    con = con.INHALT[0];
   }
   if (con['@attributes']['typ'] === 'bild') {
     // display picture
@@ -196,12 +200,12 @@ displayDescription = function() {
   if (json.DOKU.ABSCHNITT.length > 1) {
     con = json.DOKU.ABSCHNITT[section];
   } else {
-    con = json.DOKU.ABSCHNITT;
+    con = json.DOKU.ABSCHNITT[0];
   }
   if (con.INHALT.length > 1) {
     con = con.INHALT[content];
   } else {
-    con = con.INHALT;
+    con = con.INHALT[0];
   }
   // set the title of the image description (top of aside) to the title of the description
   $('#descTitle').text(con['@attributes']['titel']);
@@ -216,7 +220,7 @@ displayDescription = function() {
     descNum.innerHTML = description + 1 + ' / ' + con.DETAIL.length;
   } else {
     // set the description of the image (main area of the aside) to the description of the details node
-    $('#descText').text(con.DETAIL['#text']);
+    $('#descText').text(con.DETAIL[0]['#text']);
     //hide the description counter
     $('#descNav').css('display', 'none');
     $('#description').css('border-color', '#FFF');

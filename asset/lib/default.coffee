@@ -78,12 +78,12 @@ $ ->
     i = 0
     while i < con.length
       if con[i].INHALT.length >= 1
-        sectionsCount += json.DOKU.ABSCHNITT[i].INHALT.length
+        sectionsCount += json.DOKU.ABSCHNITT[i].INHALT.length || 1
       else
         sectionsCount++
       ++i
   else
-    sectionsCount += json.DOKU.ABSCHNITT.INHALT.length
+    sectionsCount += json.DOKU.ABSCHNITT[0].INHALT.length || 1
   fillNavigation()
   $('#navscroll').simplebar()
   $('#description').append '<h4 id="descTitle">desctitle</h4><p id="descText">desc</p>'
@@ -114,8 +114,12 @@ xmlToJson = (xml) ->
     while i < xml.childNodes.length
       item = xml.childNodes.item(i)
       nodeName = item.nodeName
+      # if nodeName.indexOf('#text') != -1
+      #   i++
+      #   continue
       if typeof obj[nodeName] == 'undefined'
-        obj[nodeName] = xmlToJson(item)
+        jsn = xmlToJson(item)
+        obj[nodeName] = if nodeName == 'DOKU' then jsn else [jsn]
       else
         if typeof obj[nodeName].push == 'undefined'
           old = obj[nodeName]
@@ -138,13 +142,13 @@ displayPicture = ->
   if json.DOKU.ABSCHNITT.length > 1
     con = json.DOKU.ABSCHNITT[section]
   else
-    con = json.DOKU.ABSCHNITT
+    con = json.DOKU.ABSCHNITT[0]
   # set the title to the title (very top of the pane) of the image
   $('#title').html con['@attributes']['titel']
   if con.INHALT.length > 1
     con = con.INHALT[content]
   else
-    con = con.INHALT
+    con = con.INHALT[0]
   if con['@attributes']['typ'] == 'bild'
     # display picture
     $('#contentImg').css 'display', 'block'
@@ -194,11 +198,11 @@ displayDescription = ->
   if json.DOKU.ABSCHNITT.length > 1
     con = json.DOKU.ABSCHNITT[section]
   else
-    con = json.DOKU.ABSCHNITT
+    con = json.DOKU.ABSCHNITT[0]
   if con.INHALT.length > 1
     con = con.INHALT[content]
   else
-    con = con.INHALT
+    con = con.INHALT[0]
   # set the title of the image description (top of aside) to the title of the description
   $('#descTitle').text con['@attributes']['titel']
   # if the desription is more than one page long the navigation for the description is shown
@@ -212,7 +216,7 @@ displayDescription = ->
     descNum.innerHTML = description + 1 + ' / ' + con.DETAIL.length
   else
     # set the description of the image (main area of the aside) to the description of the details node
-    $('#descText').text con.DETAIL['#text']
+    $('#descText').text con.DETAIL[0]['#text']
     #hide the description counter
     $('#descNav').css 'display', 'none'
     $('#description').css 'border-color', '#FFF'
