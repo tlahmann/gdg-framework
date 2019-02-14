@@ -114,15 +114,16 @@ var animat = []; // Array, welches die Bilder beihaltet
 var context = document.getElementById('canvas').getContext('2d');
 
 var obj, matriceHeight, matriceWidth, scale;
+var folder = undefined;
 
 //funktion: entsprechende Animationsobjekte initialisieren
-function initialize() {
+function initialize(src) {
     // Bei der Umschaltung von Objekten oder der umschaltung von permutationen wird die initialize()-Methode aufgerufen. In diesem Fall wird der running-Boolean ebenfalls umgeschaltet um die Funktion des Play/Pause-Buttons wieder zu berichtigen.
     if (!running) {
         running = !running;
     }
 
-    var folder = $("inhalt[typ='animation']").attr("quelle");
+    folder = folder || src;
 
     animat = [];
     // liest die Quelle aller aktuell betrachteten Bilder ein und speichert sie als img() in Array animat
@@ -230,12 +231,12 @@ function slower() {
 function changePermutation() {
     currentPerm += 1;
     currentPerm %= permutationen.length;
-    initialize();
+    initialize(null);
 }
 
 // funktion: objekt weiter schalten
 function changeObject() {
     currentObject += 1;
     currentObject %= objekte.length;
-    initialize();
+    initialize(null);
 }
