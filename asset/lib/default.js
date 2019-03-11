@@ -43,6 +43,7 @@ this.launchIntoFullscreen = function(element) {
 
 // load JSON Data into the program
 $(function() {
+  var pos;
   json = doku;
   contentCount = json.sections.reduce((function(acc, curr) {
     return acc + (curr.contents || []).length;
@@ -51,11 +52,17 @@ $(function() {
   $('#navscroll').simplebar();
   $('#description').append('<h4 id="descTitle">desctitle</h4><p id="descText">desc</p>');
   $('#description').simplebar();
-  redraw();
   document.getElementById('sN').textContent = json.studentName;
+  pos = window.location.hash.substr(1);
+  if (+pos !== 0) {
+    jumpTo(+pos - 1);
+    launchIntoWindowed();
+  }
+  redraw();
 });
 
 redraw = function() {
+  document.location.hash = parseInt(sectionsPointer) + 1;
   displayPicture();
   displayDescription();
   updateCounter();
@@ -202,7 +209,7 @@ fillNavigation = function() {
     for (j = l = 0, len1 = ref1.length; l < len1; j = ++l) {
       content = ref1[j];
       navString += '<li onclick="jumpTo(';
-      navString += (runningCounter++) + ',' + i + ',' + j;
+      navString += runningCounter++;
       navString += ')">';
       navString += content.title;
       navString += '</li>';
@@ -214,10 +221,24 @@ fillNavigation = function() {
 };
 
 // jump to selected slide from navigation menu
-jumpTo = function(running, section, content) {
+jumpTo = function(running) {
+  var calcIndices, i, ind;
   sectionsPointer = running;
-  currentSection = section;
-  currentContent = content;
+  i = 1;
+  calcIndices = function(r) {
+    var k, len, ref, s, sec;
+    ref = json.sections;
+    for (s = k = 0, len = ref.length; k < len; s = ++k) {
+      sec = ref[s];
+      if (sec.contents.length > r) {
+        return [s, r];
+      }
+      r -= sec.contents.length;
+    }
+  };
+  ind = calcIndices(running);
+  currentSection = ind[0];
+  currentContent = ind[1];
   redraw();
 };
 

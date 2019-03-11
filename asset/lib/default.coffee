@@ -42,11 +42,16 @@ $ ->
   $('#navscroll').simplebar()
   $('#description').append '<h4 id="descTitle">desctitle</h4><p id="descText">desc</p>'
   $('#description').simplebar()
-  redraw()
   document.getElementById('sN').textContent = json.studentName
+  pos = window.location.hash.substr(1);
+  if +pos != 0
+    jumpTo(+pos-1)
+    launchIntoWindowed()
+  redraw()
   return
 
 redraw = ->
+  document.location.hash = parseInt(sectionsPointer) + 1
   displayPicture()
   displayDescription()
   updateCounter()
@@ -182,7 +187,7 @@ fillNavigation = ->
     navString += '</summary><ul>'
     for content, j in section.contents
       navString += '<li onclick="jumpTo('
-      navString += (runningCounter++) + ',' + i + ',' + j
+      navString += (runningCounter++)
       navString += ')">'
       navString += content.title
       navString += '</li>'
@@ -193,10 +198,16 @@ fillNavigation = ->
 
 # jump to selected slide from navigation menu
 
-jumpTo = (running, section, content) ->
+jumpTo = (running) ->
   sectionsPointer = running
-  currentSection = section
-  currentContent = content
+  i = 1
+  calcIndices = (r) ->
+    for sec, s in json.sections
+      return [s, r] if sec.contents.length > r
+      r -= sec.contents.length
+  ind = calcIndices running
+  currentSection = ind[0]
+  currentContent = ind[1]
   redraw()
   return
 
