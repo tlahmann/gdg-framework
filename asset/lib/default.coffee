@@ -62,6 +62,7 @@ redraw = ->
 displayPicture = ->
   con = json.sections[currentSection].contents[currentContent]
 
+  $('#title').html con['title']
   switch con.type
     when 'image' 
       # display picture
