@@ -123,7 +123,7 @@ function initialize(src) {
         running = !running;
     }
 
-    folder = folder || src;
+    folder = src || folder;
 
     animat = [];
     // liest die Quelle aller aktuell betrachteten Bilder ein und speichert sie als img() in Array animat
