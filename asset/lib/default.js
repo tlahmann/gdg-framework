@@ -72,7 +72,7 @@ redraw = function() {
 displayPicture = function() {
   var clone, con, game, source;
   con = json.sections[currentSection].contents[currentContent];
-  $('#title').html(con['title']);
+  $('#title').html(json.sections[currentSection]['title']);
   switch (con.type) {
     case 'image':
       
